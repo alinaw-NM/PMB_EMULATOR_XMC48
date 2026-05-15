@@ -1,0 +1,91 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,4
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "main.c"
+  16              	 .section .text.startup.main,"ax",%progbits
+  17              	 .align 1
+  18              	 .global main
+  19              	 .thumb
+  20              	 .thumb_func
+  22              	main:
+  23              	 
+  24              	 
+  25 0000 38B5     	 push {r3,r4,r5,lr}
+  26 0002 FFF7FEFF 	 bl DAVE_Init
+  27 0006 00B1     	 cbz r0,.L2
+  28              	.L13:
+  29 0008 FEE7     	 b .L13
+  30              	.L2:
+  31 000a 1D4B     	 ldr r3,.L15
+  32 000c 1A7C     	 ldrb r2,[r3,#16]
+  33 000e 1C68     	 ldr r4,[r3]
+  34 0010 4FF00113 	 mov r3,#65537
+  35 0014 9340     	 lsls r3,r3,r2
+  36 0016 1B4A     	 ldr r2,.L15+4
+  37 0018 157C     	 ldrb r5,[r2,#16]
+  38 001a 1068     	 ldr r0,[r2]
+  39 001c 4FF48031 	 mov r1,#65536
+  40 0020 0122     	 movs r2,#1
+  41 0022 AA40     	 lsls r2,r2,r5
+  42 0024 A940     	 lsls r1,r1,r5
+  43              	.L8:
+  44 0026 DFED186A 	 flds s13,.L15+8
+  45 002a 6360     	 str r3,[r4,#4]
+  46              	.L4:
+  47 002c B7EE007A 	 fconsts s14,#112
+  48 0030 76EE876A 	 fadds s13,s13,s14
+  49 0034 DFED157A 	 flds s15,.L15+12
+  50 0038 F4EEE76A 	 fcmpes s13,s15
+  51 003c F1EE10FA 	 fmstat
+  52 0040 F4D4     	 bmi .L4
+  53 0042 DFED116A 	 flds s13,.L15+8
+  54 0046 6360     	 str r3,[r4,#4]
+  55              	.L5:
+  56 0048 76EE876A 	 fadds s13,s13,s14
+  57 004c F4EEE76A 	 fcmpes s13,s15
+  58 0050 F1EE10FA 	 fmstat
+  59 0054 F8D4     	 bmi .L5
+  60 0056 DFED0C6A 	 flds s13,.L15+8
+  61 005a 4260     	 str r2,[r0,#4]
+  62              	.L6:
+  63 005c 76EE876A 	 fadds s13,s13,s14
+  64 0060 F4EEE76A 	 fcmpes s13,s15
+  65 0064 F1EE10FA 	 fmstat
+  66 0068 F8D4     	 bmi .L6
+  67 006a DFED076A 	 flds s13,.L15+8
+  68 006e 4160     	 str r1,[r0,#4]
+  69              	.L7:
+  70 0070 76EE876A 	 fadds s13,s13,s14
+  71 0074 F4EEE76A 	 fcmpes s13,s15
+  72 0078 F1EE10FA 	 fmstat
+  73 007c F8D4     	 bmi .L7
+  74 007e D2E7     	 b .L8
+  75              	.L16:
+  76              	 .align 2
+  77              	.L15:
+  78 0080 00000000 	 .word LED1
+  79 0084 00000000 	 .word LED2
+  80 0088 00000000 	 .word 0
+  81 008c 4054094B 	 .word 1258902592
+  83              	 .ident "GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20141119 (release) [ARM/embedded-4_9-branch revision 218278]"
+DEFINED SYMBOLS
+                            *ABS*:00000000 main.c
+    {standard input}:17     .text.startup.main:00000000 $t
+    {standard input}:22     .text.startup.main:00000000 main
+    {standard input}:78     .text.startup.main:00000080 $d
+
+UNDEFINED SYMBOLS
+DAVE_Init
+LED1
+LED2

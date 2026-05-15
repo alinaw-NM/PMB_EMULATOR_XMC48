@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="ASCII"?>
+<ResourceModel:DevicePackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ResourceModel="http://www.infineon.com/Davex/Resource.ecore" URI="http://resources/LQFP100.0.0/devicepackage/0">
+  <provided xsi:type="ResourceModel:ResourceGroup" name="75" URI="http://resources/lqfp100.0.0/devicepackage/0/75">
+    <resourcesList name="pin" requiredResourceUri="http://resources/LQFP100.0.0/devicepackage/0/pin75"/>
+  </provided>
+  <provided xsi:type="ResourceModel:ResourceGroup" name="74" URI="http://resources/lqfp100.0.0/devicepackage/0/74">
+    <resourcesList name="pin" requiredResourceUri="http://resources/LQFP100.0.0/devicepackage/0/pin74"/>
+  </provided>
+</ResourceModel:DevicePackage>
