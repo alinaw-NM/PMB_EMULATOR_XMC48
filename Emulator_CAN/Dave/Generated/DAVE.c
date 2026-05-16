@@ -68,7 +68,15 @@ __WEAK DAVE_STATUS_t DAVE_Init(void)
 {
   DAVE_STATUS_t init_status;
   
-  init_status = DAVE_STATUS_SUCCESS; 
+  init_status = DAVE_STATUS_SUCCESS;
+     /** @Initialization of APPs Init Functions */
+     init_status = (DAVE_STATUS_t)CLOCK_XMC4_Init(&CLOCK_XMC4_0);
+
+  if (init_status == DAVE_STATUS_SUCCESS)
+  {
+	 /**  Initialization of MULTICAN_CONFIG APP instance MULTICAN_CONFIG_0 */
+	 init_status = (DAVE_STATUS_t)MULTICAN_CONFIG_Init(&MULTICAN_CONFIG_0); 
+   }  
   return init_status;
 } /**  End of function DAVE_Init */
 

@@ -48,6 +48,15 @@
 
 /** #include DAVE APP Header files. */
 #include "xmc_common.h"  
+
+#include "CLOCK_XMC4/clock_xmc4.h"
+  
+
+#include "GLOBAL_CAN/global_can.h"
+  
+
+#include "MULTICAN_CONFIG/multican_config.h"
+  
 	
 
 /**********************************************************************************************************************
