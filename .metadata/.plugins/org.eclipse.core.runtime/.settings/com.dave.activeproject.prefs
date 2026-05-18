@@ -1,3 +1,3 @@
 com.ifx.xc800.ActiveProject=Blinking_led
-com.ifx.xc800.Old_ActiveProject=MultiCAN
+com.ifx.xc800.Old_ActiveProject=emulator_can
 eclipse.preferences.version=1
