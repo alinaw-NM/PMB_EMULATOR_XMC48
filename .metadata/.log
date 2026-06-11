@@ -6077,3 +6077,39 @@ For more details, see the JLinkGDBServerCL.exe console.
 
 !ENTRY ilg.gnuarmeclipse.debug.gdbjtag.jlink 4 1 2026-06-10 17:34:39.853
 !MESSAGE C:\Infineon\Tools\DAVE IDE\4.5.0.202105191637\eclipse\ARM-GCC-49/bin/arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY COMMON 1 0 2026-06-11 09:53:16.721
+!MESSAGE USER_ACTION : checkVersioningForActiveProject: Reloading project....
+
+!ENTRY com.dave.mbs.common 1 0 2026-06-11 09:53:16.820
+!MESSAGE ****************Cleaning project data:MULTICAN_CONFIG_EXAMPLE_XMC47*******************
+
+!ENTRY APPLICATION_MODEL 1 0 2026-06-11 09:53:16.822
+!MESSAGE USER_ACTION : Time taken for disposing objects for memory cleanup: 100 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2026-06-11 09:53:16.894
+!MESSAGE USER_ACTION : Active project:MULTICAN_CONFIG_EXAMPLE_XMC47[ Software ID:XMC4.7.00.F144.ALL]
+
+!ENTRY COMMON 1 0 2026-06-11 09:53:17.253
+!MESSAGE Time Taken By De-Serialization  : 343 ms :: C:\Infineon\Tools\DAVE IDE\4.5.0.202105191637\eclipse\workspace\MULTICAN_CONFIG_EXAMPLE_XMC47\Dave\Model\projectData.bin
+
+!ENTRY com.dave.mbs.common 1 0 2026-06-11 09:53:17.254
+!MESSAGE *************Serializing EMF and Groovy data to RAM*******************
+
+!ENTRY APPLICATION_MODEL 1 0 2026-06-11 09:53:17.467
+!MESSAGE USER_ACTION : Time taken for initializing Application Model is: 574 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2026-06-11 09:53:17.469
+!MESSAGE USER_ACTION : Time taken for reloadLastSolverResult(updateQuery): 2 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2026-06-11 09:53:17.469
+!MESSAGE USER_ACTION : Time taken for reloadLastSolverResult(getSolutionQuery): 0 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2026-06-11 09:53:17.470
+!MESSAGE USER_ACTION : Time taken for updating views is: 0 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2026-06-11 09:53:17.847
+!MESSAGE USER_ACTION : Time taken for rendering views is: 377 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2026-06-11 09:53:17.992
+!MESSAGE USER_ACTION : Total time taken for setting project as active is: 1269 msec 
