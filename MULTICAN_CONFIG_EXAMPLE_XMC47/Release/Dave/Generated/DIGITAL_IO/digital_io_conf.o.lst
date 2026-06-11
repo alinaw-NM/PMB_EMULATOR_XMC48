@@ -1,0 +1,34 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,4
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "digital_io_conf.c"
+  16              	 .global DIGITAL_IO_0
+  17              	 .section .rodata.DIGITAL_IO_0,"a",%progbits
+  18              	 .align 2
+  21              	DIGITAL_IO_0:
+  22 0000 00850248 	 .word 1208124672
+  23 0004 80       	 .byte -128
+  24 0005 000000   	 .space 3
+  25 0008 00000100 	 .word 65536
+  26 000c 00000000 	 .space 4
+  27 0010 09       	 .byte 9
+  28 0011 00       	 .byte 0
+  29 0012 0000     	 .space 2
+  30              	 .ident "GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20141119 (release) [ARM/embedded-4_9-branch revision 218278]"
+DEFINED SYMBOLS
+                            *ABS*:00000000 digital_io_conf.c
+    {standard input}:21     .rodata.DIGITAL_IO_0:00000000 DIGITAL_IO_0
+    {standard input}:18     .rodata.DIGITAL_IO_0:00000000 $d
+
+NO UNDEFINED SYMBOLS

@@ -102,6 +102,39 @@ MULTICAN_CONFIG_NODE_LMO_t MULTICAN_CONFIG_0_LMO_00_Config =
   .gateway = NULL
 };
 
+XMC_CAN_MO_t  MULTICAN_CONFIG_0_LMO_01 =
+{
+  .can_mo_type      =  XMC_CAN_MO_TYPE_TRANSMSGOBJ,
+  .can_id_mode      = XMC_CAN_FRAME_TYPE_STANDARD_11BITS,
+  .can_priority     = 2U,
+  .can_identifier   = 0x7ffU, 
+  .can_id_mask      = 0x7ffU,
+  .can_ide_mask     = 1U,
+  .can_mo_ptr       = CAN_MO1,
+  .can_data_length  = 8U,
+  .can_data[0]      = 0x0U,
+  .can_data[1]      = 0x0U
+};
+
+MULTICAN_CONFIG_NODE_LMO_t MULTICAN_CONFIG_0_LMO_01_Config =
+{
+  .mo_ptr     = (XMC_CAN_MO_t*)&MULTICAN_CONFIG_0_LMO_01,    
+  .list       = 0U,
+  .number     = 1U,
+  .tx_sr      = 0U,
+  .rx_sr      = 0U,
+  .single_data_transfer  = 	false,
+  .single_transmit_trial =	false,
+  .tx_event_enable       =	false,
+  .rx_event_enable       =	false,
+  .ov_event_enable       =	false,
+  .foreign_remote        =	false,
+  .init_as_gateway_destination = false,
+  .message_mode_control  = 	MULTICAN_CONFIG_MMC_STDMSG,
+  .fifo = NULL,
+  .gateway = NULL
+};
+
 MULTICAN_CONFIG_t  MULTICAN_CONFIG_0 = 
 {
   .global_ptr = (GLOBAL_CAN_t *)&GLOBAL_CAN_0,
@@ -109,7 +142,8 @@ MULTICAN_CONFIG_t  MULTICAN_CONFIG_0 =
   .lmobj_ptr =
    { 
 	
-      (MULTICAN_CONFIG_NODE_LMO_t*)&MULTICAN_CONFIG_0_LMO_00_Config
+      (MULTICAN_CONFIG_NODE_LMO_t*)&MULTICAN_CONFIG_0_LMO_00_Config, 
+      (MULTICAN_CONFIG_NODE_LMO_t*)&MULTICAN_CONFIG_0_LMO_01_Config
 
    },
   .multican_config_init_func  = &MULTICAN_CONFIG_0_lInit,

@@ -1,0 +1,60 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,4
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "DAVE.c"
+  16              	 .section .text.DAVE_Init,"ax",%progbits
+  17              	 .align 1
+  18              	 .weak DAVE_Init
+  19              	 .thumb
+  20              	 .thumb_func
+  22              	DAVE_Init:
+  23              	 
+  24              	 
+  25 0000 08B5     	 push {r3,lr}
+  26 0002 0948     	 ldr r0,.L5
+  27 0004 FFF7FEFF 	 bl CLOCK_XMC4_Init
+  28 0008 60B9     	 cbnz r0,.L3
+  29 000a 0848     	 ldr r0,.L5+4
+  30 000c FFF7FEFF 	 bl MULTICAN_CONFIG_Init
+  31 0010 40B9     	 cbnz r0,.L3
+  32 0012 0748     	 ldr r0,.L5+8
+  33 0014 FFF7FEFF 	 bl DIGITAL_IO_Init
+  34 0018 20B9     	 cbnz r0,.L3
+  35 001a 0648     	 ldr r0,.L5+12
+  36 001c BDE80840 	 pop {r3,lr}
+  37 0020 FFF7FEBF 	 b DIGITAL_IO_Init
+  38              	.L3:
+  39 0024 08BD     	 pop {r3,pc}
+  40              	.L6:
+  41 0026 00BF     	 .align 2
+  42              	.L5:
+  43 0028 00000000 	 .word CLOCK_XMC4_0
+  44 002c 00000000 	 .word MULTICAN_CONFIG_0
+  45 0030 00000000 	 .word LED1
+  46 0034 00000000 	 .word LED2
+  48              	 .ident "GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20141119 (release) [ARM/embedded-4_9-branch revision 218278]"
+DEFINED SYMBOLS
+                            *ABS*:00000000 DAVE.c
+    {standard input}:17     .text.DAVE_Init:00000000 $t
+    {standard input}:22     .text.DAVE_Init:00000000 DAVE_Init
+    {standard input}:43     .text.DAVE_Init:00000028 $d
+
+UNDEFINED SYMBOLS
+CLOCK_XMC4_Init
+MULTICAN_CONFIG_Init
+DIGITAL_IO_Init
+CLOCK_XMC4_0
+MULTICAN_CONFIG_0
+LED1
+LED2

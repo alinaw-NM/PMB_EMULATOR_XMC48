@@ -1,0 +1,4087 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,4
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "pmb_loopback_test.c"
+  16              	 .section .text.expect_00,"ax",%progbits
+  17              	 .align 1
+  18              	 .thumb
+  19              	 .thumb_func
+  21              	expect_00:
+  22              	 
+  23              	 
+  24              	 
+  25 0000 0B88     	 ldrh r3,[r1]
+  26 0002 0370     	 strb r3,[r0]
+  27 0004 C3F30323 	 ubfx r3,r3,#8,#4
+  28 0008 4370     	 strb r3,[r0,#1]
+  29 000a 4B88     	 ldrh r3,[r1,#2]
+  30 000c 8370     	 strb r3,[r0,#2]
+  31 000e C3F30323 	 ubfx r3,r3,#8,#4
+  32 0012 C370     	 strb r3,[r0,#3]
+  33 0014 8B88     	 ldrh r3,[r1,#4]
+  34 0016 0371     	 strb r3,[r0,#4]
+  35 0018 C3F30323 	 ubfx r3,r3,#8,#4
+  36 001c 4371     	 strb r3,[r0,#5]
+  37 001e 7047     	 bx lr
+  39              	 .section .text.expect_01,"ax",%progbits
+  40              	 .align 1
+  41              	 .thumb
+  42              	 .thumb_func
+  44              	expect_01:
+  45              	 
+  46              	 
+  47              	 
+  48 0000 CB88     	 ldrh r3,[r1,#6]
+  49 0002 0370     	 strb r3,[r0]
+  50 0004 C3F30323 	 ubfx r3,r3,#8,#4
+  51 0008 4370     	 strb r3,[r0,#1]
+  52 000a 0B89     	 ldrh r3,[r1,#8]
+  53 000c 8370     	 strb r3,[r0,#2]
+  54 000e C3F30323 	 ubfx r3,r3,#8,#4
+  55 0012 C370     	 strb r3,[r0,#3]
+  56 0014 4B89     	 ldrh r3,[r1,#10]
+  57 0016 0371     	 strb r3,[r0,#4]
+  58 0018 C3F30323 	 ubfx r3,r3,#8,#4
+  59 001c 4371     	 strb r3,[r0,#5]
+  60 001e 7047     	 bx lr
+  62              	 .section .text.expect_02,"ax",%progbits
+  63              	 .align 1
+  64              	 .thumb
+  65              	 .thumb_func
+  67              	expect_02:
+  68              	 
+  69              	 
+  70              	 
+  71 0000 8B89     	 ldrh r3,[r1,#12]
+  72 0002 0370     	 strb r3,[r0]
+  73 0004 C3F30323 	 ubfx r3,r3,#8,#4
+  74 0008 4370     	 strb r3,[r0,#1]
+  75 000a CB89     	 ldrh r3,[r1,#14]
+  76 000c 8370     	 strb r3,[r0,#2]
+  77 000e C3F30323 	 ubfx r3,r3,#8,#4
+  78 0012 C370     	 strb r3,[r0,#3]
+  79 0014 0B8A     	 ldrh r3,[r1,#16]
+  80 0016 0371     	 strb r3,[r0,#4]
+  81 0018 C3F30323 	 ubfx r3,r3,#8,#4
+  82 001c 4371     	 strb r3,[r0,#5]
+  83 001e 7047     	 bx lr
+  85              	 .section .text.expect_03,"ax",%progbits
+  86              	 .align 1
+  87              	 .thumb
+  88              	 .thumb_func
+  90              	expect_03:
+  91              	 
+  92              	 
+  93              	 
+  94 0000 4B8A     	 ldrh r3,[r1,#18]
+  95 0002 0370     	 strb r3,[r0]
+  96 0004 C3F30323 	 ubfx r3,r3,#8,#4
+  97 0008 4370     	 strb r3,[r0,#1]
+  98 000a 8B8A     	 ldrh r3,[r1,#20]
+  99 000c 8370     	 strb r3,[r0,#2]
+ 100 000e C3F30323 	 ubfx r3,r3,#8,#4
+ 101 0012 C370     	 strb r3,[r0,#3]
+ 102 0014 CB8A     	 ldrh r3,[r1,#22]
+ 103 0016 0371     	 strb r3,[r0,#4]
+ 104 0018 C3F30323 	 ubfx r3,r3,#8,#4
+ 105 001c 4371     	 strb r3,[r0,#5]
+ 106 001e 7047     	 bx lr
+ 108              	 .section .text.expect_04,"ax",%progbits
+ 109              	 .align 1
+ 110              	 .thumb
+ 111              	 .thumb_func
+ 113              	expect_04:
+ 114              	 
+ 115              	 
+ 116              	 
+ 117 0000 0B8B     	 ldrh r3,[r1,#24]
+ 118 0002 0370     	 strb r3,[r0]
+ 119 0004 C3F30323 	 ubfx r3,r3,#8,#4
+ 120 0008 4370     	 strb r3,[r0,#1]
+ 121 000a 4B8B     	 ldrh r3,[r1,#26]
+ 122 000c 8370     	 strb r3,[r0,#2]
+ 123 000e C3F30323 	 ubfx r3,r3,#8,#4
+ 124 0012 C370     	 strb r3,[r0,#3]
+ 125 0014 8B8B     	 ldrh r3,[r1,#28]
+ 126 0016 0371     	 strb r3,[r0,#4]
+ 127 0018 C3F30323 	 ubfx r3,r3,#8,#4
+ 128 001c 4371     	 strb r3,[r0,#5]
+ 129 001e 7047     	 bx lr
+ 131              	 .section .text.expect_05,"ax",%progbits
+ 132              	 .align 1
+ 133              	 .thumb
+ 134              	 .thumb_func
+ 136              	expect_05:
+ 137              	 
+ 138              	 
+ 139              	 
+ 140 0000 CB8B     	 ldrh r3,[r1,#30]
+ 141 0002 0370     	 strb r3,[r0]
+ 142 0004 C3F30323 	 ubfx r3,r3,#8,#4
+ 143 0008 4370     	 strb r3,[r0,#1]
+ 144 000a 0B8C     	 ldrh r3,[r1,#32]
+ 145 000c 8370     	 strb r3,[r0,#2]
+ 146 000e C3F30323 	 ubfx r3,r3,#8,#4
+ 147 0012 C370     	 strb r3,[r0,#3]
+ 148 0014 7047     	 bx lr
+ 150              	 .section .text.expect_06,"ax",%progbits
+ 151              	 .align 1
+ 152              	 .thumb
+ 153              	 .thumb_func
+ 155              	expect_06:
+ 156              	 
+ 157              	 
+ 158              	 
+ 159 0000 4B8C     	 ldrh r3,[r1,#34]
+ 160 0002 0370     	 strb r3,[r0]
+ 161 0004 C3F30323 	 ubfx r3,r3,#8,#4
+ 162 0008 4370     	 strb r3,[r0,#1]
+ 163 000a 8B8C     	 ldrh r3,[r1,#36]
+ 164 000c 8370     	 strb r3,[r0,#2]
+ 165 000e C3F30323 	 ubfx r3,r3,#8,#4
+ 166 0012 C370     	 strb r3,[r0,#3]
+ 167 0014 7047     	 bx lr
+ 169              	 .section .text.expect_07,"ax",%progbits
+ 170              	 .align 1
+ 171              	 .thumb
+ 172              	 .thumb_func
+ 174              	expect_07:
+ 175              	 
+ 176              	 
+ 177              	 
+ 178 0000 CB8C     	 ldrh r3,[r1,#38]
+ 179 0002 0370     	 strb r3,[r0]
+ 180 0004 C3F30323 	 ubfx r3,r3,#8,#4
+ 181 0008 4370     	 strb r3,[r0,#1]
+ 182 000a 0B8D     	 ldrh r3,[r1,#40]
+ 183 000c 8370     	 strb r3,[r0,#2]
+ 184 000e C3F30323 	 ubfx r3,r3,#8,#4
+ 185 0012 C370     	 strb r3,[r0,#3]
+ 186 0014 7047     	 bx lr
+ 188              	 .section .text.expect_08,"ax",%progbits
+ 189              	 .align 1
+ 190              	 .thumb
+ 191              	 .thumb_func
+ 193              	expect_08:
+ 194              	 
+ 195              	 
+ 196              	 
+ 197 0000 4B8D     	 ldrh r3,[r1,#42]
+ 198 0002 0370     	 strb r3,[r0]
+ 199 0004 C3F30323 	 ubfx r3,r3,#8,#4
+ 200 0008 4370     	 strb r3,[r0,#1]
+ 201 000a 8B8D     	 ldrh r3,[r1,#44]
+ 202 000c 8370     	 strb r3,[r0,#2]
+ 203 000e C3F30323 	 ubfx r3,r3,#8,#4
+ 204 0012 C370     	 strb r3,[r0,#3]
+ 205 0014 7047     	 bx lr
+ 207              	 .section .text.expect_09,"ax",%progbits
+ 208              	 .align 1
+ 209              	 .thumb
+ 210              	 .thumb_func
+ 212              	expect_09:
+ 213              	 
+ 214              	 
+ 215              	 
+ 216 0000 CB8D     	 ldrh r3,[r1,#46]
+ 217 0002 0370     	 strb r3,[r0]
+ 218 0004 C3F30323 	 ubfx r3,r3,#8,#4
+ 219 0008 4370     	 strb r3,[r0,#1]
+ 220 000a 0B8E     	 ldrh r3,[r1,#48]
+ 221 000c 8370     	 strb r3,[r0,#2]
+ 222 000e C3F30323 	 ubfx r3,r3,#8,#4
+ 223 0012 C370     	 strb r3,[r0,#3]
+ 224 0014 7047     	 bx lr
+ 226              	 .section .text.expect_0A,"ax",%progbits
+ 227              	 .align 1
+ 228              	 .thumb
+ 229              	 .thumb_func
+ 231              	expect_0A:
+ 232              	 
+ 233              	 
+ 234              	 
+ 235 0000 4B8E     	 ldrh r3,[r1,#50]
+ 236 0002 0370     	 strb r3,[r0]
+ 237 0004 C3F30323 	 ubfx r3,r3,#8,#4
+ 238 0008 4370     	 strb r3,[r0,#1]
+ 239 000a 8B8E     	 ldrh r3,[r1,#52]
+ 240 000c 8370     	 strb r3,[r0,#2]
+ 241 000e C3F30323 	 ubfx r3,r3,#8,#4
+ 242 0012 C370     	 strb r3,[r0,#3]
+ 243 0014 CB8E     	 ldrh r3,[r1,#54]
+ 244 0016 0371     	 strb r3,[r0,#4]
+ 245 0018 C3F30323 	 ubfx r3,r3,#8,#4
+ 246 001c 4371     	 strb r3,[r0,#5]
+ 247 001e 7047     	 bx lr
+ 249              	 .section .text.expect_0B,"ax",%progbits
+ 250              	 .align 1
+ 251              	 .thumb
+ 252              	 .thumb_func
+ 254              	expect_0B:
+ 255              	 
+ 256              	 
+ 257              	 
+ 258 0000 0B8F     	 ldrh r3,[r1,#56]
+ 259 0002 0370     	 strb r3,[r0]
+ 260 0004 C3F30323 	 ubfx r3,r3,#8,#4
+ 261 0008 4370     	 strb r3,[r0,#1]
+ 262 000a 4B8F     	 ldrh r3,[r1,#58]
+ 263 000c 8370     	 strb r3,[r0,#2]
+ 264 000e C3F30323 	 ubfx r3,r3,#8,#4
+ 265 0012 C370     	 strb r3,[r0,#3]
+ 266 0014 8B8F     	 ldrh r3,[r1,#60]
+ 267 0016 0371     	 strb r3,[r0,#4]
+ 268 0018 C3F30323 	 ubfx r3,r3,#8,#4
+ 269 001c 4371     	 strb r3,[r0,#5]
+ 270 001e 7047     	 bx lr
+ 272              	 .section .text.expect_0C,"ax",%progbits
+ 273              	 .align 1
+ 274              	 .thumb
+ 275              	 .thumb_func
+ 277              	expect_0C:
+ 278              	 
+ 279              	 
+ 280              	 
+ 281 0000 CB8F     	 ldrh r3,[r1,#62]
+ 282 0002 0370     	 strb r3,[r0]
+ 283 0004 C3F30323 	 ubfx r3,r3,#8,#4
+ 284 0008 4370     	 strb r3,[r0,#1]
+ 285 000a B1F84030 	 ldrh r3,[r1,#64]
+ 286 000e 8370     	 strb r3,[r0,#2]
+ 287 0010 C3F30323 	 ubfx r3,r3,#8,#4
+ 288 0014 C370     	 strb r3,[r0,#3]
+ 289 0016 7047     	 bx lr
+ 291              	 .section .text.expect_0D,"ax",%progbits
+ 292              	 .align 1
+ 293              	 .thumb
+ 294              	 .thumb_func
+ 296              	expect_0D:
+ 297              	 
+ 298              	 
+ 299              	 
+ 300 0000 B1F84230 	 ldrh r3,[r1,#66]
+ 301 0004 0370     	 strb r3,[r0]
+ 302 0006 C3F30323 	 ubfx r3,r3,#8,#4
+ 303 000a 4370     	 strb r3,[r0,#1]
+ 304 000c B1F84430 	 ldrh r3,[r1,#68]
+ 305 0010 8370     	 strb r3,[r0,#2]
+ 306 0012 C3F30323 	 ubfx r3,r3,#8,#4
+ 307 0016 C370     	 strb r3,[r0,#3]
+ 308 0018 7047     	 bx lr
+ 310              	 .section .text.expect_0E,"ax",%progbits
+ 311              	 .align 1
+ 312              	 .thumb
+ 313              	 .thumb_func
+ 315              	expect_0E:
+ 316              	 
+ 317              	 
+ 318              	 
+ 319 0000 B1F84630 	 ldrh r3,[r1,#70]
+ 320 0004 0370     	 strb r3,[r0]
+ 321 0006 C3F30323 	 ubfx r3,r3,#8,#4
+ 322 000a 4370     	 strb r3,[r0,#1]
+ 323 000c B1F84830 	 ldrh r3,[r1,#72]
+ 324 0010 8370     	 strb r3,[r0,#2]
+ 325 0012 C3F30323 	 ubfx r3,r3,#8,#4
+ 326 0016 C370     	 strb r3,[r0,#3]
+ 327 0018 7047     	 bx lr
+ 329              	 .section .text.expect_0F,"ax",%progbits
+ 330              	 .align 1
+ 331              	 .thumb
+ 332              	 .thumb_func
+ 334              	expect_0F:
+ 335              	 
+ 336              	 
+ 337              	 
+ 338 0000 B1F84A30 	 ldrh r3,[r1,#74]
+ 339 0004 0370     	 strb r3,[r0]
+ 340 0006 C3F30323 	 ubfx r3,r3,#8,#4
+ 341 000a 4370     	 strb r3,[r0,#1]
+ 342 000c B1F84C30 	 ldrh r3,[r1,#76]
+ 343 0010 8370     	 strb r3,[r0,#2]
+ 344 0012 C3F30323 	 ubfx r3,r3,#8,#4
+ 345 0016 C370     	 strb r3,[r0,#3]
+ 346 0018 7047     	 bx lr
+ 348              	 .section .text.expect_10,"ax",%progbits
+ 349              	 .align 1
+ 350              	 .thumb
+ 351              	 .thumb_func
+ 353              	expect_10:
+ 354              	 
+ 355              	 
+ 356              	 
+ 357 0000 B1F84E30 	 ldrh r3,[r1,#78]
+ 358 0004 0370     	 strb r3,[r0]
+ 359 0006 C3F30323 	 ubfx r3,r3,#8,#4
+ 360 000a 4370     	 strb r3,[r0,#1]
+ 361 000c B1F85030 	 ldrh r3,[r1,#80]
+ 362 0010 8370     	 strb r3,[r0,#2]
+ 363 0012 C3F30323 	 ubfx r3,r3,#8,#4
+ 364 0016 C370     	 strb r3,[r0,#3]
+ 365 0018 7047     	 bx lr
+ 367              	 .section .text.expect_11,"ax",%progbits
+ 368              	 .align 1
+ 369              	 .thumb
+ 370              	 .thumb_func
+ 372              	expect_11:
+ 373              	 
+ 374              	 
+ 375              	 
+ 376 0000 B1F85230 	 ldrh r3,[r1,#82]
+ 377 0004 0370     	 strb r3,[r0]
+ 378 0006 C3F30323 	 ubfx r3,r3,#8,#4
+ 379 000a 4370     	 strb r3,[r0,#1]
+ 380 000c B1F85430 	 ldrh r3,[r1,#84]
+ 381 0010 8370     	 strb r3,[r0,#2]
+ 382 0012 C3F30323 	 ubfx r3,r3,#8,#4
+ 383 0016 C370     	 strb r3,[r0,#3]
+ 384 0018 7047     	 bx lr
+ 386              	 .section .text.expect_12,"ax",%progbits
+ 387              	 .align 1
+ 388              	 .thumb
+ 389              	 .thumb_func
+ 391              	expect_12:
+ 392              	 
+ 393              	 
+ 394              	 
+ 395 0000 B1F85630 	 ldrh r3,[r1,#86]
+ 396 0004 0370     	 strb r3,[r0]
+ 397 0006 C3F30323 	 ubfx r3,r3,#8,#4
+ 398 000a 4370     	 strb r3,[r0,#1]
+ 399 000c B1F85830 	 ldrh r3,[r1,#88]
+ 400 0010 8370     	 strb r3,[r0,#2]
+ 401 0012 C3F30323 	 ubfx r3,r3,#8,#4
+ 402 0016 C370     	 strb r3,[r0,#3]
+ 403 0018 7047     	 bx lr
+ 405              	 .section .text.expect_13,"ax",%progbits
+ 406              	 .align 1
+ 407              	 .thumb
+ 408              	 .thumb_func
+ 410              	expect_13:
+ 411              	 
+ 412              	 
+ 413              	 
+ 414 0000 B1F85A30 	 ldrh r3,[r1,#90]
+ 415 0004 0370     	 strb r3,[r0]
+ 416 0006 C3F30323 	 ubfx r3,r3,#8,#4
+ 417 000a 4370     	 strb r3,[r0,#1]
+ 418 000c B1F85C30 	 ldrh r3,[r1,#92]
+ 419 0010 8370     	 strb r3,[r0,#2]
+ 420 0012 C3F30323 	 ubfx r3,r3,#8,#4
+ 421 0016 C370     	 strb r3,[r0,#3]
+ 422 0018 7047     	 bx lr
+ 424              	 .section .text.expect_14,"ax",%progbits
+ 425              	 .align 1
+ 426              	 .thumb
+ 427              	 .thumb_func
+ 429              	expect_14:
+ 430              	 
+ 431              	 
+ 432              	 
+ 433 0000 B1F85E30 	 ldrh r3,[r1,#94]
+ 434 0004 0370     	 strb r3,[r0]
+ 435 0006 C3F30323 	 ubfx r3,r3,#8,#4
+ 436 000a 4370     	 strb r3,[r0,#1]
+ 437 000c B1F86030 	 ldrh r3,[r1,#96]
+ 438 0010 8370     	 strb r3,[r0,#2]
+ 439 0012 C3F30323 	 ubfx r3,r3,#8,#4
+ 440 0016 C370     	 strb r3,[r0,#3]
+ 441 0018 B1F86230 	 ldrh r3,[r1,#98]
+ 442 001c 0371     	 strb r3,[r0,#4]
+ 443 001e C3F30323 	 ubfx r3,r3,#8,#4
+ 444 0022 4371     	 strb r3,[r0,#5]
+ 445 0024 7047     	 bx lr
+ 447              	 .section .text.expect_15,"ax",%progbits
+ 448              	 .align 1
+ 449              	 .thumb
+ 450              	 .thumb_func
+ 452              	expect_15:
+ 453              	 
+ 454              	 
+ 455              	 
+ 456 0000 B1F86430 	 ldrh r3,[r1,#100]
+ 457 0004 0370     	 strb r3,[r0]
+ 458 0006 C3F30323 	 ubfx r3,r3,#8,#4
+ 459 000a 4370     	 strb r3,[r0,#1]
+ 460 000c B1F86630 	 ldrh r3,[r1,#102]
+ 461 0010 8370     	 strb r3,[r0,#2]
+ 462 0012 C3F30323 	 ubfx r3,r3,#8,#4
+ 463 0016 C370     	 strb r3,[r0,#3]
+ 464 0018 B1F86830 	 ldrh r3,[r1,#104]
+ 465 001c 0371     	 strb r3,[r0,#4]
+ 466 001e C3F30323 	 ubfx r3,r3,#8,#4
+ 467 0022 4371     	 strb r3,[r0,#5]
+ 468 0024 7047     	 bx lr
+ 470              	 .section .text.expect_16,"ax",%progbits
+ 471              	 .align 1
+ 472              	 .thumb
+ 473              	 .thumb_func
+ 475              	expect_16:
+ 476              	 
+ 477              	 
+ 478              	 
+ 479 0000 B1F86A30 	 ldrh r3,[r1,#106]
+ 480 0004 0370     	 strb r3,[r0]
+ 481 0006 C3F30323 	 ubfx r3,r3,#8,#4
+ 482 000a 4370     	 strb r3,[r0,#1]
+ 483 000c B1F86C30 	 ldrh r3,[r1,#108]
+ 484 0010 8370     	 strb r3,[r0,#2]
+ 485 0012 C3F30323 	 ubfx r3,r3,#8,#4
+ 486 0016 C370     	 strb r3,[r0,#3]
+ 487 0018 7047     	 bx lr
+ 489              	 .section .text.expect_17,"ax",%progbits
+ 490              	 .align 1
+ 491              	 .thumb
+ 492              	 .thumb_func
+ 494              	expect_17:
+ 495              	 
+ 496              	 
+ 497              	 
+ 498 0000 B1F86E30 	 ldrh r3,[r1,#110]
+ 499 0004 0370     	 strb r3,[r0]
+ 500 0006 C3F30323 	 ubfx r3,r3,#8,#4
+ 501 000a 4370     	 strb r3,[r0,#1]
+ 502 000c B1F87030 	 ldrh r3,[r1,#112]
+ 503 0010 8370     	 strb r3,[r0,#2]
+ 504 0012 C3F30323 	 ubfx r3,r3,#8,#4
+ 505 0016 C370     	 strb r3,[r0,#3]
+ 506 0018 7047     	 bx lr
+ 508              	 .section .text.expect_18,"ax",%progbits
+ 509              	 .align 1
+ 510              	 .thumb
+ 511              	 .thumb_func
+ 513              	expect_18:
+ 514              	 
+ 515              	 
+ 516              	 
+ 517 0000 B1F87230 	 ldrh r3,[r1,#114]
+ 518 0004 0370     	 strb r3,[r0]
+ 519 0006 C3F30323 	 ubfx r3,r3,#8,#4
+ 520 000a 4370     	 strb r3,[r0,#1]
+ 521 000c B1F87430 	 ldrh r3,[r1,#116]
+ 522 0010 8370     	 strb r3,[r0,#2]
+ 523 0012 C3F30323 	 ubfx r3,r3,#8,#4
+ 524 0016 C370     	 strb r3,[r0,#3]
+ 525 0018 7047     	 bx lr
+ 527              	 .section .text.expect_19,"ax",%progbits
+ 528              	 .align 1
+ 529              	 .thumb
+ 530              	 .thumb_func
+ 532              	expect_19:
+ 533              	 
+ 534              	 
+ 535              	 
+ 536 0000 B1F87630 	 ldrh r3,[r1,#118]
+ 537 0004 0370     	 strb r3,[r0]
+ 538 0006 C3F30323 	 ubfx r3,r3,#8,#4
+ 539 000a 4370     	 strb r3,[r0,#1]
+ 540 000c B1F87830 	 ldrh r3,[r1,#120]
+ 541 0010 8370     	 strb r3,[r0,#2]
+ 542 0012 C3F30323 	 ubfx r3,r3,#8,#4
+ 543 0016 C370     	 strb r3,[r0,#3]
+ 544 0018 7047     	 bx lr
+ 546              	 .section .text.expect_1A,"ax",%progbits
+ 547              	 .align 1
+ 548              	 .thumb
+ 549              	 .thumb_func
+ 551              	expect_1A:
+ 552              	 
+ 553              	 
+ 554              	 
+ 555 0000 B1F87A30 	 ldrh r3,[r1,#122]
+ 556 0004 0370     	 strb r3,[r0]
+ 557 0006 C3F30323 	 ubfx r3,r3,#8,#4
+ 558 000a 4370     	 strb r3,[r0,#1]
+ 559 000c B1F87C30 	 ldrh r3,[r1,#124]
+ 560 0010 8370     	 strb r3,[r0,#2]
+ 561 0012 C3F30323 	 ubfx r3,r3,#8,#4
+ 562 0016 C370     	 strb r3,[r0,#3]
+ 563 0018 7047     	 bx lr
+ 565              	 .section .text.expect_1B,"ax",%progbits
+ 566              	 .align 1
+ 567              	 .thumb
+ 568              	 .thumb_func
+ 570              	expect_1B:
+ 571              	 
+ 572              	 
+ 573              	 
+ 574 0000 91F87E30 	 ldrb r3,[r1,#126]
+ 575 0004 0370     	 strb r3,[r0]
+ 576 0006 91F87F30 	 ldrb r3,[r1,#127]
+ 577 000a 4370     	 strb r3,[r0,#1]
+ 578 000c 91F88030 	 ldrb r3,[r1,#128]
+ 579 0010 8370     	 strb r3,[r0,#2]
+ 580 0012 7047     	 bx lr
+ 582              	 .section .text.expect_1C,"ax",%progbits
+ 583              	 .align 1
+ 584              	 .thumb
+ 585              	 .thumb_func
+ 587              	expect_1C:
+ 588              	 
+ 589              	 
+ 590              	 
+ 591 0000 91F88130 	 ldrb r3,[r1,#129]
+ 592 0004 0370     	 strb r3,[r0]
+ 593 0006 91F88230 	 ldrb r3,[r1,#130]
+ 594 000a 4370     	 strb r3,[r0,#1]
+ 595 000c 91F88330 	 ldrb r3,[r1,#131]
+ 596 0010 8370     	 strb r3,[r0,#2]
+ 597 0012 7047     	 bx lr
+ 599              	 .section .text.expect_1D,"ax",%progbits
+ 600              	 .align 1
+ 601              	 .thumb
+ 602              	 .thumb_func
+ 604              	expect_1D:
+ 605              	 
+ 606              	 
+ 607              	 
+ 608 0000 91F88430 	 ldrb r3,[r1,#132]
+ 609 0004 0370     	 strb r3,[r0]
+ 610 0006 91F88530 	 ldrb r3,[r1,#133]
+ 611 000a 4370     	 strb r3,[r0,#1]
+ 612 000c 7047     	 bx lr
+ 614              	 .section .text.expect_1E,"ax",%progbits
+ 615              	 .align 1
+ 616              	 .thumb
+ 617              	 .thumb_func
+ 619              	expect_1E:
+ 620              	 
+ 621              	 
+ 622              	 
+ 623 0000 91F88630 	 ldrb r3,[r1,#134]
+ 624 0004 0370     	 strb r3,[r0]
+ 625 0006 91F88730 	 ldrb r3,[r1,#135]
+ 626 000a 4370     	 strb r3,[r0,#1]
+ 627 000c 7047     	 bx lr
+ 629              	 .section .text.expect_1F,"ax",%progbits
+ 630              	 .align 1
+ 631              	 .thumb
+ 632              	 .thumb_func
+ 634              	expect_1F:
+ 635              	 
+ 636              	 
+ 637              	 
+ 638 0000 91F88830 	 ldrb r3,[r1,#136]
+ 639 0004 0370     	 strb r3,[r0]
+ 640 0006 7047     	 bx lr
+ 642              	 .section .text.expect_20,"ax",%progbits
+ 643              	 .align 1
+ 644              	 .thumb
+ 645              	 .thumb_func
+ 647              	expect_20:
+ 648              	 
+ 649              	 
+ 650              	 
+ 651 0000 91F88930 	 ldrb r3,[r1,#137]
+ 652 0004 0370     	 strb r3,[r0]
+ 653 0006 91F88A30 	 ldrb r3,[r1,#138]
+ 654 000a 4370     	 strb r3,[r0,#1]
+ 655 000c 91F88B30 	 ldrb r3,[r1,#139]
+ 656 0010 8370     	 strb r3,[r0,#2]
+ 657 0012 7047     	 bx lr
+ 659              	 .section .text.expect_21,"ax",%progbits
+ 660              	 .align 1
+ 661              	 .thumb
+ 662              	 .thumb_func
+ 664              	expect_21:
+ 665              	 
+ 666              	 
+ 667              	 
+ 668 0000 91F88C30 	 ldrb r3,[r1,#140]
+ 669 0004 0370     	 strb r3,[r0]
+ 670 0006 91F88D30 	 ldrb r3,[r1,#141]
+ 671 000a 4370     	 strb r3,[r0,#1]
+ 672 000c 91F88E30 	 ldrb r3,[r1,#142]
+ 673 0010 8370     	 strb r3,[r0,#2]
+ 674 0012 91F88F30 	 ldrb r3,[r1,#143]
+ 675 0016 C370     	 strb r3,[r0,#3]
+ 676 0018 7047     	 bx lr
+ 678              	 .section .text.expect_22,"ax",%progbits
+ 679              	 .align 1
+ 680              	 .thumb
+ 681              	 .thumb_func
+ 683              	expect_22:
+ 684              	 
+ 685              	 
+ 686              	 
+ 687 0000 91F89030 	 ldrb r3,[r1,#144]
+ 688 0004 0370     	 strb r3,[r0]
+ 689 0006 7047     	 bx lr
+ 691              	 .section .text.expect_23,"ax",%progbits
+ 692              	 .align 1
+ 693              	 .thumb
+ 694              	 .thumb_func
+ 696              	expect_23:
+ 697              	 
+ 698              	 
+ 699              	 
+ 700 0000 91F89130 	 ldrb r3,[r1,#145]
+ 701 0004 0370     	 strb r3,[r0]
+ 702 0006 91F89230 	 ldrb r3,[r1,#146]
+ 703 000a 4370     	 strb r3,[r0,#1]
+ 704 000c 91F89330 	 ldrb r3,[r1,#147]
+ 705 0010 8370     	 strb r3,[r0,#2]
+ 706 0012 7047     	 bx lr
+ 708              	 .section .text.expect_30,"ax",%progbits
+ 709              	 .align 1
+ 710              	 .thumb
+ 711              	 .thumb_func
+ 713              	expect_30:
+ 714              	 
+ 715              	 
+ 716              	 
+ 717 0000 B1F89430 	 ldrh r3,[r1,#148]
+ 718 0004 0370     	 strb r3,[r0]
+ 719 0006 1B0A     	 lsrs r3,r3,#8
+ 720 0008 4370     	 strb r3,[r0,#1]
+ 721 000a B1F89630 	 ldrh r3,[r1,#150]
+ 722 000e 8370     	 strb r3,[r0,#2]
+ 723 0010 1B0A     	 lsrs r3,r3,#8
+ 724 0012 C370     	 strb r3,[r0,#3]
+ 725 0014 B1F89830 	 ldrh r3,[r1,#152]
+ 726 0018 0371     	 strb r3,[r0,#4]
+ 727 001a 1B0A     	 lsrs r3,r3,#8
+ 728 001c 4371     	 strb r3,[r0,#5]
+ 729 001e 7047     	 bx lr
+ 731              	 .section .text.expect_31,"ax",%progbits
+ 732              	 .align 1
+ 733              	 .thumb
+ 734              	 .thumb_func
+ 736              	expect_31:
+ 737              	 
+ 738              	 
+ 739              	 
+ 740 0000 B1F89A30 	 ldrh r3,[r1,#154]
+ 741 0004 0370     	 strb r3,[r0]
+ 742 0006 1B0A     	 lsrs r3,r3,#8
+ 743 0008 4370     	 strb r3,[r0,#1]
+ 744 000a B1F89C30 	 ldrh r3,[r1,#156]
+ 745 000e 8370     	 strb r3,[r0,#2]
+ 746 0010 1B0A     	 lsrs r3,r3,#8
+ 747 0012 C370     	 strb r3,[r0,#3]
+ 748 0014 B1F89E30 	 ldrh r3,[r1,#158]
+ 749 0018 0371     	 strb r3,[r0,#4]
+ 750 001a 1B0A     	 lsrs r3,r3,#8
+ 751 001c 4371     	 strb r3,[r0,#5]
+ 752 001e 7047     	 bx lr
+ 754              	 .section .text.expect_32,"ax",%progbits
+ 755              	 .align 1
+ 756              	 .thumb
+ 757              	 .thumb_func
+ 759              	expect_32:
+ 760              	 
+ 761              	 
+ 762              	 
+ 763 0000 B1F8A030 	 ldrh r3,[r1,#160]
+ 764 0004 0370     	 strb r3,[r0]
+ 765 0006 1B0A     	 lsrs r3,r3,#8
+ 766 0008 4370     	 strb r3,[r0,#1]
+ 767 000a B1F8A230 	 ldrh r3,[r1,#162]
+ 768 000e 8370     	 strb r3,[r0,#2]
+ 769 0010 1B0A     	 lsrs r3,r3,#8
+ 770 0012 C370     	 strb r3,[r0,#3]
+ 771 0014 B1F8A430 	 ldrh r3,[r1,#164]
+ 772 0018 0371     	 strb r3,[r0,#4]
+ 773 001a 1B0A     	 lsrs r3,r3,#8
+ 774 001c 4371     	 strb r3,[r0,#5]
+ 775 001e 7047     	 bx lr
+ 777              	 .section .text.expect_33,"ax",%progbits
+ 778              	 .align 1
+ 779              	 .thumb
+ 780              	 .thumb_func
+ 782              	expect_33:
+ 783              	 
+ 784              	 
+ 785              	 
+ 786 0000 B1F8A630 	 ldrh r3,[r1,#166]
+ 787 0004 0370     	 strb r3,[r0]
+ 788 0006 1B0A     	 lsrs r3,r3,#8
+ 789 0008 4370     	 strb r3,[r0,#1]
+ 790 000a B1F8A830 	 ldrh r3,[r1,#168]
+ 791 000e 8370     	 strb r3,[r0,#2]
+ 792 0010 1B0A     	 lsrs r3,r3,#8
+ 793 0012 C370     	 strb r3,[r0,#3]
+ 794 0014 B1F8AA30 	 ldrh r3,[r1,#170]
+ 795 0018 0371     	 strb r3,[r0,#4]
+ 796 001a 1B0A     	 lsrs r3,r3,#8
+ 797 001c 4371     	 strb r3,[r0,#5]
+ 798 001e 7047     	 bx lr
+ 800              	 .section .text.expect_34,"ax",%progbits
+ 801              	 .align 1
+ 802              	 .thumb
+ 803              	 .thumb_func
+ 805              	expect_34:
+ 806              	 
+ 807              	 
+ 808              	 
+ 809 0000 B1F8AC30 	 ldrh r3,[r1,#172]
+ 810 0004 0370     	 strb r3,[r0]
+ 811 0006 1B0A     	 lsrs r3,r3,#8
+ 812 0008 4370     	 strb r3,[r0,#1]
+ 813 000a B1F8AE30 	 ldrh r3,[r1,#174]
+ 814 000e 8370     	 strb r3,[r0,#2]
+ 815 0010 1B0A     	 lsrs r3,r3,#8
+ 816 0012 C370     	 strb r3,[r0,#3]
+ 817 0014 B1F8B030 	 ldrh r3,[r1,#176]
+ 818 0018 0371     	 strb r3,[r0,#4]
+ 819 001a 1B0A     	 lsrs r3,r3,#8
+ 820 001c 4371     	 strb r3,[r0,#5]
+ 821 001e 7047     	 bx lr
+ 823              	 .section .text.expect_35,"ax",%progbits
+ 824              	 .align 1
+ 825              	 .thumb
+ 826              	 .thumb_func
+ 828              	expect_35:
+ 829              	 
+ 830              	 
+ 831              	 
+ 832 0000 B1F8B230 	 ldrh r3,[r1,#178]
+ 833 0004 0370     	 strb r3,[r0]
+ 834 0006 1B0A     	 lsrs r3,r3,#8
+ 835 0008 4370     	 strb r3,[r0,#1]
+ 836 000a B1F8B430 	 ldrh r3,[r1,#180]
+ 837 000e 8370     	 strb r3,[r0,#2]
+ 838 0010 1B0A     	 lsrs r3,r3,#8
+ 839 0012 C370     	 strb r3,[r0,#3]
+ 840 0014 7047     	 bx lr
+ 842              	 .section .text.expect_36,"ax",%progbits
+ 843              	 .align 1
+ 844              	 .thumb
+ 845              	 .thumb_func
+ 847              	expect_36:
+ 848              	 
+ 849              	 
+ 850              	 
+ 851 0000 B1F8B630 	 ldrh r3,[r1,#182]
+ 852 0004 0370     	 strb r3,[r0]
+ 853 0006 1B0A     	 lsrs r3,r3,#8
+ 854 0008 4370     	 strb r3,[r0,#1]
+ 855 000a B1F8B830 	 ldrh r3,[r1,#184]
+ 856 000e 8370     	 strb r3,[r0,#2]
+ 857 0010 1B0A     	 lsrs r3,r3,#8
+ 858 0012 C370     	 strb r3,[r0,#3]
+ 859 0014 7047     	 bx lr
+ 861              	 .section .text.expect_37,"ax",%progbits
+ 862              	 .align 1
+ 863              	 .thumb
+ 864              	 .thumb_func
+ 866              	expect_37:
+ 867              	 
+ 868              	 
+ 869              	 
+ 870 0000 B1F8BA30 	 ldrh r3,[r1,#186]
+ 871 0004 0370     	 strb r3,[r0]
+ 872 0006 1B0A     	 lsrs r3,r3,#8
+ 873 0008 4370     	 strb r3,[r0,#1]
+ 874 000a B1F8BC30 	 ldrh r3,[r1,#188]
+ 875 000e 8370     	 strb r3,[r0,#2]
+ 876 0010 1B0A     	 lsrs r3,r3,#8
+ 877 0012 C370     	 strb r3,[r0,#3]
+ 878 0014 7047     	 bx lr
+ 880              	 .section .text.expect_38,"ax",%progbits
+ 881              	 .align 1
+ 882              	 .thumb
+ 883              	 .thumb_func
+ 885              	expect_38:
+ 886              	 
+ 887              	 
+ 888              	 
+ 889 0000 B1F8BE30 	 ldrh r3,[r1,#190]
+ 890 0004 0370     	 strb r3,[r0]
+ 891 0006 1B0A     	 lsrs r3,r3,#8
+ 892 0008 4370     	 strb r3,[r0,#1]
+ 893 000a B1F8C030 	 ldrh r3,[r1,#192]
+ 894 000e 8370     	 strb r3,[r0,#2]
+ 895 0010 1B0A     	 lsrs r3,r3,#8
+ 896 0012 C370     	 strb r3,[r0,#3]
+ 897 0014 7047     	 bx lr
+ 899              	 .section .text.expect_39,"ax",%progbits
+ 900              	 .align 1
+ 901              	 .thumb
+ 902              	 .thumb_func
+ 904              	expect_39:
+ 905              	 
+ 906              	 
+ 907              	 
+ 908 0000 B1F8C230 	 ldrh r3,[r1,#194]
+ 909 0004 0370     	 strb r3,[r0]
+ 910 0006 1B0A     	 lsrs r3,r3,#8
+ 911 0008 4370     	 strb r3,[r0,#1]
+ 912 000a B1F8C430 	 ldrh r3,[r1,#196]
+ 913 000e 8370     	 strb r3,[r0,#2]
+ 914 0010 1B0A     	 lsrs r3,r3,#8
+ 915 0012 C370     	 strb r3,[r0,#3]
+ 916 0014 7047     	 bx lr
+ 918              	 .section .text.expect_3A,"ax",%progbits
+ 919              	 .align 1
+ 920              	 .thumb
+ 921              	 .thumb_func
+ 923              	expect_3A:
+ 924              	 
+ 925              	 
+ 926              	 
+ 927 0000 B1F8C630 	 ldrh r3,[r1,#198]
+ 928 0004 0370     	 strb r3,[r0]
+ 929 0006 1B0A     	 lsrs r3,r3,#8
+ 930 0008 4370     	 strb r3,[r0,#1]
+ 931 000a B1F8C830 	 ldrh r3,[r1,#200]
+ 932 000e 8370     	 strb r3,[r0,#2]
+ 933 0010 1B0A     	 lsrs r3,r3,#8
+ 934 0012 C370     	 strb r3,[r0,#3]
+ 935 0014 B1F8CA30 	 ldrh r3,[r1,#202]
+ 936 0018 0371     	 strb r3,[r0,#4]
+ 937 001a 1B0A     	 lsrs r3,r3,#8
+ 938 001c 4371     	 strb r3,[r0,#5]
+ 939 001e 7047     	 bx lr
+ 941              	 .section .text.expect_3B,"ax",%progbits
+ 942              	 .align 1
+ 943              	 .thumb
+ 944              	 .thumb_func
+ 946              	expect_3B:
+ 947              	 
+ 948              	 
+ 949              	 
+ 950 0000 B1F8CC30 	 ldrh r3,[r1,#204]
+ 951 0004 0370     	 strb r3,[r0]
+ 952 0006 1B0A     	 lsrs r3,r3,#8
+ 953 0008 4370     	 strb r3,[r0,#1]
+ 954 000a B1F8CE30 	 ldrh r3,[r1,#206]
+ 955 000e 8370     	 strb r3,[r0,#2]
+ 956 0010 1B0A     	 lsrs r3,r3,#8
+ 957 0012 C370     	 strb r3,[r0,#3]
+ 958 0014 B1F8D030 	 ldrh r3,[r1,#208]
+ 959 0018 0371     	 strb r3,[r0,#4]
+ 960 001a 1B0A     	 lsrs r3,r3,#8
+ 961 001c 4371     	 strb r3,[r0,#5]
+ 962 001e 7047     	 bx lr
+ 964              	 .section .text.expect_3C,"ax",%progbits
+ 965              	 .align 1
+ 966              	 .thumb
+ 967              	 .thumb_func
+ 969              	expect_3C:
+ 970              	 
+ 971              	 
+ 972              	 
+ 973 0000 B1F8D230 	 ldrh r3,[r1,#210]
+ 974 0004 0370     	 strb r3,[r0]
+ 975 0006 1B0A     	 lsrs r3,r3,#8
+ 976 0008 4370     	 strb r3,[r0,#1]
+ 977 000a B1F8D430 	 ldrh r3,[r1,#212]
+ 978 000e 8370     	 strb r3,[r0,#2]
+ 979 0010 1B0A     	 lsrs r3,r3,#8
+ 980 0012 C370     	 strb r3,[r0,#3]
+ 981 0014 7047     	 bx lr
+ 983              	 .section .text.expect_3D,"ax",%progbits
+ 984              	 .align 1
+ 985              	 .thumb
+ 986              	 .thumb_func
+ 988              	expect_3D:
+ 989              	 
+ 990              	 
+ 991              	 
+ 992 0000 B1F8D630 	 ldrh r3,[r1,#214]
+ 993 0004 0370     	 strb r3,[r0]
+ 994 0006 1B0A     	 lsrs r3,r3,#8
+ 995 0008 4370     	 strb r3,[r0,#1]
+ 996 000a B1F8D830 	 ldrh r3,[r1,#216]
+ 997 000e 8370     	 strb r3,[r0,#2]
+ 998 0010 1B0A     	 lsrs r3,r3,#8
+ 999 0012 C370     	 strb r3,[r0,#3]
+ 1000 0014 7047     	 bx lr
+ 1002              	 .section .text.expect_3E,"ax",%progbits
+ 1003              	 .align 1
+ 1004              	 .thumb
+ 1005              	 .thumb_func
+ 1007              	expect_3E:
+ 1008              	 
+ 1009              	 
+ 1010              	 
+ 1011 0000 B1F8DA30 	 ldrh r3,[r1,#218]
+ 1012 0004 0370     	 strb r3,[r0]
+ 1013 0006 1B0A     	 lsrs r3,r3,#8
+ 1014 0008 4370     	 strb r3,[r0,#1]
+ 1015 000a B1F8DC30 	 ldrh r3,[r1,#220]
+ 1016 000e 8370     	 strb r3,[r0,#2]
+ 1017 0010 1B0A     	 lsrs r3,r3,#8
+ 1018 0012 C370     	 strb r3,[r0,#3]
+ 1019 0014 7047     	 bx lr
+ 1021              	 .section .text.expect_3F,"ax",%progbits
+ 1022              	 .align 1
+ 1023              	 .thumb
+ 1024              	 .thumb_func
+ 1026              	expect_3F:
+ 1027              	 
+ 1028              	 
+ 1029              	 
+ 1030 0000 B1F8DE30 	 ldrh r3,[r1,#222]
+ 1031 0004 0370     	 strb r3,[r0]
+ 1032 0006 1B0A     	 lsrs r3,r3,#8
+ 1033 0008 4370     	 strb r3,[r0,#1]
+ 1034 000a B1F8E030 	 ldrh r3,[r1,#224]
+ 1035 000e 8370     	 strb r3,[r0,#2]
+ 1036 0010 1B0A     	 lsrs r3,r3,#8
+ 1037 0012 C370     	 strb r3,[r0,#3]
+ 1038 0014 7047     	 bx lr
+ 1040              	 .section .text.expect_40,"ax",%progbits
+ 1041              	 .align 1
+ 1042              	 .thumb
+ 1043              	 .thumb_func
+ 1045              	expect_40:
+ 1046              	 
+ 1047              	 
+ 1048              	 
+ 1049 0000 B1F8E230 	 ldrh r3,[r1,#226]
+ 1050 0004 0370     	 strb r3,[r0]
+ 1051 0006 1B0A     	 lsrs r3,r3,#8
+ 1052 0008 4370     	 strb r3,[r0,#1]
+ 1053 000a B1F8E430 	 ldrh r3,[r1,#228]
+ 1054 000e 8370     	 strb r3,[r0,#2]
+ 1055 0010 1B0A     	 lsrs r3,r3,#8
+ 1056 0012 C370     	 strb r3,[r0,#3]
+ 1057 0014 7047     	 bx lr
+ 1059              	 .section .text.expect_41,"ax",%progbits
+ 1060              	 .align 1
+ 1061              	 .thumb
+ 1062              	 .thumb_func
+ 1064              	expect_41:
+ 1065              	 
+ 1066              	 
+ 1067              	 
+ 1068 0000 B1F8E630 	 ldrh r3,[r1,#230]
+ 1069 0004 0370     	 strb r3,[r0]
+ 1070 0006 1B0A     	 lsrs r3,r3,#8
+ 1071 0008 4370     	 strb r3,[r0,#1]
+ 1072 000a B1F8E830 	 ldrh r3,[r1,#232]
+ 1073 000e 8370     	 strb r3,[r0,#2]
+ 1074 0010 1B0A     	 lsrs r3,r3,#8
+ 1075 0012 C370     	 strb r3,[r0,#3]
+ 1076 0014 7047     	 bx lr
+ 1078              	 .section .text.expect_42,"ax",%progbits
+ 1079              	 .align 1
+ 1080              	 .thumb
+ 1081              	 .thumb_func
+ 1083              	expect_42:
+ 1084              	 
+ 1085              	 
+ 1086              	 
+ 1087 0000 B1F8EA30 	 ldrh r3,[r1,#234]
+ 1088 0004 0370     	 strb r3,[r0]
+ 1089 0006 1B0A     	 lsrs r3,r3,#8
+ 1090 0008 4370     	 strb r3,[r0,#1]
+ 1091 000a B1F8EC30 	 ldrh r3,[r1,#236]
+ 1092 000e 8370     	 strb r3,[r0,#2]
+ 1093 0010 1B0A     	 lsrs r3,r3,#8
+ 1094 0012 C370     	 strb r3,[r0,#3]
+ 1095 0014 7047     	 bx lr
+ 1097              	 .section .text.expect_43,"ax",%progbits
+ 1098              	 .align 1
+ 1099              	 .thumb
+ 1100              	 .thumb_func
+ 1102              	expect_43:
+ 1103              	 
+ 1104              	 
+ 1105              	 
+ 1106 0000 B1F8EE30 	 ldrh r3,[r1,#238]
+ 1107 0004 0370     	 strb r3,[r0]
+ 1108 0006 1B0A     	 lsrs r3,r3,#8
+ 1109 0008 4370     	 strb r3,[r0,#1]
+ 1110 000a B1F8F030 	 ldrh r3,[r1,#240]
+ 1111 000e 8370     	 strb r3,[r0,#2]
+ 1112 0010 1B0A     	 lsrs r3,r3,#8
+ 1113 0012 C370     	 strb r3,[r0,#3]
+ 1114 0014 7047     	 bx lr
+ 1116              	 .section .text.expect_44,"ax",%progbits
+ 1117              	 .align 1
+ 1118              	 .thumb
+ 1119              	 .thumb_func
+ 1121              	expect_44:
+ 1122              	 
+ 1123              	 
+ 1124              	 
+ 1125 0000 B1F8F230 	 ldrh r3,[r1,#242]
+ 1126 0004 0370     	 strb r3,[r0]
+ 1127 0006 1B0A     	 lsrs r3,r3,#8
+ 1128 0008 4370     	 strb r3,[r0,#1]
+ 1129 000a B1F8F430 	 ldrh r3,[r1,#244]
+ 1130 000e 8370     	 strb r3,[r0,#2]
+ 1131 0010 1B0A     	 lsrs r3,r3,#8
+ 1132 0012 C370     	 strb r3,[r0,#3]
+ 1133 0014 B1F8F630 	 ldrh r3,[r1,#246]
+ 1134 0018 0371     	 strb r3,[r0,#4]
+ 1135 001a 1B0A     	 lsrs r3,r3,#8
+ 1136 001c 4371     	 strb r3,[r0,#5]
+ 1137 001e 7047     	 bx lr
+ 1139              	 .section .text.expect_45,"ax",%progbits
+ 1140              	 .align 1
+ 1141              	 .thumb
+ 1142              	 .thumb_func
+ 1144              	expect_45:
+ 1145              	 
+ 1146              	 
+ 1147              	 
+ 1148 0000 B1F8F830 	 ldrh r3,[r1,#248]
+ 1149 0004 0370     	 strb r3,[r0]
+ 1150 0006 1B0A     	 lsrs r3,r3,#8
+ 1151 0008 4370     	 strb r3,[r0,#1]
+ 1152 000a B1F8FA30 	 ldrh r3,[r1,#250]
+ 1153 000e 8370     	 strb r3,[r0,#2]
+ 1154 0010 1B0A     	 lsrs r3,r3,#8
+ 1155 0012 C370     	 strb r3,[r0,#3]
+ 1156 0014 B1F8FC30 	 ldrh r3,[r1,#252]
+ 1157 0018 0371     	 strb r3,[r0,#4]
+ 1158 001a 1B0A     	 lsrs r3,r3,#8
+ 1159 001c 4371     	 strb r3,[r0,#5]
+ 1160 001e 7047     	 bx lr
+ 1162              	 .section .text.expect_46,"ax",%progbits
+ 1163              	 .align 1
+ 1164              	 .thumb
+ 1165              	 .thumb_func
+ 1167              	expect_46:
+ 1168              	 
+ 1169              	 
+ 1170              	 
+ 1171 0000 B1F8FE30 	 ldrh r3,[r1,#254]
+ 1172 0004 0370     	 strb r3,[r0]
+ 1173 0006 1B0A     	 lsrs r3,r3,#8
+ 1174 0008 4370     	 strb r3,[r0,#1]
+ 1175 000a B1F80031 	 ldrh r3,[r1,#256]
+ 1176 000e 8370     	 strb r3,[r0,#2]
+ 1177 0010 1B0A     	 lsrs r3,r3,#8
+ 1178 0012 C370     	 strb r3,[r0,#3]
+ 1179 0014 7047     	 bx lr
+ 1181              	 .section .text.expect_47,"ax",%progbits
+ 1182              	 .align 1
+ 1183              	 .thumb
+ 1184              	 .thumb_func
+ 1186              	expect_47:
+ 1187              	 
+ 1188              	 
+ 1189              	 
+ 1190 0000 B1F80231 	 ldrh r3,[r1,#258]
+ 1191 0004 0370     	 strb r3,[r0]
+ 1192 0006 1B0A     	 lsrs r3,r3,#8
+ 1193 0008 4370     	 strb r3,[r0,#1]
+ 1194 000a B1F80431 	 ldrh r3,[r1,#260]
+ 1195 000e 8370     	 strb r3,[r0,#2]
+ 1196 0010 1B0A     	 lsrs r3,r3,#8
+ 1197 0012 C370     	 strb r3,[r0,#3]
+ 1198 0014 7047     	 bx lr
+ 1200              	 .section .text.expect_48,"ax",%progbits
+ 1201              	 .align 1
+ 1202              	 .thumb
+ 1203              	 .thumb_func
+ 1205              	expect_48:
+ 1206              	 
+ 1207              	 
+ 1208              	 
+ 1209 0000 B1F80631 	 ldrh r3,[r1,#262]
+ 1210 0004 0370     	 strb r3,[r0]
+ 1211 0006 1B0A     	 lsrs r3,r3,#8
+ 1212 0008 4370     	 strb r3,[r0,#1]
+ 1213 000a B1F80831 	 ldrh r3,[r1,#264]
+ 1214 000e 8370     	 strb r3,[r0,#2]
+ 1215 0010 1B0A     	 lsrs r3,r3,#8
+ 1216 0012 C370     	 strb r3,[r0,#3]
+ 1217 0014 7047     	 bx lr
+ 1219              	 .section .text.expect_49,"ax",%progbits
+ 1220              	 .align 1
+ 1221              	 .thumb
+ 1222              	 .thumb_func
+ 1224              	expect_49:
+ 1225              	 
+ 1226              	 
+ 1227              	 
+ 1228 0000 B1F80A31 	 ldrh r3,[r1,#266]
+ 1229 0004 0370     	 strb r3,[r0]
+ 1230 0006 1B0A     	 lsrs r3,r3,#8
+ 1231 0008 4370     	 strb r3,[r0,#1]
+ 1232 000a B1F80C31 	 ldrh r3,[r1,#268]
+ 1233 000e 8370     	 strb r3,[r0,#2]
+ 1234 0010 1B0A     	 lsrs r3,r3,#8
+ 1235 0012 C370     	 strb r3,[r0,#3]
+ 1236 0014 7047     	 bx lr
+ 1238              	 .section .text.expect_4A,"ax",%progbits
+ 1239              	 .align 1
+ 1240              	 .thumb
+ 1241              	 .thumb_func
+ 1243              	expect_4A:
+ 1244              	 
+ 1245              	 
+ 1246              	 
+ 1247 0000 B1F80E31 	 ldrh r3,[r1,#270]
+ 1248 0004 0370     	 strb r3,[r0]
+ 1249 0006 1B0A     	 lsrs r3,r3,#8
+ 1250 0008 4370     	 strb r3,[r0,#1]
+ 1251 000a B1F81031 	 ldrh r3,[r1,#272]
+ 1252 000e 8370     	 strb r3,[r0,#2]
+ 1253 0010 1B0A     	 lsrs r3,r3,#8
+ 1254 0012 C370     	 strb r3,[r0,#3]
+ 1255 0014 7047     	 bx lr
+ 1257              	 .section .text.expect_50,"ax",%progbits
+ 1258              	 .align 1
+ 1259              	 .thumb
+ 1260              	 .thumb_func
+ 1262              	expect_50:
+ 1263              	 
+ 1264              	 
+ 1265              	 
+ 1266 0000 B1F81231 	 ldrh r3,[r1,#274]
+ 1267 0004 0370     	 strb r3,[r0]
+ 1268 0006 1B0A     	 lsrs r3,r3,#8
+ 1269 0008 4370     	 strb r3,[r0,#1]
+ 1270 000a B1F81431 	 ldrh r3,[r1,#276]
+ 1271 000e 8370     	 strb r3,[r0,#2]
+ 1272 0010 1B0A     	 lsrs r3,r3,#8
+ 1273 0012 C370     	 strb r3,[r0,#3]
+ 1274 0014 B1F81631 	 ldrh r3,[r1,#278]
+ 1275 0018 0371     	 strb r3,[r0,#4]
+ 1276 001a 1B0A     	 lsrs r3,r3,#8
+ 1277 001c 4371     	 strb r3,[r0,#5]
+ 1278 001e 7047     	 bx lr
+ 1280              	 .section .text.expect_51,"ax",%progbits
+ 1281              	 .align 1
+ 1282              	 .thumb
+ 1283              	 .thumb_func
+ 1285              	expect_51:
+ 1286              	 
+ 1287              	 
+ 1288              	 
+ 1289 0000 B1F81831 	 ldrh r3,[r1,#280]
+ 1290 0004 0370     	 strb r3,[r0]
+ 1291 0006 1B0A     	 lsrs r3,r3,#8
+ 1292 0008 4370     	 strb r3,[r0,#1]
+ 1293 000a B1F81A31 	 ldrh r3,[r1,#282]
+ 1294 000e 8370     	 strb r3,[r0,#2]
+ 1295 0010 1B0A     	 lsrs r3,r3,#8
+ 1296 0012 C370     	 strb r3,[r0,#3]
+ 1297 0014 B1F81C31 	 ldrh r3,[r1,#284]
+ 1298 0018 0371     	 strb r3,[r0,#4]
+ 1299 001a 1B0A     	 lsrs r3,r3,#8
+ 1300 001c 4371     	 strb r3,[r0,#5]
+ 1301 001e 7047     	 bx lr
+ 1303              	 .section .text.expect_52,"ax",%progbits
+ 1304              	 .align 1
+ 1305              	 .thumb
+ 1306              	 .thumb_func
+ 1308              	expect_52:
+ 1309              	 
+ 1310              	 
+ 1311              	 
+ 1312 0000 B1F81E31 	 ldrh r3,[r1,#286]
+ 1313 0004 0370     	 strb r3,[r0]
+ 1314 0006 1B0A     	 lsrs r3,r3,#8
+ 1315 0008 4370     	 strb r3,[r0,#1]
+ 1316 000a B1F82031 	 ldrh r3,[r1,#288]
+ 1317 000e 8370     	 strb r3,[r0,#2]
+ 1318 0010 1B0A     	 lsrs r3,r3,#8
+ 1319 0012 C370     	 strb r3,[r0,#3]
+ 1320 0014 B1F82231 	 ldrh r3,[r1,#290]
+ 1321 0018 0371     	 strb r3,[r0,#4]
+ 1322 001a 1B0A     	 lsrs r3,r3,#8
+ 1323 001c 4371     	 strb r3,[r0,#5]
+ 1324 001e 7047     	 bx lr
+ 1326              	 .section .text.expect_53,"ax",%progbits
+ 1327              	 .align 1
+ 1328              	 .thumb
+ 1329              	 .thumb_func
+ 1331              	expect_53:
+ 1332              	 
+ 1333              	 
+ 1334              	 
+ 1335 0000 B1F82431 	 ldrh r3,[r1,#292]
+ 1336 0004 0370     	 strb r3,[r0]
+ 1337 0006 1B0A     	 lsrs r3,r3,#8
+ 1338 0008 4370     	 strb r3,[r0,#1]
+ 1339 000a B1F82631 	 ldrh r3,[r1,#294]
+ 1340 000e 8370     	 strb r3,[r0,#2]
+ 1341 0010 1B0A     	 lsrs r3,r3,#8
+ 1342 0012 C370     	 strb r3,[r0,#3]
+ 1343 0014 B1F82831 	 ldrh r3,[r1,#296]
+ 1344 0018 0371     	 strb r3,[r0,#4]
+ 1345 001a 1B0A     	 lsrs r3,r3,#8
+ 1346 001c 4371     	 strb r3,[r0,#5]
+ 1347 001e 7047     	 bx lr
+ 1349              	 .section .text.expect_54,"ax",%progbits
+ 1350              	 .align 1
+ 1351              	 .thumb
+ 1352              	 .thumb_func
+ 1354              	expect_54:
+ 1355              	 
+ 1356              	 
+ 1357              	 
+ 1358 0000 B1F82A31 	 ldrh r3,[r1,#298]
+ 1359 0004 0370     	 strb r3,[r0]
+ 1360 0006 1B0A     	 lsrs r3,r3,#8
+ 1361 0008 4370     	 strb r3,[r0,#1]
+ 1362 000a B1F82C31 	 ldrh r3,[r1,#300]
+ 1363 000e 8370     	 strb r3,[r0,#2]
+ 1364 0010 1B0A     	 lsrs r3,r3,#8
+ 1365 0012 C370     	 strb r3,[r0,#3]
+ 1366 0014 B1F82E31 	 ldrh r3,[r1,#302]
+ 1367 0018 0371     	 strb r3,[r0,#4]
+ 1368 001a 1B0A     	 lsrs r3,r3,#8
+ 1369 001c 4371     	 strb r3,[r0,#5]
+ 1370 001e 7047     	 bx lr
+ 1372              	 .section .text.expect_55,"ax",%progbits
+ 1373              	 .align 1
+ 1374              	 .thumb
+ 1375              	 .thumb_func
+ 1377              	expect_55:
+ 1378              	 
+ 1379              	 
+ 1380              	 
+ 1381 0000 B1F83031 	 ldrh r3,[r1,#304]
+ 1382 0004 0370     	 strb r3,[r0]
+ 1383 0006 1B0A     	 lsrs r3,r3,#8
+ 1384 0008 4370     	 strb r3,[r0,#1]
+ 1385 000a B1F83231 	 ldrh r3,[r1,#306]
+ 1386 000e 8370     	 strb r3,[r0,#2]
+ 1387 0010 1B0A     	 lsrs r3,r3,#8
+ 1388 0012 C370     	 strb r3,[r0,#3]
+ 1389 0014 7047     	 bx lr
+ 1391              	 .section .text.expect_56,"ax",%progbits
+ 1392              	 .align 1
+ 1393              	 .thumb
+ 1394              	 .thumb_func
+ 1396              	expect_56:
+ 1397              	 
+ 1398              	 
+ 1399              	 
+ 1400 0000 B1F83431 	 ldrh r3,[r1,#308]
+ 1401 0004 0370     	 strb r3,[r0]
+ 1402 0006 1B0A     	 lsrs r3,r3,#8
+ 1403 0008 4370     	 strb r3,[r0,#1]
+ 1404 000a B1F83631 	 ldrh r3,[r1,#310]
+ 1405 000e 8370     	 strb r3,[r0,#2]
+ 1406 0010 1B0A     	 lsrs r3,r3,#8
+ 1407 0012 C370     	 strb r3,[r0,#3]
+ 1408 0014 7047     	 bx lr
+ 1410              	 .section .text.expect_57,"ax",%progbits
+ 1411              	 .align 1
+ 1412              	 .thumb
+ 1413              	 .thumb_func
+ 1415              	expect_57:
+ 1416              	 
+ 1417              	 
+ 1418              	 
+ 1419 0000 B1F83831 	 ldrh r3,[r1,#312]
+ 1420 0004 0370     	 strb r3,[r0]
+ 1421 0006 1B0A     	 lsrs r3,r3,#8
+ 1422 0008 4370     	 strb r3,[r0,#1]
+ 1423 000a B1F83A31 	 ldrh r3,[r1,#314]
+ 1424 000e 8370     	 strb r3,[r0,#2]
+ 1425 0010 1B0A     	 lsrs r3,r3,#8
+ 1426 0012 C370     	 strb r3,[r0,#3]
+ 1427 0014 7047     	 bx lr
+ 1429              	 .section .text.expect_58,"ax",%progbits
+ 1430              	 .align 1
+ 1431              	 .thumb
+ 1432              	 .thumb_func
+ 1434              	expect_58:
+ 1435              	 
+ 1436              	 
+ 1437              	 
+ 1438 0000 B1F83C31 	 ldrh r3,[r1,#316]
+ 1439 0004 0370     	 strb r3,[r0]
+ 1440 0006 1B0A     	 lsrs r3,r3,#8
+ 1441 0008 4370     	 strb r3,[r0,#1]
+ 1442 000a B1F83E31 	 ldrh r3,[r1,#318]
+ 1443 000e 8370     	 strb r3,[r0,#2]
+ 1444 0010 1B0A     	 lsrs r3,r3,#8
+ 1445 0012 C370     	 strb r3,[r0,#3]
+ 1446 0014 7047     	 bx lr
+ 1448              	 .section .text.expect_59,"ax",%progbits
+ 1449              	 .align 1
+ 1450              	 .thumb
+ 1451              	 .thumb_func
+ 1453              	expect_59:
+ 1454              	 
+ 1455              	 
+ 1456              	 
+ 1457 0000 B1F84031 	 ldrh r3,[r1,#320]
+ 1458 0004 0370     	 strb r3,[r0]
+ 1459 0006 1B0A     	 lsrs r3,r3,#8
+ 1460 0008 4370     	 strb r3,[r0,#1]
+ 1461 000a B1F84231 	 ldrh r3,[r1,#322]
+ 1462 000e 8370     	 strb r3,[r0,#2]
+ 1463 0010 1B0A     	 lsrs r3,r3,#8
+ 1464 0012 C370     	 strb r3,[r0,#3]
+ 1465 0014 7047     	 bx lr
+ 1467              	 .section .text.expect_5A,"ax",%progbits
+ 1468              	 .align 1
+ 1469              	 .thumb
+ 1470              	 .thumb_func
+ 1472              	expect_5A:
+ 1473              	 
+ 1474              	 
+ 1475              	 
+ 1476 0000 B1F84431 	 ldrh r3,[r1,#324]
+ 1477 0004 0370     	 strb r3,[r0]
+ 1478 0006 1B0A     	 lsrs r3,r3,#8
+ 1479 0008 4370     	 strb r3,[r0,#1]
+ 1480 000a B1F84631 	 ldrh r3,[r1,#326]
+ 1481 000e 8370     	 strb r3,[r0,#2]
+ 1482 0010 1B0A     	 lsrs r3,r3,#8
+ 1483 0012 C370     	 strb r3,[r0,#3]
+ 1484 0014 B1F84831 	 ldrh r3,[r1,#328]
+ 1485 0018 0371     	 strb r3,[r0,#4]
+ 1486 001a 1B0A     	 lsrs r3,r3,#8
+ 1487 001c 4371     	 strb r3,[r0,#5]
+ 1488 001e 7047     	 bx lr
+ 1490              	 .section .text.expect_5B,"ax",%progbits
+ 1491              	 .align 1
+ 1492              	 .thumb
+ 1493              	 .thumb_func
+ 1495              	expect_5B:
+ 1496              	 
+ 1497              	 
+ 1498              	 
+ 1499 0000 B1F84A31 	 ldrh r3,[r1,#330]
+ 1500 0004 0370     	 strb r3,[r0]
+ 1501 0006 1B0A     	 lsrs r3,r3,#8
+ 1502 0008 4370     	 strb r3,[r0,#1]
+ 1503 000a B1F84C31 	 ldrh r3,[r1,#332]
+ 1504 000e 8370     	 strb r3,[r0,#2]
+ 1505 0010 1B0A     	 lsrs r3,r3,#8
+ 1506 0012 C370     	 strb r3,[r0,#3]
+ 1507 0014 B1F84E31 	 ldrh r3,[r1,#334]
+ 1508 0018 0371     	 strb r3,[r0,#4]
+ 1509 001a 1B0A     	 lsrs r3,r3,#8
+ 1510 001c 4371     	 strb r3,[r0,#5]
+ 1511 001e 7047     	 bx lr
+ 1513              	 .section .text.expect_5C,"ax",%progbits
+ 1514              	 .align 1
+ 1515              	 .thumb
+ 1516              	 .thumb_func
+ 1518              	expect_5C:
+ 1519              	 
+ 1520              	 
+ 1521              	 
+ 1522 0000 B1F85031 	 ldrh r3,[r1,#336]
+ 1523 0004 0370     	 strb r3,[r0]
+ 1524 0006 1B0A     	 lsrs r3,r3,#8
+ 1525 0008 4370     	 strb r3,[r0,#1]
+ 1526 000a B1F85231 	 ldrh r3,[r1,#338]
+ 1527 000e 8370     	 strb r3,[r0,#2]
+ 1528 0010 1B0A     	 lsrs r3,r3,#8
+ 1529 0012 C370     	 strb r3,[r0,#3]
+ 1530 0014 7047     	 bx lr
+ 1532              	 .section .text.expect_5D,"ax",%progbits
+ 1533              	 .align 1
+ 1534              	 .thumb
+ 1535              	 .thumb_func
+ 1537              	expect_5D:
+ 1538              	 
+ 1539              	 
+ 1540              	 
+ 1541 0000 B1F85431 	 ldrh r3,[r1,#340]
+ 1542 0004 0370     	 strb r3,[r0]
+ 1543 0006 1B0A     	 lsrs r3,r3,#8
+ 1544 0008 4370     	 strb r3,[r0,#1]
+ 1545 000a B1F85631 	 ldrh r3,[r1,#342]
+ 1546 000e 8370     	 strb r3,[r0,#2]
+ 1547 0010 1B0A     	 lsrs r3,r3,#8
+ 1548 0012 C370     	 strb r3,[r0,#3]
+ 1549 0014 7047     	 bx lr
+ 1551              	 .section .text.expect_5E,"ax",%progbits
+ 1552              	 .align 1
+ 1553              	 .thumb
+ 1554              	 .thumb_func
+ 1556              	expect_5E:
+ 1557              	 
+ 1558              	 
+ 1559              	 
+ 1560 0000 B1F85831 	 ldrh r3,[r1,#344]
+ 1561 0004 0370     	 strb r3,[r0]
+ 1562 0006 1B0A     	 lsrs r3,r3,#8
+ 1563 0008 4370     	 strb r3,[r0,#1]
+ 1564 000a B1F85A31 	 ldrh r3,[r1,#346]
+ 1565 000e 8370     	 strb r3,[r0,#2]
+ 1566 0010 1B0A     	 lsrs r3,r3,#8
+ 1567 0012 C370     	 strb r3,[r0,#3]
+ 1568 0014 7047     	 bx lr
+ 1570              	 .section .text.expect_5F,"ax",%progbits
+ 1571              	 .align 1
+ 1572              	 .thumb
+ 1573              	 .thumb_func
+ 1575              	expect_5F:
+ 1576              	 
+ 1577              	 
+ 1578              	 
+ 1579 0000 B1F85C31 	 ldrh r3,[r1,#348]
+ 1580 0004 0370     	 strb r3,[r0]
+ 1581 0006 1B0A     	 lsrs r3,r3,#8
+ 1582 0008 4370     	 strb r3,[r0,#1]
+ 1583 000a B1F85E31 	 ldrh r3,[r1,#350]
+ 1584 000e 8370     	 strb r3,[r0,#2]
+ 1585 0010 1B0A     	 lsrs r3,r3,#8
+ 1586 0012 C370     	 strb r3,[r0,#3]
+ 1587 0014 7047     	 bx lr
+ 1589              	 .section .text.expect_60,"ax",%progbits
+ 1590              	 .align 1
+ 1591              	 .thumb
+ 1592              	 .thumb_func
+ 1594              	expect_60:
+ 1595              	 
+ 1596              	 
+ 1597              	 
+ 1598 0000 B1F86031 	 ldrh r3,[r1,#352]
+ 1599 0004 0370     	 strb r3,[r0]
+ 1600 0006 1B0A     	 lsrs r3,r3,#8
+ 1601 0008 4370     	 strb r3,[r0,#1]
+ 1602 000a B1F86231 	 ldrh r3,[r1,#354]
+ 1603 000e 8370     	 strb r3,[r0,#2]
+ 1604 0010 1B0A     	 lsrs r3,r3,#8
+ 1605 0012 C370     	 strb r3,[r0,#3]
+ 1606 0014 7047     	 bx lr
+ 1608              	 .section .text.expect_61,"ax",%progbits
+ 1609              	 .align 1
+ 1610              	 .thumb
+ 1611              	 .thumb_func
+ 1613              	expect_61:
+ 1614              	 
+ 1615              	 
+ 1616              	 
+ 1617 0000 B1F86431 	 ldrh r3,[r1,#356]
+ 1618 0004 0370     	 strb r3,[r0]
+ 1619 0006 1B0A     	 lsrs r3,r3,#8
+ 1620 0008 4370     	 strb r3,[r0,#1]
+ 1621 000a B1F86631 	 ldrh r3,[r1,#358]
+ 1622 000e 8370     	 strb r3,[r0,#2]
+ 1623 0010 1B0A     	 lsrs r3,r3,#8
+ 1624 0012 C370     	 strb r3,[r0,#3]
+ 1625 0014 7047     	 bx lr
+ 1627              	 .section .text.expect_62,"ax",%progbits
+ 1628              	 .align 1
+ 1629              	 .thumb
+ 1630              	 .thumb_func
+ 1632              	expect_62:
+ 1633              	 
+ 1634              	 
+ 1635              	 
+ 1636 0000 B1F86831 	 ldrh r3,[r1,#360]
+ 1637 0004 0370     	 strb r3,[r0]
+ 1638 0006 1B0A     	 lsrs r3,r3,#8
+ 1639 0008 4370     	 strb r3,[r0,#1]
+ 1640 000a B1F86A31 	 ldrh r3,[r1,#362]
+ 1641 000e 8370     	 strb r3,[r0,#2]
+ 1642 0010 1B0A     	 lsrs r3,r3,#8
+ 1643 0012 C370     	 strb r3,[r0,#3]
+ 1644 0014 7047     	 bx lr
+ 1646              	 .section .text.expect_63,"ax",%progbits
+ 1647              	 .align 1
+ 1648              	 .thumb
+ 1649              	 .thumb_func
+ 1651              	expect_63:
+ 1652              	 
+ 1653              	 
+ 1654              	 
+ 1655 0000 B1F86C31 	 ldrh r3,[r1,#364]
+ 1656 0004 0370     	 strb r3,[r0]
+ 1657 0006 1B0A     	 lsrs r3,r3,#8
+ 1658 0008 4370     	 strb r3,[r0,#1]
+ 1659 000a B1F86E31 	 ldrh r3,[r1,#366]
+ 1660 000e 8370     	 strb r3,[r0,#2]
+ 1661 0010 1B0A     	 lsrs r3,r3,#8
+ 1662 0012 C370     	 strb r3,[r0,#3]
+ 1663 0014 7047     	 bx lr
+ 1665              	 .section .text.expect_64,"ax",%progbits
+ 1666              	 .align 1
+ 1667              	 .thumb
+ 1668              	 .thumb_func
+ 1670              	expect_64:
+ 1671              	 
+ 1672              	 
+ 1673              	 
+ 1674 0000 B1F87031 	 ldrh r3,[r1,#368]
+ 1675 0004 0370     	 strb r3,[r0]
+ 1676 0006 1B0A     	 lsrs r3,r3,#8
+ 1677 0008 4370     	 strb r3,[r0,#1]
+ 1678 000a B1F87231 	 ldrh r3,[r1,#370]
+ 1679 000e 8370     	 strb r3,[r0,#2]
+ 1680 0010 1B0A     	 lsrs r3,r3,#8
+ 1681 0012 C370     	 strb r3,[r0,#3]
+ 1682 0014 B1F87431 	 ldrh r3,[r1,#372]
+ 1683 0018 0371     	 strb r3,[r0,#4]
+ 1684 001a 1B0A     	 lsrs r3,r3,#8
+ 1685 001c 4371     	 strb r3,[r0,#5]
+ 1686 001e 7047     	 bx lr
+ 1688              	 .section .text.expect_65,"ax",%progbits
+ 1689              	 .align 1
+ 1690              	 .thumb
+ 1691              	 .thumb_func
+ 1693              	expect_65:
+ 1694              	 
+ 1695              	 
+ 1696              	 
+ 1697 0000 B1F87631 	 ldrh r3,[r1,#374]
+ 1698 0004 0370     	 strb r3,[r0]
+ 1699 0006 1B0A     	 lsrs r3,r3,#8
+ 1700 0008 4370     	 strb r3,[r0,#1]
+ 1701 000a B1F87831 	 ldrh r3,[r1,#376]
+ 1702 000e 8370     	 strb r3,[r0,#2]
+ 1703 0010 1B0A     	 lsrs r3,r3,#8
+ 1704 0012 C370     	 strb r3,[r0,#3]
+ 1705 0014 B1F87A31 	 ldrh r3,[r1,#378]
+ 1706 0018 0371     	 strb r3,[r0,#4]
+ 1707 001a 1B0A     	 lsrs r3,r3,#8
+ 1708 001c 4371     	 strb r3,[r0,#5]
+ 1709 001e 7047     	 bx lr
+ 1711              	 .section .text.expect_66,"ax",%progbits
+ 1712              	 .align 1
+ 1713              	 .thumb
+ 1714              	 .thumb_func
+ 1716              	expect_66:
+ 1717              	 
+ 1718              	 
+ 1719              	 
+ 1720 0000 B1F87C31 	 ldrh r3,[r1,#380]
+ 1721 0004 0370     	 strb r3,[r0]
+ 1722 0006 1B0A     	 lsrs r3,r3,#8
+ 1723 0008 4370     	 strb r3,[r0,#1]
+ 1724 000a B1F87E31 	 ldrh r3,[r1,#382]
+ 1725 000e 8370     	 strb r3,[r0,#2]
+ 1726 0010 1B0A     	 lsrs r3,r3,#8
+ 1727 0012 C370     	 strb r3,[r0,#3]
+ 1728 0014 7047     	 bx lr
+ 1730              	 .section .text.expect_67,"ax",%progbits
+ 1731              	 .align 1
+ 1732              	 .thumb
+ 1733              	 .thumb_func
+ 1735              	expect_67:
+ 1736              	 
+ 1737              	 
+ 1738              	 
+ 1739 0000 B1F88031 	 ldrh r3,[r1,#384]
+ 1740 0004 0370     	 strb r3,[r0]
+ 1741 0006 1B0A     	 lsrs r3,r3,#8
+ 1742 0008 4370     	 strb r3,[r0,#1]
+ 1743 000a B1F88231 	 ldrh r3,[r1,#386]
+ 1744 000e 8370     	 strb r3,[r0,#2]
+ 1745 0010 1B0A     	 lsrs r3,r3,#8
+ 1746 0012 C370     	 strb r3,[r0,#3]
+ 1747 0014 7047     	 bx lr
+ 1749              	 .section .text.expect_68,"ax",%progbits
+ 1750              	 .align 1
+ 1751              	 .thumb
+ 1752              	 .thumb_func
+ 1754              	expect_68:
+ 1755              	 
+ 1756              	 
+ 1757              	 
+ 1758 0000 B1F88431 	 ldrh r3,[r1,#388]
+ 1759 0004 0370     	 strb r3,[r0]
+ 1760 0006 1B0A     	 lsrs r3,r3,#8
+ 1761 0008 4370     	 strb r3,[r0,#1]
+ 1762 000a B1F88631 	 ldrh r3,[r1,#390]
+ 1763 000e 8370     	 strb r3,[r0,#2]
+ 1764 0010 1B0A     	 lsrs r3,r3,#8
+ 1765 0012 C370     	 strb r3,[r0,#3]
+ 1766 0014 7047     	 bx lr
+ 1768              	 .section .text.expect_69,"ax",%progbits
+ 1769              	 .align 1
+ 1770              	 .thumb
+ 1771              	 .thumb_func
+ 1773              	expect_69:
+ 1774              	 
+ 1775              	 
+ 1776              	 
+ 1777 0000 B1F88831 	 ldrh r3,[r1,#392]
+ 1778 0004 0370     	 strb r3,[r0]
+ 1779 0006 1B0A     	 lsrs r3,r3,#8
+ 1780 0008 4370     	 strb r3,[r0,#1]
+ 1781 000a B1F88A31 	 ldrh r3,[r1,#394]
+ 1782 000e 8370     	 strb r3,[r0,#2]
+ 1783 0010 1B0A     	 lsrs r3,r3,#8
+ 1784 0012 C370     	 strb r3,[r0,#3]
+ 1785 0014 7047     	 bx lr
+ 1787              	 .section .text.expect_6A,"ax",%progbits
+ 1788              	 .align 1
+ 1789              	 .thumb
+ 1790              	 .thumb_func
+ 1792              	expect_6A:
+ 1793              	 
+ 1794              	 
+ 1795              	 
+ 1796 0000 B1F88C31 	 ldrh r3,[r1,#396]
+ 1797 0004 0370     	 strb r3,[r0]
+ 1798 0006 1B0A     	 lsrs r3,r3,#8
+ 1799 0008 4370     	 strb r3,[r0,#1]
+ 1800 000a B1F88E31 	 ldrh r3,[r1,#398]
+ 1801 000e 8370     	 strb r3,[r0,#2]
+ 1802 0010 1B0A     	 lsrs r3,r3,#8
+ 1803 0012 C370     	 strb r3,[r0,#3]
+ 1804 0014 7047     	 bx lr
+ 1806              	 .section .text.expect_70,"ax",%progbits
+ 1807              	 .align 1
+ 1808              	 .thumb
+ 1809              	 .thumb_func
+ 1811              	expect_70:
+ 1812              	 
+ 1813              	 
+ 1814              	 
+ 1815 0000 B1F89031 	 ldrh r3,[r1,#400]
+ 1816 0004 0370     	 strb r3,[r0]
+ 1817 0006 1B0A     	 lsrs r3,r3,#8
+ 1818 0008 4370     	 strb r3,[r0,#1]
+ 1819 000a B1F89231 	 ldrh r3,[r1,#402]
+ 1820 000e 8370     	 strb r3,[r0,#2]
+ 1821 0010 1B0A     	 lsrs r3,r3,#8
+ 1822 0012 C370     	 strb r3,[r0,#3]
+ 1823 0014 B1F89431 	 ldrh r3,[r1,#404]
+ 1824 0018 0371     	 strb r3,[r0,#4]
+ 1825 001a 1B0A     	 lsrs r3,r3,#8
+ 1826 001c 4371     	 strb r3,[r0,#5]
+ 1827 001e 7047     	 bx lr
+ 1829              	 .section .text.expect_71,"ax",%progbits
+ 1830              	 .align 1
+ 1831              	 .thumb
+ 1832              	 .thumb_func
+ 1834              	expect_71:
+ 1835              	 
+ 1836              	 
+ 1837              	 
+ 1838 0000 B1F89631 	 ldrh r3,[r1,#406]
+ 1839 0004 0370     	 strb r3,[r0]
+ 1840 0006 1B0A     	 lsrs r3,r3,#8
+ 1841 0008 4370     	 strb r3,[r0,#1]
+ 1842 000a B1F89831 	 ldrh r3,[r1,#408]
+ 1843 000e 8370     	 strb r3,[r0,#2]
+ 1844 0010 1B0A     	 lsrs r3,r3,#8
+ 1845 0012 C370     	 strb r3,[r0,#3]
+ 1846 0014 B1F89A31 	 ldrh r3,[r1,#410]
+ 1847 0018 0371     	 strb r3,[r0,#4]
+ 1848 001a 1B0A     	 lsrs r3,r3,#8
+ 1849 001c 4371     	 strb r3,[r0,#5]
+ 1850 001e 7047     	 bx lr
+ 1852              	 .section .text.expect_72,"ax",%progbits
+ 1853              	 .align 1
+ 1854              	 .thumb
+ 1855              	 .thumb_func
+ 1857              	expect_72:
+ 1858              	 
+ 1859              	 
+ 1860              	 
+ 1861 0000 B1F89C31 	 ldrh r3,[r1,#412]
+ 1862 0004 0370     	 strb r3,[r0]
+ 1863 0006 1B0A     	 lsrs r3,r3,#8
+ 1864 0008 4370     	 strb r3,[r0,#1]
+ 1865 000a B1F89E31 	 ldrh r3,[r1,#414]
+ 1866 000e 8370     	 strb r3,[r0,#2]
+ 1867 0010 1B0A     	 lsrs r3,r3,#8
+ 1868 0012 C370     	 strb r3,[r0,#3]
+ 1869 0014 B1F8A031 	 ldrh r3,[r1,#416]
+ 1870 0018 0371     	 strb r3,[r0,#4]
+ 1871 001a 1B0A     	 lsrs r3,r3,#8
+ 1872 001c 4371     	 strb r3,[r0,#5]
+ 1873 001e 7047     	 bx lr
+ 1875              	 .section .text.expect_73,"ax",%progbits
+ 1876              	 .align 1
+ 1877              	 .thumb
+ 1878              	 .thumb_func
+ 1880              	expect_73:
+ 1881              	 
+ 1882              	 
+ 1883              	 
+ 1884 0000 B1F8A231 	 ldrh r3,[r1,#418]
+ 1885 0004 0370     	 strb r3,[r0]
+ 1886 0006 1B0A     	 lsrs r3,r3,#8
+ 1887 0008 4370     	 strb r3,[r0,#1]
+ 1888 000a B1F8A431 	 ldrh r3,[r1,#420]
+ 1889 000e 8370     	 strb r3,[r0,#2]
+ 1890 0010 1B0A     	 lsrs r3,r3,#8
+ 1891 0012 C370     	 strb r3,[r0,#3]
+ 1892 0014 B1F8A631 	 ldrh r3,[r1,#422]
+ 1893 0018 0371     	 strb r3,[r0,#4]
+ 1894 001a 1B0A     	 lsrs r3,r3,#8
+ 1895 001c 4371     	 strb r3,[r0,#5]
+ 1896 001e 7047     	 bx lr
+ 1898              	 .section .text.expect_74,"ax",%progbits
+ 1899              	 .align 1
+ 1900              	 .thumb
+ 1901              	 .thumb_func
+ 1903              	expect_74:
+ 1904              	 
+ 1905              	 
+ 1906              	 
+ 1907 0000 B1F8A831 	 ldrh r3,[r1,#424]
+ 1908 0004 0370     	 strb r3,[r0]
+ 1909 0006 1B0A     	 lsrs r3,r3,#8
+ 1910 0008 4370     	 strb r3,[r0,#1]
+ 1911 000a B1F8AA31 	 ldrh r3,[r1,#426]
+ 1912 000e 8370     	 strb r3,[r0,#2]
+ 1913 0010 1B0A     	 lsrs r3,r3,#8
+ 1914 0012 C370     	 strb r3,[r0,#3]
+ 1915 0014 B1F8AC31 	 ldrh r3,[r1,#428]
+ 1916 0018 0371     	 strb r3,[r0,#4]
+ 1917 001a 1B0A     	 lsrs r3,r3,#8
+ 1918 001c 4371     	 strb r3,[r0,#5]
+ 1919 001e 7047     	 bx lr
+ 1921              	 .section .text.expect_75,"ax",%progbits
+ 1922              	 .align 1
+ 1923              	 .thumb
+ 1924              	 .thumb_func
+ 1926              	expect_75:
+ 1927              	 
+ 1928              	 
+ 1929              	 
+ 1930 0000 B1F8AE31 	 ldrh r3,[r1,#430]
+ 1931 0004 0370     	 strb r3,[r0]
+ 1932 0006 1B0A     	 lsrs r3,r3,#8
+ 1933 0008 4370     	 strb r3,[r0,#1]
+ 1934 000a B1F8B031 	 ldrh r3,[r1,#432]
+ 1935 000e 8370     	 strb r3,[r0,#2]
+ 1936 0010 1B0A     	 lsrs r3,r3,#8
+ 1937 0012 C370     	 strb r3,[r0,#3]
+ 1938 0014 7047     	 bx lr
+ 1940              	 .section .text.expect_76,"ax",%progbits
+ 1941              	 .align 1
+ 1942              	 .thumb
+ 1943              	 .thumb_func
+ 1945              	expect_76:
+ 1946              	 
+ 1947              	 
+ 1948              	 
+ 1949 0000 B1F8B231 	 ldrh r3,[r1,#434]
+ 1950 0004 0370     	 strb r3,[r0]
+ 1951 0006 1B0A     	 lsrs r3,r3,#8
+ 1952 0008 4370     	 strb r3,[r0,#1]
+ 1953 000a B1F8B431 	 ldrh r3,[r1,#436]
+ 1954 000e 8370     	 strb r3,[r0,#2]
+ 1955 0010 1B0A     	 lsrs r3,r3,#8
+ 1956 0012 C370     	 strb r3,[r0,#3]
+ 1957 0014 7047     	 bx lr
+ 1959              	 .section .text.expect_77,"ax",%progbits
+ 1960              	 .align 1
+ 1961              	 .thumb
+ 1962              	 .thumb_func
+ 1964              	expect_77:
+ 1965              	 
+ 1966              	 
+ 1967              	 
+ 1968 0000 B1F8B631 	 ldrh r3,[r1,#438]
+ 1969 0004 0370     	 strb r3,[r0]
+ 1970 0006 1B0A     	 lsrs r3,r3,#8
+ 1971 0008 4370     	 strb r3,[r0,#1]
+ 1972 000a B1F8B831 	 ldrh r3,[r1,#440]
+ 1973 000e 8370     	 strb r3,[r0,#2]
+ 1974 0010 1B0A     	 lsrs r3,r3,#8
+ 1975 0012 C370     	 strb r3,[r0,#3]
+ 1976 0014 7047     	 bx lr
+ 1978              	 .section .text.expect_78,"ax",%progbits
+ 1979              	 .align 1
+ 1980              	 .thumb
+ 1981              	 .thumb_func
+ 1983              	expect_78:
+ 1984              	 
+ 1985              	 
+ 1986              	 
+ 1987 0000 B1F8BA31 	 ldrh r3,[r1,#442]
+ 1988 0004 0370     	 strb r3,[r0]
+ 1989 0006 1B0A     	 lsrs r3,r3,#8
+ 1990 0008 4370     	 strb r3,[r0,#1]
+ 1991 000a B1F8BC31 	 ldrh r3,[r1,#444]
+ 1992 000e 8370     	 strb r3,[r0,#2]
+ 1993 0010 1B0A     	 lsrs r3,r3,#8
+ 1994 0012 C370     	 strb r3,[r0,#3]
+ 1995 0014 7047     	 bx lr
+ 1997              	 .section .text.expect_79,"ax",%progbits
+ 1998              	 .align 1
+ 1999              	 .thumb
+ 2000              	 .thumb_func
+ 2002              	expect_79:
+ 2003              	 
+ 2004              	 
+ 2005              	 
+ 2006 0000 B1F8BE31 	 ldrh r3,[r1,#446]
+ 2007 0004 0370     	 strb r3,[r0]
+ 2008 0006 1B0A     	 lsrs r3,r3,#8
+ 2009 0008 4370     	 strb r3,[r0,#1]
+ 2010 000a B1F8C031 	 ldrh r3,[r1,#448]
+ 2011 000e 8370     	 strb r3,[r0,#2]
+ 2012 0010 1B0A     	 lsrs r3,r3,#8
+ 2013 0012 C370     	 strb r3,[r0,#3]
+ 2014 0014 7047     	 bx lr
+ 2016              	 .section .text.expect_7A,"ax",%progbits
+ 2017              	 .align 1
+ 2018              	 .thumb
+ 2019              	 .thumb_func
+ 2021              	expect_7A:
+ 2022              	 
+ 2023              	 
+ 2024              	 
+ 2025 0000 B1F8C231 	 ldrh r3,[r1,#450]
+ 2026 0004 0370     	 strb r3,[r0]
+ 2027 0006 1B0A     	 lsrs r3,r3,#8
+ 2028 0008 4370     	 strb r3,[r0,#1]
+ 2029 000a B1F8C431 	 ldrh r3,[r1,#452]
+ 2030 000e 8370     	 strb r3,[r0,#2]
+ 2031 0010 1B0A     	 lsrs r3,r3,#8
+ 2032 0012 C370     	 strb r3,[r0,#3]
+ 2033 0014 B1F8C631 	 ldrh r3,[r1,#454]
+ 2034 0018 0371     	 strb r3,[r0,#4]
+ 2035 001a 1B0A     	 lsrs r3,r3,#8
+ 2036 001c 4371     	 strb r3,[r0,#5]
+ 2037 001e 7047     	 bx lr
+ 2039              	 .section .text.expect_7B,"ax",%progbits
+ 2040              	 .align 1
+ 2041              	 .thumb
+ 2042              	 .thumb_func
+ 2044              	expect_7B:
+ 2045              	 
+ 2046              	 
+ 2047              	 
+ 2048 0000 B1F8C831 	 ldrh r3,[r1,#456]
+ 2049 0004 0370     	 strb r3,[r0]
+ 2050 0006 1B0A     	 lsrs r3,r3,#8
+ 2051 0008 4370     	 strb r3,[r0,#1]
+ 2052 000a B1F8CA31 	 ldrh r3,[r1,#458]
+ 2053 000e 8370     	 strb r3,[r0,#2]
+ 2054 0010 1B0A     	 lsrs r3,r3,#8
+ 2055 0012 C370     	 strb r3,[r0,#3]
+ 2056 0014 B1F8CC31 	 ldrh r3,[r1,#460]
+ 2057 0018 0371     	 strb r3,[r0,#4]
+ 2058 001a 1B0A     	 lsrs r3,r3,#8
+ 2059 001c 4371     	 strb r3,[r0,#5]
+ 2060 001e 7047     	 bx lr
+ 2062              	 .section .text.expect_7C,"ax",%progbits
+ 2063              	 .align 1
+ 2064              	 .thumb
+ 2065              	 .thumb_func
+ 2067              	expect_7C:
+ 2068              	 
+ 2069              	 
+ 2070              	 
+ 2071 0000 B1F8CE31 	 ldrh r3,[r1,#462]
+ 2072 0004 0370     	 strb r3,[r0]
+ 2073 0006 1B0A     	 lsrs r3,r3,#8
+ 2074 0008 4370     	 strb r3,[r0,#1]
+ 2075 000a B1F8D031 	 ldrh r3,[r1,#464]
+ 2076 000e 8370     	 strb r3,[r0,#2]
+ 2077 0010 1B0A     	 lsrs r3,r3,#8
+ 2078 0012 C370     	 strb r3,[r0,#3]
+ 2079 0014 7047     	 bx lr
+ 2081              	 .section .text.expect_7D,"ax",%progbits
+ 2082              	 .align 1
+ 2083              	 .thumb
+ 2084              	 .thumb_func
+ 2086              	expect_7D:
+ 2087              	 
+ 2088              	 
+ 2089              	 
+ 2090 0000 B1F8D231 	 ldrh r3,[r1,#466]
+ 2091 0004 0370     	 strb r3,[r0]
+ 2092 0006 1B0A     	 lsrs r3,r3,#8
+ 2093 0008 4370     	 strb r3,[r0,#1]
+ 2094 000a B1F8D431 	 ldrh r3,[r1,#468]
+ 2095 000e 8370     	 strb r3,[r0,#2]
+ 2096 0010 1B0A     	 lsrs r3,r3,#8
+ 2097 0012 C370     	 strb r3,[r0,#3]
+ 2098 0014 7047     	 bx lr
+ 2100              	 .section .text.expect_7E,"ax",%progbits
+ 2101              	 .align 1
+ 2102              	 .thumb
+ 2103              	 .thumb_func
+ 2105              	expect_7E:
+ 2106              	 
+ 2107              	 
+ 2108              	 
+ 2109 0000 B1F8D631 	 ldrh r3,[r1,#470]
+ 2110 0004 0370     	 strb r3,[r0]
+ 2111 0006 1B0A     	 lsrs r3,r3,#8
+ 2112 0008 4370     	 strb r3,[r0,#1]
+ 2113 000a B1F8D831 	 ldrh r3,[r1,#472]
+ 2114 000e 8370     	 strb r3,[r0,#2]
+ 2115 0010 1B0A     	 lsrs r3,r3,#8
+ 2116 0012 C370     	 strb r3,[r0,#3]
+ 2117 0014 7047     	 bx lr
+ 2119              	 .section .text.expect_7F,"ax",%progbits
+ 2120              	 .align 1
+ 2121              	 .thumb
+ 2122              	 .thumb_func
+ 2124              	expect_7F:
+ 2125              	 
+ 2126              	 
+ 2127              	 
+ 2128 0000 B1F8DA31 	 ldrh r3,[r1,#474]
+ 2129 0004 0370     	 strb r3,[r0]
+ 2130 0006 1B0A     	 lsrs r3,r3,#8
+ 2131 0008 4370     	 strb r3,[r0,#1]
+ 2132 000a B1F8DC31 	 ldrh r3,[r1,#476]
+ 2133 000e 8370     	 strb r3,[r0,#2]
+ 2134 0010 1B0A     	 lsrs r3,r3,#8
+ 2135 0012 C370     	 strb r3,[r0,#3]
+ 2136 0014 7047     	 bx lr
+ 2138              	 .section .text.expect_80,"ax",%progbits
+ 2139              	 .align 1
+ 2140              	 .thumb
+ 2141              	 .thumb_func
+ 2143              	expect_80:
+ 2144              	 
+ 2145              	 
+ 2146              	 
+ 2147 0000 B1F8DE31 	 ldrh r3,[r1,#478]
+ 2148 0004 0370     	 strb r3,[r0]
+ 2149 0006 1B0A     	 lsrs r3,r3,#8
+ 2150 0008 4370     	 strb r3,[r0,#1]
+ 2151 000a B1F8E031 	 ldrh r3,[r1,#480]
+ 2152 000e 8370     	 strb r3,[r0,#2]
+ 2153 0010 1B0A     	 lsrs r3,r3,#8
+ 2154 0012 C370     	 strb r3,[r0,#3]
+ 2155 0014 7047     	 bx lr
+ 2157              	 .section .text.expect_81,"ax",%progbits
+ 2158              	 .align 1
+ 2159              	 .thumb
+ 2160              	 .thumb_func
+ 2162              	expect_81:
+ 2163              	 
+ 2164              	 
+ 2165              	 
+ 2166 0000 B1F8E231 	 ldrh r3,[r1,#482]
+ 2167 0004 0370     	 strb r3,[r0]
+ 2168 0006 1B0A     	 lsrs r3,r3,#8
+ 2169 0008 4370     	 strb r3,[r0,#1]
+ 2170 000a B1F8E431 	 ldrh r3,[r1,#484]
+ 2171 000e 8370     	 strb r3,[r0,#2]
+ 2172 0010 1B0A     	 lsrs r3,r3,#8
+ 2173 0012 C370     	 strb r3,[r0,#3]
+ 2174 0014 7047     	 bx lr
+ 2176              	 .section .text.expect_82,"ax",%progbits
+ 2177              	 .align 1
+ 2178              	 .thumb
+ 2179              	 .thumb_func
+ 2181              	expect_82:
+ 2182              	 
+ 2183              	 
+ 2184              	 
+ 2185 0000 B1F8E631 	 ldrh r3,[r1,#486]
+ 2186 0004 0370     	 strb r3,[r0]
+ 2187 0006 1B0A     	 lsrs r3,r3,#8
+ 2188 0008 4370     	 strb r3,[r0,#1]
+ 2189 000a B1F8E831 	 ldrh r3,[r1,#488]
+ 2190 000e 8370     	 strb r3,[r0,#2]
+ 2191 0010 1B0A     	 lsrs r3,r3,#8
+ 2192 0012 C370     	 strb r3,[r0,#3]
+ 2193 0014 7047     	 bx lr
+ 2195              	 .section .text.expect_83,"ax",%progbits
+ 2196              	 .align 1
+ 2197              	 .thumb
+ 2198              	 .thumb_func
+ 2200              	expect_83:
+ 2201              	 
+ 2202              	 
+ 2203              	 
+ 2204 0000 B1F8EA31 	 ldrh r3,[r1,#490]
+ 2205 0004 0370     	 strb r3,[r0]
+ 2206 0006 1B0A     	 lsrs r3,r3,#8
+ 2207 0008 4370     	 strb r3,[r0,#1]
+ 2208 000a B1F8EC31 	 ldrh r3,[r1,#492]
+ 2209 000e 8370     	 strb r3,[r0,#2]
+ 2210 0010 1B0A     	 lsrs r3,r3,#8
+ 2211 0012 C370     	 strb r3,[r0,#3]
+ 2212 0014 7047     	 bx lr
+ 2214              	 .section .text.expect_84,"ax",%progbits
+ 2215              	 .align 1
+ 2216              	 .thumb
+ 2217              	 .thumb_func
+ 2219              	expect_84:
+ 2220              	 
+ 2221              	 
+ 2222              	 
+ 2223 0000 B1F8EE31 	 ldrh r3,[r1,#494]
+ 2224 0004 0370     	 strb r3,[r0]
+ 2225 0006 1B0A     	 lsrs r3,r3,#8
+ 2226 0008 4370     	 strb r3,[r0,#1]
+ 2227 000a B1F8F031 	 ldrh r3,[r1,#496]
+ 2228 000e 8370     	 strb r3,[r0,#2]
+ 2229 0010 1B0A     	 lsrs r3,r3,#8
+ 2230 0012 C370     	 strb r3,[r0,#3]
+ 2231 0014 B1F8F231 	 ldrh r3,[r1,#498]
+ 2232 0018 0371     	 strb r3,[r0,#4]
+ 2233 001a 1B0A     	 lsrs r3,r3,#8
+ 2234 001c 4371     	 strb r3,[r0,#5]
+ 2235 001e 7047     	 bx lr
+ 2237              	 .section .text.expect_85,"ax",%progbits
+ 2238              	 .align 1
+ 2239              	 .thumb
+ 2240              	 .thumb_func
+ 2242              	expect_85:
+ 2243              	 
+ 2244              	 
+ 2245              	 
+ 2246 0000 B1F8F431 	 ldrh r3,[r1,#500]
+ 2247 0004 0370     	 strb r3,[r0]
+ 2248 0006 1B0A     	 lsrs r3,r3,#8
+ 2249 0008 4370     	 strb r3,[r0,#1]
+ 2250 000a B1F8F631 	 ldrh r3,[r1,#502]
+ 2251 000e 8370     	 strb r3,[r0,#2]
+ 2252 0010 1B0A     	 lsrs r3,r3,#8
+ 2253 0012 C370     	 strb r3,[r0,#3]
+ 2254 0014 B1F8F831 	 ldrh r3,[r1,#504]
+ 2255 0018 0371     	 strb r3,[r0,#4]
+ 2256 001a 1B0A     	 lsrs r3,r3,#8
+ 2257 001c 4371     	 strb r3,[r0,#5]
+ 2258 001e 7047     	 bx lr
+ 2260              	 .section .text.expect_86,"ax",%progbits
+ 2261              	 .align 1
+ 2262              	 .thumb
+ 2263              	 .thumb_func
+ 2265              	expect_86:
+ 2266              	 
+ 2267              	 
+ 2268              	 
+ 2269 0000 B1F8FA31 	 ldrh r3,[r1,#506]
+ 2270 0004 0370     	 strb r3,[r0]
+ 2271 0006 1B0A     	 lsrs r3,r3,#8
+ 2272 0008 4370     	 strb r3,[r0,#1]
+ 2273 000a B1F8FC31 	 ldrh r3,[r1,#508]
+ 2274 000e 8370     	 strb r3,[r0,#2]
+ 2275 0010 1B0A     	 lsrs r3,r3,#8
+ 2276 0012 C370     	 strb r3,[r0,#3]
+ 2277 0014 7047     	 bx lr
+ 2279              	 .section .text.expect_87,"ax",%progbits
+ 2280              	 .align 1
+ 2281              	 .thumb
+ 2282              	 .thumb_func
+ 2284              	expect_87:
+ 2285              	 
+ 2286              	 
+ 2287              	 
+ 2288 0000 B1F8FE31 	 ldrh r3,[r1,#510]
+ 2289 0004 0370     	 strb r3,[r0]
+ 2290 0006 1B0A     	 lsrs r3,r3,#8
+ 2291 0008 4370     	 strb r3,[r0,#1]
+ 2292 000a B1F80032 	 ldrh r3,[r1,#512]
+ 2293 000e 8370     	 strb r3,[r0,#2]
+ 2294 0010 1B0A     	 lsrs r3,r3,#8
+ 2295 0012 C370     	 strb r3,[r0,#3]
+ 2296 0014 7047     	 bx lr
+ 2298              	 .section .text.expect_88,"ax",%progbits
+ 2299              	 .align 1
+ 2300              	 .thumb
+ 2301              	 .thumb_func
+ 2303              	expect_88:
+ 2304              	 
+ 2305              	 
+ 2306              	 
+ 2307 0000 B1F80232 	 ldrh r3,[r1,#514]
+ 2308 0004 0370     	 strb r3,[r0]
+ 2309 0006 1B0A     	 lsrs r3,r3,#8
+ 2310 0008 4370     	 strb r3,[r0,#1]
+ 2311 000a B1F80432 	 ldrh r3,[r1,#516]
+ 2312 000e 8370     	 strb r3,[r0,#2]
+ 2313 0010 1B0A     	 lsrs r3,r3,#8
+ 2314 0012 C370     	 strb r3,[r0,#3]
+ 2315 0014 7047     	 bx lr
+ 2317              	 .section .text.expect_89,"ax",%progbits
+ 2318              	 .align 1
+ 2319              	 .thumb
+ 2320              	 .thumb_func
+ 2322              	expect_89:
+ 2323              	 
+ 2324              	 
+ 2325              	 
+ 2326 0000 B1F80632 	 ldrh r3,[r1,#518]
+ 2327 0004 0370     	 strb r3,[r0]
+ 2328 0006 1B0A     	 lsrs r3,r3,#8
+ 2329 0008 4370     	 strb r3,[r0,#1]
+ 2330 000a B1F80832 	 ldrh r3,[r1,#520]
+ 2331 000e 8370     	 strb r3,[r0,#2]
+ 2332 0010 1B0A     	 lsrs r3,r3,#8
+ 2333 0012 C370     	 strb r3,[r0,#3]
+ 2334 0014 7047     	 bx lr
+ 2336              	 .section .text.expect_8A,"ax",%progbits
+ 2337              	 .align 1
+ 2338              	 .thumb
+ 2339              	 .thumb_func
+ 2341              	expect_8A:
+ 2342              	 
+ 2343              	 
+ 2344              	 
+ 2345 0000 B1F80A32 	 ldrh r3,[r1,#522]
+ 2346 0004 0370     	 strb r3,[r0]
+ 2347 0006 1B0A     	 lsrs r3,r3,#8
+ 2348 0008 4370     	 strb r3,[r0,#1]
+ 2349 000a B1F80C32 	 ldrh r3,[r1,#524]
+ 2350 000e 8370     	 strb r3,[r0,#2]
+ 2351 0010 1B0A     	 lsrs r3,r3,#8
+ 2352 0012 C370     	 strb r3,[r0,#3]
+ 2353 0014 7047     	 bx lr
+ 2355              	 .section .text.expect_90,"ax",%progbits
+ 2356              	 .align 1
+ 2357              	 .thumb
+ 2358              	 .thumb_func
+ 2360              	expect_90:
+ 2361              	 
+ 2362              	 
+ 2363              	 
+ 2364 0000 B1F80E32 	 ldrh r3,[r1,#526]
+ 2365 0004 0370     	 strb r3,[r0]
+ 2366 0006 1B0A     	 lsrs r3,r3,#8
+ 2367 0008 4370     	 strb r3,[r0,#1]
+ 2368 000a B1F81032 	 ldrh r3,[r1,#528]
+ 2369 000e 8370     	 strb r3,[r0,#2]
+ 2370 0010 1B0A     	 lsrs r3,r3,#8
+ 2371 0012 C370     	 strb r3,[r0,#3]
+ 2372 0014 B1F81232 	 ldrh r3,[r1,#530]
+ 2373 0018 0371     	 strb r3,[r0,#4]
+ 2374 001a 1B0A     	 lsrs r3,r3,#8
+ 2375 001c 4371     	 strb r3,[r0,#5]
+ 2376 001e 7047     	 bx lr
+ 2378              	 .section .text.expect_91,"ax",%progbits
+ 2379              	 .align 1
+ 2380              	 .thumb
+ 2381              	 .thumb_func
+ 2383              	expect_91:
+ 2384              	 
+ 2385              	 
+ 2386              	 
+ 2387 0000 B1F81432 	 ldrh r3,[r1,#532]
+ 2388 0004 0370     	 strb r3,[r0]
+ 2389 0006 1B0A     	 lsrs r3,r3,#8
+ 2390 0008 4370     	 strb r3,[r0,#1]
+ 2391 000a 7047     	 bx lr
+ 2393              	 .section .text.expect_A0,"ax",%progbits
+ 2394              	 .align 1
+ 2395              	 .thumb
+ 2396              	 .thumb_func
+ 2398              	expect_A0:
+ 2399              	 
+ 2400              	 
+ 2401              	 
+ 2402 0000 D1F81832 	 ldr r3,[r1,#536]
+ 2403 0004 0370     	 strb r3,[r0]
+ 2404 0006 D1F81832 	 ldr r3,[r1,#536]
+ 2405 000a 1B0A     	 lsrs r3,r3,#8
+ 2406 000c 4370     	 strb r3,[r0,#1]
+ 2407 000e B1F81A32 	 ldrh r3,[r1,#538]
+ 2408 0012 8370     	 strb r3,[r0,#2]
+ 2409 0014 91F81B32 	 ldrb r3,[r1,#539]
+ 2410 0018 C370     	 strb r3,[r0,#3]
+ 2411 001a 7047     	 bx lr
+ 2413              	 .section .text.expect_A8,"ax",%progbits
+ 2414              	 .align 1
+ 2415              	 .thumb
+ 2416              	 .thumb_func
+ 2418              	expect_A8:
+ 2419              	 
+ 2420              	 
+ 2421              	 
+ 2422 0000 91F81C32 	 ldrb r3,[r1,#540]
+ 2423 0004 0370     	 strb r3,[r0]
+ 2424 0006 7047     	 bx lr
+ 2426              	 .section .text.expect_A9,"ax",%progbits
+ 2427              	 .align 1
+ 2428              	 .thumb
+ 2429              	 .thumb_func
+ 2431              	expect_A9:
+ 2432              	 
+ 2433              	 
+ 2434              	 
+ 2435 0000 91F81D32 	 ldrb r3,[r1,#541]
+ 2436 0004 0370     	 strb r3,[r0]
+ 2437 0006 91F81E32 	 ldrb r3,[r1,#542]
+ 2438 000a 4370     	 strb r3,[r0,#1]
+ 2439 000c 91F81F32 	 ldrb r3,[r1,#543]
+ 2440 0010 8370     	 strb r3,[r0,#2]
+ 2441 0012 7047     	 bx lr
+ 2443              	 .section .text.expect_AA,"ax",%progbits
+ 2444              	 .align 1
+ 2445              	 .thumb
+ 2446              	 .thumb_func
+ 2448              	expect_AA:
+ 2449              	 
+ 2450              	 
+ 2451              	 
+ 2452 0000 91F82032 	 ldrb r3,[r1,#544]
+ 2453 0004 0370     	 strb r3,[r0]
+ 2454 0006 91F82132 	 ldrb r3,[r1,#545]
+ 2455 000a 4370     	 strb r3,[r0,#1]
+ 2456 000c 91F82232 	 ldrb r3,[r1,#546]
+ 2457 0010 8370     	 strb r3,[r0,#2]
+ 2458 0012 91F82332 	 ldrb r3,[r1,#547]
+ 2459 0016 C370     	 strb r3,[r0,#3]
+ 2460 0018 7047     	 bx lr
+ 2462              	 .section .text.expect_B0,"ax",%progbits
+ 2463              	 .align 1
+ 2464              	 .thumb
+ 2465              	 .thumb_func
+ 2467              	expect_B0:
+ 2468              	 
+ 2469              	 
+ 2470              	 
+ 2471 0000 B1F82432 	 ldrh r3,[r1,#548]
+ 2472 0004 0370     	 strb r3,[r0]
+ 2473 0006 1B0A     	 lsrs r3,r3,#8
+ 2474 0008 4370     	 strb r3,[r0,#1]
+ 2475 000a B1F82632 	 ldrh r3,[r1,#550]
+ 2476 000e 8370     	 strb r3,[r0,#2]
+ 2477 0010 1B0A     	 lsrs r3,r3,#8
+ 2478 0012 C370     	 strb r3,[r0,#3]
+ 2479 0014 B1F82832 	 ldrh r3,[r1,#552]
+ 2480 0018 0371     	 strb r3,[r0,#4]
+ 2481 001a 1B0A     	 lsrs r3,r3,#8
+ 2482 001c 4371     	 strb r3,[r0,#5]
+ 2483 001e 7047     	 bx lr
+ 2485              	 .section .text.expect_B1,"ax",%progbits
+ 2486              	 .align 1
+ 2487              	 .thumb
+ 2488              	 .thumb_func
+ 2490              	expect_B1:
+ 2491              	 
+ 2492              	 
+ 2493              	 
+ 2494 0000 B1F82A32 	 ldrh r3,[r1,#554]
+ 2495 0004 0370     	 strb r3,[r0]
+ 2496 0006 1B0A     	 lsrs r3,r3,#8
+ 2497 0008 4370     	 strb r3,[r0,#1]
+ 2498 000a B1F82C32 	 ldrh r3,[r1,#556]
+ 2499 000e 8370     	 strb r3,[r0,#2]
+ 2500 0010 1B0A     	 lsrs r3,r3,#8
+ 2501 0012 C370     	 strb r3,[r0,#3]
+ 2502 0014 B1F82E32 	 ldrh r3,[r1,#558]
+ 2503 0018 0371     	 strb r3,[r0,#4]
+ 2504 001a 1B0A     	 lsrs r3,r3,#8
+ 2505 001c 4371     	 strb r3,[r0,#5]
+ 2506 001e 7047     	 bx lr
+ 2508              	 .section .text.expect_B2,"ax",%progbits
+ 2509              	 .align 1
+ 2510              	 .thumb
+ 2511              	 .thumb_func
+ 2513              	expect_B2:
+ 2514              	 
+ 2515              	 
+ 2516              	 
+ 2517 0000 B1F83032 	 ldrh r3,[r1,#560]
+ 2518 0004 0370     	 strb r3,[r0]
+ 2519 0006 1B0A     	 lsrs r3,r3,#8
+ 2520 0008 4370     	 strb r3,[r0,#1]
+ 2521 000a B1F83232 	 ldrh r3,[r1,#562]
+ 2522 000e 8370     	 strb r3,[r0,#2]
+ 2523 0010 1B0A     	 lsrs r3,r3,#8
+ 2524 0012 C370     	 strb r3,[r0,#3]
+ 2525 0014 B1F83432 	 ldrh r3,[r1,#564]
+ 2526 0018 0371     	 strb r3,[r0,#4]
+ 2527 001a 1B0A     	 lsrs r3,r3,#8
+ 2528 001c 4371     	 strb r3,[r0,#5]
+ 2529 001e 7047     	 bx lr
+ 2531              	 .section .text.expect_B3,"ax",%progbits
+ 2532              	 .align 1
+ 2533              	 .thumb
+ 2534              	 .thumb_func
+ 2536              	expect_B3:
+ 2537              	 
+ 2538              	 
+ 2539              	 
+ 2540 0000 B1F83632 	 ldrh r3,[r1,#566]
+ 2541 0004 0370     	 strb r3,[r0]
+ 2542 0006 1B0A     	 lsrs r3,r3,#8
+ 2543 0008 4370     	 strb r3,[r0,#1]
+ 2544 000a B1F83832 	 ldrh r3,[r1,#568]
+ 2545 000e 8370     	 strb r3,[r0,#2]
+ 2546 0010 1B0A     	 lsrs r3,r3,#8
+ 2547 0012 C370     	 strb r3,[r0,#3]
+ 2548 0014 B1F83A32 	 ldrh r3,[r1,#570]
+ 2549 0018 0371     	 strb r3,[r0,#4]
+ 2550 001a 1B0A     	 lsrs r3,r3,#8
+ 2551 001c 4371     	 strb r3,[r0,#5]
+ 2552 001e 7047     	 bx lr
+ 2554              	 .section .text.expect_B4,"ax",%progbits
+ 2555              	 .align 1
+ 2556              	 .thumb
+ 2557              	 .thumb_func
+ 2559              	expect_B4:
+ 2560              	 
+ 2561              	 
+ 2562              	 
+ 2563 0000 B1F83C32 	 ldrh r3,[r1,#572]
+ 2564 0004 0370     	 strb r3,[r0]
+ 2565 0006 1B0A     	 lsrs r3,r3,#8
+ 2566 0008 4370     	 strb r3,[r0,#1]
+ 2567 000a B1F83E32 	 ldrh r3,[r1,#574]
+ 2568 000e 8370     	 strb r3,[r0,#2]
+ 2569 0010 1B0A     	 lsrs r3,r3,#8
+ 2570 0012 C370     	 strb r3,[r0,#3]
+ 2571 0014 B1F84032 	 ldrh r3,[r1,#576]
+ 2572 0018 0371     	 strb r3,[r0,#4]
+ 2573 001a 1B0A     	 lsrs r3,r3,#8
+ 2574 001c 4371     	 strb r3,[r0,#5]
+ 2575 001e 7047     	 bx lr
+ 2577              	 .section .text.expect_B5,"ax",%progbits
+ 2578              	 .align 1
+ 2579              	 .thumb
+ 2580              	 .thumb_func
+ 2582              	expect_B5:
+ 2583              	 
+ 2584              	 
+ 2585              	 
+ 2586 0000 B1F84232 	 ldrh r3,[r1,#578]
+ 2587 0004 0370     	 strb r3,[r0]
+ 2588 0006 1B0A     	 lsrs r3,r3,#8
+ 2589 0008 4370     	 strb r3,[r0,#1]
+ 2590 000a B1F84432 	 ldrh r3,[r1,#580]
+ 2591 000e 8370     	 strb r3,[r0,#2]
+ 2592 0010 1B0A     	 lsrs r3,r3,#8
+ 2593 0012 C370     	 strb r3,[r0,#3]
+ 2594 0014 7047     	 bx lr
+ 2596              	 .section .text.expect_B6,"ax",%progbits
+ 2597              	 .align 1
+ 2598              	 .thumb
+ 2599              	 .thumb_func
+ 2601              	expect_B6:
+ 2602              	 
+ 2603              	 
+ 2604              	 
+ 2605 0000 B1F84632 	 ldrh r3,[r1,#582]
+ 2606 0004 0370     	 strb r3,[r0]
+ 2607 0006 1B0A     	 lsrs r3,r3,#8
+ 2608 0008 4370     	 strb r3,[r0,#1]
+ 2609 000a B1F84832 	 ldrh r3,[r1,#584]
+ 2610 000e 8370     	 strb r3,[r0,#2]
+ 2611 0010 1B0A     	 lsrs r3,r3,#8
+ 2612 0012 C370     	 strb r3,[r0,#3]
+ 2613 0014 7047     	 bx lr
+ 2615              	 .section .text.expect_B7,"ax",%progbits
+ 2616              	 .align 1
+ 2617              	 .thumb
+ 2618              	 .thumb_func
+ 2620              	expect_B7:
+ 2621              	 
+ 2622              	 
+ 2623              	 
+ 2624 0000 B1F84A32 	 ldrh r3,[r1,#586]
+ 2625 0004 0370     	 strb r3,[r0]
+ 2626 0006 1B0A     	 lsrs r3,r3,#8
+ 2627 0008 4370     	 strb r3,[r0,#1]
+ 2628 000a B1F84C32 	 ldrh r3,[r1,#588]
+ 2629 000e 8370     	 strb r3,[r0,#2]
+ 2630 0010 1B0A     	 lsrs r3,r3,#8
+ 2631 0012 C370     	 strb r3,[r0,#3]
+ 2632 0014 7047     	 bx lr
+ 2634              	 .section .text.expect_B8,"ax",%progbits
+ 2635              	 .align 1
+ 2636              	 .thumb
+ 2637              	 .thumb_func
+ 2639              	expect_B8:
+ 2640              	 
+ 2641              	 
+ 2642              	 
+ 2643 0000 B1F84E32 	 ldrh r3,[r1,#590]
+ 2644 0004 0370     	 strb r3,[r0]
+ 2645 0006 1B0A     	 lsrs r3,r3,#8
+ 2646 0008 4370     	 strb r3,[r0,#1]
+ 2647 000a B1F85032 	 ldrh r3,[r1,#592]
+ 2648 000e 8370     	 strb r3,[r0,#2]
+ 2649 0010 1B0A     	 lsrs r3,r3,#8
+ 2650 0012 C370     	 strb r3,[r0,#3]
+ 2651 0014 7047     	 bx lr
+ 2653              	 .section .text.expect_B9,"ax",%progbits
+ 2654              	 .align 1
+ 2655              	 .thumb
+ 2656              	 .thumb_func
+ 2658              	expect_B9:
+ 2659              	 
+ 2660              	 
+ 2661              	 
+ 2662 0000 B1F85232 	 ldrh r3,[r1,#594]
+ 2663 0004 0370     	 strb r3,[r0]
+ 2664 0006 1B0A     	 lsrs r3,r3,#8
+ 2665 0008 4370     	 strb r3,[r0,#1]
+ 2666 000a B1F85432 	 ldrh r3,[r1,#596]
+ 2667 000e 8370     	 strb r3,[r0,#2]
+ 2668 0010 1B0A     	 lsrs r3,r3,#8
+ 2669 0012 C370     	 strb r3,[r0,#3]
+ 2670 0014 7047     	 bx lr
+ 2672              	 .section .text.expect_BA,"ax",%progbits
+ 2673              	 .align 1
+ 2674              	 .thumb
+ 2675              	 .thumb_func
+ 2677              	expect_BA:
+ 2678              	 
+ 2679              	 
+ 2680              	 
+ 2681 0000 B1F85632 	 ldrh r3,[r1,#598]
+ 2682 0004 0370     	 strb r3,[r0]
+ 2683 0006 1B0A     	 lsrs r3,r3,#8
+ 2684 0008 4370     	 strb r3,[r0,#1]
+ 2685 000a B1F85832 	 ldrh r3,[r1,#600]
+ 2686 000e 8370     	 strb r3,[r0,#2]
+ 2687 0010 1B0A     	 lsrs r3,r3,#8
+ 2688 0012 C370     	 strb r3,[r0,#3]
+ 2689 0014 B1F85A32 	 ldrh r3,[r1,#602]
+ 2690 0018 0371     	 strb r3,[r0,#4]
+ 2691 001a 1B0A     	 lsrs r3,r3,#8
+ 2692 001c 4371     	 strb r3,[r0,#5]
+ 2693 001e 7047     	 bx lr
+ 2695              	 .section .text.expect_BB,"ax",%progbits
+ 2696              	 .align 1
+ 2697              	 .thumb
+ 2698              	 .thumb_func
+ 2700              	expect_BB:
+ 2701              	 
+ 2702              	 
+ 2703              	 
+ 2704 0000 B1F85C32 	 ldrh r3,[r1,#604]
+ 2705 0004 0370     	 strb r3,[r0]
+ 2706 0006 1B0A     	 lsrs r3,r3,#8
+ 2707 0008 4370     	 strb r3,[r0,#1]
+ 2708 000a B1F85E32 	 ldrh r3,[r1,#606]
+ 2709 000e 8370     	 strb r3,[r0,#2]
+ 2710 0010 1B0A     	 lsrs r3,r3,#8
+ 2711 0012 C370     	 strb r3,[r0,#3]
+ 2712 0014 B1F86032 	 ldrh r3,[r1,#608]
+ 2713 0018 0371     	 strb r3,[r0,#4]
+ 2714 001a 1B0A     	 lsrs r3,r3,#8
+ 2715 001c 4371     	 strb r3,[r0,#5]
+ 2716 001e 7047     	 bx lr
+ 2718              	 .section .text.expect_BC,"ax",%progbits
+ 2719              	 .align 1
+ 2720              	 .thumb
+ 2721              	 .thumb_func
+ 2723              	expect_BC:
+ 2724              	 
+ 2725              	 
+ 2726              	 
+ 2727 0000 B1F86232 	 ldrh r3,[r1,#610]
+ 2728 0004 0370     	 strb r3,[r0]
+ 2729 0006 1B0A     	 lsrs r3,r3,#8
+ 2730 0008 4370     	 strb r3,[r0,#1]
+ 2731 000a B1F86432 	 ldrh r3,[r1,#612]
+ 2732 000e 8370     	 strb r3,[r0,#2]
+ 2733 0010 1B0A     	 lsrs r3,r3,#8
+ 2734 0012 C370     	 strb r3,[r0,#3]
+ 2735 0014 7047     	 bx lr
+ 2737              	 .section .text.expect_BD,"ax",%progbits
+ 2738              	 .align 1
+ 2739              	 .thumb
+ 2740              	 .thumb_func
+ 2742              	expect_BD:
+ 2743              	 
+ 2744              	 
+ 2745              	 
+ 2746 0000 B1F86632 	 ldrh r3,[r1,#614]
+ 2747 0004 0370     	 strb r3,[r0]
+ 2748 0006 1B0A     	 lsrs r3,r3,#8
+ 2749 0008 4370     	 strb r3,[r0,#1]
+ 2750 000a B1F86832 	 ldrh r3,[r1,#616]
+ 2751 000e 8370     	 strb r3,[r0,#2]
+ 2752 0010 1B0A     	 lsrs r3,r3,#8
+ 2753 0012 C370     	 strb r3,[r0,#3]
+ 2754 0014 7047     	 bx lr
+ 2756              	 .section .text.expect_BE,"ax",%progbits
+ 2757              	 .align 1
+ 2758              	 .thumb
+ 2759              	 .thumb_func
+ 2761              	expect_BE:
+ 2762              	 
+ 2763              	 
+ 2764              	 
+ 2765 0000 B1F86A32 	 ldrh r3,[r1,#618]
+ 2766 0004 0370     	 strb r3,[r0]
+ 2767 0006 1B0A     	 lsrs r3,r3,#8
+ 2768 0008 4370     	 strb r3,[r0,#1]
+ 2769 000a B1F86C32 	 ldrh r3,[r1,#620]
+ 2770 000e 8370     	 strb r3,[r0,#2]
+ 2771 0010 1B0A     	 lsrs r3,r3,#8
+ 2772 0012 C370     	 strb r3,[r0,#3]
+ 2773 0014 7047     	 bx lr
+ 2775              	 .section .text.expect_BF,"ax",%progbits
+ 2776              	 .align 1
+ 2777              	 .thumb
+ 2778              	 .thumb_func
+ 2780              	expect_BF:
+ 2781              	 
+ 2782              	 
+ 2783              	 
+ 2784 0000 B1F86E32 	 ldrh r3,[r1,#622]
+ 2785 0004 0370     	 strb r3,[r0]
+ 2786 0006 1B0A     	 lsrs r3,r3,#8
+ 2787 0008 4370     	 strb r3,[r0,#1]
+ 2788 000a B1F87032 	 ldrh r3,[r1,#624]
+ 2789 000e 8370     	 strb r3,[r0,#2]
+ 2790 0010 1B0A     	 lsrs r3,r3,#8
+ 2791 0012 C370     	 strb r3,[r0,#3]
+ 2792 0014 7047     	 bx lr
+ 2794              	 .section .text.expect_C0,"ax",%progbits
+ 2795              	 .align 1
+ 2796              	 .thumb
+ 2797              	 .thumb_func
+ 2799              	expect_C0:
+ 2800              	 
+ 2801              	 
+ 2802              	 
+ 2803 0000 B1F87232 	 ldrh r3,[r1,#626]
+ 2804 0004 0370     	 strb r3,[r0]
+ 2805 0006 1B0A     	 lsrs r3,r3,#8
+ 2806 0008 4370     	 strb r3,[r0,#1]
+ 2807 000a B1F87432 	 ldrh r3,[r1,#628]
+ 2808 000e 8370     	 strb r3,[r0,#2]
+ 2809 0010 1B0A     	 lsrs r3,r3,#8
+ 2810 0012 C370     	 strb r3,[r0,#3]
+ 2811 0014 7047     	 bx lr
+ 2813              	 .section .text.expect_C1,"ax",%progbits
+ 2814              	 .align 1
+ 2815              	 .thumb
+ 2816              	 .thumb_func
+ 2818              	expect_C1:
+ 2819              	 
+ 2820              	 
+ 2821              	 
+ 2822 0000 B1F87632 	 ldrh r3,[r1,#630]
+ 2823 0004 0370     	 strb r3,[r0]
+ 2824 0006 1B0A     	 lsrs r3,r3,#8
+ 2825 0008 4370     	 strb r3,[r0,#1]
+ 2826 000a B1F87832 	 ldrh r3,[r1,#632]
+ 2827 000e 8370     	 strb r3,[r0,#2]
+ 2828 0010 1B0A     	 lsrs r3,r3,#8
+ 2829 0012 C370     	 strb r3,[r0,#3]
+ 2830 0014 7047     	 bx lr
+ 2832              	 .section .text.expect_C2,"ax",%progbits
+ 2833              	 .align 1
+ 2834              	 .thumb
+ 2835              	 .thumb_func
+ 2837              	expect_C2:
+ 2838              	 
+ 2839              	 
+ 2840              	 
+ 2841 0000 B1F87A32 	 ldrh r3,[r1,#634]
+ 2842 0004 0370     	 strb r3,[r0]
+ 2843 0006 1B0A     	 lsrs r3,r3,#8
+ 2844 0008 4370     	 strb r3,[r0,#1]
+ 2845 000a B1F87C32 	 ldrh r3,[r1,#636]
+ 2846 000e 8370     	 strb r3,[r0,#2]
+ 2847 0010 1B0A     	 lsrs r3,r3,#8
+ 2848 0012 C370     	 strb r3,[r0,#3]
+ 2849 0014 7047     	 bx lr
+ 2851              	 .section .text.expect_C3,"ax",%progbits
+ 2852              	 .align 1
+ 2853              	 .thumb
+ 2854              	 .thumb_func
+ 2856              	expect_C3:
+ 2857              	 
+ 2858              	 
+ 2859              	 
+ 2860 0000 B1F87E32 	 ldrh r3,[r1,#638]
+ 2861 0004 0370     	 strb r3,[r0]
+ 2862 0006 1B0A     	 lsrs r3,r3,#8
+ 2863 0008 4370     	 strb r3,[r0,#1]
+ 2864 000a B1F88032 	 ldrh r3,[r1,#640]
+ 2865 000e 8370     	 strb r3,[r0,#2]
+ 2866 0010 1B0A     	 lsrs r3,r3,#8
+ 2867 0012 C370     	 strb r3,[r0,#3]
+ 2868 0014 7047     	 bx lr
+ 2870              	 .section .text.expect_C4,"ax",%progbits
+ 2871              	 .align 1
+ 2872              	 .thumb
+ 2873              	 .thumb_func
+ 2875              	expect_C4:
+ 2876              	 
+ 2877              	 
+ 2878              	 
+ 2879 0000 B1F88232 	 ldrh r3,[r1,#642]
+ 2880 0004 0370     	 strb r3,[r0]
+ 2881 0006 1B0A     	 lsrs r3,r3,#8
+ 2882 0008 4370     	 strb r3,[r0,#1]
+ 2883 000a B1F88432 	 ldrh r3,[r1,#644]
+ 2884 000e 8370     	 strb r3,[r0,#2]
+ 2885 0010 1B0A     	 lsrs r3,r3,#8
+ 2886 0012 C370     	 strb r3,[r0,#3]
+ 2887 0014 B1F88632 	 ldrh r3,[r1,#646]
+ 2888 0018 0371     	 strb r3,[r0,#4]
+ 2889 001a 1B0A     	 lsrs r3,r3,#8
+ 2890 001c 4371     	 strb r3,[r0,#5]
+ 2891 001e 7047     	 bx lr
+ 2893              	 .section .text.expect_C5,"ax",%progbits
+ 2894              	 .align 1
+ 2895              	 .thumb
+ 2896              	 .thumb_func
+ 2898              	expect_C5:
+ 2899              	 
+ 2900              	 
+ 2901              	 
+ 2902 0000 B1F88832 	 ldrh r3,[r1,#648]
+ 2903 0004 0370     	 strb r3,[r0]
+ 2904 0006 1B0A     	 lsrs r3,r3,#8
+ 2905 0008 4370     	 strb r3,[r0,#1]
+ 2906 000a B1F88A32 	 ldrh r3,[r1,#650]
+ 2907 000e 8370     	 strb r3,[r0,#2]
+ 2908 0010 1B0A     	 lsrs r3,r3,#8
+ 2909 0012 C370     	 strb r3,[r0,#3]
+ 2910 0014 B1F88C32 	 ldrh r3,[r1,#652]
+ 2911 0018 0371     	 strb r3,[r0,#4]
+ 2912 001a 1B0A     	 lsrs r3,r3,#8
+ 2913 001c 4371     	 strb r3,[r0,#5]
+ 2914 001e 7047     	 bx lr
+ 2916              	 .section .text.expect_C6,"ax",%progbits
+ 2917              	 .align 1
+ 2918              	 .thumb
+ 2919              	 .thumb_func
+ 2921              	expect_C6:
+ 2922              	 
+ 2923              	 
+ 2924              	 
+ 2925 0000 B1F88E32 	 ldrh r3,[r1,#654]
+ 2926 0004 0370     	 strb r3,[r0]
+ 2927 0006 1B0A     	 lsrs r3,r3,#8
+ 2928 0008 4370     	 strb r3,[r0,#1]
+ 2929 000a B1F89032 	 ldrh r3,[r1,#656]
+ 2930 000e 8370     	 strb r3,[r0,#2]
+ 2931 0010 1B0A     	 lsrs r3,r3,#8
+ 2932 0012 C370     	 strb r3,[r0,#3]
+ 2933 0014 7047     	 bx lr
+ 2935              	 .section .text.expect_C7,"ax",%progbits
+ 2936              	 .align 1
+ 2937              	 .thumb
+ 2938              	 .thumb_func
+ 2940              	expect_C7:
+ 2941              	 
+ 2942              	 
+ 2943              	 
+ 2944 0000 B1F89232 	 ldrh r3,[r1,#658]
+ 2945 0004 0370     	 strb r3,[r0]
+ 2946 0006 1B0A     	 lsrs r3,r3,#8
+ 2947 0008 4370     	 strb r3,[r0,#1]
+ 2948 000a B1F89432 	 ldrh r3,[r1,#660]
+ 2949 000e 8370     	 strb r3,[r0,#2]
+ 2950 0010 1B0A     	 lsrs r3,r3,#8
+ 2951 0012 C370     	 strb r3,[r0,#3]
+ 2952 0014 7047     	 bx lr
+ 2954              	 .section .text.expect_C8,"ax",%progbits
+ 2955              	 .align 1
+ 2956              	 .thumb
+ 2957              	 .thumb_func
+ 2959              	expect_C8:
+ 2960              	 
+ 2961              	 
+ 2962              	 
+ 2963 0000 B1F89632 	 ldrh r3,[r1,#662]
+ 2964 0004 0370     	 strb r3,[r0]
+ 2965 0006 1B0A     	 lsrs r3,r3,#8
+ 2966 0008 4370     	 strb r3,[r0,#1]
+ 2967 000a B1F89832 	 ldrh r3,[r1,#664]
+ 2968 000e 8370     	 strb r3,[r0,#2]
+ 2969 0010 1B0A     	 lsrs r3,r3,#8
+ 2970 0012 C370     	 strb r3,[r0,#3]
+ 2971 0014 7047     	 bx lr
+ 2973              	 .section .text.expect_C9,"ax",%progbits
+ 2974              	 .align 1
+ 2975              	 .thumb
+ 2976              	 .thumb_func
+ 2978              	expect_C9:
+ 2979              	 
+ 2980              	 
+ 2981              	 
+ 2982 0000 B1F89A32 	 ldrh r3,[r1,#666]
+ 2983 0004 0370     	 strb r3,[r0]
+ 2984 0006 1B0A     	 lsrs r3,r3,#8
+ 2985 0008 4370     	 strb r3,[r0,#1]
+ 2986 000a B1F89C32 	 ldrh r3,[r1,#668]
+ 2987 000e 8370     	 strb r3,[r0,#2]
+ 2988 0010 1B0A     	 lsrs r3,r3,#8
+ 2989 0012 C370     	 strb r3,[r0,#3]
+ 2990 0014 7047     	 bx lr
+ 2992              	 .section .text.expect_CA,"ax",%progbits
+ 2993              	 .align 1
+ 2994              	 .thumb
+ 2995              	 .thumb_func
+ 2997              	expect_CA:
+ 2998              	 
+ 2999              	 
+ 3000              	 
+ 3001 0000 B1F89E32 	 ldrh r3,[r1,#670]
+ 3002 0004 0370     	 strb r3,[r0]
+ 3003 0006 1B0A     	 lsrs r3,r3,#8
+ 3004 0008 4370     	 strb r3,[r0,#1]
+ 3005 000a B1F8A032 	 ldrh r3,[r1,#672]
+ 3006 000e 8370     	 strb r3,[r0,#2]
+ 3007 0010 1B0A     	 lsrs r3,r3,#8
+ 3008 0012 C370     	 strb r3,[r0,#3]
+ 3009 0014 7047     	 bx lr
+ 3011              	 .section .text.expect_CB,"ax",%progbits
+ 3012              	 .align 1
+ 3013              	 .thumb
+ 3014              	 .thumb_func
+ 3016              	expect_CB:
+ 3017              	 
+ 3018              	 
+ 3019              	 
+ 3020 0000 B1F8A232 	 ldrh r3,[r1,#674]
+ 3021 0004 0370     	 strb r3,[r0]
+ 3022 0006 1B0A     	 lsrs r3,r3,#8
+ 3023 0008 4370     	 strb r3,[r0,#1]
+ 3024 000a B1F8A432 	 ldrh r3,[r1,#676]
+ 3025 000e 8370     	 strb r3,[r0,#2]
+ 3026 0010 1B0A     	 lsrs r3,r3,#8
+ 3027 0012 C370     	 strb r3,[r0,#3]
+ 3028 0014 B1F8A632 	 ldrh r3,[r1,#678]
+ 3029 0018 0371     	 strb r3,[r0,#4]
+ 3030 001a 1B0A     	 lsrs r3,r3,#8
+ 3031 001c 4371     	 strb r3,[r0,#5]
+ 3032 001e 7047     	 bx lr
+ 3034              	 .section .text.expect_CC,"ax",%progbits
+ 3035              	 .align 1
+ 3036              	 .thumb
+ 3037              	 .thumb_func
+ 3039              	expect_CC:
+ 3040              	 
+ 3041              	 
+ 3042              	 
+ 3043 0000 B1F8A832 	 ldrh r3,[r1,#680]
+ 3044 0004 8370     	 strb r3,[r0,#2]
+ 3045 0006 1B0A     	 lsrs r3,r3,#8
+ 3046 0008 C370     	 strb r3,[r0,#3]
+ 3047 000a B1F8AA32 	 ldrh r3,[r1,#682]
+ 3048 000e 0371     	 strb r3,[r0,#4]
+ 3049 0010 1B0A     	 lsrs r3,r3,#8
+ 3050 0012 4371     	 strb r3,[r0,#5]
+ 3051 0014 7047     	 bx lr
+ 3053              	 .section .text.expect_CD,"ax",%progbits
+ 3054              	 .align 1
+ 3055              	 .thumb
+ 3056              	 .thumb_func
+ 3058              	expect_CD:
+ 3059              	 
+ 3060              	 
+ 3061              	 
+ 3062 0000 B1F8AC32 	 ldrh r3,[r1,#684]
+ 3063 0004 0370     	 strb r3,[r0]
+ 3064 0006 1B0A     	 lsrs r3,r3,#8
+ 3065 0008 4370     	 strb r3,[r0,#1]
+ 3066 000a B1F8AE32 	 ldrh r3,[r1,#686]
+ 3067 000e 8370     	 strb r3,[r0,#2]
+ 3068 0010 1B0A     	 lsrs r3,r3,#8
+ 3069 0012 C370     	 strb r3,[r0,#3]
+ 3070 0014 B1F8B032 	 ldrh r3,[r1,#688]
+ 3071 0018 0371     	 strb r3,[r0,#4]
+ 3072 001a 1B0A     	 lsrs r3,r3,#8
+ 3073 001c 4371     	 strb r3,[r0,#5]
+ 3074 001e 7047     	 bx lr
+ 3076              	 .section .text.expect_CE,"ax",%progbits
+ 3077              	 .align 1
+ 3078              	 .thumb
+ 3079              	 .thumb_func
+ 3081              	expect_CE:
+ 3082              	 
+ 3083              	 
+ 3084              	 
+ 3085 0000 B1F8B232 	 ldrh r3,[r1,#690]
+ 3086 0004 0370     	 strb r3,[r0]
+ 3087 0006 1B0A     	 lsrs r3,r3,#8
+ 3088 0008 4370     	 strb r3,[r0,#1]
+ 3089 000a B1F8B432 	 ldrh r3,[r1,#692]
+ 3090 000e 8370     	 strb r3,[r0,#2]
+ 3091 0010 1B0A     	 lsrs r3,r3,#8
+ 3092 0012 C370     	 strb r3,[r0,#3]
+ 3093 0014 B1F8B632 	 ldrh r3,[r1,#694]
+ 3094 0018 0371     	 strb r3,[r0,#4]
+ 3095 001a 1B0A     	 lsrs r3,r3,#8
+ 3096 001c 4371     	 strb r3,[r0,#5]
+ 3097 001e 7047     	 bx lr
+ 3099              	 .section .text.expect_CF,"ax",%progbits
+ 3100              	 .align 1
+ 3101              	 .thumb
+ 3102              	 .thumb_func
+ 3104              	expect_CF:
+ 3105              	 
+ 3106              	 
+ 3107              	 
+ 3108 0000 B1F8B832 	 ldrh r3,[r1,#696]
+ 3109 0004 0370     	 strb r3,[r0]
+ 3110 0006 1B0A     	 lsrs r3,r3,#8
+ 3111 0008 4370     	 strb r3,[r0,#1]
+ 3112 000a B1F8BA32 	 ldrh r3,[r1,#698]
+ 3113 000e 8370     	 strb r3,[r0,#2]
+ 3114 0010 1B0A     	 lsrs r3,r3,#8
+ 3115 0012 C370     	 strb r3,[r0,#3]
+ 3116 0014 7047     	 bx lr
+ 3118              	 .section .text.expect_D0,"ax",%progbits
+ 3119              	 .align 1
+ 3120              	 .thumb
+ 3121              	 .thumb_func
+ 3123              	expect_D0:
+ 3124              	 
+ 3125              	 
+ 3126              	 
+ 3127 0000 91F8BC32 	 ldrb r3,[r1,#700]
+ 3128 0004 0370     	 strb r3,[r0]
+ 3129 0006 91F8BD32 	 ldrb r3,[r1,#701]
+ 3130 000a 4370     	 strb r3,[r0,#1]
+ 3131 000c 91F8BE32 	 ldrb r3,[r1,#702]
+ 3132 0010 8370     	 strb r3,[r0,#2]
+ 3133 0012 91F8BF32 	 ldrb r3,[r1,#703]
+ 3134 0016 C370     	 strb r3,[r0,#3]
+ 3135 0018 91F8C032 	 ldrb r3,[r1,#704]
+ 3136 001c 0371     	 strb r3,[r0,#4]
+ 3137 001e 91F8C132 	 ldrb r3,[r1,#705]
+ 3138 0022 4371     	 strb r3,[r0,#5]
+ 3139 0024 7047     	 bx lr
+ 3141              	 .section .text.expect_D1,"ax",%progbits
+ 3142              	 .align 1
+ 3143              	 .thumb
+ 3144              	 .thumb_func
+ 3146              	expect_D1:
+ 3147              	 
+ 3148              	 
+ 3149              	 
+ 3150 0000 91F8C232 	 ldrb r3,[r1,#706]
+ 3151 0004 0370     	 strb r3,[r0]
+ 3152 0006 91F8C332 	 ldrb r3,[r1,#707]
+ 3153 000a 4370     	 strb r3,[r0,#1]
+ 3154 000c 91F8C432 	 ldrb r3,[r1,#708]
+ 3155 0010 8370     	 strb r3,[r0,#2]
+ 3156 0012 7047     	 bx lr
+ 3158              	 .section .text.expect_D8,"ax",%progbits
+ 3159              	 .align 1
+ 3160              	 .thumb
+ 3161              	 .thumb_func
+ 3163              	expect_D8:
+ 3164              	 
+ 3165              	 
+ 3166              	 
+ 3167 0000 91F8C532 	 ldrb r3,[r1,#709]
+ 3168 0004 0370     	 strb r3,[r0]
+ 3169 0006 91F8C632 	 ldrb r3,[r1,#710]
+ 3170 000a 4370     	 strb r3,[r0,#1]
+ 3171 000c 91F8C732 	 ldrb r3,[r1,#711]
+ 3172 0010 8370     	 strb r3,[r0,#2]
+ 3173 0012 91F8C832 	 ldrb r3,[r1,#712]
+ 3174 0016 C370     	 strb r3,[r0,#3]
+ 3175 0018 91F8C932 	 ldrb r3,[r1,#713]
+ 3176 001c 0371     	 strb r3,[r0,#4]
+ 3177 001e 91F8CA32 	 ldrb r3,[r1,#714]
+ 3178 0022 4371     	 strb r3,[r0,#5]
+ 3179 0024 7047     	 bx lr
+ 3181              	 .section .text.expect_D9,"ax",%progbits
+ 3182              	 .align 1
+ 3183              	 .thumb
+ 3184              	 .thumb_func
+ 3186              	expect_D9:
+ 3187              	 
+ 3188              	 
+ 3189              	 
+ 3190 0000 91F8CB32 	 ldrb r3,[r1,#715]
+ 3191 0004 0370     	 strb r3,[r0]
+ 3192 0006 91F8CC32 	 ldrb r3,[r1,#716]
+ 3193 000a 4370     	 strb r3,[r0,#1]
+ 3194 000c 91F8CD32 	 ldrb r3,[r1,#717]
+ 3195 0010 8370     	 strb r3,[r0,#2]
+ 3196 0012 7047     	 bx lr
+ 3198              	 .section .text.expect_1F8,"ax",%progbits
+ 3199              	 .align 1
+ 3200              	 .thumb
+ 3201              	 .thumb_func
+ 3203              	expect_1F8:
+ 3204              	 
+ 3205              	 
+ 3206              	 
+ 3207 0000 B1F8CE32 	 ldrh r3,[r1,#718]
+ 3208 0004 0370     	 strb r3,[r0]
+ 3209 0006 1B0A     	 lsrs r3,r3,#8
+ 3210 0008 4370     	 strb r3,[r0,#1]
+ 3211 000a B1F8D032 	 ldrh r3,[r1,#720]
+ 3212 000e 8370     	 strb r3,[r0,#2]
+ 3213 0010 1B0A     	 lsrs r3,r3,#8
+ 3214 0012 C370     	 strb r3,[r0,#3]
+ 3215 0014 7047     	 bx lr
+ 3217              	 .section .text.expect_1FA,"ax",%progbits
+ 3218              	 .align 1
+ 3219              	 .thumb
+ 3220              	 .thumb_func
+ 3222              	expect_1FA:
+ 3223              	 
+ 3224              	 
+ 3225              	 
+ 3226 0000 91F8D232 	 ldrb r3,[r1,#722]
+ 3227 0004 0370     	 strb r3,[r0]
+ 3228 0006 91F8D332 	 ldrb r3,[r1,#723]
+ 3229 000a 4370     	 strb r3,[r0,#1]
+ 3230 000c 91F8D432 	 ldrb r3,[r1,#724]
+ 3231 0010 8370     	 strb r3,[r0,#2]
+ 3232 0012 91F8D532 	 ldrb r3,[r1,#725]
+ 3233 0016 C370     	 strb r3,[r0,#3]
+ 3234 0018 91F8D632 	 ldrb r3,[r1,#726]
+ 3235 001c 0371     	 strb r3,[r0,#4]
+ 3236 001e 7047     	 bx lr
+ 3238              	 .section .text.PMB_LoopbackTest_Run,"ax",%progbits
+ 3239              	 .align 1
+ 3240              	 .global PMB_LoopbackTest_Run
+ 3241              	 .thumb
+ 3242              	 .thumb_func
+ 3244              	PMB_LoopbackTest_Run:
+ 3245              	 
+ 3246              	 
+ 3247 0000 2DE9F04F 	 push {r4,r5,r6,r7,r8,r9,r10,fp,lr}
+ 3248 0004 85B0     	 sub sp,sp,#20
+ 3249 0006 0446     	 mov r4,r0
+ 3250 0008 0191     	 str r1,[sp,#4]
+ 3251 000a FFF7FEFF 	 bl PMB_GetRegs
+ 3252 000e 0746     	 mov r7,r0
+ 3253 0010 FFF7FEFF 	 bl PMB_GetRegs
+ 3254 0014 4FF40073 	 mov r3,#512
+ 3255 0018 0380     	 strh r3,[r0]
+ 3256 001a 4FF44073 	 mov r3,#768
+ 3257 001e 4380     	 strh r3,[r0,#2]
+ 3258 0020 4FF44473 	 mov r3,#784
+ 3259 0024 8380     	 strh r3,[r0,#4]
+ 3260 0026 5023     	 movs r3,#80
+ 3261 0028 C380     	 strh r3,[r0,#6]
+ 3262 002a 5123     	 movs r3,#81
+ 3263 002c 0381     	 strh r3,[r0,#8]
+ 3264 002e 5223     	 movs r3,#82
+ 3265 0030 4381     	 strh r3,[r0,#10]
+ 3266 0032 5323     	 movs r3,#83
+ 3267 0034 8381     	 strh r3,[r0,#12]
+ 3268 0036 5423     	 movs r3,#84
+ 3269 0038 C381     	 strh r3,[r0,#14]
+ 3270 003a 4FF4C863 	 mov r3,#1600
+ 3271 003e 0382     	 strh r3,[r0,#16]
+ 3272 0040 4FF41663 	 mov r3,#2400
+ 3273 0044 4382     	 strh r3,[r0,#18]
+ 3274 0046 40F66113 	 movw r3,#2401
+ 3275 004a 8382     	 strh r3,[r0,#20]
+ 3276 004c 40F66213 	 movw r3,#2402
+ 3277 0050 C382     	 strh r3,[r0,#22]
+ 3278 0052 2023     	 movs r3,#32
+ 3279 0054 0383     	 strh r3,[r0,#24]
+ 3280 0056 40F66313 	 movw r3,#2403
+ 3281 005a 4383     	 strh r3,[r0,#26]
+ 3282 005c 40F66413 	 movw r3,#2404
+ 3283 0060 8383     	 strh r3,[r0,#28]
+ 3284 0062 40F66513 	 movw r3,#2405
+ 3285 0066 C383     	 strh r3,[r0,#30]
+ 3286 0068 3023     	 movs r3,#48
+ 3287 006a 0384     	 strh r3,[r0,#32]
+ 3288 006c 40F2DC53 	 movw r3,#1500
+ 3289 0070 4384     	 strh r3,[r0,#34]
+ 3290 0072 4023     	 movs r3,#64
+ 3291 0074 8384     	 strh r3,[r0,#36]
+ 3292 0076 40F2DD53 	 movw r3,#1501
+ 3293 007a C384     	 strh r3,[r0,#38]
+ 3294 007c 4123     	 movs r3,#65
+ 3295 007e 0385     	 strh r3,[r0,#40]
+ 3296 0080 40F2EE23 	 movw r3,#750
+ 3297 0084 4385     	 strh r3,[r0,#42]
+ 3298 0086 4223     	 movs r3,#66
+ 3299 0088 8385     	 strh r3,[r0,#44]
+ 3300 008a 40F2EF23 	 movw r3,#751
+ 3301 008e C385     	 strh r3,[r0,#46]
+ 3302 0090 4323     	 movs r3,#67
+ 3303 0092 0386     	 strh r3,[r0,#48]
+ 3304 0094 4423     	 movs r3,#68
+ 3305 0096 4386     	 strh r3,[r0,#50]
+ 3306 0098 4523     	 movs r3,#69
+ 3307 009a 8386     	 strh r3,[r0,#52]
+ 3308 009c 4623     	 movs r3,#70
+ 3309 009e C386     	 strh r3,[r0,#54]
+ 3310 00a0 4723     	 movs r3,#71
+ 3311 00a2 0387     	 strh r3,[r0,#56]
+ 3312 00a4 4823     	 movs r3,#72
+ 3313 00a6 4387     	 strh r3,[r0,#58]
+ 3314 00a8 4923     	 movs r3,#73
+ 3315 00aa 8387     	 strh r3,[r0,#60]
+ 3316 00ac 40F2DE53 	 movw r3,#1502
+ 3317 00b0 C387     	 strh r3,[r0,#62]
+ 3318 00b2 4FF43C73 	 mov r3,#752
+ 3319 00b6 A0F84030 	 strh r3,[r0,#64]
+ 3320 00ba 4FF49E73 	 mov r3,#316
+ 3321 00be A0F84230 	 strh r3,[r0,#66]
+ 3322 00c2 4A23     	 movs r3,#74
+ 3323 00c4 A0F84430 	 strh r3,[r0,#68]
+ 3324 00c8 CE23     	 movs r3,#206
+ 3325 00ca A0F84630 	 strh r3,[r0,#70]
+ 3326 00ce 40F2DF53 	 movw r3,#1503
+ 3327 00d2 A0F84A30 	 strh r3,[r0,#74]
+ 3328 00d6 40F2F123 	 movw r3,#753
+ 3329 00da A0F84E30 	 strh r3,[r0,#78]
+ 3330 00de 4D23     	 movs r3,#77
+ 3331 00e0 A0F85030 	 strh r3,[r0,#80]
+ 3332 00e4 40F2F223 	 movw r3,#754
+ 3333 00e8 A0F85230 	 strh r3,[r0,#82]
+ 3334 00ec 40F2F323 	 movw r3,#755
+ 3335 00f0 A0F85430 	 strh r3,[r0,#84]
+ 3336 00f4 4E23     	 movs r3,#78
+ 3337 00f6 A0F85630 	 strh r3,[r0,#86]
+ 3338 00fa 4F23     	 movs r3,#79
+ 3339 00fc A0F85830 	 strh r3,[r0,#88]
+ 3340 0100 4FF48075 	 mov r5,#256
+ 3341 0104 40F66613 	 movw r3,#2406
+ 3342 0108 A0F85A30 	 strh r3,[r0,#90]
+ 3343 010c A0F86A50 	 strh r5,[r0,#106]
+ 3344 0110 2123     	 movs r3,#33
+ 3345 0112 40F20115 	 movw r5,#257
+ 3346 0116 A0F85C30 	 strh r3,[r0,#92]
+ 3347 011a A0F86C50 	 strh r5,[r0,#108]
+ 3348 011e FA23     	 movs r3,#250
+ 3349 0120 4FF43D75 	 mov r5,#756
+ 3350 0124 A0F85E30 	 strh r3,[r0,#94]
+ 3351 0128 A0F86E50 	 strh r5,[r0,#110]
+ 3352 012c FB23     	 movs r3,#251
+ 3353 012e 40F2F525 	 movw r5,#757
+ 3354 0132 4B21     	 movs r1,#75
+ 3355 0134 A0F86030 	 strh r3,[r0,#96]
+ 3356 0138 A0F87050 	 strh r5,[r0,#112]
+ 3357 013c FC23     	 movs r3,#252
+ 3358 013e 4FF4BC65 	 mov r5,#1504
+ 3359 0142 A0F84810 	 strh r1,[r0,#72]
+ 3360 0146 4C22     	 movs r2,#76
+ 3361 0148 A0F86230 	 strh r3,[r0,#98]
+ 3362 014c A0F87250 	 strh r5,[r0,#114]
+ 3363 0150 A0F87810 	 strh r1,[r0,#120]
+ 3364 0154 FD23     	 movs r3,#253
+ 3365 0156 4FF48175 	 mov r5,#258
+ 3366 015a CF21     	 movs r1,#207
+ 3367 015c 4FF0FE0C 	 mov ip,#254
+ 3368 0160 A0F84C20 	 strh r2,[r0,#76]
+ 3369 0164 A0F86430 	 strh r3,[r0,#100]
+ 3370 0168 A0F87450 	 strh r5,[r0,#116]
+ 3371 016c FF23     	 movs r3,#255
+ 3372 016e A0F87A10 	 strh r1,[r0,#122]
+ 3373 0172 A0F87C20 	 strh r2,[r0,#124]
+ 3374 0176 0321     	 movs r1,#3
+ 3375 0178 9C25     	 movs r5,#156
+ 3376 017a 4FF0A509 	 mov r9,#165
+ 3377 017e 4FF05A08 	 mov r8,#90
+ 3378 0182 1F22     	 movs r2,#31
+ 3379 0184 A0F86830 	 strh r3,[r0,#104]
+ 3380 0188 A0F87650 	 strh r5,[r0,#118]
+ 3381 018c 80F88120 	 strb r2,[r0,#129]
+ 3382 0190 A0F866C0 	 strh ip,[r0,#102]
+ 3383 0194 80F87E90 	 strb r9,[r0,#126]
+ 3384 0198 80F87F80 	 strb r8,[r0,#127]
+ 3385 019c 80F88010 	 strb r1,[r0,#128]
+ 3386 01a0 80F88230 	 strb r3,[r0,#130]
+ 3387 01a4 C323     	 movs r3,#195
+ 3388 01a6 80F88430 	 strb r3,[r0,#132]
+ 3389 01aa E723     	 movs r3,#231
+ 3390 01ac 80F88630 	 strb r3,[r0,#134]
+ 3391 01b0 7E23     	 movs r3,#126
+ 3392 01b2 80F88A30 	 strb r3,[r0,#138]
+ 3393 01b6 80F88B30 	 strb r3,[r0,#139]
+ 3394 01ba 80F88F30 	 strb r3,[r0,#143]
+ 3395 01be 1E23     	 movs r3,#30
+ 3396 01c0 80F89230 	 strb r3,[r0,#146]
+ 3397 01c4 80F89330 	 strb r3,[r0,#147]
+ 3398 01c8 0A23     	 movs r3,#10
+ 3399 01ca A0F89430 	 strh r3,[r0,#148]
+ 3400 01ce 4FF6FB73 	 movw r3,#65531
+ 3401 01d2 A0F89630 	 strh r3,[r0,#150]
+ 3402 01d6 4FF6FD73 	 movw r3,#65533
+ 3403 01da A0F89C30 	 strh r3,[r0,#156]
+ 3404 01de 0423     	 movs r3,#4
+ 3405 01e0 A0F89E30 	 strh r3,[r0,#158]
+ 3406 01e4 6423     	 movs r3,#100
+ 3407 01e6 A0F8A630 	 strh r3,[r0,#166]
+ 3408 01ea 4FF6CE73 	 movw r3,#65486
+ 3409 01ee A0F8F230 	 strh r3,[r0,#242]
+ 3410 01f2 4FF6D073 	 movw r3,#65488
+ 3411 01f6 0E22     	 movs r2,#14
+ 3412 01f8 A0F8F430 	 strh r3,[r0,#244]
+ 3413 01fc 4FF6D273 	 movw r3,#65490
+ 3414 0200 4FF0020E 	 mov lr,#2
+ 3415 0204 0126     	 movs r6,#1
+ 3416 0206 80F88C20 	 strb r2,[r0,#140]
+ 3417 020a 80F88D20 	 strb r2,[r0,#141]
+ 3418 020e 80F88E20 	 strb r2,[r0,#142]
+ 3419 0212 0025     	 movs r5,#0
+ 3420 0214 0722     	 movs r2,#7
+ 3421 0216 A0F8F630 	 strh r3,[r0,#246]
+ 3422 021a 4FF0060A 	 mov r10,#6
+ 3423 021e 40F6FF73 	 movw r3,#4095
+ 3424 0222 A0F81231 	 strh r3,[r0,#274]
+ 3425 0226 A0F81431 	 strh r3,[r0,#276]
+ 3426 022a A0F81631 	 strh r3,[r0,#278]
+ 3427 022e A0F82431 	 strh r3,[r0,#292]
+ 3428 0232 A0F87031 	 strh r3,[r0,#368]
+ 3429 0236 A0F87231 	 strh r3,[r0,#370]
+ 3430 023a 80F883E0 	 strb lr,[r0,#131]
+ 3431 023e 80F88560 	 strb r6,[r0,#133]
+ 3432 0242 80F88760 	 strb r6,[r0,#135]
+ 3433 0246 80F888E0 	 strb lr,[r0,#136]
+ 3434 024a 80F889C0 	 strb ip,[r0,#137]
+ 3435 024e 80F89050 	 strb r5,[r0,#144]
+ 3436 0252 80F891A0 	 strb r10,[r0,#145]
+ 3437 0256 A0F89820 	 strh r2,[r0,#152]
+ 3438 025a A0F89A10 	 strh r1,[r0,#154]
+ 3439 025e A0F87431 	 strh r3,[r0,#372]
+ 3440 0262 A0F83632 	 strh r3,[r0,#566]
+ 3441 0266 4FF44873 	 mov r3,#800
+ 3442 026a A0F88232 	 strh r3,[r0,#642]
+ 3443 026e 4FF63873 	 movw r3,#65336
+ 3444 0272 A0F8AC32 	 strh r3,[r0,#684]
+ 3445 0276 4FF69C73 	 movw r3,#65436
+ 3446 027a 41F2883B 	 movw fp,#5000
+ 3447 027e A0F8A832 	 strh r3,[r0,#680]
+ 3448 0282 A0F8AA32 	 strh r3,[r0,#682]
+ 3449 0286 524B     	 ldr r3,.L177
+ 3450 0288 A0F824B2 	 strh fp,[r0,#548]
+ 3451 028c C0F81832 	 str r3,[r0,#536]
+ 3452 0290 4FF47A6B 	 mov fp,#4000
+ 3453 0294 0F23     	 movs r3,#15
+ 3454 0296 A0F826B2 	 strh fp,[r0,#550]
+ 3455 029a A0F828B2 	 strh fp,[r0,#552]
+ 3456 029e 80F81CA2 	 strb r10,[r0,#540]
+ 3457 02a2 80F81DC2 	 strb ip,[r0,#541]
+ 3458 02a6 80F81E52 	 strb r5,[r0,#542]
+ 3459 02aa 80F81F52 	 strb r5,[r0,#543]
+ 3460 02ae 80F8BC92 	 strb r9,[r0,#700]
+ 3461 02b2 80F8BD82 	 strb r8,[r0,#701]
+ 3462 02b6 80F8C532 	 strb r3,[r0,#709]
+ 3463 02ba A0F8CEE2 	 strh lr,[r0,#718]
+ 3464 02be A0F8D012 	 strh r1,[r0,#720]
+ 3465 02c2 80F8D232 	 strb r3,[r0,#722]
+ 3466 02c6 80F8D362 	 strb r6,[r0,#723]
+ 3467 02ca 80F8D422 	 strb r2,[r0,#724]
+ 3468 02ce 80F8D532 	 strb r3,[r0,#725]
+ 3469 02d2 80F8D622 	 strb r2,[r0,#726]
+ 3470 02d6 FFF7FEFF 	 bl PMB_UpdateEU
+ 3471 02da 0B34     	 adds r4,r4,#11
+ 3472              	.L171:
+ 3473 02dc 0021     	 movs r1,#0
+ 3474 02de 1422     	 movs r2,#20
+ 3475 02e0 A4F10B00 	 sub r0,r4,#11
+ 3476 02e4 FFF7FEFF 	 bl memset
+ 3477 02e8 DFF8F090 	 ldr r9,.L177+12
+ 3478 02ec 3948     	 ldr r0,.L177+4
+ 3479 02ee D9F80420 	 ldr r2,[r9,#4]
+ 3480 02f2 2B5A     	 ldrh r3,[r5,r0]
+ 3481 02f4 1268     	 ldr r2,[r2]
+ 3482 02f6 24F80B3C 	 strh r3,[r4,#-11]
+ 3483 02fa 3749     	 ldr r1,.L177+8
+ 3484 02fc C3F30903 	 ubfx r3,r3,#0,#10
+ 3485 0300 1B04     	 lsls r3,r3,#16
+ 3486 0302 1943     	 orrs r1,r1,r3
+ 3487 0304 5368     	 ldr r3,[r2,#4]
+ 3488 0306 61F31C03 	 bfi r3,r1,#0,#29
+ 3489 030a 5360     	 str r3,[r2,#4]
+ 3490 030c 0023     	 movs r3,#0
+ 3491 030e 1361     	 str r3,[r2,#16]
+ 3492 0310 5361     	 str r3,[r2,#20]
+ 3493 0312 1368     	 ldr r3,[r2]
+ 3494 0314 4FF48032 	 mov r2,#65536
+ 3495 0318 DA61     	 str r2,[r3,#28]
+ 3496 031a 4FF4FA63 	 mov r3,#2000
+ 3497 031e 0293     	 str r3,[sp,#8]
+ 3498 0320 8046     	 mov r8,r0
+ 3499              	.L163:
+ 3500 0322 029B     	 ldr r3,[sp,#8]
+ 3501 0324 5A1E     	 subs r2,r3,#1
+ 3502 0326 0292     	 str r2,[sp,#8]
+ 3503 0328 0BB1     	 cbz r3,.L175
+ 3504              	
+ 3505 032a 00BF     	 nop
+ 3506              	
+ 3507              	 .thumb
+ 3508 032c F9E7     	 b .L163
+ 3509              	.L175:
+ 3510 032e FFF7FEFF 	 bl PMB_Emulator_Run
+ 3511 0332 4FF4FA73 	 mov r3,#500
+ 3512 0336 0393     	 str r3,[sp,#12]
+ 3513              	.L165:
+ 3514 0338 039B     	 ldr r3,[sp,#12]
+ 3515 033a 5A1E     	 subs r2,r3,#1
+ 3516 033c 0392     	 str r2,[sp,#12]
+ 3517 033e 0BB1     	 cbz r3,.L176
+ 3518              	
+ 3519 0340 00BF     	 nop
+ 3520              	
+ 3521              	 .thumb
+ 3522 0342 F9E7     	 b .L165
+ 3523              	.L176:
+ 3524 0344 D9F80830 	 ldr r3,[r9,#8]
+ 3525 0348 1B68     	 ldr r3,[r3]
+ 3526 034a 1A69     	 ldr r2,[r3,#16]
+ 3527 034c 04F8082C 	 strb r2,[r4,#-8]
+ 3528 0350 1A69     	 ldr r2,[r3,#16]
+ 3529 0352 120A     	 lsrs r2,r2,#8
+ 3530 0354 04F8072C 	 strb r2,[r4,#-7]
+ 3531 0358 5A8A     	 ldrh r2,[r3,#18]
+ 3532 035a 04F8062C 	 strb r2,[r4,#-6]
+ 3533 035e DA7C     	 ldrb r2,[r3,#19]
+ 3534 0360 04F8052C 	 strb r2,[r4,#-5]
+ 3535 0364 5A69     	 ldr r2,[r3,#20]
+ 3536 0366 04F8042C 	 strb r2,[r4,#-4]
+ 3537 036a 5A69     	 ldr r2,[r3,#20]
+ 3538 036c 120A     	 lsrs r2,r2,#8
+ 3539 036e 04F8032C 	 strb r2,[r4,#-3]
+ 3540 0372 DA8A     	 ldrh r2,[r3,#22]
+ 3541 0374 04F8022C 	 strb r2,[r4,#-2]
+ 3542 0378 DB7D     	 ldrb r3,[r3,#23]
+ 3543 037a 04F8013C 	 strb r3,[r4,#-1]
+ 3544 037e A844     	 add r8,r8,r5
+ 3545 0380 2046     	 mov r0,r4
+ 3546 0382 D8F80430 	 ldr r3,[r8,#4]
+ 3547 0386 3946     	 mov r1,r7
+ 3548 0388 9847     	 blx r3
+ 3549 038a 2346     	 mov r3,r4
+ 3550 038c 0122     	 movs r2,#1
+ 3551 038e 03F8092D 	 strb r2,[r3,#-9]!
+ 3552 0392 E21E     	 subs r2,r4,#3
+ 3553              	.L169:
+ 3554 0394 13F8010F 	 ldrb r0,[r3,#1]!
+ 3555 0398 197A     	 ldrb r1,[r3,#8]
+ 3556 039a 8842     	 cmp r0,r1
+ 3557 039c 03D0     	 beq .L167
+ 3558 039e 0023     	 movs r3,#0
+ 3559 03a0 04F8093C 	 strb r3,[r4,#-9]
+ 3560 03a4 01E0     	 b .L168
+ 3561              	.L167:
+ 3562 03a6 9342     	 cmp r3,r2
+ 3563 03a8 F4D1     	 bne .L169
+ 3564              	.L168:
+ 3565 03aa 14F8093C 	 ldrb r3,[r4,#-9]
+ 3566 03ae 0835     	 adds r5,r5,#8
+ 3567 03b0 002B     	 cmp r3,#0
+ 3568 03b2 08BF     	 it eq
+ 3569 03b4 0026     	 moveq r6,#0
+ 3570 03b6 B5F5A16F 	 cmp r5,#1288
+ 3571 03ba 04F11404 	 add r4,r4,#20
+ 3572 03be 8DD1     	 bne .L171
+ 3573 03c0 019A     	 ldr r2,[sp,#4]
+ 3574 03c2 A123     	 movs r3,#161
+ 3575 03c4 3046     	 mov r0,r6
+ 3576 03c6 1380     	 strh r3,[r2]
+ 3577 03c8 05B0     	 add sp,sp,#20
+ 3578              	 
+ 3579 03ca BDE8F08F 	 pop {r4,r5,r6,r7,r8,r9,r10,fp,pc}
+ 3580              	.L178:
+ 3581 03ce 00BF     	 .align 2
+ 3582              	.L177:
+ 3583 03d0 78563412 	 .word 305419896
+ 3584 03d4 00000000 	 .word .LANCHOR0
+ 3585 03d8 A0C00010 	 .word 268484768
+ 3586 03dc 00000000 	 .word MULTICAN_CONFIG_0
+ 3588              	 .section .rodata.k_tests,"a",%progbits
+ 3589              	 .align 2
+ 3590              	 .set .LANCHOR0,.+0
+ 3593              	k_tests:
+ 3594 0000 0000     	 .short 0
+ 3595 0002 0000     	 .space 2
+ 3596 0004 00000000 	 .word expect_00
+ 3597 0008 0100     	 .short 1
+ 3598 000a 0000     	 .space 2
+ 3599 000c 00000000 	 .word expect_01
+ 3600 0010 0200     	 .short 2
+ 3601 0012 0000     	 .space 2
+ 3602 0014 00000000 	 .word expect_02
+ 3603 0018 0300     	 .short 3
+ 3604 001a 0000     	 .space 2
+ 3605 001c 00000000 	 .word expect_03
+ 3606 0020 0400     	 .short 4
+ 3607 0022 0000     	 .space 2
+ 3608 0024 00000000 	 .word expect_04
+ 3609 0028 0500     	 .short 5
+ 3610 002a 0000     	 .space 2
+ 3611 002c 00000000 	 .word expect_05
+ 3612 0030 0600     	 .short 6
+ 3613 0032 0000     	 .space 2
+ 3614 0034 00000000 	 .word expect_06
+ 3615 0038 0700     	 .short 7
+ 3616 003a 0000     	 .space 2
+ 3617 003c 00000000 	 .word expect_07
+ 3618 0040 0800     	 .short 8
+ 3619 0042 0000     	 .space 2
+ 3620 0044 00000000 	 .word expect_08
+ 3621 0048 0900     	 .short 9
+ 3622 004a 0000     	 .space 2
+ 3623 004c 00000000 	 .word expect_09
+ 3624 0050 0A00     	 .short 10
+ 3625 0052 0000     	 .space 2
+ 3626 0054 00000000 	 .word expect_0A
+ 3627 0058 0B00     	 .short 11
+ 3628 005a 0000     	 .space 2
+ 3629 005c 00000000 	 .word expect_0B
+ 3630 0060 0C00     	 .short 12
+ 3631 0062 0000     	 .space 2
+ 3632 0064 00000000 	 .word expect_0C
+ 3633 0068 0D00     	 .short 13
+ 3634 006a 0000     	 .space 2
+ 3635 006c 00000000 	 .word expect_0D
+ 3636 0070 0E00     	 .short 14
+ 3637 0072 0000     	 .space 2
+ 3638 0074 00000000 	 .word expect_0E
+ 3639 0078 0F00     	 .short 15
+ 3640 007a 0000     	 .space 2
+ 3641 007c 00000000 	 .word expect_0F
+ 3642 0080 1000     	 .short 16
+ 3643 0082 0000     	 .space 2
+ 3644 0084 00000000 	 .word expect_10
+ 3645 0088 1100     	 .short 17
+ 3646 008a 0000     	 .space 2
+ 3647 008c 00000000 	 .word expect_11
+ 3648 0090 1200     	 .short 18
+ 3649 0092 0000     	 .space 2
+ 3650 0094 00000000 	 .word expect_12
+ 3651 0098 1300     	 .short 19
+ 3652 009a 0000     	 .space 2
+ 3653 009c 00000000 	 .word expect_13
+ 3654 00a0 1400     	 .short 20
+ 3655 00a2 0000     	 .space 2
+ 3656 00a4 00000000 	 .word expect_14
+ 3657 00a8 1500     	 .short 21
+ 3658 00aa 0000     	 .space 2
+ 3659 00ac 00000000 	 .word expect_15
+ 3660 00b0 1600     	 .short 22
+ 3661 00b2 0000     	 .space 2
+ 3662 00b4 00000000 	 .word expect_16
+ 3663 00b8 1700     	 .short 23
+ 3664 00ba 0000     	 .space 2
+ 3665 00bc 00000000 	 .word expect_17
+ 3666 00c0 1800     	 .short 24
+ 3667 00c2 0000     	 .space 2
+ 3668 00c4 00000000 	 .word expect_18
+ 3669 00c8 1900     	 .short 25
+ 3670 00ca 0000     	 .space 2
+ 3671 00cc 00000000 	 .word expect_19
+ 3672 00d0 1A00     	 .short 26
+ 3673 00d2 0000     	 .space 2
+ 3674 00d4 00000000 	 .word expect_1A
+ 3675 00d8 1B00     	 .short 27
+ 3676 00da 0000     	 .space 2
+ 3677 00dc 00000000 	 .word expect_1B
+ 3678 00e0 1C00     	 .short 28
+ 3679 00e2 0000     	 .space 2
+ 3680 00e4 00000000 	 .word expect_1C
+ 3681 00e8 1D00     	 .short 29
+ 3682 00ea 0000     	 .space 2
+ 3683 00ec 00000000 	 .word expect_1D
+ 3684 00f0 1E00     	 .short 30
+ 3685 00f2 0000     	 .space 2
+ 3686 00f4 00000000 	 .word expect_1E
+ 3687 00f8 1F00     	 .short 31
+ 3688 00fa 0000     	 .space 2
+ 3689 00fc 00000000 	 .word expect_1F
+ 3690 0100 2000     	 .short 32
+ 3691 0102 0000     	 .space 2
+ 3692 0104 00000000 	 .word expect_20
+ 3693 0108 2100     	 .short 33
+ 3694 010a 0000     	 .space 2
+ 3695 010c 00000000 	 .word expect_21
+ 3696 0110 2200     	 .short 34
+ 3697 0112 0000     	 .space 2
+ 3698 0114 00000000 	 .word expect_22
+ 3699 0118 2300     	 .short 35
+ 3700 011a 0000     	 .space 2
+ 3701 011c 00000000 	 .word expect_23
+ 3702 0120 3000     	 .short 48
+ 3703 0122 0000     	 .space 2
+ 3704 0124 00000000 	 .word expect_30
+ 3705 0128 3100     	 .short 49
+ 3706 012a 0000     	 .space 2
+ 3707 012c 00000000 	 .word expect_31
+ 3708 0130 3200     	 .short 50
+ 3709 0132 0000     	 .space 2
+ 3710 0134 00000000 	 .word expect_32
+ 3711 0138 3300     	 .short 51
+ 3712 013a 0000     	 .space 2
+ 3713 013c 00000000 	 .word expect_33
+ 3714 0140 3400     	 .short 52
+ 3715 0142 0000     	 .space 2
+ 3716 0144 00000000 	 .word expect_34
+ 3717 0148 3500     	 .short 53
+ 3718 014a 0000     	 .space 2
+ 3719 014c 00000000 	 .word expect_35
+ 3720 0150 3600     	 .short 54
+ 3721 0152 0000     	 .space 2
+ 3722 0154 00000000 	 .word expect_36
+ 3723 0158 3700     	 .short 55
+ 3724 015a 0000     	 .space 2
+ 3725 015c 00000000 	 .word expect_37
+ 3726 0160 3800     	 .short 56
+ 3727 0162 0000     	 .space 2
+ 3728 0164 00000000 	 .word expect_38
+ 3729 0168 3900     	 .short 57
+ 3730 016a 0000     	 .space 2
+ 3731 016c 00000000 	 .word expect_39
+ 3732 0170 3A00     	 .short 58
+ 3733 0172 0000     	 .space 2
+ 3734 0174 00000000 	 .word expect_3A
+ 3735 0178 3B00     	 .short 59
+ 3736 017a 0000     	 .space 2
+ 3737 017c 00000000 	 .word expect_3B
+ 3738 0180 3C00     	 .short 60
+ 3739 0182 0000     	 .space 2
+ 3740 0184 00000000 	 .word expect_3C
+ 3741 0188 3D00     	 .short 61
+ 3742 018a 0000     	 .space 2
+ 3743 018c 00000000 	 .word expect_3D
+ 3744 0190 3E00     	 .short 62
+ 3745 0192 0000     	 .space 2
+ 3746 0194 00000000 	 .word expect_3E
+ 3747 0198 3F00     	 .short 63
+ 3748 019a 0000     	 .space 2
+ 3749 019c 00000000 	 .word expect_3F
+ 3750 01a0 4000     	 .short 64
+ 3751 01a2 0000     	 .space 2
+ 3752 01a4 00000000 	 .word expect_40
+ 3753 01a8 4100     	 .short 65
+ 3754 01aa 0000     	 .space 2
+ 3755 01ac 00000000 	 .word expect_41
+ 3756 01b0 4200     	 .short 66
+ 3757 01b2 0000     	 .space 2
+ 3758 01b4 00000000 	 .word expect_42
+ 3759 01b8 4300     	 .short 67
+ 3760 01ba 0000     	 .space 2
+ 3761 01bc 00000000 	 .word expect_43
+ 3762 01c0 4400     	 .short 68
+ 3763 01c2 0000     	 .space 2
+ 3764 01c4 00000000 	 .word expect_44
+ 3765 01c8 4500     	 .short 69
+ 3766 01ca 0000     	 .space 2
+ 3767 01cc 00000000 	 .word expect_45
+ 3768 01d0 4600     	 .short 70
+ 3769 01d2 0000     	 .space 2
+ 3770 01d4 00000000 	 .word expect_46
+ 3771 01d8 4700     	 .short 71
+ 3772 01da 0000     	 .space 2
+ 3773 01dc 00000000 	 .word expect_47
+ 3774 01e0 4800     	 .short 72
+ 3775 01e2 0000     	 .space 2
+ 3776 01e4 00000000 	 .word expect_48
+ 3777 01e8 4900     	 .short 73
+ 3778 01ea 0000     	 .space 2
+ 3779 01ec 00000000 	 .word expect_49
+ 3780 01f0 4A00     	 .short 74
+ 3781 01f2 0000     	 .space 2
+ 3782 01f4 00000000 	 .word expect_4A
+ 3783 01f8 5000     	 .short 80
+ 3784 01fa 0000     	 .space 2
+ 3785 01fc 00000000 	 .word expect_50
+ 3786 0200 5100     	 .short 81
+ 3787 0202 0000     	 .space 2
+ 3788 0204 00000000 	 .word expect_51
+ 3789 0208 5200     	 .short 82
+ 3790 020a 0000     	 .space 2
+ 3791 020c 00000000 	 .word expect_52
+ 3792 0210 5300     	 .short 83
+ 3793 0212 0000     	 .space 2
+ 3794 0214 00000000 	 .word expect_53
+ 3795 0218 5400     	 .short 84
+ 3796 021a 0000     	 .space 2
+ 3797 021c 00000000 	 .word expect_54
+ 3798 0220 5500     	 .short 85
+ 3799 0222 0000     	 .space 2
+ 3800 0224 00000000 	 .word expect_55
+ 3801 0228 5600     	 .short 86
+ 3802 022a 0000     	 .space 2
+ 3803 022c 00000000 	 .word expect_56
+ 3804 0230 5700     	 .short 87
+ 3805 0232 0000     	 .space 2
+ 3806 0234 00000000 	 .word expect_57
+ 3807 0238 5800     	 .short 88
+ 3808 023a 0000     	 .space 2
+ 3809 023c 00000000 	 .word expect_58
+ 3810 0240 5900     	 .short 89
+ 3811 0242 0000     	 .space 2
+ 3812 0244 00000000 	 .word expect_59
+ 3813 0248 5A00     	 .short 90
+ 3814 024a 0000     	 .space 2
+ 3815 024c 00000000 	 .word expect_5A
+ 3816 0250 5B00     	 .short 91
+ 3817 0252 0000     	 .space 2
+ 3818 0254 00000000 	 .word expect_5B
+ 3819 0258 5C00     	 .short 92
+ 3820 025a 0000     	 .space 2
+ 3821 025c 00000000 	 .word expect_5C
+ 3822 0260 5D00     	 .short 93
+ 3823 0262 0000     	 .space 2
+ 3824 0264 00000000 	 .word expect_5D
+ 3825 0268 5E00     	 .short 94
+ 3826 026a 0000     	 .space 2
+ 3827 026c 00000000 	 .word expect_5E
+ 3828 0270 5F00     	 .short 95
+ 3829 0272 0000     	 .space 2
+ 3830 0274 00000000 	 .word expect_5F
+ 3831 0278 6000     	 .short 96
+ 3832 027a 0000     	 .space 2
+ 3833 027c 00000000 	 .word expect_60
+ 3834 0280 6100     	 .short 97
+ 3835 0282 0000     	 .space 2
+ 3836 0284 00000000 	 .word expect_61
+ 3837 0288 6200     	 .short 98
+ 3838 028a 0000     	 .space 2
+ 3839 028c 00000000 	 .word expect_62
+ 3840 0290 6300     	 .short 99
+ 3841 0292 0000     	 .space 2
+ 3842 0294 00000000 	 .word expect_63
+ 3843 0298 6400     	 .short 100
+ 3844 029a 0000     	 .space 2
+ 3845 029c 00000000 	 .word expect_64
+ 3846 02a0 6500     	 .short 101
+ 3847 02a2 0000     	 .space 2
+ 3848 02a4 00000000 	 .word expect_65
+ 3849 02a8 6600     	 .short 102
+ 3850 02aa 0000     	 .space 2
+ 3851 02ac 00000000 	 .word expect_66
+ 3852 02b0 6700     	 .short 103
+ 3853 02b2 0000     	 .space 2
+ 3854 02b4 00000000 	 .word expect_67
+ 3855 02b8 6800     	 .short 104
+ 3856 02ba 0000     	 .space 2
+ 3857 02bc 00000000 	 .word expect_68
+ 3858 02c0 6900     	 .short 105
+ 3859 02c2 0000     	 .space 2
+ 3860 02c4 00000000 	 .word expect_69
+ 3861 02c8 6A00     	 .short 106
+ 3862 02ca 0000     	 .space 2
+ 3863 02cc 00000000 	 .word expect_6A
+ 3864 02d0 7000     	 .short 112
+ 3865 02d2 0000     	 .space 2
+ 3866 02d4 00000000 	 .word expect_70
+ 3867 02d8 7100     	 .short 113
+ 3868 02da 0000     	 .space 2
+ 3869 02dc 00000000 	 .word expect_71
+ 3870 02e0 7200     	 .short 114
+ 3871 02e2 0000     	 .space 2
+ 3872 02e4 00000000 	 .word expect_72
+ 3873 02e8 7300     	 .short 115
+ 3874 02ea 0000     	 .space 2
+ 3875 02ec 00000000 	 .word expect_73
+ 3876 02f0 7400     	 .short 116
+ 3877 02f2 0000     	 .space 2
+ 3878 02f4 00000000 	 .word expect_74
+ 3879 02f8 7500     	 .short 117
+ 3880 02fa 0000     	 .space 2
+ 3881 02fc 00000000 	 .word expect_75
+ 3882 0300 7600     	 .short 118
+ 3883 0302 0000     	 .space 2
+ 3884 0304 00000000 	 .word expect_76
+ 3885 0308 7700     	 .short 119
+ 3886 030a 0000     	 .space 2
+ 3887 030c 00000000 	 .word expect_77
+ 3888 0310 7800     	 .short 120
+ 3889 0312 0000     	 .space 2
+ 3890 0314 00000000 	 .word expect_78
+ 3891 0318 7900     	 .short 121
+ 3892 031a 0000     	 .space 2
+ 3893 031c 00000000 	 .word expect_79
+ 3894 0320 7A00     	 .short 122
+ 3895 0322 0000     	 .space 2
+ 3896 0324 00000000 	 .word expect_7A
+ 3897 0328 7B00     	 .short 123
+ 3898 032a 0000     	 .space 2
+ 3899 032c 00000000 	 .word expect_7B
+ 3900 0330 7C00     	 .short 124
+ 3901 0332 0000     	 .space 2
+ 3902 0334 00000000 	 .word expect_7C
+ 3903 0338 7D00     	 .short 125
+ 3904 033a 0000     	 .space 2
+ 3905 033c 00000000 	 .word expect_7D
+ 3906 0340 7E00     	 .short 126
+ 3907 0342 0000     	 .space 2
+ 3908 0344 00000000 	 .word expect_7E
+ 3909 0348 7F00     	 .short 127
+ 3910 034a 0000     	 .space 2
+ 3911 034c 00000000 	 .word expect_7F
+ 3912 0350 8000     	 .short 128
+ 3913 0352 0000     	 .space 2
+ 3914 0354 00000000 	 .word expect_80
+ 3915 0358 8100     	 .short 129
+ 3916 035a 0000     	 .space 2
+ 3917 035c 00000000 	 .word expect_81
+ 3918 0360 8200     	 .short 130
+ 3919 0362 0000     	 .space 2
+ 3920 0364 00000000 	 .word expect_82
+ 3921 0368 8300     	 .short 131
+ 3922 036a 0000     	 .space 2
+ 3923 036c 00000000 	 .word expect_83
+ 3924 0370 8400     	 .short 132
+ 3925 0372 0000     	 .space 2
+ 3926 0374 00000000 	 .word expect_84
+ 3927 0378 8500     	 .short 133
+ 3928 037a 0000     	 .space 2
+ 3929 037c 00000000 	 .word expect_85
+ 3930 0380 8600     	 .short 134
+ 3931 0382 0000     	 .space 2
+ 3932 0384 00000000 	 .word expect_86
+ 3933 0388 8700     	 .short 135
+ 3934 038a 0000     	 .space 2
+ 3935 038c 00000000 	 .word expect_87
+ 3936 0390 8800     	 .short 136
+ 3937 0392 0000     	 .space 2
+ 3938 0394 00000000 	 .word expect_88
+ 3939 0398 8900     	 .short 137
+ 3940 039a 0000     	 .space 2
+ 3941 039c 00000000 	 .word expect_89
+ 3942 03a0 8A00     	 .short 138
+ 3943 03a2 0000     	 .space 2
+ 3944 03a4 00000000 	 .word expect_8A
+ 3945 03a8 9000     	 .short 144
+ 3946 03aa 0000     	 .space 2
+ 3947 03ac 00000000 	 .word expect_90
+ 3948 03b0 9100     	 .short 145
+ 3949 03b2 0000     	 .space 2
+ 3950 03b4 00000000 	 .word expect_91
+ 3951 03b8 A000     	 .short 160
+ 3952 03ba 0000     	 .space 2
+ 3953 03bc 00000000 	 .word expect_A0
+ 3954 03c0 A800     	 .short 168
+ 3955 03c2 0000     	 .space 2
+ 3956 03c4 00000000 	 .word expect_A8
+ 3957 03c8 A900     	 .short 169
+ 3958 03ca 0000     	 .space 2
+ 3959 03cc 00000000 	 .word expect_A9
+ 3960 03d0 AA00     	 .short 170
+ 3961 03d2 0000     	 .space 2
+ 3962 03d4 00000000 	 .word expect_AA
+ 3963 03d8 B000     	 .short 176
+ 3964 03da 0000     	 .space 2
+ 3965 03dc 00000000 	 .word expect_B0
+ 3966 03e0 B100     	 .short 177
+ 3967 03e2 0000     	 .space 2
+ 3968 03e4 00000000 	 .word expect_B1
+ 3969 03e8 B200     	 .short 178
+ 3970 03ea 0000     	 .space 2
+ 3971 03ec 00000000 	 .word expect_B2
+ 3972 03f0 B300     	 .short 179
+ 3973 03f2 0000     	 .space 2
+ 3974 03f4 00000000 	 .word expect_B3
+ 3975 03f8 B400     	 .short 180
+ 3976 03fa 0000     	 .space 2
+ 3977 03fc 00000000 	 .word expect_B4
+ 3978 0400 B500     	 .short 181
+ 3979 0402 0000     	 .space 2
+ 3980 0404 00000000 	 .word expect_B5
+ 3981 0408 B600     	 .short 182
+ 3982 040a 0000     	 .space 2
+ 3983 040c 00000000 	 .word expect_B6
+ 3984 0410 B700     	 .short 183
+ 3985 0412 0000     	 .space 2
+ 3986 0414 00000000 	 .word expect_B7
+ 3987 0418 B800     	 .short 184
+ 3988 041a 0000     	 .space 2
+ 3989 041c 00000000 	 .word expect_B8
+ 3990 0420 B900     	 .short 185
+ 3991 0422 0000     	 .space 2
+ 3992 0424 00000000 	 .word expect_B9
+ 3993 0428 BA00     	 .short 186
+ 3994 042a 0000     	 .space 2
+ 3995 042c 00000000 	 .word expect_BA
+ 3996 0430 BB00     	 .short 187
+ 3997 0432 0000     	 .space 2
+ 3998 0434 00000000 	 .word expect_BB
+ 3999 0438 BC00     	 .short 188
+ 4000 043a 0000     	 .space 2
+ 4001 043c 00000000 	 .word expect_BC
+ 4002 0440 BD00     	 .short 189
+ 4003 0442 0000     	 .space 2
+ 4004 0444 00000000 	 .word expect_BD
+ 4005 0448 BE00     	 .short 190
+ 4006 044a 0000     	 .space 2
+ 4007 044c 00000000 	 .word expect_BE
+ 4008 0450 BF00     	 .short 191
+ 4009 0452 0000     	 .space 2
+ 4010 0454 00000000 	 .word expect_BF
+ 4011 0458 C000     	 .short 192
+ 4012 045a 0000     	 .space 2
+ 4013 045c 00000000 	 .word expect_C0
+ 4014 0460 C100     	 .short 193
+ 4015 0462 0000     	 .space 2
+ 4016 0464 00000000 	 .word expect_C1
+ 4017 0468 C200     	 .short 194
+ 4018 046a 0000     	 .space 2
+ 4019 046c 00000000 	 .word expect_C2
+ 4020 0470 C300     	 .short 195
+ 4021 0472 0000     	 .space 2
+ 4022 0474 00000000 	 .word expect_C3
+ 4023 0478 C400     	 .short 196
+ 4024 047a 0000     	 .space 2
+ 4025 047c 00000000 	 .word expect_C4
+ 4026 0480 C500     	 .short 197
+ 4027 0482 0000     	 .space 2
+ 4028 0484 00000000 	 .word expect_C5
+ 4029 0488 C600     	 .short 198
+ 4030 048a 0000     	 .space 2
+ 4031 048c 00000000 	 .word expect_C6
+ 4032 0490 C700     	 .short 199
+ 4033 0492 0000     	 .space 2
+ 4034 0494 00000000 	 .word expect_C7
+ 4035 0498 C800     	 .short 200
+ 4036 049a 0000     	 .space 2
+ 4037 049c 00000000 	 .word expect_C8
+ 4038 04a0 C900     	 .short 201
+ 4039 04a2 0000     	 .space 2
+ 4040 04a4 00000000 	 .word expect_C9
+ 4041 04a8 CA00     	 .short 202
+ 4042 04aa 0000     	 .space 2
+ 4043 04ac 00000000 	 .word expect_CA
+ 4044 04b0 CB00     	 .short 203
+ 4045 04b2 0000     	 .space 2
+ 4046 04b4 00000000 	 .word expect_CB
+ 4047 04b8 CC00     	 .short 204
+ 4048 04ba 0000     	 .space 2
+ 4049 04bc 00000000 	 .word expect_CC
+ 4050 04c0 CD00     	 .short 205
+ 4051 04c2 0000     	 .space 2
+ 4052 04c4 00000000 	 .word expect_CD
+ 4053 04c8 CE00     	 .short 206
+ 4054 04ca 0000     	 .space 2
+ 4055 04cc 00000000 	 .word expect_CE
+ 4056 04d0 CF00     	 .short 207
+ 4057 04d2 0000     	 .space 2
+ 4058 04d4 00000000 	 .word expect_CF
+ 4059 04d8 D000     	 .short 208
+ 4060 04da 0000     	 .space 2
+ 4061 04dc 00000000 	 .word expect_D0
+ 4062 04e0 D100     	 .short 209
+ 4063 04e2 0000     	 .space 2
+ 4064 04e4 00000000 	 .word expect_D1
+ 4065 04e8 D800     	 .short 216
+ 4066 04ea 0000     	 .space 2
+ 4067 04ec 00000000 	 .word expect_D8
+ 4068 04f0 D900     	 .short 217
+ 4069 04f2 0000     	 .space 2
+ 4070 04f4 00000000 	 .word expect_D9
+ 4071 04f8 F801     	 .short 504
+ 4072 04fa 0000     	 .space 2
+ 4073 04fc 00000000 	 .word expect_1F8
+ 4074 0500 FA01     	 .short 506
+ 4075 0502 0000     	 .space 2
+ 4076 0504 00000000 	 .word expect_1FA
+ 4077              	 .ident "GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20141119 (release) [ARM/embedded-4_9-branch revision 218278]"
+DEFINED SYMBOLS
+                            *ABS*:00000000 pmb_loopback_test.c
+    {standard input}:17     .text.expect_00:00000000 $t
+    {standard input}:21     .text.expect_00:00000000 expect_00
+    {standard input}:40     .text.expect_01:00000000 $t
+    {standard input}:44     .text.expect_01:00000000 expect_01
+    {standard input}:63     .text.expect_02:00000000 $t
+    {standard input}:67     .text.expect_02:00000000 expect_02
+    {standard input}:86     .text.expect_03:00000000 $t
+    {standard input}:90     .text.expect_03:00000000 expect_03
+    {standard input}:109    .text.expect_04:00000000 $t
+    {standard input}:113    .text.expect_04:00000000 expect_04
+    {standard input}:132    .text.expect_05:00000000 $t
+    {standard input}:136    .text.expect_05:00000000 expect_05
+    {standard input}:151    .text.expect_06:00000000 $t
+    {standard input}:155    .text.expect_06:00000000 expect_06
+    {standard input}:170    .text.expect_07:00000000 $t
+    {standard input}:174    .text.expect_07:00000000 expect_07
+    {standard input}:189    .text.expect_08:00000000 $t
+    {standard input}:193    .text.expect_08:00000000 expect_08
+    {standard input}:208    .text.expect_09:00000000 $t
+    {standard input}:212    .text.expect_09:00000000 expect_09
+    {standard input}:227    .text.expect_0A:00000000 $t
+    {standard input}:231    .text.expect_0A:00000000 expect_0A
+    {standard input}:250    .text.expect_0B:00000000 $t
+    {standard input}:254    .text.expect_0B:00000000 expect_0B
+    {standard input}:273    .text.expect_0C:00000000 $t
+    {standard input}:277    .text.expect_0C:00000000 expect_0C
+    {standard input}:292    .text.expect_0D:00000000 $t
+    {standard input}:296    .text.expect_0D:00000000 expect_0D
+    {standard input}:311    .text.expect_0E:00000000 $t
+    {standard input}:315    .text.expect_0E:00000000 expect_0E
+    {standard input}:330    .text.expect_0F:00000000 $t
+    {standard input}:334    .text.expect_0F:00000000 expect_0F
+    {standard input}:349    .text.expect_10:00000000 $t
+    {standard input}:353    .text.expect_10:00000000 expect_10
+    {standard input}:368    .text.expect_11:00000000 $t
+    {standard input}:372    .text.expect_11:00000000 expect_11
+    {standard input}:387    .text.expect_12:00000000 $t
+    {standard input}:391    .text.expect_12:00000000 expect_12
+    {standard input}:406    .text.expect_13:00000000 $t
+    {standard input}:410    .text.expect_13:00000000 expect_13
+    {standard input}:425    .text.expect_14:00000000 $t
+    {standard input}:429    .text.expect_14:00000000 expect_14
+    {standard input}:448    .text.expect_15:00000000 $t
+    {standard input}:452    .text.expect_15:00000000 expect_15
+    {standard input}:471    .text.expect_16:00000000 $t
+    {standard input}:475    .text.expect_16:00000000 expect_16
+    {standard input}:490    .text.expect_17:00000000 $t
+    {standard input}:494    .text.expect_17:00000000 expect_17
+    {standard input}:509    .text.expect_18:00000000 $t
+    {standard input}:513    .text.expect_18:00000000 expect_18
+    {standard input}:528    .text.expect_19:00000000 $t
+    {standard input}:532    .text.expect_19:00000000 expect_19
+    {standard input}:547    .text.expect_1A:00000000 $t
+    {standard input}:551    .text.expect_1A:00000000 expect_1A
+    {standard input}:566    .text.expect_1B:00000000 $t
+    {standard input}:570    .text.expect_1B:00000000 expect_1B
+    {standard input}:583    .text.expect_1C:00000000 $t
+    {standard input}:587    .text.expect_1C:00000000 expect_1C
+    {standard input}:600    .text.expect_1D:00000000 $t
+    {standard input}:604    .text.expect_1D:00000000 expect_1D
+    {standard input}:615    .text.expect_1E:00000000 $t
+    {standard input}:619    .text.expect_1E:00000000 expect_1E
+    {standard input}:630    .text.expect_1F:00000000 $t
+    {standard input}:634    .text.expect_1F:00000000 expect_1F
+    {standard input}:643    .text.expect_20:00000000 $t
+    {standard input}:647    .text.expect_20:00000000 expect_20
+    {standard input}:660    .text.expect_21:00000000 $t
+    {standard input}:664    .text.expect_21:00000000 expect_21
+    {standard input}:679    .text.expect_22:00000000 $t
+    {standard input}:683    .text.expect_22:00000000 expect_22
+    {standard input}:692    .text.expect_23:00000000 $t
+    {standard input}:696    .text.expect_23:00000000 expect_23
+    {standard input}:709    .text.expect_30:00000000 $t
+    {standard input}:713    .text.expect_30:00000000 expect_30
+    {standard input}:732    .text.expect_31:00000000 $t
+    {standard input}:736    .text.expect_31:00000000 expect_31
+    {standard input}:755    .text.expect_32:00000000 $t
+    {standard input}:759    .text.expect_32:00000000 expect_32
+    {standard input}:778    .text.expect_33:00000000 $t
+    {standard input}:782    .text.expect_33:00000000 expect_33
+    {standard input}:801    .text.expect_34:00000000 $t
+    {standard input}:805    .text.expect_34:00000000 expect_34
+    {standard input}:824    .text.expect_35:00000000 $t
+    {standard input}:828    .text.expect_35:00000000 expect_35
+    {standard input}:843    .text.expect_36:00000000 $t
+    {standard input}:847    .text.expect_36:00000000 expect_36
+    {standard input}:862    .text.expect_37:00000000 $t
+    {standard input}:866    .text.expect_37:00000000 expect_37
+    {standard input}:881    .text.expect_38:00000000 $t
+    {standard input}:885    .text.expect_38:00000000 expect_38
+    {standard input}:900    .text.expect_39:00000000 $t
+    {standard input}:904    .text.expect_39:00000000 expect_39
+    {standard input}:919    .text.expect_3A:00000000 $t
+    {standard input}:923    .text.expect_3A:00000000 expect_3A
+    {standard input}:942    .text.expect_3B:00000000 $t
+    {standard input}:946    .text.expect_3B:00000000 expect_3B
+    {standard input}:965    .text.expect_3C:00000000 $t
+    {standard input}:969    .text.expect_3C:00000000 expect_3C
+    {standard input}:984    .text.expect_3D:00000000 $t
+    {standard input}:988    .text.expect_3D:00000000 expect_3D
+    {standard input}:1003   .text.expect_3E:00000000 $t
+    {standard input}:1007   .text.expect_3E:00000000 expect_3E
+    {standard input}:1022   .text.expect_3F:00000000 $t
+    {standard input}:1026   .text.expect_3F:00000000 expect_3F
+    {standard input}:1041   .text.expect_40:00000000 $t
+    {standard input}:1045   .text.expect_40:00000000 expect_40
+    {standard input}:1060   .text.expect_41:00000000 $t
+    {standard input}:1064   .text.expect_41:00000000 expect_41
+    {standard input}:1079   .text.expect_42:00000000 $t
+    {standard input}:1083   .text.expect_42:00000000 expect_42
+    {standard input}:1098   .text.expect_43:00000000 $t
+    {standard input}:1102   .text.expect_43:00000000 expect_43
+    {standard input}:1117   .text.expect_44:00000000 $t
+    {standard input}:1121   .text.expect_44:00000000 expect_44
+    {standard input}:1140   .text.expect_45:00000000 $t
+    {standard input}:1144   .text.expect_45:00000000 expect_45
+    {standard input}:1163   .text.expect_46:00000000 $t
+    {standard input}:1167   .text.expect_46:00000000 expect_46
+    {standard input}:1182   .text.expect_47:00000000 $t
+    {standard input}:1186   .text.expect_47:00000000 expect_47
+    {standard input}:1201   .text.expect_48:00000000 $t
+    {standard input}:1205   .text.expect_48:00000000 expect_48
+    {standard input}:1220   .text.expect_49:00000000 $t
+    {standard input}:1224   .text.expect_49:00000000 expect_49
+    {standard input}:1239   .text.expect_4A:00000000 $t
+    {standard input}:1243   .text.expect_4A:00000000 expect_4A
+    {standard input}:1258   .text.expect_50:00000000 $t
+    {standard input}:1262   .text.expect_50:00000000 expect_50
+    {standard input}:1281   .text.expect_51:00000000 $t
+    {standard input}:1285   .text.expect_51:00000000 expect_51
+    {standard input}:1304   .text.expect_52:00000000 $t
+    {standard input}:1308   .text.expect_52:00000000 expect_52
+    {standard input}:1327   .text.expect_53:00000000 $t
+    {standard input}:1331   .text.expect_53:00000000 expect_53
+    {standard input}:1350   .text.expect_54:00000000 $t
+    {standard input}:1354   .text.expect_54:00000000 expect_54
+    {standard input}:1373   .text.expect_55:00000000 $t
+    {standard input}:1377   .text.expect_55:00000000 expect_55
+    {standard input}:1392   .text.expect_56:00000000 $t
+    {standard input}:1396   .text.expect_56:00000000 expect_56
+    {standard input}:1411   .text.expect_57:00000000 $t
+    {standard input}:1415   .text.expect_57:00000000 expect_57
+    {standard input}:1430   .text.expect_58:00000000 $t
+    {standard input}:1434   .text.expect_58:00000000 expect_58
+    {standard input}:1449   .text.expect_59:00000000 $t
+    {standard input}:1453   .text.expect_59:00000000 expect_59
+    {standard input}:1468   .text.expect_5A:00000000 $t
+    {standard input}:1472   .text.expect_5A:00000000 expect_5A
+    {standard input}:1491   .text.expect_5B:00000000 $t
+    {standard input}:1495   .text.expect_5B:00000000 expect_5B
+    {standard input}:1514   .text.expect_5C:00000000 $t
+    {standard input}:1518   .text.expect_5C:00000000 expect_5C
+    {standard input}:1533   .text.expect_5D:00000000 $t
+    {standard input}:1537   .text.expect_5D:00000000 expect_5D
+    {standard input}:1552   .text.expect_5E:00000000 $t
+    {standard input}:1556   .text.expect_5E:00000000 expect_5E
+    {standard input}:1571   .text.expect_5F:00000000 $t
+    {standard input}:1575   .text.expect_5F:00000000 expect_5F
+    {standard input}:1590   .text.expect_60:00000000 $t
+    {standard input}:1594   .text.expect_60:00000000 expect_60
+    {standard input}:1609   .text.expect_61:00000000 $t
+    {standard input}:1613   .text.expect_61:00000000 expect_61
+    {standard input}:1628   .text.expect_62:00000000 $t
+    {standard input}:1632   .text.expect_62:00000000 expect_62
+    {standard input}:1647   .text.expect_63:00000000 $t
+    {standard input}:1651   .text.expect_63:00000000 expect_63
+    {standard input}:1666   .text.expect_64:00000000 $t
+    {standard input}:1670   .text.expect_64:00000000 expect_64
+    {standard input}:1689   .text.expect_65:00000000 $t
+    {standard input}:1693   .text.expect_65:00000000 expect_65
+    {standard input}:1712   .text.expect_66:00000000 $t
+    {standard input}:1716   .text.expect_66:00000000 expect_66
+    {standard input}:1731   .text.expect_67:00000000 $t
+    {standard input}:1735   .text.expect_67:00000000 expect_67
+    {standard input}:1750   .text.expect_68:00000000 $t
+    {standard input}:1754   .text.expect_68:00000000 expect_68
+    {standard input}:1769   .text.expect_69:00000000 $t
+    {standard input}:1773   .text.expect_69:00000000 expect_69
+    {standard input}:1788   .text.expect_6A:00000000 $t
+    {standard input}:1792   .text.expect_6A:00000000 expect_6A
+    {standard input}:1807   .text.expect_70:00000000 $t
+    {standard input}:1811   .text.expect_70:00000000 expect_70
+    {standard input}:1830   .text.expect_71:00000000 $t
+    {standard input}:1834   .text.expect_71:00000000 expect_71
+    {standard input}:1853   .text.expect_72:00000000 $t
+    {standard input}:1857   .text.expect_72:00000000 expect_72
+    {standard input}:1876   .text.expect_73:00000000 $t
+    {standard input}:1880   .text.expect_73:00000000 expect_73
+    {standard input}:1899   .text.expect_74:00000000 $t
+    {standard input}:1903   .text.expect_74:00000000 expect_74
+    {standard input}:1922   .text.expect_75:00000000 $t
+    {standard input}:1926   .text.expect_75:00000000 expect_75
+    {standard input}:1941   .text.expect_76:00000000 $t
+    {standard input}:1945   .text.expect_76:00000000 expect_76
+    {standard input}:1960   .text.expect_77:00000000 $t
+    {standard input}:1964   .text.expect_77:00000000 expect_77
+    {standard input}:1979   .text.expect_78:00000000 $t
+    {standard input}:1983   .text.expect_78:00000000 expect_78
+    {standard input}:1998   .text.expect_79:00000000 $t
+    {standard input}:2002   .text.expect_79:00000000 expect_79
+    {standard input}:2017   .text.expect_7A:00000000 $t
+    {standard input}:2021   .text.expect_7A:00000000 expect_7A
+    {standard input}:2040   .text.expect_7B:00000000 $t
+    {standard input}:2044   .text.expect_7B:00000000 expect_7B
+    {standard input}:2063   .text.expect_7C:00000000 $t
+    {standard input}:2067   .text.expect_7C:00000000 expect_7C
+    {standard input}:2082   .text.expect_7D:00000000 $t
+    {standard input}:2086   .text.expect_7D:00000000 expect_7D
+    {standard input}:2101   .text.expect_7E:00000000 $t
+    {standard input}:2105   .text.expect_7E:00000000 expect_7E
+    {standard input}:2120   .text.expect_7F:00000000 $t
+    {standard input}:2124   .text.expect_7F:00000000 expect_7F
+    {standard input}:2139   .text.expect_80:00000000 $t
+    {standard input}:2143   .text.expect_80:00000000 expect_80
+    {standard input}:2158   .text.expect_81:00000000 $t
+    {standard input}:2162   .text.expect_81:00000000 expect_81
+    {standard input}:2177   .text.expect_82:00000000 $t
+    {standard input}:2181   .text.expect_82:00000000 expect_82
+    {standard input}:2196   .text.expect_83:00000000 $t
+    {standard input}:2200   .text.expect_83:00000000 expect_83
+    {standard input}:2215   .text.expect_84:00000000 $t
+    {standard input}:2219   .text.expect_84:00000000 expect_84
+    {standard input}:2238   .text.expect_85:00000000 $t
+    {standard input}:2242   .text.expect_85:00000000 expect_85
+    {standard input}:2261   .text.expect_86:00000000 $t
+    {standard input}:2265   .text.expect_86:00000000 expect_86
+    {standard input}:2280   .text.expect_87:00000000 $t
+    {standard input}:2284   .text.expect_87:00000000 expect_87
+    {standard input}:2299   .text.expect_88:00000000 $t
+    {standard input}:2303   .text.expect_88:00000000 expect_88
+    {standard input}:2318   .text.expect_89:00000000 $t
+    {standard input}:2322   .text.expect_89:00000000 expect_89
+    {standard input}:2337   .text.expect_8A:00000000 $t
+    {standard input}:2341   .text.expect_8A:00000000 expect_8A
+    {standard input}:2356   .text.expect_90:00000000 $t
+    {standard input}:2360   .text.expect_90:00000000 expect_90
+    {standard input}:2379   .text.expect_91:00000000 $t
+    {standard input}:2383   .text.expect_91:00000000 expect_91
+    {standard input}:2394   .text.expect_A0:00000000 $t
+    {standard input}:2398   .text.expect_A0:00000000 expect_A0
+    {standard input}:2414   .text.expect_A8:00000000 $t
+    {standard input}:2418   .text.expect_A8:00000000 expect_A8
+    {standard input}:2427   .text.expect_A9:00000000 $t
+    {standard input}:2431   .text.expect_A9:00000000 expect_A9
+    {standard input}:2444   .text.expect_AA:00000000 $t
+    {standard input}:2448   .text.expect_AA:00000000 expect_AA
+    {standard input}:2463   .text.expect_B0:00000000 $t
+    {standard input}:2467   .text.expect_B0:00000000 expect_B0
+    {standard input}:2486   .text.expect_B1:00000000 $t
+    {standard input}:2490   .text.expect_B1:00000000 expect_B1
+    {standard input}:2509   .text.expect_B2:00000000 $t
+    {standard input}:2513   .text.expect_B2:00000000 expect_B2
+    {standard input}:2532   .text.expect_B3:00000000 $t
+    {standard input}:2536   .text.expect_B3:00000000 expect_B3
+    {standard input}:2555   .text.expect_B4:00000000 $t
+    {standard input}:2559   .text.expect_B4:00000000 expect_B4
+    {standard input}:2578   .text.expect_B5:00000000 $t
+    {standard input}:2582   .text.expect_B5:00000000 expect_B5
+    {standard input}:2597   .text.expect_B6:00000000 $t
+    {standard input}:2601   .text.expect_B6:00000000 expect_B6
+    {standard input}:2616   .text.expect_B7:00000000 $t
+    {standard input}:2620   .text.expect_B7:00000000 expect_B7
+    {standard input}:2635   .text.expect_B8:00000000 $t
+    {standard input}:2639   .text.expect_B8:00000000 expect_B8
+    {standard input}:2654   .text.expect_B9:00000000 $t
+    {standard input}:2658   .text.expect_B9:00000000 expect_B9
+    {standard input}:2673   .text.expect_BA:00000000 $t
+    {standard input}:2677   .text.expect_BA:00000000 expect_BA
+    {standard input}:2696   .text.expect_BB:00000000 $t
+    {standard input}:2700   .text.expect_BB:00000000 expect_BB
+    {standard input}:2719   .text.expect_BC:00000000 $t
+    {standard input}:2723   .text.expect_BC:00000000 expect_BC
+    {standard input}:2738   .text.expect_BD:00000000 $t
+    {standard input}:2742   .text.expect_BD:00000000 expect_BD
+    {standard input}:2757   .text.expect_BE:00000000 $t
+    {standard input}:2761   .text.expect_BE:00000000 expect_BE
+    {standard input}:2776   .text.expect_BF:00000000 $t
+    {standard input}:2780   .text.expect_BF:00000000 expect_BF
+    {standard input}:2795   .text.expect_C0:00000000 $t
+    {standard input}:2799   .text.expect_C0:00000000 expect_C0
+    {standard input}:2814   .text.expect_C1:00000000 $t
+    {standard input}:2818   .text.expect_C1:00000000 expect_C1
+    {standard input}:2833   .text.expect_C2:00000000 $t
+    {standard input}:2837   .text.expect_C2:00000000 expect_C2
+    {standard input}:2852   .text.expect_C3:00000000 $t
+    {standard input}:2856   .text.expect_C3:00000000 expect_C3
+    {standard input}:2871   .text.expect_C4:00000000 $t
+    {standard input}:2875   .text.expect_C4:00000000 expect_C4
+    {standard input}:2894   .text.expect_C5:00000000 $t
+    {standard input}:2898   .text.expect_C5:00000000 expect_C5
+    {standard input}:2917   .text.expect_C6:00000000 $t
+    {standard input}:2921   .text.expect_C6:00000000 expect_C6
+    {standard input}:2936   .text.expect_C7:00000000 $t
+    {standard input}:2940   .text.expect_C7:00000000 expect_C7
+    {standard input}:2955   .text.expect_C8:00000000 $t
+    {standard input}:2959   .text.expect_C8:00000000 expect_C8
+    {standard input}:2974   .text.expect_C9:00000000 $t
+    {standard input}:2978   .text.expect_C9:00000000 expect_C9
+    {standard input}:2993   .text.expect_CA:00000000 $t
+    {standard input}:2997   .text.expect_CA:00000000 expect_CA
+    {standard input}:3012   .text.expect_CB:00000000 $t
+    {standard input}:3016   .text.expect_CB:00000000 expect_CB
+    {standard input}:3035   .text.expect_CC:00000000 $t
+    {standard input}:3039   .text.expect_CC:00000000 expect_CC
+    {standard input}:3054   .text.expect_CD:00000000 $t
+    {standard input}:3058   .text.expect_CD:00000000 expect_CD
+    {standard input}:3077   .text.expect_CE:00000000 $t
+    {standard input}:3081   .text.expect_CE:00000000 expect_CE
+    {standard input}:3100   .text.expect_CF:00000000 $t
+    {standard input}:3104   .text.expect_CF:00000000 expect_CF
+    {standard input}:3119   .text.expect_D0:00000000 $t
+    {standard input}:3123   .text.expect_D0:00000000 expect_D0
+    {standard input}:3142   .text.expect_D1:00000000 $t
+    {standard input}:3146   .text.expect_D1:00000000 expect_D1
+    {standard input}:3159   .text.expect_D8:00000000 $t
+    {standard input}:3163   .text.expect_D8:00000000 expect_D8
+    {standard input}:3182   .text.expect_D9:00000000 $t
+    {standard input}:3186   .text.expect_D9:00000000 expect_D9
+    {standard input}:3199   .text.expect_1F8:00000000 $t
+    {standard input}:3203   .text.expect_1F8:00000000 expect_1F8
+    {standard input}:3218   .text.expect_1FA:00000000 $t
+    {standard input}:3222   .text.expect_1FA:00000000 expect_1FA
+    {standard input}:3239   .text.PMB_LoopbackTest_Run:00000000 $t
+    {standard input}:3244   .text.PMB_LoopbackTest_Run:00000000 PMB_LoopbackTest_Run
+    {standard input}:3583   .text.PMB_LoopbackTest_Run:000003d0 $d
+    {standard input}:3589   .rodata.k_tests:00000000 $d
+    {standard input}:3593   .rodata.k_tests:00000000 k_tests
+
+UNDEFINED SYMBOLS
+PMB_GetRegs
+PMB_UpdateEU
+memset
+PMB_Emulator_Run
+MULTICAN_CONFIG_0

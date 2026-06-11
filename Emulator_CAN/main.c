@@ -9,6 +9,8 @@
 
 
 #include "DAVE.h"                 //Declarations from DAVE Code Generation (includes SFR declaration)
+#include "pmb_can_emulator.h"     //Including the CAN protocol configuration
+#include "pmb_loopback_test.h"	  //Including the CAN protocol loopback test
 
 /**
 
@@ -24,6 +26,11 @@ int main(void)
 {
   DAVE_STATUS_t status;
 
+  /* No user CAN ISRs exist; the MultiCAN config has no node hooked up,
+   * so any spurious service request would trap in Default_Handler. Mask
+   * interrupts globally before init touches the CAN registers. */
+  __disable_irq();
+
   status = DAVE_Init();           /* Initialization of DAVE APPs  */
 
   if (status != DAVE_STATUS_SUCCESS)
@@ -36,10 +43,34 @@ int main(void)
 
     }
   }
+  PMB_Emulator_Init();
 
-  /* Placeholder for user application code. The while loop below can be replaced with user application code. */
+//  ======== Loop back test here ========
+  PMB_LoopbackResult_t results[PMB_LOOPBACK_MAX_RESULTS];
+  uint16_t count = 0;
+  bool passed = PMB_LoopbackTest_Run(results, &count);
+
+  for (uint16_t i = 0; i < count; i++){
+	  XMC_DEBUG("Test 0x%03X: %s\n", results[i].data_id, results[i].passed ? "PASS" : "FAIL");
+	  if (!results[i].passed) {
+		  XMC_DEBUG("  Expected: %02X %02X %02X %02X %02X %02X\n",
+				  results[i].expected[0], results[i].expected[1],
+	              results[i].expected[2], results[i].expected[3],
+	              results[i].expected[4], results[i].expected[5]);
+	      XMC_DEBUG("  Got:      %02X %02X %02X %02X %02X %02X\n",
+	              results[i].received[0], results[i].received[1],
+	              results[i].received[2], results[i].received[3],
+	              results[i].received[4], results[i].received[5]);
+	  }
+  }
+
+  /* LED1 = all passed, LED2 = any failed */
+  DIGITAL_IO_SetOutputHigh(passed ? &LED1 : &LED2);
+
+  /* Normal Operation. */
   while(1U)
   {
-
+	  PMB_Emulator_Run();
+	  PMB_UpdateEU();
   }
 }

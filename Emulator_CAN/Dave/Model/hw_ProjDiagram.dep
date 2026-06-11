@@ -229,7 +229,7 @@
       <properties key="uri" value="http://resources/4.0.14/app/MULTICAN_CONFIG/0/vs_message0_txinp"/>
       <graphicsAlgorithm xsi:type="al:Rectangle" background="//@colors.2" lineStyle="UNSPECIFIED" width="20" height="10" x="250" y="430"/>
     </anchors>
-    <anchors xsi:type="pi:BoxRelativeAnchor" active="true" referencedGraphicsAlgorithm="//@children.1/@graphicsAlgorithm/@graphicsAlgorithmChildren.0">
+    <anchors xsi:type="pi:BoxRelativeAnchor" visible="true" active="true" referencedGraphicsAlgorithm="//@children.1/@graphicsAlgorithm/@graphicsAlgorithmChildren.0">
       <properties key="SignalName" value="event_lmo_01_txinp"/>
       <properties key="uri" value="http://resources/4.0.14/app/MULTICAN_CONFIG/0/vs_message1_txinp"/>
       <graphicsAlgorithm xsi:type="al:Rectangle" background="//@colors.2" lineStyle="UNSPECIFIED" width="20" height="10" x="250" y="439"/>
@@ -1614,7 +1614,7 @@
       <properties key="uri" value="http://resources/4.0.14/app/MULTICAN_CONFIG/0/vs_message0_rxinp"/>
       <graphicsAlgorithm xsi:type="al:Rectangle" background="//@colors.2" lineStyle="UNSPECIFIED" width="20" height="10" x="-20" y="430"/>
     </anchors>
-    <anchors xsi:type="pi:BoxRelativeAnchor" active="true" referencedGraphicsAlgorithm="//@children.1/@graphicsAlgorithm/@graphicsAlgorithmChildren.0">
+    <anchors xsi:type="pi:BoxRelativeAnchor" visible="true" active="true" referencedGraphicsAlgorithm="//@children.1/@graphicsAlgorithm/@graphicsAlgorithmChildren.0">
       <properties key="SignalName" value="event_lmo_01_rxinp"/>
       <properties key="uri" value="http://resources/4.0.14/app/MULTICAN_CONFIG/0/vs_message1_rxinp"/>
       <graphicsAlgorithm xsi:type="al:Rectangle" background="//@colors.2" lineStyle="UNSPECIFIED" width="20" height="10" x="-20" y="439"/>
@@ -3053,9 +3053,9 @@
       <properties key="uri" value="http://resources/4.0.14/app/MULTICAN_CONFIG/0/vs_message1_txinp"/>
       <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="20" height="10" x="-20" y="419"/>
     </children>
-    <children>
+    <children visible="true">
       <properties key="uri" value="http://resources/4.0.14/app/MULTICAN_CONFIG/0/vs_message1_txinp"/>
-      <graphicsAlgorithm xsi:type="al:Text" lineStyle="UNSPECIFIED" width="105" height="20" x="160" y="434" horizontalAlignment="ALIGNMENT_RIGHT" value="event_lmo_01_txinp"/>
+      <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineStyle="UNSPECIFIED" width="105" height="20" x="160" y="434" style="//@styles.0/@styles.2" horizontalAlignment="ALIGNMENT_RIGHT" value="event_lmo_01_txinp"/>
     </children>
     <children visible="true" active="true">
       <properties key="SignalName" value="event_lmo_02_txinp"/>
@@ -5546,9 +5546,9 @@
       <properties key="uri" value="http://resources/4.0.14/app/MULTICAN_CONFIG/0/vs_message1_rxinp"/>
       <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="20" height="10" x="-20" y="419"/>
     </children>
-    <children>
+    <children visible="true">
       <properties key="uri" value="http://resources/4.0.14/app/MULTICAN_CONFIG/0/vs_message1_rxinp"/>
-      <graphicsAlgorithm xsi:type="al:Text" lineStyle="UNSPECIFIED" width="106" height="20" x="25" y="434" value="event_lmo_01_rxinp"/>
+      <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineStyle="UNSPECIFIED" width="106" height="20" x="25" y="434" style="//@styles.0/@styles.2" value="event_lmo_01_rxinp"/>
     </children>
     <children visible="true" active="true">
       <properties key="SignalName" value="event_lmo_02_rxinp"/>
@@ -7826,6 +7826,116 @@
     <children>
       <properties key="uri" value="http://resources/4.0.14/app/MULTICAN_CONFIG/0/vs_message255_rxinp"/>
       <graphicsAlgorithm xsi:type="al:Text" lineStyle="UNSPECIFIED" width="116" height="20" x="25" y="2756" value="event_lmo_255_rxinp"/>
+    </children>
+  </children>
+  <children xsi:type="pi:ContainerShape" visible="true" active="true">
+    <properties key="uri" value="http://resources/4.0.18/app/DIGITAL_IO/0"/>
+    <properties key="APP_NAME_ID" value="DIGITAL_IO/0"/>
+    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="161" height="91" x="105" y="3122">
+      <graphicsAlgorithmChildren xsi:type="al:RoundedRectangle" lineWidth="2" transparency="0.0" width="121" height="91" x="20" style="//@styles.0/@styles.3" cornerHeight="5" cornerWidth="5"/>
+    </graphicsAlgorithm>
+    <anchors xsi:type="pi:BoxRelativeAnchor" visible="true" active="true" referencedGraphicsAlgorithm="//@children.2/@graphicsAlgorithm/@graphicsAlgorithmChildren.0">
+      <properties key="SignalName" value="pin"/>
+      <properties key="uri" value="http://resources/4.0.18/app/DIGITAL_IO/0/vs_digital_io_pad_pin"/>
+      <graphicsAlgorithm xsi:type="al:Rectangle" background="//@colors.2" lineStyle="UNSPECIFIED" width="20" height="10" x="120" y="50"/>
+    </anchors>
+    <anchors xsi:type="pi:BoxRelativeAnchor" active="true" referencedGraphicsAlgorithm="//@children.2/@graphicsAlgorithm/@graphicsAlgorithmChildren.0">
+      <properties key="SignalName" value="hardware pin control"/>
+      <properties key="uri" value="http://resources/4.0.18/app/DIGITAL_IO/0/vs_digital_io_hwsel"/>
+      <graphicsAlgorithm xsi:type="al:Rectangle" background="//@colors.2" lineStyle="UNSPECIFIED" width="20" height="10" x="120" y="70"/>
+    </anchors>
+    <children visible="true">
+      <graphicsAlgorithm xsi:type="al:Polyline" lineStyle="UNSPECIFIED" style="//@styles.0">
+        <points x="20" y="40"/>
+        <points x="141" y="40"/>
+      </graphicsAlgorithm>
+    </children>
+    <children xsi:type="pi:ContainerShape" visible="true">
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="121" height="20" x="20"/>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Text" lineStyle="UNSPECIFIED" width="119" height="20" x="2" style="//@styles.0/@styles.0" horizontalAlignment="ALIGNMENT_CENTER" value="DIGITAL_IO"/>
+      </children>
+    </children>
+    <children xsi:type="pi:ContainerShape" visible="true">
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="121" height="20" x="20" y="20"/>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Text" lineStyle="UNSPECIFIED" width="119" height="20" x="2" style="//@styles.0/@styles.1" horizontalAlignment="ALIGNMENT_CENTER" value="LED1">
+          <properties key="AppInstanceLabel" value="DIGITAL_IO_0"/>
+        </graphicsAlgorithm>
+      </children>
+    </children>
+    <children visible="true" active="true">
+      <properties key="SignalName" value="pin"/>
+      <properties key="uri" value="http://resources/4.0.18/app/DIGITAL_IO/0/vs_digital_io_pad_pin"/>
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="20" height="10" x="-20" y="30"/>
+    </children>
+    <children visible="true">
+      <properties key="uri" value="http://resources/4.0.18/app/DIGITAL_IO/0/vs_digital_io_pad_pin"/>
+      <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineStyle="UNSPECIFIED" width="125" height="20" x="10" y="45" style="//@styles.0/@styles.2" horizontalAlignment="ALIGNMENT_RIGHT" value="pin"/>
+    </children>
+    <children visible="true" active="true">
+      <properties key="SignalName" value="hardware pin control"/>
+      <properties key="uri" value="http://resources/4.0.18/app/DIGITAL_IO/0/vs_digital_io_hwsel"/>
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="20" height="10" x="-20" y="50"/>
+    </children>
+    <children>
+      <properties key="uri" value="http://resources/4.0.18/app/DIGITAL_IO/0/vs_digital_io_hwsel"/>
+      <graphicsAlgorithm xsi:type="al:Text" lineStyle="UNSPECIFIED" width="105" height="20" x="30" y="65" horizontalAlignment="ALIGNMENT_RIGHT" value="hardware pin control"/>
+    </children>
+  </children>
+  <children xsi:type="pi:ContainerShape" visible="true" active="true">
+    <properties key="uri" value="http://resources/4.0.18/app/DIGITAL_IO/1"/>
+    <properties key="APP_NAME_ID" value="DIGITAL_IO/1"/>
+    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="161" height="91" x="105" y="3253">
+      <graphicsAlgorithmChildren xsi:type="al:RoundedRectangle" lineWidth="2" transparency="0.0" width="121" height="91" x="20" style="//@styles.0/@styles.3" cornerHeight="5" cornerWidth="5"/>
+    </graphicsAlgorithm>
+    <anchors xsi:type="pi:BoxRelativeAnchor" visible="true" active="true" referencedGraphicsAlgorithm="//@children.3/@graphicsAlgorithm/@graphicsAlgorithmChildren.0">
+      <properties key="SignalName" value="pin"/>
+      <properties key="uri" value="http://resources/4.0.18/app/DIGITAL_IO/1/vs_digital_io_pad_pin"/>
+      <graphicsAlgorithm xsi:type="al:Rectangle" background="//@colors.2" lineStyle="UNSPECIFIED" width="20" height="10" x="120" y="50"/>
+    </anchors>
+    <anchors xsi:type="pi:BoxRelativeAnchor" active="true" referencedGraphicsAlgorithm="//@children.3/@graphicsAlgorithm/@graphicsAlgorithmChildren.0">
+      <properties key="SignalName" value="hardware pin control"/>
+      <properties key="uri" value="http://resources/4.0.18/app/DIGITAL_IO/1/vs_digital_io_hwsel"/>
+      <graphicsAlgorithm xsi:type="al:Rectangle" background="//@colors.2" lineStyle="UNSPECIFIED" width="20" height="10" x="120" y="70"/>
+    </anchors>
+    <children visible="true">
+      <graphicsAlgorithm xsi:type="al:Polyline" lineStyle="UNSPECIFIED" style="//@styles.0">
+        <points x="20" y="40"/>
+        <points x="141" y="40"/>
+      </graphicsAlgorithm>
+    </children>
+    <children xsi:type="pi:ContainerShape" visible="true">
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="121" height="20" x="20"/>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Text" lineStyle="UNSPECIFIED" width="119" height="20" x="2" style="//@styles.0/@styles.0" horizontalAlignment="ALIGNMENT_CENTER" value="DIGITAL_IO"/>
+      </children>
+    </children>
+    <children xsi:type="pi:ContainerShape" visible="true">
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="121" height="20" x="20" y="20"/>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Text" lineStyle="UNSPECIFIED" width="119" height="20" x="2" style="//@styles.0/@styles.1" horizontalAlignment="ALIGNMENT_CENTER" value="LED2">
+          <properties key="AppInstanceLabel" value="DIGITAL_IO_1"/>
+        </graphicsAlgorithm>
+      </children>
+    </children>
+    <children visible="true" active="true">
+      <properties key="SignalName" value="pin"/>
+      <properties key="uri" value="http://resources/4.0.18/app/DIGITAL_IO/1/vs_digital_io_pad_pin"/>
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="20" height="10" x="-20" y="30"/>
+    </children>
+    <children visible="true">
+      <properties key="uri" value="http://resources/4.0.18/app/DIGITAL_IO/1/vs_digital_io_pad_pin"/>
+      <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineStyle="UNSPECIFIED" width="125" height="20" x="10" y="45" style="//@styles.0/@styles.2" horizontalAlignment="ALIGNMENT_RIGHT" value="pin"/>
+    </children>
+    <children visible="true" active="true">
+      <properties key="SignalName" value="hardware pin control"/>
+      <properties key="uri" value="http://resources/4.0.18/app/DIGITAL_IO/1/vs_digital_io_hwsel"/>
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="20" height="10" x="-20" y="50"/>
+    </children>
+    <children>
+      <properties key="uri" value="http://resources/4.0.18/app/DIGITAL_IO/1/vs_digital_io_hwsel"/>
+      <graphicsAlgorithm xsi:type="al:Text" lineStyle="UNSPECIFIED" width="105" height="20" x="30" y="65" horizontalAlignment="ALIGNMENT_RIGHT" value="hardware pin control"/>
     </children>
   </children>
   <styles background="//@colors.1" lineWidth="2" lineVisible="true" transparency="0.0" id="COMMON-VALUES" horizontalAlignment="UNSPECIFIED" verticalAlignment="UNSPECIFIED">

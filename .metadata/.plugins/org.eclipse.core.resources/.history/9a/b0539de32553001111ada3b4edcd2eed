@@ -1,0 +1,71 @@
+/*
+ * main.c
+ *
+ *  Created on: 2026 May 15 10:53:01
+ *  Author: AlinaWang
+ */
+
+
+
+
+#include "DAVE.h"                 //Declarations from DAVE Code Generation (includes SFR declaration)
+#include "pmb_can_emulator.h"     //Including the CAN protocol configuration
+#include "pmb_loopback_test.h"	  //Including the CAN protocol loopback test
+
+/**
+
+ * @brief main() - Application entry point
+ *
+ * <b>Details of function</b><br>
+ * This routine is the application entry point. It is invoked by the device startup code. It is responsible for
+ * invoking the APP initialization dispatcher routine - DAVE_Init() and hosting the place-holder for user application
+ * code.
+ */
+
+int main(void)
+{
+  DAVE_STATUS_t status;
+
+  status = DAVE_Init();           /* Initialization of DAVE APPs  */
+
+  if (status != DAVE_STATUS_SUCCESS)
+  {
+    /* Placeholder for error handler code. The while loop below can be replaced with an user error handler. */
+    XMC_DEBUG("DAVE APPs initialization failed\n");
+
+    while(1U)
+    {
+
+    }
+  }
+  PMB_Emulator_Init();
+
+//  ======== Loop back test here ========
+  PMB_LoopbackResult_t test_results[PMB_LOOPBACK_MAX_RESULTS];
+  uint8_t = count = 0;
+  bool passed = PMB_LoopbackTest_Run(results, &count);
+
+  for (uint8_t i = 0; i < count; i++){
+	  XMC_DEBUG("Test 0x%03X: %s\n", results[i].data_id, results[i].passed ? "PASS" : "FAIL");
+	  if (!results[i].passed) {
+		  XMC_DEBUG("  Expected: %02X %02X %02X %02X %02X %02X\n",
+				  results[i].expected[0], results[i].expected[1],
+	              results[i].expected[2], results[i].expected[3],
+	              results[i].expected[4], results[i].expected[5]);
+	      XMC_DEBUG("  Got:      %02X %02X %02X %02X %02X %02X\n",
+	              results[i].received[0], results[i].received[1],
+	              results[i].received[2], results[i].received[3],
+	              results[i].received[4], results[i].received[5]);
+	  }
+  }
+
+  /* LED1 = all passed, LED2 = any failed */
+  XMC_GPIO_SetOutputHigh(XMC_GPIO_PORT4, passed ? 0U : 1U);
+
+  /* Placeholder for user application code. The while loop below can be replaced with user application code. */
+  while(1U)
+  {
+	  PMB_Emulator_Run();
+	  PMB_UpdateEU()
+  }
+}

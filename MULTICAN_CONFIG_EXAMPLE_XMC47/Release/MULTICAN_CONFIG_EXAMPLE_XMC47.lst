@@ -1,0 +1,1866 @@
+
+MULTICAN_CONFIG_EXAMPLE_XMC47.elf:     file format elf32-littlearm
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         0000134c  08000000  0c000000  00008000  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 Stack         00000800  1ffe8000  1ffe8000  00018000  2**0
+                  ALLOC
+  2 .data         00000174  1ffe8800  0c00134c  00010800  2**3
+                  CONTENTS, ALLOC, LOAD, DATA
+  3 .bss          00000018  1ffe8974  0c0014c0  00010974  2**0
+                  ALLOC
+  4 .no_init      00000014  2003ffc0  2003ffc0  00017fc0  2**2
+                  ALLOC
+  5 .debug_frame  0000002c  00000000  00000000  00010974  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  6 .build_attributes 0000046c  00000000  00000000  000109a0  2**0
+                  CONTENTS, READONLY
+
+Disassembly of section .text:
+
+08000000 <__Vectors>:
+ 8000000:	00 88 fe 1f 01 02 00 08 99 02 00 08 99 02 00 08     ................
+ 8000010:	99 02 00 08 99 02 00 08 99 02 00 08 00 00 00 00     ................
+	...
+ 800002c:	99 02 00 08 99 02 00 08 00 00 00 00 99 02 00 08     ................
+ 800003c:	99 02 00 08 99 02 00 08 99 02 00 08 99 02 00 08     ................
+ 800004c:	99 02 00 08 99 02 00 08 99 02 00 08 99 02 00 08     ................
+ 800005c:	99 02 00 08 99 02 00 08 00 00 00 00 00 00 00 00     ................
+ 800006c:	00 00 00 00 99 02 00 08 00 00 00 00 99 02 00 08     ................
+ 800007c:	99 02 00 08 99 02 00 08 99 02 00 08 99 02 00 08     ................
+ 800008c:	99 02 00 08 99 02 00 08 99 02 00 08 99 02 00 08     ................
+ 800009c:	99 02 00 08 99 02 00 08 99 02 00 08 99 02 00 08     ................
+ 80000ac:	99 02 00 08 99 02 00 08 99 02 00 08 99 02 00 08     ................
+ 80000bc:	99 02 00 08 99 02 00 08 99 02 00 08 99 02 00 08     ................
+ 80000cc:	99 02 00 08 99 02 00 08 99 02 00 08 99 02 00 08     ................
+ 80000dc:	99 02 00 08 99 02 00 08 99 02 00 08 99 02 00 08     ................
+ 80000ec:	99 02 00 08 99 02 00 08 99 02 00 08 99 02 00 08     ................
+ 80000fc:	99 02 00 08 99 02 00 08 99 02 00 08 99 02 00 08     ................
+ 800010c:	99 02 00 08 99 02 00 08 99 02 00 08 99 02 00 08     ................
+ 800011c:	99 02 00 08 99 02 00 08 99 02 00 08 99 02 00 08     ................
+ 800012c:	99 02 00 08 99 02 00 08 99 02 00 08 99 02 00 08     ................
+ 800013c:	99 02 00 08 99 02 00 08 99 02 00 08 99 02 00 08     ................
+ 800014c:	99 02 00 08 99 02 00 08 99 02 00 08 99 02 00 08     ................
+ 800015c:	99 02 00 08 00 00 00 00 00 00 00 00 00 00 00 00     ................
+ 800016c:	00 00 00 00 99 02 00 08 fd 11 00 08 99 02 00 08     ................
+ 800017c:	99 02 00 08 99 02 00 08 99 02 00 08 99 02 00 08     ................
+ 800018c:	99 02 00 08 99 02 00 08 99 02 00 08 99 02 00 08     ................
+ 800019c:	99 02 00 08 99 02 00 08 99 02 00 08 99 02 00 08     ................
+ 80001ac:	99 02 00 08 99 02 00 08 99 02 00 08 99 02 00 08     ................
+ 80001bc:	99 02 00 08 99 02 00 08 99 02 00 08 99 02 00 08     ................
+ 80001cc:	99 02 00 08 99 02 00 08 99 02 00 08 99 02 00 08     ................
+ 80001dc:	00 00 00 00 99 02 00 08 99 02 00 08 99 02 00 08     ................
+ 80001ec:	99 02 00 08 99 02 00 08 00 00 00 00 99 02 00 08     ................
+ 80001fc:	00 00 00 00                                         ....
+
+08000200 <Reset_Handler>:
+ 8000200:	f8df d074 	ldr.w	sp, [pc, #116]	; 8000278 <__zero_table_end__>
+ 8000204:	481d      	ldr	r0, [pc, #116]	; (800027c <__zero_table_end__+0x4>)
+ 8000206:	4780      	blx	r0
+ 8000208:	4c1d      	ldr	r4, [pc, #116]	; (8000280 <__zero_table_end__+0x8>)
+ 800020a:	4d1e      	ldr	r5, [pc, #120]	; (8000284 <__zero_table_end__+0xc>)
+ 800020c:	42ac      	cmp	r4, r5
+ 800020e:	da09      	bge.n	8000224 <Reset_Handler+0x24>
+ 8000210:	6821      	ldr	r1, [r4, #0]
+ 8000212:	6862      	ldr	r2, [r4, #4]
+ 8000214:	68a3      	ldr	r3, [r4, #8]
+ 8000216:	3b04      	subs	r3, #4
+ 8000218:	bfa2      	ittt	ge
+ 800021a:	58c8      	ldrge	r0, [r1, r3]
+ 800021c:	50d0      	strge	r0, [r2, r3]
+ 800021e:	e7fa      	bge.n	8000216 <Reset_Handler+0x16>
+ 8000220:	340c      	adds	r4, #12
+ 8000222:	e7f3      	b.n	800020c <Reset_Handler+0xc>
+ 8000224:	4b18      	ldr	r3, [pc, #96]	; (8000288 <__zero_table_end__+0x10>)
+ 8000226:	4c19      	ldr	r4, [pc, #100]	; (800028c <__zero_table_end__+0x14>)
+ 8000228:	42a3      	cmp	r3, r4
+ 800022a:	da08      	bge.n	800023e <Reset_Handler+0x3e>
+ 800022c:	6819      	ldr	r1, [r3, #0]
+ 800022e:	685a      	ldr	r2, [r3, #4]
+ 8000230:	2000      	movs	r0, #0
+ 8000232:	3a04      	subs	r2, #4
+ 8000234:	bfa4      	itt	ge
+ 8000236:	5088      	strge	r0, [r1, r2]
+ 8000238:	e7fb      	bge.n	8000232 <Reset_Handler+0x32>
+ 800023a:	3308      	adds	r3, #8
+ 800023c:	e7f4      	b.n	8000228 <Reset_Handler+0x28>
+ 800023e:	4814      	ldr	r0, [pc, #80]	; (8000290 <__zero_table_end__+0x18>)
+ 8000240:	4780      	blx	r0
+ 8000242:	4814      	ldr	r0, [pc, #80]	; (8000294 <__zero_table_end__+0x1c>)
+ 8000244:	4780      	blx	r0
+	...
+
+08000248 <__copy_table_start__>:
+ 8000248:	0c00134c 	.word	0x0c00134c
+ 800024c:	1ffe8800 	.word	0x1ffe8800
+ 8000250:	00000174 	.word	0x00000174
+ 8000254:	0c00134c 	.word	0x0c00134c
+ 8000258:	1ffe8800 	.word	0x1ffe8800
+ 800025c:	00000000 	.word	0x00000000
+
+08000260 <__copy_table_end__>:
+ 8000260:	1ffe8974 	.word	0x1ffe8974
+ 8000264:	00000018 	.word	0x00000018
+ 8000268:	20000000 	.word	0x20000000
+ 800026c:	00000000 	.word	0x00000000
+ 8000270:	20000000 	.word	0x20000000
+ 8000274:	00000000 	.word	0x00000000
+
+08000278 <__zero_table_end__>:
+ 8000278:	1ffe8800 	.word	0x1ffe8800
+ 800027c:	08000325 	.word	0x08000325
+ 8000280:	08000248 	.word	0x08000248
+ 8000284:	08000260 	.word	0x08000260
+ 8000288:	08000260 	.word	0x08000260
+ 800028c:	08000278 	.word	0x08000278
+ 8000290:	08001251 	.word	0x08001251
+ 8000294:	08001101 	.word	0x08001101
+
+08000298 <BusFault_Handler>:
+ 8000298:	e7fe      	b.n	8000298 <BusFault_Handler>
+	...
+
+0800029c <SystemCoreClockUpdate>:
+ 800029c:	4b1d      	ldr	r3, [pc, #116]	; (8000314 <SystemCoreClockUpdate+0x78>)
+ 800029e:	68db      	ldr	r3, [r3, #12]
+ 80002a0:	03d9      	lsls	r1, r3, #15
+ 80002a2:	b510      	push	{r4, lr}
+ 80002a4:	d525      	bpl.n	80002f2 <SystemCoreClockUpdate+0x56>
+ 80002a6:	4b1c      	ldr	r3, [pc, #112]	; (8000318 <SystemCoreClockUpdate+0x7c>)
+ 80002a8:	68da      	ldr	r2, [r3, #12]
+ 80002aa:	f012 0f01 	tst.w	r2, #1
+ 80002ae:	461c      	mov	r4, r3
+ 80002b0:	d102      	bne.n	80002b8 <SystemCoreClockUpdate+0x1c>
+ 80002b2:	f000 fedf 	bl	8001074 <OSCHP_GetFrequency>
+ 80002b6:	e000      	b.n	80002ba <SystemCoreClockUpdate+0x1e>
+ 80002b8:	4818      	ldr	r0, [pc, #96]	; (800031c <SystemCoreClockUpdate+0x80>)
+ 80002ba:	6822      	ldr	r2, [r4, #0]
+ 80002bc:	4b16      	ldr	r3, [pc, #88]	; (8000318 <SystemCoreClockUpdate+0x7c>)
+ 80002be:	0752      	lsls	r2, r2, #29
+ 80002c0:	d510      	bpl.n	80002e4 <SystemCoreClockUpdate+0x48>
+ 80002c2:	689a      	ldr	r2, [r3, #8]
+ 80002c4:	6899      	ldr	r1, [r3, #8]
+ 80002c6:	689b      	ldr	r3, [r3, #8]
+ 80002c8:	f3c2 6203 	ubfx	r2, r2, #24, #4
+ 80002cc:	f3c3 4406 	ubfx	r4, r3, #16, #7
+ 80002d0:	1c53      	adds	r3, r2, #1
+ 80002d2:	fb04 3303 	mla	r3, r4, r3, r3
+ 80002d6:	fbb0 f0f3 	udiv	r0, r0, r3
+ 80002da:	f3c1 2306 	ubfx	r3, r1, #8, #7
+ 80002de:	fb03 0000 	mla	r0, r3, r0, r0
+ 80002e2:	e007      	b.n	80002f4 <SystemCoreClockUpdate+0x58>
+ 80002e4:	689b      	ldr	r3, [r3, #8]
+ 80002e6:	f003 037f 	and.w	r3, r3, #127	; 0x7f
+ 80002ea:	3301      	adds	r3, #1
+ 80002ec:	fbb0 f0f3 	udiv	r0, r0, r3
+ 80002f0:	e000      	b.n	80002f4 <SystemCoreClockUpdate+0x58>
+ 80002f2:	480a      	ldr	r0, [pc, #40]	; (800031c <SystemCoreClockUpdate+0x80>)
+ 80002f4:	4a07      	ldr	r2, [pc, #28]	; (8000314 <SystemCoreClockUpdate+0x78>)
+ 80002f6:	68d3      	ldr	r3, [r2, #12]
+ 80002f8:	b2db      	uxtb	r3, r3
+ 80002fa:	3301      	adds	r3, #1
+ 80002fc:	fbb0 f0f3 	udiv	r0, r0, r3
+ 8000300:	6913      	ldr	r3, [r2, #16]
+ 8000302:	f003 0301 	and.w	r3, r3, #1
+ 8000306:	3301      	adds	r3, #1
+ 8000308:	fbb0 f0f3 	udiv	r0, r0, r3
+ 800030c:	4b04      	ldr	r3, [pc, #16]	; (8000320 <SystemCoreClockUpdate+0x84>)
+ 800030e:	6018      	str	r0, [r3, #0]
+ 8000310:	bd10      	pop	{r4, pc}
+ 8000312:	bf00      	nop
+ 8000314:	50004600 	.word	0x50004600
+ 8000318:	50004710 	.word	0x50004710
+ 800031c:	016e3600 	.word	0x016e3600
+ 8000320:	2003ffc0 	.word	0x2003ffc0
+
+08000324 <SystemInit>:
+ 8000324:	b538      	push	{r3, r4, r5, lr}
+ 8000326:	4a09      	ldr	r2, [pc, #36]	; (800034c <SystemInit+0x28>)
+ 8000328:	4d09      	ldr	r5, [pc, #36]	; (8000350 <SystemInit+0x2c>)
+ 800032a:	f04f 5400 	mov.w	r4, #536870912	; 0x20000000
+ 800032e:	4623      	mov	r3, r4
+ 8000330:	cb03      	ldmia	r3!, {r0, r1}
+ 8000332:	42ab      	cmp	r3, r5
+ 8000334:	6010      	str	r0, [r2, #0]
+ 8000336:	6051      	str	r1, [r2, #4]
+ 8000338:	461c      	mov	r4, r3
+ 800033a:	f102 0208 	add.w	r2, r2, #8
+ 800033e:	d1f6      	bne.n	800032e <SystemInit+0xa>
+ 8000340:	f000 fe58 	bl	8000ff4 <SystemCoreSetup>
+ 8000344:	f000 fe9a 	bl	800107c <SystemCoreClockSetup>
+ 8000348:	bd38      	pop	{r3, r4, r5, pc}
+ 800034a:	bf00      	nop
+ 800034c:	2003ffc4 	.word	0x2003ffc4
+ 8000350:	20000010 	.word	0x20000010
+
+08000354 <XMC_GPIO_Init>:
+ 8000354:	f001 03fc 	and.w	r3, r1, #252	; 0xfc
+ 8000358:	4403      	add	r3, r0
+ 800035a:	b5f0      	push	{r4, r5, r6, r7, lr}
+ 800035c:	f001 0403 	and.w	r4, r1, #3
+ 8000360:	691e      	ldr	r6, [r3, #16]
+ 8000362:	00e4      	lsls	r4, r4, #3
+ 8000364:	25f8      	movs	r5, #248	; 0xf8
+ 8000366:	40a5      	lsls	r5, r4
+ 8000368:	ea26 0505 	bic.w	r5, r6, r5
+ 800036c:	611d      	str	r5, [r3, #16]
+ 800036e:	6f46      	ldr	r6, [r0, #116]	; 0x74
+ 8000370:	004f      	lsls	r7, r1, #1
+ 8000372:	2503      	movs	r5, #3
+ 8000374:	40bd      	lsls	r5, r7
+ 8000376:	ea26 0505 	bic.w	r5, r6, r5
+ 800037a:	6745      	str	r5, [r0, #116]	; 0x74
+ 800037c:	4d14      	ldr	r5, [pc, #80]	; (80003d0 <XMC_GPIO_Init+0x7c>)
+ 800037e:	42a8      	cmp	r0, r5
+ 8000380:	d003      	beq.n	800038a <XMC_GPIO_Init+0x36>
+ 8000382:	f505 7580 	add.w	r5, r5, #256	; 0x100
+ 8000386:	42a8      	cmp	r0, r5
+ 8000388:	d107      	bne.n	800039a <XMC_GPIO_Init+0x46>
+ 800038a:	6e05      	ldr	r5, [r0, #96]	; 0x60
+ 800038c:	2601      	movs	r6, #1
+ 800038e:	fa06 f101 	lsl.w	r1, r6, r1
+ 8000392:	ea25 0101 	bic.w	r1, r5, r1
+ 8000396:	6601      	str	r1, [r0, #96]	; 0x60
+ 8000398:	e014      	b.n	80003c4 <XMC_GPIO_Init+0x70>
+ 800039a:	6855      	ldr	r5, [r2, #4]
+ 800039c:	408d      	lsls	r5, r1
+ 800039e:	6045      	str	r5, [r0, #4]
+ 80003a0:	08cd      	lsrs	r5, r1, #3
+ 80003a2:	eb00 0085 	add.w	r0, r0, r5, lsl #2
+ 80003a6:	f001 0107 	and.w	r1, r1, #7
+ 80003aa:	6c06      	ldr	r6, [r0, #64]	; 0x40
+ 80003ac:	0089      	lsls	r1, r1, #2
+ 80003ae:	2507      	movs	r5, #7
+ 80003b0:	408d      	lsls	r5, r1
+ 80003b2:	ea26 0505 	bic.w	r5, r6, r5
+ 80003b6:	6405      	str	r5, [r0, #64]	; 0x40
+ 80003b8:	7a16      	ldrb	r6, [r2, #8]
+ 80003ba:	6c05      	ldr	r5, [r0, #64]	; 0x40
+ 80003bc:	fa06 f101 	lsl.w	r1, r6, r1
+ 80003c0:	4329      	orrs	r1, r5
+ 80003c2:	6401      	str	r1, [r0, #64]	; 0x40
+ 80003c4:	7812      	ldrb	r2, [r2, #0]
+ 80003c6:	6919      	ldr	r1, [r3, #16]
+ 80003c8:	40a2      	lsls	r2, r4
+ 80003ca:	430a      	orrs	r2, r1
+ 80003cc:	611a      	str	r2, [r3, #16]
+ 80003ce:	bdf0      	pop	{r4, r5, r6, r7, pc}
+ 80003d0:	48028e00 	.word	0x48028e00
+
+080003d4 <XMC_SCU_lDelay>:
+ 80003d4:	b510      	push	{r4, lr}
+ 80003d6:	4604      	mov	r4, r0
+ 80003d8:	f7ff ff60 	bl	800029c <SystemCoreClockUpdate>
+ 80003dc:	4b06      	ldr	r3, [pc, #24]	; (80003f8 <XMC_SCU_lDelay+0x24>)
+ 80003de:	4807      	ldr	r0, [pc, #28]	; (80003fc <XMC_SCU_lDelay+0x28>)
+ 80003e0:	681b      	ldr	r3, [r3, #0]
+ 80003e2:	fbb3 f3f0 	udiv	r3, r3, r0
+ 80003e6:	fb03 f004 	mul.w	r0, r3, r4
+ 80003ea:	2300      	movs	r3, #0
+ 80003ec:	4283      	cmp	r3, r0
+ 80003ee:	d002      	beq.n	80003f6 <XMC_SCU_lDelay+0x22>
+ 80003f0:	bf00      	nop
+ 80003f2:	3301      	adds	r3, #1
+ 80003f4:	e7fa      	b.n	80003ec <XMC_SCU_lDelay+0x18>
+ 80003f6:	bd10      	pop	{r4, pc}
+ 80003f8:	2003ffc0 	.word	0x2003ffc0
+ 80003fc:	000f4240 	.word	0x000f4240
+
+08000400 <XMC_SCU_RESET_DeassertPeripheralReset>:
+ 8000400:	0f02      	lsrs	r2, r0, #28
+ 8000402:	230c      	movs	r3, #12
+ 8000404:	4353      	muls	r3, r2
+ 8000406:	4a02      	ldr	r2, [pc, #8]	; (8000410 <XMC_SCU_RESET_DeassertPeripheralReset+0x10>)
+ 8000408:	f020 4070 	bic.w	r0, r0, #4026531840	; 0xf0000000
+ 800040c:	5098      	str	r0, [r3, r2]
+ 800040e:	4770      	bx	lr
+ 8000410:	50004414 	.word	0x50004414
+
+08000414 <XMC_SCU_CLOCK_GetPeripheralClockFrequency>:
+ 8000414:	4b03      	ldr	r3, [pc, #12]	; (8000424 <XMC_SCU_CLOCK_GetPeripheralClockFrequency+0x10>)
+ 8000416:	4a04      	ldr	r2, [pc, #16]	; (8000428 <XMC_SCU_CLOCK_GetPeripheralClockFrequency+0x14>)
+ 8000418:	695b      	ldr	r3, [r3, #20]
+ 800041a:	6810      	ldr	r0, [r2, #0]
+ 800041c:	f003 0301 	and.w	r3, r3, #1
+ 8000420:	40d8      	lsrs	r0, r3
+ 8000422:	4770      	bx	lr
+ 8000424:	50004600 	.word	0x50004600
+ 8000428:	2003ffc0 	.word	0x2003ffc0
+
+0800042c <XMC_SCU_CLOCK_SetSystemClockSource>:
+ 800042c:	4a03      	ldr	r2, [pc, #12]	; (800043c <XMC_SCU_CLOCK_SetSystemClockSource+0x10>)
+ 800042e:	68d3      	ldr	r3, [r2, #12]
+ 8000430:	f423 3380 	bic.w	r3, r3, #65536	; 0x10000
+ 8000434:	4318      	orrs	r0, r3
+ 8000436:	60d0      	str	r0, [r2, #12]
+ 8000438:	4770      	bx	lr
+ 800043a:	bf00      	nop
+ 800043c:	50004600 	.word	0x50004600
+
+08000440 <XMC_SCU_CLOCK_SetUsbClockSource>:
+ 8000440:	4a03      	ldr	r2, [pc, #12]	; (8000450 <XMC_SCU_CLOCK_SetUsbClockSource+0x10>)
+ 8000442:	6993      	ldr	r3, [r2, #24]
+ 8000444:	f423 3380 	bic.w	r3, r3, #65536	; 0x10000
+ 8000448:	4318      	orrs	r0, r3
+ 800044a:	6190      	str	r0, [r2, #24]
+ 800044c:	4770      	bx	lr
+ 800044e:	bf00      	nop
+ 8000450:	50004600 	.word	0x50004600
+
+08000454 <XMC_SCU_CLOCK_SetWdtClockSource>:
+ 8000454:	4a03      	ldr	r2, [pc, #12]	; (8000464 <XMC_SCU_CLOCK_SetWdtClockSource+0x10>)
+ 8000456:	6a53      	ldr	r3, [r2, #36]	; 0x24
+ 8000458:	f423 3340 	bic.w	r3, r3, #196608	; 0x30000
+ 800045c:	4318      	orrs	r0, r3
+ 800045e:	6250      	str	r0, [r2, #36]	; 0x24
+ 8000460:	4770      	bx	lr
+ 8000462:	bf00      	nop
+ 8000464:	50004600 	.word	0x50004600
+
+08000468 <XMC_SCU_CLOCK_SetSystemPllClockSource>:
+ 8000468:	4a06      	ldr	r2, [pc, #24]	; (8000484 <XMC_SCU_CLOCK_SetSystemPllClockSource+0x1c>)
+ 800046a:	68d3      	ldr	r3, [r2, #12]
+ 800046c:	b920      	cbnz	r0, 8000478 <XMC_SCU_CLOCK_SetSystemPllClockSource+0x10>
+ 800046e:	f423 7380 	bic.w	r3, r3, #256	; 0x100
+ 8000472:	f023 0301 	bic.w	r3, r3, #1
+ 8000476:	e003      	b.n	8000480 <XMC_SCU_CLOCK_SetSystemPllClockSource+0x18>
+ 8000478:	f443 7380 	orr.w	r3, r3, #256	; 0x100
+ 800047c:	f043 0301 	orr.w	r3, r3, #1
+ 8000480:	60d3      	str	r3, [r2, #12]
+ 8000482:	4770      	bx	lr
+ 8000484:	50004710 	.word	0x50004710
+
+08000488 <XMC_SCU_HIB_SetRtcClockSource>:
+ 8000488:	4b05      	ldr	r3, [pc, #20]	; (80004a0 <XMC_SCU_HIB_SetRtcClockSource+0x18>)
+ 800048a:	f8d3 30c4 	ldr.w	r3, [r3, #196]	; 0xc4
+ 800048e:	071b      	lsls	r3, r3, #28
+ 8000490:	d4fa      	bmi.n	8000488 <XMC_SCU_HIB_SetRtcClockSource>
+ 8000492:	4a04      	ldr	r2, [pc, #16]	; (80004a4 <XMC_SCU_HIB_SetRtcClockSource+0x1c>)
+ 8000494:	68d3      	ldr	r3, [r2, #12]
+ 8000496:	f023 0340 	bic.w	r3, r3, #64	; 0x40
+ 800049a:	4318      	orrs	r0, r3
+ 800049c:	60d0      	str	r0, [r2, #12]
+ 800049e:	4770      	bx	lr
+ 80004a0:	50004000 	.word	0x50004000
+ 80004a4:	50004300 	.word	0x50004300
+
+080004a8 <XMC_SCU_HIB_SetStandbyClockSource>:
+ 80004a8:	4b05      	ldr	r3, [pc, #20]	; (80004c0 <XMC_SCU_HIB_SetStandbyClockSource+0x18>)
+ 80004aa:	f8d3 30c4 	ldr.w	r3, [r3, #196]	; 0xc4
+ 80004ae:	071b      	lsls	r3, r3, #28
+ 80004b0:	d4fa      	bmi.n	80004a8 <XMC_SCU_HIB_SetStandbyClockSource>
+ 80004b2:	4a04      	ldr	r2, [pc, #16]	; (80004c4 <XMC_SCU_HIB_SetStandbyClockSource+0x1c>)
+ 80004b4:	68d3      	ldr	r3, [r2, #12]
+ 80004b6:	f023 0380 	bic.w	r3, r3, #128	; 0x80
+ 80004ba:	4318      	orrs	r0, r3
+ 80004bc:	60d0      	str	r0, [r2, #12]
+ 80004be:	4770      	bx	lr
+ 80004c0:	50004000 	.word	0x50004000
+ 80004c4:	50004300 	.word	0x50004300
+
+080004c8 <XMC_SCU_CLOCK_SetSystemClockDivider>:
+ 80004c8:	4a03      	ldr	r2, [pc, #12]	; (80004d8 <XMC_SCU_CLOCK_SetSystemClockDivider+0x10>)
+ 80004ca:	68d3      	ldr	r3, [r2, #12]
+ 80004cc:	3801      	subs	r0, #1
+ 80004ce:	f023 03ff 	bic.w	r3, r3, #255	; 0xff
+ 80004d2:	4303      	orrs	r3, r0
+ 80004d4:	60d3      	str	r3, [r2, #12]
+ 80004d6:	4770      	bx	lr
+ 80004d8:	50004600 	.word	0x50004600
+
+080004dc <XMC_SCU_CLOCK_SetCcuClockDivider>:
+ 80004dc:	4a03      	ldr	r2, [pc, #12]	; (80004ec <XMC_SCU_CLOCK_SetCcuClockDivider+0x10>)
+ 80004de:	6a13      	ldr	r3, [r2, #32]
+ 80004e0:	3801      	subs	r0, #1
+ 80004e2:	f023 0301 	bic.w	r3, r3, #1
+ 80004e6:	4303      	orrs	r3, r0
+ 80004e8:	6213      	str	r3, [r2, #32]
+ 80004ea:	4770      	bx	lr
+ 80004ec:	50004600 	.word	0x50004600
+
+080004f0 <XMC_SCU_CLOCK_SetCpuClockDivider>:
+ 80004f0:	4a03      	ldr	r2, [pc, #12]	; (8000500 <XMC_SCU_CLOCK_SetCpuClockDivider+0x10>)
+ 80004f2:	6913      	ldr	r3, [r2, #16]
+ 80004f4:	3801      	subs	r0, #1
+ 80004f6:	f023 0301 	bic.w	r3, r3, #1
+ 80004fa:	4303      	orrs	r3, r0
+ 80004fc:	6113      	str	r3, [r2, #16]
+ 80004fe:	4770      	bx	lr
+ 8000500:	50004600 	.word	0x50004600
+
+08000504 <XMC_SCU_CLOCK_SetPeripheralClockDivider>:
+ 8000504:	4a03      	ldr	r2, [pc, #12]	; (8000514 <XMC_SCU_CLOCK_SetPeripheralClockDivider+0x10>)
+ 8000506:	6953      	ldr	r3, [r2, #20]
+ 8000508:	3801      	subs	r0, #1
+ 800050a:	f023 0301 	bic.w	r3, r3, #1
+ 800050e:	4303      	orrs	r3, r0
+ 8000510:	6153      	str	r3, [r2, #20]
+ 8000512:	4770      	bx	lr
+ 8000514:	50004600 	.word	0x50004600
+
+08000518 <XMC_SCU_CLOCK_SetUsbClockDivider>:
+ 8000518:	4a03      	ldr	r2, [pc, #12]	; (8000528 <XMC_SCU_CLOCK_SetUsbClockDivider+0x10>)
+ 800051a:	6993      	ldr	r3, [r2, #24]
+ 800051c:	3801      	subs	r0, #1
+ 800051e:	f023 0307 	bic.w	r3, r3, #7
+ 8000522:	4303      	orrs	r3, r0
+ 8000524:	6193      	str	r3, [r2, #24]
+ 8000526:	4770      	bx	lr
+ 8000528:	50004600 	.word	0x50004600
+
+0800052c <XMC_SCU_CLOCK_SetEbuClockDivider>:
+ 800052c:	4a03      	ldr	r2, [pc, #12]	; (800053c <XMC_SCU_CLOCK_SetEbuClockDivider+0x10>)
+ 800052e:	69d3      	ldr	r3, [r2, #28]
+ 8000530:	3801      	subs	r0, #1
+ 8000532:	f023 033f 	bic.w	r3, r3, #63	; 0x3f
+ 8000536:	4303      	orrs	r3, r0
+ 8000538:	61d3      	str	r3, [r2, #28]
+ 800053a:	4770      	bx	lr
+ 800053c:	50004600 	.word	0x50004600
+
+08000540 <XMC_SCU_CLOCK_SetWdtClockDivider>:
+ 8000540:	4a03      	ldr	r2, [pc, #12]	; (8000550 <XMC_SCU_CLOCK_SetWdtClockDivider+0x10>)
+ 8000542:	6a53      	ldr	r3, [r2, #36]	; 0x24
+ 8000544:	3801      	subs	r0, #1
+ 8000546:	f023 03ff 	bic.w	r3, r3, #255	; 0xff
+ 800054a:	4303      	orrs	r3, r0
+ 800054c:	6253      	str	r3, [r2, #36]	; 0x24
+ 800054e:	4770      	bx	lr
+ 8000550:	50004600 	.word	0x50004600
+
+08000554 <XMC_SCU_CLOCK_UngatePeripheralClock>:
+ 8000554:	0f02      	lsrs	r2, r0, #28
+ 8000556:	230c      	movs	r3, #12
+ 8000558:	4353      	muls	r3, r2
+ 800055a:	4a02      	ldr	r2, [pc, #8]	; (8000564 <XMC_SCU_CLOCK_UngatePeripheralClock+0x10>)
+ 800055c:	f020 4070 	bic.w	r0, r0, #4026531840	; 0xf0000000
+ 8000560:	5098      	str	r0, [r3, r2]
+ 8000562:	4770      	bx	lr
+ 8000564:	50004648 	.word	0x50004648
+
+08000568 <XMC_SCU_CLOCK_StartUsbPll>:
+ 8000568:	4b0f      	ldr	r3, [pc, #60]	; (80005a8 <XMC_SCU_CLOCK_StartUsbPll+0x40>)
+ 800056a:	695a      	ldr	r2, [r3, #20]
+ 800056c:	f042 0201 	orr.w	r2, r2, #1
+ 8000570:	615a      	str	r2, [r3, #20]
+ 8000572:	695a      	ldr	r2, [r3, #20]
+ 8000574:	3801      	subs	r0, #1
+ 8000576:	3901      	subs	r1, #1
+ 8000578:	0600      	lsls	r0, r0, #24
+ 800057a:	f042 0210 	orr.w	r2, r2, #16
+ 800057e:	ea40 2101 	orr.w	r1, r0, r1, lsl #8
+ 8000582:	615a      	str	r2, [r3, #20]
+ 8000584:	6159      	str	r1, [r3, #20]
+ 8000586:	695a      	ldr	r2, [r3, #20]
+ 8000588:	f042 0240 	orr.w	r2, r2, #64	; 0x40
+ 800058c:	615a      	str	r2, [r3, #20]
+ 800058e:	695a      	ldr	r2, [r3, #20]
+ 8000590:	f022 0210 	bic.w	r2, r2, #16
+ 8000594:	615a      	str	r2, [r3, #20]
+ 8000596:	695a      	ldr	r2, [r3, #20]
+ 8000598:	f442 2280 	orr.w	r2, r2, #262144	; 0x40000
+ 800059c:	615a      	str	r2, [r3, #20]
+ 800059e:	691a      	ldr	r2, [r3, #16]
+ 80005a0:	0752      	lsls	r2, r2, #29
+ 80005a2:	d5fc      	bpl.n	800059e <XMC_SCU_CLOCK_StartUsbPll+0x36>
+ 80005a4:	4770      	bx	lr
+ 80005a6:	bf00      	nop
+ 80005a8:	50004710 	.word	0x50004710
+
+080005ac <XMC_SCU_CLOCK_SetBackupClockCalibrationMode>:
+ 80005ac:	b510      	push	{r4, lr}
+ 80005ae:	4c0b      	ldr	r4, [pc, #44]	; (80005dc <XMC_SCU_CLOCK_SetBackupClockCalibrationMode+0x30>)
+ 80005b0:	6863      	ldr	r3, [r4, #4]
+ 80005b2:	2801      	cmp	r0, #1
+ 80005b4:	f443 1380 	orr.w	r3, r3, #1048576	; 0x100000
+ 80005b8:	6063      	str	r3, [r4, #4]
+ 80005ba:	d10a      	bne.n	80005d2 <XMC_SCU_CLOCK_SetBackupClockCalibrationMode+0x26>
+ 80005bc:	6863      	ldr	r3, [r4, #4]
+ 80005be:	f423 1380 	bic.w	r3, r3, #1048576	; 0x100000
+ 80005c2:	6063      	str	r3, [r4, #4]
+ 80005c4:	2064      	movs	r0, #100	; 0x64
+ 80005c6:	f7ff ff05 	bl	80003d4 <XMC_SCU_lDelay>
+ 80005ca:	6863      	ldr	r3, [r4, #4]
+ 80005cc:	f443 2300 	orr.w	r3, r3, #524288	; 0x80000
+ 80005d0:	6063      	str	r3, [r4, #4]
+ 80005d2:	2064      	movs	r0, #100	; 0x64
+ 80005d4:	e8bd 4010 	ldmia.w	sp!, {r4, lr}
+ 80005d8:	f7ff befc 	b.w	80003d4 <XMC_SCU_lDelay>
+ 80005dc:	50004710 	.word	0x50004710
+
+080005e0 <XMC_SCU_HIB_EnableHibernateDomain>:
+ 80005e0:	4b0a      	ldr	r3, [pc, #40]	; (800060c <XMC_SCU_HIB_EnableHibernateDomain+0x2c>)
+ 80005e2:	681a      	ldr	r2, [r3, #0]
+ 80005e4:	07d2      	lsls	r2, r2, #31
+ 80005e6:	d504      	bpl.n	80005f2 <XMC_SCU_HIB_EnableHibernateDomain+0x12>
+ 80005e8:	4b09      	ldr	r3, [pc, #36]	; (8000610 <XMC_SCU_HIB_EnableHibernateDomain+0x30>)
+ 80005ea:	681a      	ldr	r2, [r3, #0]
+ 80005ec:	0590      	lsls	r0, r2, #22
+ 80005ee:	d406      	bmi.n	80005fe <XMC_SCU_HIB_EnableHibernateDomain+0x1e>
+ 80005f0:	4770      	bx	lr
+ 80005f2:	2201      	movs	r2, #1
+ 80005f4:	605a      	str	r2, [r3, #4]
+ 80005f6:	681a      	ldr	r2, [r3, #0]
+ 80005f8:	07d1      	lsls	r1, r2, #31
+ 80005fa:	d5fc      	bpl.n	80005f6 <XMC_SCU_HIB_EnableHibernateDomain+0x16>
+ 80005fc:	e7f4      	b.n	80005e8 <XMC_SCU_HIB_EnableHibernateDomain+0x8>
+ 80005fe:	f44f 7200 	mov.w	r2, #512	; 0x200
+ 8000602:	609a      	str	r2, [r3, #8]
+ 8000604:	681a      	ldr	r2, [r3, #0]
+ 8000606:	0592      	lsls	r2, r2, #22
+ 8000608:	d4fc      	bmi.n	8000604 <XMC_SCU_HIB_EnableHibernateDomain+0x24>
+ 800060a:	4770      	bx	lr
+ 800060c:	50004200 	.word	0x50004200
+ 8000610:	50004400 	.word	0x50004400
+
+08000614 <XMC_SCU_CLOCK_IsLowPowerOscillatorStable>:
+ 8000614:	4b03      	ldr	r3, [pc, #12]	; (8000624 <XMC_SCU_CLOCK_IsLowPowerOscillatorStable+0x10>)
+ 8000616:	6818      	ldr	r0, [r3, #0]
+ 8000618:	f080 0008 	eor.w	r0, r0, #8
+ 800061c:	f3c0 00c0 	ubfx	r0, r0, #3, #1
+ 8000620:	4770      	bx	lr
+ 8000622:	bf00      	nop
+ 8000624:	50004300 	.word	0x50004300
+
+08000628 <XMC_SCU_CLOCK_EnableLowPowerOscillator>:
+ 8000628:	4b0e      	ldr	r3, [pc, #56]	; (8000664 <XMC_SCU_CLOCK_EnableLowPowerOscillator+0x3c>)
+ 800062a:	f8d3 20c4 	ldr.w	r2, [r3, #196]	; 0xc4
+ 800062e:	f012 0f80 	tst.w	r2, #128	; 0x80
+ 8000632:	461a      	mov	r2, r3
+ 8000634:	d1f8      	bne.n	8000628 <XMC_SCU_CLOCK_EnableLowPowerOscillator>
+ 8000636:	f503 7340 	add.w	r3, r3, #768	; 0x300
+ 800063a:	69d9      	ldr	r1, [r3, #28]
+ 800063c:	f021 0130 	bic.w	r1, r1, #48	; 0x30
+ 8000640:	61d9      	str	r1, [r3, #28]
+ 8000642:	f8d2 10c4 	ldr.w	r1, [r2, #196]	; 0xc4
+ 8000646:	0709      	lsls	r1, r1, #28
+ 8000648:	d4fb      	bmi.n	8000642 <XMC_SCU_CLOCK_EnableLowPowerOscillator+0x1a>
+ 800064a:	68da      	ldr	r2, [r3, #12]
+ 800064c:	f042 0208 	orr.w	r2, r2, #8
+ 8000650:	60da      	str	r2, [r3, #12]
+ 8000652:	4b04      	ldr	r3, [pc, #16]	; (8000664 <XMC_SCU_CLOCK_EnableLowPowerOscillator+0x3c>)
+ 8000654:	f8d3 30c4 	ldr.w	r3, [r3, #196]	; 0xc4
+ 8000658:	075b      	lsls	r3, r3, #29
+ 800065a:	d4fa      	bmi.n	8000652 <XMC_SCU_CLOCK_EnableLowPowerOscillator+0x2a>
+ 800065c:	4b02      	ldr	r3, [pc, #8]	; (8000668 <XMC_SCU_CLOCK_EnableLowPowerOscillator+0x40>)
+ 800065e:	2208      	movs	r2, #8
+ 8000660:	609a      	str	r2, [r3, #8]
+ 8000662:	4770      	bx	lr
+ 8000664:	50004000 	.word	0x50004000
+ 8000668:	50004300 	.word	0x50004300
+
+0800066c <XMC_SCU_CLOCK_EnableHighPerformanceOscillator>:
+ 800066c:	b570      	push	{r4, r5, r6, lr}
+ 800066e:	4d0c      	ldr	r5, [pc, #48]	; (80006a0 <XMC_SCU_CLOCK_EnableHighPerformanceOscillator+0x34>)
+ 8000670:	4e0c      	ldr	r6, [pc, #48]	; (80006a4 <XMC_SCU_CLOCK_EnableHighPerformanceOscillator+0x38>)
+ 8000672:	686b      	ldr	r3, [r5, #4]
+ 8000674:	f423 3380 	bic.w	r3, r3, #65536	; 0x10000
+ 8000678:	606b      	str	r3, [r5, #4]
+ 800067a:	6874      	ldr	r4, [r6, #4]
+ 800067c:	f000 fcfa 	bl	8001074 <OSCHP_GetFrequency>
+ 8000680:	4b09      	ldr	r3, [pc, #36]	; (80006a8 <XMC_SCU_CLOCK_EnableHighPerformanceOscillator+0x3c>)
+ 8000682:	fbb0 f0f3 	udiv	r0, r0, r3
+ 8000686:	f424 2370 	bic.w	r3, r4, #983040	; 0xf0000
+ 800068a:	3801      	subs	r0, #1
+ 800068c:	f023 0330 	bic.w	r3, r3, #48	; 0x30
+ 8000690:	ea43 4300 	orr.w	r3, r3, r0, lsl #16
+ 8000694:	6073      	str	r3, [r6, #4]
+ 8000696:	686b      	ldr	r3, [r5, #4]
+ 8000698:	f423 3300 	bic.w	r3, r3, #131072	; 0x20000
+ 800069c:	606b      	str	r3, [r5, #4]
+ 800069e:	bd70      	pop	{r4, r5, r6, pc}
+ 80006a0:	50004710 	.word	0x50004710
+ 80006a4:	50004700 	.word	0x50004700
+ 80006a8:	002625a0 	.word	0x002625a0
+
+080006ac <XMC_SCU_CLOCK_IsHighPerformanceOscillatorStable>:
+ 80006ac:	4b04      	ldr	r3, [pc, #16]	; (80006c0 <XMC_SCU_CLOCK_IsHighPerformanceOscillatorStable+0x14>)
+ 80006ae:	6818      	ldr	r0, [r3, #0]
+ 80006b0:	f400 7060 	and.w	r0, r0, #896	; 0x380
+ 80006b4:	f5a0 7360 	sub.w	r3, r0, #896	; 0x380
+ 80006b8:	4258      	negs	r0, r3
+ 80006ba:	4158      	adcs	r0, r3
+ 80006bc:	4770      	bx	lr
+ 80006be:	bf00      	nop
+ 80006c0:	50004710 	.word	0x50004710
+
+080006c4 <XMC_SCU_CLOCK_EnableSystemPll>:
+ 80006c4:	4a03      	ldr	r2, [pc, #12]	; (80006d4 <XMC_SCU_CLOCK_EnableSystemPll+0x10>)
+ 80006c6:	6853      	ldr	r3, [r2, #4]
+ 80006c8:	f423 3380 	bic.w	r3, r3, #65536	; 0x10000
+ 80006cc:	f023 0302 	bic.w	r3, r3, #2
+ 80006d0:	6053      	str	r3, [r2, #4]
+ 80006d2:	4770      	bx	lr
+ 80006d4:	50004710 	.word	0x50004710
+
+080006d8 <XMC_SCU_CLOCK_DisableSystemPll>:
+ 80006d8:	4a03      	ldr	r2, [pc, #12]	; (80006e8 <XMC_SCU_CLOCK_DisableSystemPll+0x10>)
+ 80006da:	6853      	ldr	r3, [r2, #4]
+ 80006dc:	f443 3380 	orr.w	r3, r3, #65536	; 0x10000
+ 80006e0:	f043 0302 	orr.w	r3, r3, #2
+ 80006e4:	6053      	str	r3, [r2, #4]
+ 80006e6:	4770      	bx	lr
+ 80006e8:	50004710 	.word	0x50004710
+
+080006ec <XMC_SCU_CLOCK_StepSystemPllFrequency>:
+ 80006ec:	4a05      	ldr	r2, [pc, #20]	; (8000704 <XMC_SCU_CLOCK_StepSystemPllFrequency+0x18>)
+ 80006ee:	6893      	ldr	r3, [r2, #8]
+ 80006f0:	3801      	subs	r0, #1
+ 80006f2:	f423 03fe 	bic.w	r3, r3, #8323072	; 0x7f0000
+ 80006f6:	ea43 4300 	orr.w	r3, r3, r0, lsl #16
+ 80006fa:	6093      	str	r3, [r2, #8]
+ 80006fc:	2032      	movs	r0, #50	; 0x32
+ 80006fe:	f7ff be69 	b.w	80003d4 <XMC_SCU_lDelay>
+ 8000702:	bf00      	nop
+ 8000704:	50004710 	.word	0x50004710
+
+08000708 <XMC_SCU_CLOCK_StartSystemPll>:
+ 8000708:	e92d 41f0 	stmdb	sp!, {r4, r5, r6, r7, r8, lr}
+ 800070c:	460c      	mov	r4, r1
+ 800070e:	4605      	mov	r5, r0
+ 8000710:	4690      	mov	r8, r2
+ 8000712:	461f      	mov	r7, r3
+ 8000714:	9e06      	ldr	r6, [sp, #24]
+ 8000716:	f7ff fea7 	bl	8000468 <XMC_SCU_CLOCK_SetSystemPllClockSource>
+ 800071a:	2c01      	cmp	r4, #1
+ 800071c:	4c31      	ldr	r4, [pc, #196]	; (80007e4 <XMC_SCU_CLOCK_StartSystemPll+0xdc>)
+ 800071e:	d152      	bne.n	80007c6 <XMC_SCU_CLOCK_StartSystemPll+0xbe>
+ 8000720:	b935      	cbnz	r5, 8000730 <XMC_SCU_CLOCK_StartSystemPll+0x28>
+ 8000722:	f000 fca7 	bl	8001074 <OSCHP_GetFrequency>
+ 8000726:	4d30      	ldr	r5, [pc, #192]	; (80007e8 <XMC_SCU_CLOCK_StartSystemPll+0xe0>)
+ 8000728:	fbb0 f0f5 	udiv	r0, r0, r5
+ 800072c:	0580      	lsls	r0, r0, #22
+ 800072e:	e001      	b.n	8000734 <XMC_SCU_CLOCK_StartSystemPll+0x2c>
+ 8000730:	f04f 60c0 	mov.w	r0, #100663296	; 0x6000000
+ 8000734:	6863      	ldr	r3, [r4, #4]
+ 8000736:	f043 0301 	orr.w	r3, r3, #1
+ 800073a:	6063      	str	r3, [r4, #4]
+ 800073c:	6863      	ldr	r3, [r4, #4]
+ 800073e:	f043 0310 	orr.w	r3, r3, #16
+ 8000742:	6063      	str	r3, [r4, #4]
+ 8000744:	68a1      	ldr	r1, [r4, #8]
+ 8000746:	4b29      	ldr	r3, [pc, #164]	; (80007ec <XMC_SCU_CLOCK_StartSystemPll+0xe4>)
+ 8000748:	f108 32ff 	add.w	r2, r8, #4294967295
+ 800074c:	400b      	ands	r3, r1
+ 800074e:	ea43 6302 	orr.w	r3, r3, r2, lsl #24
+ 8000752:	1e7a      	subs	r2, r7, #1
+ 8000754:	ea43 2202 	orr.w	r2, r3, r2, lsl #8
+ 8000758:	4378      	muls	r0, r7
+ 800075a:	2318      	movs	r3, #24
+ 800075c:	fbb0 f5f8 	udiv	r5, r0, r8
+ 8000760:	fbb5 f3f3 	udiv	r3, r5, r3
+ 8000764:	0d9b      	lsrs	r3, r3, #22
+ 8000766:	3b01      	subs	r3, #1
+ 8000768:	ea42 4303 	orr.w	r3, r2, r3, lsl #16
+ 800076c:	60a3      	str	r3, [r4, #8]
+ 800076e:	6863      	ldr	r3, [r4, #4]
+ 8000770:	f043 0340 	orr.w	r3, r3, #64	; 0x40
+ 8000774:	6063      	str	r3, [r4, #4]
+ 8000776:	6863      	ldr	r3, [r4, #4]
+ 8000778:	f023 0310 	bic.w	r3, r3, #16
+ 800077c:	6063      	str	r3, [r4, #4]
+ 800077e:	6863      	ldr	r3, [r4, #4]
+ 8000780:	f443 2380 	orr.w	r3, r3, #262144	; 0x40000
+ 8000784:	6063      	str	r3, [r4, #4]
+ 8000786:	6823      	ldr	r3, [r4, #0]
+ 8000788:	4a16      	ldr	r2, [pc, #88]	; (80007e4 <XMC_SCU_CLOCK_StartSystemPll+0xdc>)
+ 800078a:	0759      	lsls	r1, r3, #29
+ 800078c:	d5fb      	bpl.n	8000786 <XMC_SCU_CLOCK_StartSystemPll+0x7e>
+ 800078e:	6853      	ldr	r3, [r2, #4]
+ 8000790:	f023 0301 	bic.w	r3, r3, #1
+ 8000794:	6053      	str	r3, [r2, #4]
+ 8000796:	6823      	ldr	r3, [r4, #0]
+ 8000798:	07da      	lsls	r2, r3, #31
+ 800079a:	d4fc      	bmi.n	8000796 <XMC_SCU_CLOCK_StartSystemPll+0x8e>
+ 800079c:	203c      	movs	r0, #60	; 0x3c
+ 800079e:	fbb5 f0f0 	udiv	r0, r5, r0
+ 80007a2:	0d80      	lsrs	r0, r0, #22
+ 80007a4:	4286      	cmp	r6, r0
+ 80007a6:	d201      	bcs.n	80007ac <XMC_SCU_CLOCK_StartSystemPll+0xa4>
+ 80007a8:	f7ff ffa0 	bl	80006ec <XMC_SCU_CLOCK_StepSystemPllFrequency>
+ 80007ac:	205a      	movs	r0, #90	; 0x5a
+ 80007ae:	fbb5 f0f0 	udiv	r0, r5, r0
+ 80007b2:	0d80      	lsrs	r0, r0, #22
+ 80007b4:	4286      	cmp	r6, r0
+ 80007b6:	d201      	bcs.n	80007bc <XMC_SCU_CLOCK_StartSystemPll+0xb4>
+ 80007b8:	f7ff ff98 	bl	80006ec <XMC_SCU_CLOCK_StepSystemPllFrequency>
+ 80007bc:	4630      	mov	r0, r6
+ 80007be:	e8bd 41f0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, lr}
+ 80007c2:	f7ff bf93 	b.w	80006ec <XMC_SCU_CLOCK_StepSystemPllFrequency>
+ 80007c6:	68a3      	ldr	r3, [r4, #8]
+ 80007c8:	3e01      	subs	r6, #1
+ 80007ca:	f023 037f 	bic.w	r3, r3, #127	; 0x7f
+ 80007ce:	431e      	orrs	r6, r3
+ 80007d0:	60a6      	str	r6, [r4, #8]
+ 80007d2:	6863      	ldr	r3, [r4, #4]
+ 80007d4:	f043 0301 	orr.w	r3, r3, #1
+ 80007d8:	6063      	str	r3, [r4, #4]
+ 80007da:	6823      	ldr	r3, [r4, #0]
+ 80007dc:	07db      	lsls	r3, r3, #31
+ 80007de:	d5fc      	bpl.n	80007da <XMC_SCU_CLOCK_StartSystemPll+0xd2>
+ 80007e0:	e8bd 81f0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, pc}
+ 80007e4:	50004710 	.word	0x50004710
+ 80007e8:	000f4240 	.word	0x000f4240
+ 80007ec:	f08080ff 	.word	0xf08080ff
+
+080007f0 <XMC_SCU_CLOCK_Init>:
+ 80007f0:	b537      	push	{r0, r1, r2, r4, r5, lr}
+ 80007f2:	4604      	mov	r4, r0
+ 80007f4:	2000      	movs	r0, #0
+ 80007f6:	f7ff fe19 	bl	800042c <XMC_SCU_CLOCK_SetSystemClockSource>
+ 80007fa:	f7ff fef1 	bl	80005e0 <XMC_SCU_HIB_EnableHibernateDomain>
+ 80007fe:	79e3      	ldrb	r3, [r4, #7]
+ 8000800:	b9a3      	cbnz	r3, 800082c <XMC_SCU_CLOCK_Init+0x3c>
+ 8000802:	7a60      	ldrb	r0, [r4, #9]
+ 8000804:	f7ff fe50 	bl	80004a8 <XMC_SCU_HIB_SetStandbyClockSource>
+ 8000808:	7a20      	ldrb	r0, [r4, #8]
+ 800080a:	f7ff fecf 	bl	80005ac <XMC_SCU_CLOCK_SetBackupClockCalibrationMode>
+ 800080e:	7c20      	ldrb	r0, [r4, #16]
+ 8000810:	f7ff fe5a 	bl	80004c8 <XMC_SCU_CLOCK_SetSystemClockDivider>
+ 8000814:	7c60      	ldrb	r0, [r4, #17]
+ 8000816:	f7ff fe6b 	bl	80004f0 <XMC_SCU_CLOCK_SetCpuClockDivider>
+ 800081a:	7ca0      	ldrb	r0, [r4, #18]
+ 800081c:	f7ff fe5e 	bl	80004dc <XMC_SCU_CLOCK_SetCcuClockDivider>
+ 8000820:	7ce0      	ldrb	r0, [r4, #19]
+ 8000822:	f7ff fe6f 	bl	8000504 <XMC_SCU_CLOCK_SetPeripheralClockDivider>
+ 8000826:	79a3      	ldrb	r3, [r4, #6]
+ 8000828:	b16b      	cbz	r3, 8000846 <XMC_SCU_CLOCK_Init+0x56>
+ 800082a:	e006      	b.n	800083a <XMC_SCU_CLOCK_Init+0x4a>
+ 800082c:	f7ff fefc 	bl	8000628 <XMC_SCU_CLOCK_EnableLowPowerOscillator>
+ 8000830:	f7ff fef0 	bl	8000614 <XMC_SCU_CLOCK_IsLowPowerOscillatorStable>
+ 8000834:	2800      	cmp	r0, #0
+ 8000836:	d0fb      	beq.n	8000830 <XMC_SCU_CLOCK_Init+0x40>
+ 8000838:	e7e3      	b.n	8000802 <XMC_SCU_CLOCK_Init+0x12>
+ 800083a:	f7ff ff17 	bl	800066c <XMC_SCU_CLOCK_EnableHighPerformanceOscillator>
+ 800083e:	f7ff ff35 	bl	80006ac <XMC_SCU_CLOCK_IsHighPerformanceOscillatorStable>
+ 8000842:	2800      	cmp	r0, #0
+ 8000844:	d0fb      	beq.n	800083e <XMC_SCU_CLOCK_Init+0x4e>
+ 8000846:	78e3      	ldrb	r3, [r4, #3]
+ 8000848:	b913      	cbnz	r3, 8000850 <XMC_SCU_CLOCK_Init+0x60>
+ 800084a:	f7ff ff45 	bl	80006d8 <XMC_SCU_CLOCK_DisableSystemPll>
+ 800084e:	e009      	b.n	8000864 <XMC_SCU_CLOCK_Init+0x74>
+ 8000850:	f7ff ff38 	bl	80006c4 <XMC_SCU_CLOCK_EnableSystemPll>
+ 8000854:	78a5      	ldrb	r5, [r4, #2]
+ 8000856:	88a0      	ldrh	r0, [r4, #4]
+ 8000858:	78e1      	ldrb	r1, [r4, #3]
+ 800085a:	7862      	ldrb	r2, [r4, #1]
+ 800085c:	7823      	ldrb	r3, [r4, #0]
+ 800085e:	9500      	str	r5, [sp, #0]
+ 8000860:	f7ff ff52 	bl	8000708 <XMC_SCU_CLOCK_StartSystemPll>
+ 8000864:	68e0      	ldr	r0, [r4, #12]
+ 8000866:	f5b0 3f80 	cmp.w	r0, #65536	; 0x10000
+ 800086a:	d101      	bne.n	8000870 <XMC_SCU_CLOCK_Init+0x80>
+ 800086c:	f7ff fdde 	bl	800042c <XMC_SCU_CLOCK_SetSystemClockSource>
+ 8000870:	b003      	add	sp, #12
+ 8000872:	e8bd 4030 	ldmia.w	sp!, {r4, r5, lr}
+ 8000876:	f7ff bd11 	b.w	800029c <SystemCoreClockUpdate>
+
+0800087a <XMC_CAN_NODE_NominalBitTimeConfigure>:
+ 800087a:	680b      	ldr	r3, [r1, #0]
+ 800087c:	e92d 43f0 	stmdb	sp!, {r4, r5, r6, r7, r8, r9, lr}
+ 8000880:	f04f 080a 	mov.w	r8, #10
+ 8000884:	fb08 f803 	mul.w	r8, r8, r3
+ 8000888:	f8d1 e004 	ldr.w	lr, [r1, #4]
+ 800088c:	2300      	movs	r3, #0
+ 800088e:	f242 7910 	movw	r9, #10000	; 0x2710
+ 8000892:	461e      	mov	r6, r3
+ 8000894:	2701      	movs	r7, #1
+ 8000896:	220a      	movs	r2, #10
+ 8000898:	fbb8 f4f7 	udiv	r4, r8, r7
+ 800089c:	fbb4 fcfe 	udiv	ip, r4, lr
+ 80008a0:	fbbc f5f2 	udiv	r5, ip, r2
+ 80008a4:	fb02 cc15 	mls	ip, r2, r5, ip
+ 80008a8:	f1bc 0f05 	cmp.w	ip, #5
+ 80008ac:	4694      	mov	ip, r2
+ 80008ae:	d901      	bls.n	80008b4 <XMC_CAN_NODE_NominalBitTimeConfigure+0x3a>
+ 80008b0:	3501      	adds	r5, #1
+ 80008b2:	e000      	b.n	80008b6 <XMC_CAN_NODE_NominalBitTimeConfigure+0x3c>
+ 80008b4:	b125      	cbz	r5, 80008c0 <XMC_CAN_NODE_NominalBitTimeConfigure+0x46>
+ 80008b6:	fb0c f205 	mul.w	r2, ip, r5
+ 80008ba:	fbb4 f2f2 	udiv	r2, r4, r2
+ 80008be:	e002      	b.n	80008c6 <XMC_CAN_NODE_NominalBitTimeConfigure+0x4c>
+ 80008c0:	2501      	movs	r5, #1
+ 80008c2:	fbb4 f2f2 	udiv	r2, r4, r2
+ 80008c6:	4572      	cmp	r2, lr
+ 80008c8:	bf2c      	ite	cs
+ 80008ca:	ebce 0202 	rsbcs	r2, lr, r2
+ 80008ce:	ebc2 020e 	rsbcc	r2, r2, lr
+ 80008d2:	2d14      	cmp	r5, #20
+ 80008d4:	d807      	bhi.n	80008e6 <XMC_CAN_NODE_NominalBitTimeConfigure+0x6c>
+ 80008d6:	4591      	cmp	r9, r2
+ 80008d8:	d905      	bls.n	80008e6 <XMC_CAN_NODE_NominalBitTimeConfigure+0x6c>
+ 80008da:	f5b2 7f7a 	cmp.w	r2, #1000	; 0x3e8
+ 80008de:	d306      	bcc.n	80008ee <XMC_CAN_NODE_NominalBitTimeConfigure+0x74>
+ 80008e0:	4691      	mov	r9, r2
+ 80008e2:	462b      	mov	r3, r5
+ 80008e4:	463e      	mov	r6, r7
+ 80008e6:	3701      	adds	r7, #1
+ 80008e8:	2f41      	cmp	r7, #65	; 0x41
+ 80008ea:	d1d4      	bne.n	8000896 <XMC_CAN_NODE_NominalBitTimeConfigure+0x1c>
+ 80008ec:	e001      	b.n	80008f2 <XMC_CAN_NODE_NominalBitTimeConfigure+0x78>
+ 80008ee:	462b      	mov	r3, r5
+ 80008f0:	463e      	mov	r6, r7
+ 80008f2:	890f      	ldrh	r7, [r1, #8]
+ 80008f4:	f242 7e10 	movw	lr, #10000	; 0x2710
+ 80008f8:	2401      	movs	r4, #1
+ 80008fa:	2540      	movs	r5, #64	; 0x40
+ 80008fc:	f242 7210 	movw	r2, #10000	; 0x2710
+ 8000900:	fb05 2202 	mla	r2, r5, r2, r2
+ 8000904:	fbb2 f2f3 	udiv	r2, r2, r3
+ 8000908:	42ba      	cmp	r2, r7
+ 800090a:	d305      	bcc.n	8000918 <XMC_CAN_NODE_NominalBitTimeConfigure+0x9e>
+ 800090c:	1bd2      	subs	r2, r2, r7
+ 800090e:	4596      	cmp	lr, r2
+ 8000910:	d907      	bls.n	8000922 <XMC_CAN_NODE_NominalBitTimeConfigure+0xa8>
+ 8000912:	4696      	mov	lr, r2
+ 8000914:	462c      	mov	r4, r5
+ 8000916:	e004      	b.n	8000922 <XMC_CAN_NODE_NominalBitTimeConfigure+0xa8>
+ 8000918:	1aba      	subs	r2, r7, r2
+ 800091a:	4596      	cmp	lr, r2
+ 800091c:	bf88      	it	hi
+ 800091e:	462c      	movhi	r4, r5
+ 8000920:	e002      	b.n	8000928 <XMC_CAN_NODE_NominalBitTimeConfigure+0xae>
+ 8000922:	3d01      	subs	r5, #1
+ 8000924:	2d02      	cmp	r5, #2
+ 8000926:	d1e9      	bne.n	80008fc <XMC_CAN_NODE_NominalBitTimeConfigure+0x82>
+ 8000928:	6802      	ldr	r2, [r0, #0]
+ 800092a:	f042 0240 	orr.w	r2, r2, #64	; 0x40
+ 800092e:	6002      	str	r2, [r0, #0]
+ 8000930:	894a      	ldrh	r2, [r1, #10]
+ 8000932:	3a01      	subs	r2, #1
+ 8000934:	3e01      	subs	r6, #1
+ 8000936:	0192      	lsls	r2, r2, #6
+ 8000938:	1e61      	subs	r1, r4, #1
+ 800093a:	f006 063f 	and.w	r6, r6, #63	; 0x3f
+ 800093e:	b2d2      	uxtb	r2, r2
+ 8000940:	0209      	lsls	r1, r1, #8
+ 8000942:	4332      	orrs	r2, r6
+ 8000944:	f401 6170 	and.w	r1, r1, #3840	; 0xf00
+ 8000948:	4311      	orrs	r1, r2
+ 800094a:	1e9a      	subs	r2, r3, #2
+ 800094c:	1b13      	subs	r3, r2, r4
+ 800094e:	031b      	lsls	r3, r3, #12
+ 8000950:	f403 43e0 	and.w	r3, r3, #28672	; 0x7000
+ 8000954:	430b      	orrs	r3, r1
+ 8000956:	6103      	str	r3, [r0, #16]
+ 8000958:	6803      	ldr	r3, [r0, #0]
+ 800095a:	f023 0340 	bic.w	r3, r3, #64	; 0x40
+ 800095e:	6003      	str	r3, [r0, #0]
+ 8000960:	e8bd 83f0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, r9, pc}
+
+08000964 <XMC_CAN_AllocateMOtoNodeList>:
+ 8000964:	f8d0 31c4 	ldr.w	r3, [r0, #452]	; 0x1c4
+ 8000968:	f413 7f40 	tst.w	r3, #768	; 0x300
+ 800096c:	d1fa      	bne.n	8000964 <XMC_CAN_AllocateMOtoNodeList>
+ 800096e:	0412      	lsls	r2, r2, #16
+ 8000970:	f042 0202 	orr.w	r2, r2, #2
+ 8000974:	3101      	adds	r1, #1
+ 8000976:	ea42 6101 	orr.w	r1, r2, r1, lsl #24
+ 800097a:	f8c0 11c4 	str.w	r1, [r0, #452]	; 0x1c4
+ 800097e:	4770      	bx	lr
+
+08000980 <XMC_CAN_Enable>:
+ 8000980:	b510      	push	{r4, lr}
+ 8000982:	4604      	mov	r4, r0
+ 8000984:	4806      	ldr	r0, [pc, #24]	; (80009a0 <XMC_CAN_Enable+0x20>)
+ 8000986:	f7ff fde5 	bl	8000554 <XMC_SCU_CLOCK_UngatePeripheralClock>
+ 800098a:	4805      	ldr	r0, [pc, #20]	; (80009a0 <XMC_CAN_Enable+0x20>)
+ 800098c:	f7ff fd38 	bl	8000400 <XMC_SCU_RESET_DeassertPeripheralReset>
+ 8000990:	6823      	ldr	r3, [r4, #0]
+ 8000992:	f023 0301 	bic.w	r3, r3, #1
+ 8000996:	6023      	str	r3, [r4, #0]
+ 8000998:	6823      	ldr	r3, [r4, #0]
+ 800099a:	079b      	lsls	r3, r3, #30
+ 800099c:	d4fc      	bmi.n	8000998 <XMC_CAN_Enable+0x18>
+ 800099e:	bd10      	pop	{r4, pc}
+ 80009a0:	10000010 	.word	0x10000010
+
+080009a4 <XMC_CAN_GetBaudrateClockFrequency>:
+ 80009a4:	f8d0 31c8 	ldr.w	r3, [r0, #456]	; 0x1c8
+ 80009a8:	f003 030f 	and.w	r3, r3, #15
+ 80009ac:	2b01      	cmp	r3, #1
+ 80009ae:	d003      	beq.n	80009b8 <XMC_CAN_GetBaudrateClockFrequency+0x14>
+ 80009b0:	2b02      	cmp	r3, #2
+ 80009b2:	d103      	bne.n	80009bc <XMC_CAN_GetBaudrateClockFrequency+0x18>
+ 80009b4:	f000 bb5e 	b.w	8001074 <OSCHP_GetFrequency>
+ 80009b8:	f7ff bd2c 	b.w	8000414 <XMC_SCU_CLOCK_GetPeripheralClockFrequency>
+ 80009bc:	2000      	movs	r0, #0
+ 80009be:	4770      	bx	lr
+
+080009c0 <XMC_CAN_Init>:
+ 80009c0:	b570      	push	{r4, r5, r6, lr}
+ 80009c2:	4604      	mov	r4, r0
+ 80009c4:	4615      	mov	r5, r2
+ 80009c6:	460e      	mov	r6, r1
+ 80009c8:	f7ff ffda 	bl	8000980 <XMC_CAN_Enable>
+ 80009cc:	f8d4 31c8 	ldr.w	r3, [r4, #456]	; 0x1c8
+ 80009d0:	f023 030f 	bic.w	r3, r3, #15
+ 80009d4:	ea46 0103 	orr.w	r1, r6, r3
+ 80009d8:	f8c4 11c8 	str.w	r1, [r4, #456]	; 0x1c8
+ 80009dc:	4620      	mov	r0, r4
+ 80009de:	f7ff ffe1 	bl	80009a4 <XMC_CAN_GetBaudrateClockFrequency>
+ 80009e2:	fbb0 f1f5 	udiv	r1, r0, r5
+ 80009e6:	f5c1 6180 	rsb	r1, r1, #1024	; 0x400
+ 80009ea:	2900      	cmp	r1, #0
+ 80009ec:	bf38      	it	cc
+ 80009ee:	2100      	movcc	r1, #0
+ 80009f0:	f240 36ff 	movw	r6, #1023	; 0x3ff
+ 80009f4:	42b1      	cmp	r1, r6
+ 80009f6:	ea4f 1395 	mov.w	r3, r5, lsr #6
+ 80009fa:	bf28      	it	cs
+ 80009fc:	4631      	movcs	r1, r6
+ 80009fe:	0982      	lsrs	r2, r0, #6
+ 8000a00:	029b      	lsls	r3, r3, #10
+ 8000a02:	fbb3 f3f2 	udiv	r3, r3, r2
+ 8000a06:	42b3      	cmp	r3, r6
+ 8000a08:	bf28      	it	cs
+ 8000a0a:	4633      	movcs	r3, r6
+ 8000a0c:	435a      	muls	r2, r3
+ 8000a0e:	0a92      	lsrs	r2, r2, #10
+ 8000a10:	f5c1 6680 	rsb	r6, r1, #1024	; 0x400
+ 8000a14:	fbb0 f0f6 	udiv	r0, r0, r6
+ 8000a18:	1a28      	subs	r0, r5, r0
+ 8000a1a:	eba5 1582 	sub.w	r5, r5, r2, lsl #6
+ 8000a1e:	68e2      	ldr	r2, [r4, #12]
+ 8000a20:	f422 4243 	bic.w	r2, r2, #49920	; 0xc300
+ 8000a24:	f022 02ff 	bic.w	r2, r2, #255	; 0xff
+ 8000a28:	60e2      	str	r2, [r4, #12]
+ 8000a2a:	42a8      	cmp	r0, r5
+ 8000a2c:	68e2      	ldr	r2, [r4, #12]
+ 8000a2e:	bf96      	itet	ls
+ 8000a30:	460b      	movls	r3, r1
+ 8000a32:	2102      	movhi	r1, #2
+ 8000a34:	2101      	movls	r1, #1
+ 8000a36:	4313      	orrs	r3, r2
+ 8000a38:	ea43 3381 	orr.w	r3, r3, r1, lsl #14
+ 8000a3c:	60e3      	str	r3, [r4, #12]
+ 8000a3e:	bd70      	pop	{r4, r5, r6, pc}
+
+08000a40 <XMC_CAN_MO_UpdateData>:
+ 8000a40:	7e03      	ldrb	r3, [r0, #24]
+ 8000a42:	2b01      	cmp	r3, #1
+ 8000a44:	d114      	bne.n	8000a70 <XMC_CAN_MO_UpdateData+0x30>
+ 8000a46:	6803      	ldr	r3, [r0, #0]
+ 8000a48:	2220      	movs	r2, #32
+ 8000a4a:	61da      	str	r2, [r3, #28]
+ 8000a4c:	6803      	ldr	r3, [r0, #0]
+ 8000a4e:	7b01      	ldrb	r1, [r0, #12]
+ 8000a50:	681a      	ldr	r2, [r3, #0]
+ 8000a52:	0609      	lsls	r1, r1, #24
+ 8000a54:	f001 6170 	and.w	r1, r1, #251658240	; 0xf000000
+ 8000a58:	f022 6270 	bic.w	r2, r2, #251658240	; 0xf000000
+ 8000a5c:	430a      	orrs	r2, r1
+ 8000a5e:	601a      	str	r2, [r3, #0]
+ 8000a60:	6902      	ldr	r2, [r0, #16]
+ 8000a62:	611a      	str	r2, [r3, #16]
+ 8000a64:	6942      	ldr	r2, [r0, #20]
+ 8000a66:	615a      	str	r2, [r3, #20]
+ 8000a68:	4a02      	ldr	r2, [pc, #8]	; (8000a74 <XMC_CAN_MO_UpdateData+0x34>)
+ 8000a6a:	61da      	str	r2, [r3, #28]
+ 8000a6c:	2000      	movs	r0, #0
+ 8000a6e:	4770      	bx	lr
+ 8000a70:	2003      	movs	r0, #3
+ 8000a72:	4770      	bx	lr
+ 8000a74:	00280040 	.word	0x00280040
+
+08000a78 <XMC_CAN_MO_Config>:
+ 8000a78:	6802      	ldr	r2, [r0, #0]
+ 8000a7a:	6891      	ldr	r1, [r2, #8]
+ 8000a7c:	f102 4338 	add.w	r3, r2, #3087007744	; 0xb8000000
+ 8000a80:	f421 417f 	bic.w	r1, r1, #65280	; 0xff00
+ 8000a84:	b510      	push	{r4, lr}
+ 8000a86:	f5a3 33a8 	sub.w	r3, r3, #86016	; 0x15000
+ 8000a8a:	6091      	str	r1, [r2, #8]
+ 8000a8c:	6891      	ldr	r1, [r2, #8]
+ 8000a8e:	00db      	lsls	r3, r3, #3
+ 8000a90:	f023 03ff 	bic.w	r3, r3, #255	; 0xff
+ 8000a94:	430b      	orrs	r3, r1
+ 8000a96:	6093      	str	r3, [r2, #8]
+ 8000a98:	7e03      	ldrb	r3, [r0, #24]
+ 8000a9a:	2b01      	cmp	r3, #1
+ 8000a9c:	4604      	mov	r4, r0
+ 8000a9e:	d825      	bhi.n	8000aec <XMC_CAN_MO_Config+0x74>
+ 8000aa0:	2320      	movs	r3, #32
+ 8000aa2:	61d3      	str	r3, [r2, #28]
+ 8000aa4:	79c3      	ldrb	r3, [r0, #7]
+ 8000aa6:	6842      	ldr	r2, [r0, #4]
+ 8000aa8:	f013 0f20 	tst.w	r3, #32
+ 8000aac:	bf08      	it	eq
+ 8000aae:	f002 4160 	andeq.w	r1, r2, #3758096384	; 0xe0000000
+ 8000ab2:	6803      	ldr	r3, [r0, #0]
+ 8000ab4:	bf03      	ittte	eq
+ 8000ab6:	ea41 4282 	orreq.w	r2, r1, r2, lsl #18
+ 8000aba:	619a      	streq	r2, [r3, #24]
+ 8000abc:	6881      	ldreq	r1, [r0, #8]
+ 8000abe:	619a      	strne	r2, [r3, #24]
+ 8000ac0:	bf06      	itte	eq
+ 8000ac2:	f001 4260 	andeq.w	r2, r1, #3758096384	; 0xe0000000
+ 8000ac6:	ea42 4281 	orreq.w	r2, r2, r1, lsl #18
+ 8000aca:	6882      	ldrne	r2, [r0, #8]
+ 8000acc:	60da      	str	r2, [r3, #12]
+ 8000ace:	7e02      	ldrb	r2, [r0, #24]
+ 8000ad0:	2a01      	cmp	r2, #1
+ 8000ad2:	d105      	bne.n	8000ae0 <XMC_CAN_MO_Config+0x68>
+ 8000ad4:	f7ff ffb4 	bl	8000a40 <XMC_CAN_MO_UpdateData>
+ 8000ad8:	6823      	ldr	r3, [r4, #0]
+ 8000ada:	f04f 6200 	mov.w	r2, #134217728	; 0x8000000
+ 8000ade:	e001      	b.n	8000ae4 <XMC_CAN_MO_Config+0x6c>
+ 8000ae0:	f44f 6200 	mov.w	r2, #2048	; 0x800
+ 8000ae4:	61da      	str	r2, [r3, #28]
+ 8000ae6:	6823      	ldr	r3, [r4, #0]
+ 8000ae8:	4a01      	ldr	r2, [pc, #4]	; (8000af0 <XMC_CAN_MO_Config+0x78>)
+ 8000aea:	61da      	str	r2, [r3, #28]
+ 8000aec:	bd10      	pop	{r4, pc}
+ 8000aee:	bf00      	nop
+ 8000af0:	06a00040 	.word	0x06a00040
+
+08000af4 <XMC_CAN_MO_Transmit>:
+ 8000af4:	6803      	ldr	r3, [r0, #0]
+ 8000af6:	69d9      	ldr	r1, [r3, #28]
+ 8000af8:	69da      	ldr	r2, [r3, #28]
+ 8000afa:	0689      	lsls	r1, r1, #26
+ 8000afc:	d506      	bpl.n	8000b0c <XMC_CAN_MO_Transmit+0x18>
+ 8000afe:	05d2      	lsls	r2, r2, #23
+ 8000b00:	d406      	bmi.n	8000b10 <XMC_CAN_MO_Transmit+0x1c>
+ 8000b02:	f04f 62e0 	mov.w	r2, #117440512	; 0x7000000
+ 8000b06:	61da      	str	r2, [r3, #28]
+ 8000b08:	2000      	movs	r0, #0
+ 8000b0a:	4770      	bx	lr
+ 8000b0c:	2004      	movs	r0, #4
+ 8000b0e:	4770      	bx	lr
+ 8000b10:	2002      	movs	r0, #2
+ 8000b12:	4770      	bx	lr
+
+08000b14 <XMC_CAN_MO_Receive>:
+ 8000b14:	6803      	ldr	r3, [r0, #0]
+ 8000b16:	69da      	ldr	r2, [r3, #28]
+ 8000b18:	69db      	ldr	r3, [r3, #28]
+ 8000b1a:	0512      	lsls	r2, r2, #20
+ 8000b1c:	d44e      	bmi.n	8000bbc <XMC_CAN_MO_Receive+0xa8>
+ 8000b1e:	0759      	lsls	r1, r3, #29
+ 8000b20:	d44e      	bmi.n	8000bc0 <XMC_CAN_MO_Receive+0xac>
+ 8000b22:	6803      	ldr	r3, [r0, #0]
+ 8000b24:	2208      	movs	r2, #8
+ 8000b26:	61da      	str	r2, [r3, #28]
+ 8000b28:	6803      	ldr	r3, [r0, #0]
+ 8000b2a:	79c2      	ldrb	r2, [r0, #7]
+ 8000b2c:	6999      	ldr	r1, [r3, #24]
+ 8000b2e:	f3c1 7140 	ubfx	r1, r1, #29, #1
+ 8000b32:	b9d9      	cbnz	r1, 8000b6c <XMC_CAN_MO_Receive+0x58>
+ 8000b34:	f361 1245 	bfi	r2, r1, #5, #1
+ 8000b38:	71c2      	strb	r2, [r0, #7]
+ 8000b3a:	699a      	ldr	r2, [r3, #24]
+ 8000b3c:	6841      	ldr	r1, [r0, #4]
+ 8000b3e:	f3c2 428a 	ubfx	r2, r2, #18, #11
+ 8000b42:	f362 011c 	bfi	r1, r2, #0, #29
+ 8000b46:	6041      	str	r1, [r0, #4]
+ 8000b48:	68d9      	ldr	r1, [r3, #12]
+ 8000b4a:	7ac2      	ldrb	r2, [r0, #11]
+ 8000b4c:	f3c1 7140 	ubfx	r1, r1, #29, #1
+ 8000b50:	f361 1245 	bfi	r2, r1, #5, #1
+ 8000b54:	72c2      	strb	r2, [r0, #11]
+ 8000b56:	68d9      	ldr	r1, [r3, #12]
+ 8000b58:	f012 0f20 	tst.w	r2, #32
+ 8000b5c:	6882      	ldr	r2, [r0, #8]
+ 8000b5e:	bf18      	it	ne
+ 8000b60:	f3c1 418a 	ubfxne	r1, r1, #18, #11
+ 8000b64:	f361 021c 	bfi	r2, r1, #0, #29
+ 8000b68:	6082      	str	r2, [r0, #8]
+ 8000b6a:	e013      	b.n	8000b94 <XMC_CAN_MO_Receive+0x80>
+ 8000b6c:	f042 0220 	orr.w	r2, r2, #32
+ 8000b70:	71c2      	strb	r2, [r0, #7]
+ 8000b72:	6999      	ldr	r1, [r3, #24]
+ 8000b74:	6842      	ldr	r2, [r0, #4]
+ 8000b76:	f361 021c 	bfi	r2, r1, #0, #29
+ 8000b7a:	6042      	str	r2, [r0, #4]
+ 8000b7c:	68d9      	ldr	r1, [r3, #12]
+ 8000b7e:	6882      	ldr	r2, [r0, #8]
+ 8000b80:	f361 021c 	bfi	r2, r1, #0, #29
+ 8000b84:	6082      	str	r2, [r0, #8]
+ 8000b86:	68da      	ldr	r2, [r3, #12]
+ 8000b88:	7ac1      	ldrb	r1, [r0, #11]
+ 8000b8a:	f3c2 7240 	ubfx	r2, r2, #29, #1
+ 8000b8e:	f362 1145 	bfi	r1, r2, #5, #1
+ 8000b92:	72c1      	strb	r1, [r0, #11]
+ 8000b94:	681a      	ldr	r2, [r3, #0]
+ 8000b96:	f3c2 6203 	ubfx	r2, r2, #24, #4
+ 8000b9a:	7302      	strb	r2, [r0, #12]
+ 8000b9c:	691a      	ldr	r2, [r3, #16]
+ 8000b9e:	6102      	str	r2, [r0, #16]
+ 8000ba0:	695a      	ldr	r2, [r3, #20]
+ 8000ba2:	6142      	str	r2, [r0, #20]
+ 8000ba4:	69da      	ldr	r2, [r3, #28]
+ 8000ba6:	69db      	ldr	r3, [r3, #28]
+ 8000ba8:	0752      	lsls	r2, r2, #29
+ 8000baa:	f3c3 03c0 	ubfx	r3, r3, #3, #1
+ 8000bae:	d501      	bpl.n	8000bb4 <XMC_CAN_MO_Receive+0xa0>
+ 8000bb0:	2b00      	cmp	r3, #0
+ 8000bb2:	d1b6      	bne.n	8000b22 <XMC_CAN_MO_Receive+0xe>
+ 8000bb4:	2300      	movs	r3, #0
+ 8000bb6:	7603      	strb	r3, [r0, #24]
+ 8000bb8:	4618      	mov	r0, r3
+ 8000bba:	4770      	bx	lr
+ 8000bbc:	2003      	movs	r0, #3
+ 8000bbe:	4770      	bx	lr
+ 8000bc0:	2002      	movs	r0, #2
+ 8000bc2:	4770      	bx	lr
+
+08000bc4 <XMC_CAN_TXFIFO_ConfigMOBaseObject>:
+ 8000bc4:	b082      	sub	sp, #8
+ 8000bc6:	6802      	ldr	r2, [r0, #0]
+ 8000bc8:	9101      	str	r1, [sp, #4]
+ 8000bca:	6813      	ldr	r3, [r2, #0]
+ 8000bcc:	f89d 1004 	ldrb.w	r1, [sp, #4]
+ 8000bd0:	f023 030f 	bic.w	r3, r3, #15
+ 8000bd4:	f043 0302 	orr.w	r3, r3, #2
+ 8000bd8:	6013      	str	r3, [r2, #0]
+ 8000bda:	6853      	ldr	r3, [r2, #4]
+ 8000bdc:	f003 437f 	and.w	r3, r3, #4278190080	; 0xff000000
+ 8000be0:	430b      	orrs	r3, r1
+ 8000be2:	f89d 1005 	ldrb.w	r1, [sp, #5]
+ 8000be6:	ea43 2301 	orr.w	r3, r3, r1, lsl #8
+ 8000bea:	f89d 1006 	ldrb.w	r1, [sp, #6]
+ 8000bee:	ea43 4301 	orr.w	r3, r3, r1, lsl #16
+ 8000bf2:	6053      	str	r3, [r2, #4]
+ 8000bf4:	b002      	add	sp, #8
+ 8000bf6:	4770      	bx	lr
+
+08000bf8 <XMC_CAN_TXFIFO_ConfigMOSlaveObject>:
+ 8000bf8:	b082      	sub	sp, #8
+ 8000bfa:	6803      	ldr	r3, [r0, #0]
+ 8000bfc:	9101      	str	r1, [sp, #4]
+ 8000bfe:	681a      	ldr	r2, [r3, #0]
+ 8000c00:	f89d 1006 	ldrb.w	r1, [sp, #6]
+ 8000c04:	f022 020f 	bic.w	r2, r2, #15
+ 8000c08:	f042 0203 	orr.w	r2, r2, #3
+ 8000c0c:	601a      	str	r2, [r3, #0]
+ 8000c0e:	685a      	ldr	r2, [r3, #4]
+ 8000c10:	f422 027f 	bic.w	r2, r2, #16711680	; 0xff0000
+ 8000c14:	ea42 4201 	orr.w	r2, r2, r1, lsl #16
+ 8000c18:	605a      	str	r2, [r3, #4]
+ 8000c1a:	4a02      	ldr	r2, [pc, #8]	; (8000c24 <XMC_CAN_TXFIFO_ConfigMOSlaveObject+0x2c>)
+ 8000c1c:	61da      	str	r2, [r3, #28]
+ 8000c1e:	b002      	add	sp, #8
+ 8000c20:	4770      	bx	lr
+ 8000c22:	bf00      	nop
+ 8000c24:	02000400 	.word	0x02000400
+
+08000c28 <XMC_CAN_GATEWAY_InitSourceObject>:
+ 8000c28:	b082      	sub	sp, #8
+ 8000c2a:	ab02      	add	r3, sp, #8
+ 8000c2c:	e903 0006 	stmdb	r3, {r1, r2}
+ 8000c30:	f89d 3003 	ldrb.w	r3, [sp, #3]
+ 8000c34:	6801      	ldr	r1, [r0, #0]
+ 8000c36:	021b      	lsls	r3, r3, #8
+ 8000c38:	f403 7280 	and.w	r2, r3, #256	; 0x100
+ 8000c3c:	f89d 3005 	ldrb.w	r3, [sp, #5]
+ 8000c40:	029b      	lsls	r3, r3, #10
+ 8000c42:	f403 6380 	and.w	r3, r3, #1024	; 0x400
+ 8000c46:	4313      	orrs	r3, r2
+ 8000c48:	f89d 2004 	ldrb.w	r2, [sp, #4]
+ 8000c4c:	0252      	lsls	r2, r2, #9
+ 8000c4e:	f402 7200 	and.w	r2, r2, #512	; 0x200
+ 8000c52:	f043 0304 	orr.w	r3, r3, #4
+ 8000c56:	4313      	orrs	r3, r2
+ 8000c58:	f89d 2006 	ldrb.w	r2, [sp, #6]
+ 8000c5c:	02d2      	lsls	r2, r2, #11
+ 8000c5e:	f402 6200 	and.w	r2, r2, #2048	; 0x800
+ 8000c62:	4313      	orrs	r3, r2
+ 8000c64:	600b      	str	r3, [r1, #0]
+ 8000c66:	f89d 2001 	ldrb.w	r2, [sp, #1]
+ 8000c6a:	f89d 3000 	ldrb.w	r3, [sp]
+ 8000c6e:	ea43 2302 	orr.w	r3, r3, r2, lsl #8
+ 8000c72:	f89d 2002 	ldrb.w	r2, [sp, #2]
+ 8000c76:	ea43 4302 	orr.w	r3, r3, r2, lsl #16
+ 8000c7a:	604b      	str	r3, [r1, #4]
+ 8000c7c:	b002      	add	sp, #8
+ 8000c7e:	4770      	bx	lr
+
+08000c80 <XMC_GPIO_SetHardwareControl>:
+ 8000c80:	6f43      	ldr	r3, [r0, #116]	; 0x74
+ 8000c82:	0049      	lsls	r1, r1, #1
+ 8000c84:	b510      	push	{r4, lr}
+ 8000c86:	2403      	movs	r4, #3
+ 8000c88:	408c      	lsls	r4, r1
+ 8000c8a:	ea23 0304 	bic.w	r3, r3, r4
+ 8000c8e:	6743      	str	r3, [r0, #116]	; 0x74
+ 8000c90:	6f43      	ldr	r3, [r0, #116]	; 0x74
+ 8000c92:	408a      	lsls	r2, r1
+ 8000c94:	4313      	orrs	r3, r2
+ 8000c96:	6743      	str	r3, [r0, #116]	; 0x74
+ 8000c98:	bd10      	pop	{r4, pc}
+
+08000c9a <_init>:
+ 8000c9a:	4770      	bx	lr
+
+08000c9c <MULTICAN_CONFIG_Init>:
+ 8000c9c:	6983      	ldr	r3, [r0, #24]
+ 8000c9e:	4718      	bx	r3
+
+08000ca0 <MULTICAN_CONFIG_0_lInit>:
+ 8000ca0:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
+ 8000ca2:	4ca2      	ldr	r4, [pc, #648]	; (8000f2c <MULTICAN_CONFIG_0_lInit+0x28c>)
+ 8000ca4:	6820      	ldr	r0, [r4, #0]
+ 8000ca6:	f000 f989 	bl	8000fbc <GLOBAL_CAN_Init>
+ 8000caa:	4605      	mov	r5, r0
+ 8000cac:	2800      	cmp	r0, #0
+ 8000cae:	f040 8139 	bne.w	8000f24 <MULTICAN_CONFIG_0_lInit+0x284>
+ 8000cb2:	69e3      	ldr	r3, [r4, #28]
+ 8000cb4:	6858      	ldr	r0, [r3, #4]
+ 8000cb6:	6899      	ldr	r1, [r3, #8]
+ 8000cb8:	f7ff fddf 	bl	800087a <XMC_CAN_NODE_NominalBitTimeConfigure>
+ 8000cbc:	69e2      	ldr	r2, [r4, #28]
+ 8000cbe:	6853      	ldr	r3, [r2, #4]
+ 8000cc0:	6819      	ldr	r1, [r3, #0]
+ 8000cc2:	f041 0140 	orr.w	r1, r1, #64	; 0x40
+ 8000cc6:	6019      	str	r1, [r3, #0]
+ 8000cc8:	6819      	ldr	r1, [r3, #0]
+ 8000cca:	f041 0101 	orr.w	r1, r1, #1
+ 8000cce:	6019      	str	r1, [r3, #0]
+ 8000cd0:	6999      	ldr	r1, [r3, #24]
+ 8000cd2:	f421 10f8 	bic.w	r0, r1, #2031616	; 0x1f0000
+ 8000cd6:	68d1      	ldr	r1, [r2, #12]
+ 8000cd8:	6809      	ldr	r1, [r1, #0]
+ 8000cda:	4301      	orrs	r1, r0
+ 8000cdc:	6199      	str	r1, [r3, #24]
+ 8000cde:	68d9      	ldr	r1, [r3, #12]
+ 8000ce0:	f441 7180 	orr.w	r1, r1, #256	; 0x100
+ 8000ce4:	60d9      	str	r1, [r3, #12]
+ 8000ce6:	6899      	ldr	r1, [r3, #8]
+ 8000ce8:	f021 0007 	bic.w	r0, r1, #7
+ 8000cec:	7c91      	ldrb	r1, [r2, #18]
+ 8000cee:	4301      	orrs	r1, r0
+ 8000cf0:	6099      	str	r1, [r3, #8]
+ 8000cf2:	6899      	ldr	r1, [r3, #8]
+ 8000cf4:	7cd0      	ldrb	r0, [r2, #19]
+ 8000cf6:	f021 0170 	bic.w	r1, r1, #112	; 0x70
+ 8000cfa:	ea41 1100 	orr.w	r1, r1, r0, lsl #4
+ 8000cfe:	6099      	str	r1, [r3, #8]
+ 8000d00:	6899      	ldr	r1, [r3, #8]
+ 8000d02:	7d10      	ldrb	r0, [r2, #20]
+ 8000d04:	f421 61e0 	bic.w	r1, r1, #1792	; 0x700
+ 8000d08:	ea41 2100 	orr.w	r1, r1, r0, lsl #8
+ 8000d0c:	6099      	str	r1, [r3, #8]
+ 8000d0e:	6899      	ldr	r1, [r3, #8]
+ 8000d10:	7d50      	ldrb	r0, [r2, #21]
+ 8000d12:	f421 42e0 	bic.w	r2, r1, #28672	; 0x7000
+ 8000d16:	ea42 3200 	orr.w	r2, r2, r0, lsl #12
+ 8000d1a:	609a      	str	r2, [r3, #8]
+ 8000d1c:	681a      	ldr	r2, [r3, #0]
+ 8000d1e:	f022 0240 	bic.w	r2, r2, #64	; 0x40
+ 8000d22:	601a      	str	r2, [r3, #0]
+ 8000d24:	681a      	ldr	r2, [r3, #0]
+ 8000d26:	f022 0201 	bic.w	r2, r2, #1
+ 8000d2a:	601a      	str	r2, [r3, #0]
+ 8000d2c:	6a23      	ldr	r3, [r4, #32]
+ 8000d2e:	6858      	ldr	r0, [r3, #4]
+ 8000d30:	6899      	ldr	r1, [r3, #8]
+ 8000d32:	f7ff fda2 	bl	800087a <XMC_CAN_NODE_NominalBitTimeConfigure>
+ 8000d36:	6a22      	ldr	r2, [r4, #32]
+ 8000d38:	6853      	ldr	r3, [r2, #4]
+ 8000d3a:	6819      	ldr	r1, [r3, #0]
+ 8000d3c:	f041 0140 	orr.w	r1, r1, #64	; 0x40
+ 8000d40:	6019      	str	r1, [r3, #0]
+ 8000d42:	6819      	ldr	r1, [r3, #0]
+ 8000d44:	f041 0101 	orr.w	r1, r1, #1
+ 8000d48:	6019      	str	r1, [r3, #0]
+ 8000d4a:	6999      	ldr	r1, [r3, #24]
+ 8000d4c:	f421 10f8 	bic.w	r0, r1, #2031616	; 0x1f0000
+ 8000d50:	68d1      	ldr	r1, [r2, #12]
+ 8000d52:	6809      	ldr	r1, [r1, #0]
+ 8000d54:	4301      	orrs	r1, r0
+ 8000d56:	6199      	str	r1, [r3, #24]
+ 8000d58:	68d9      	ldr	r1, [r3, #12]
+ 8000d5a:	f441 7180 	orr.w	r1, r1, #256	; 0x100
+ 8000d5e:	60d9      	str	r1, [r3, #12]
+ 8000d60:	6899      	ldr	r1, [r3, #8]
+ 8000d62:	f021 0007 	bic.w	r0, r1, #7
+ 8000d66:	7c91      	ldrb	r1, [r2, #18]
+ 8000d68:	4301      	orrs	r1, r0
+ 8000d6a:	6099      	str	r1, [r3, #8]
+ 8000d6c:	6899      	ldr	r1, [r3, #8]
+ 8000d6e:	7cd0      	ldrb	r0, [r2, #19]
+ 8000d70:	f021 0170 	bic.w	r1, r1, #112	; 0x70
+ 8000d74:	ea41 1100 	orr.w	r1, r1, r0, lsl #4
+ 8000d78:	6099      	str	r1, [r3, #8]
+ 8000d7a:	6899      	ldr	r1, [r3, #8]
+ 8000d7c:	7d10      	ldrb	r0, [r2, #20]
+ 8000d7e:	f421 61e0 	bic.w	r1, r1, #1792	; 0x700
+ 8000d82:	ea41 2100 	orr.w	r1, r1, r0, lsl #8
+ 8000d86:	6099      	str	r1, [r3, #8]
+ 8000d88:	6899      	ldr	r1, [r3, #8]
+ 8000d8a:	7d50      	ldrb	r0, [r2, #21]
+ 8000d8c:	f421 42e0 	bic.w	r2, r1, #28672	; 0x7000
+ 8000d90:	ea42 3200 	orr.w	r2, r2, r0, lsl #12
+ 8000d94:	609a      	str	r2, [r3, #8]
+ 8000d96:	681a      	ldr	r2, [r3, #0]
+ 8000d98:	f022 0240 	bic.w	r2, r2, #64	; 0x40
+ 8000d9c:	601a      	str	r2, [r3, #0]
+ 8000d9e:	681a      	ldr	r2, [r3, #0]
+ 8000da0:	f022 0201 	bic.w	r2, r2, #1
+ 8000da4:	601a      	str	r2, [r3, #0]
+ 8000da6:	6a63      	ldr	r3, [r4, #36]	; 0x24
+ 8000da8:	6858      	ldr	r0, [r3, #4]
+ 8000daa:	6899      	ldr	r1, [r3, #8]
+ 8000dac:	f7ff fd65 	bl	800087a <XMC_CAN_NODE_NominalBitTimeConfigure>
+ 8000db0:	6a62      	ldr	r2, [r4, #36]	; 0x24
+ 8000db2:	6853      	ldr	r3, [r2, #4]
+ 8000db4:	6819      	ldr	r1, [r3, #0]
+ 8000db6:	f041 0140 	orr.w	r1, r1, #64	; 0x40
+ 8000dba:	6019      	str	r1, [r3, #0]
+ 8000dbc:	6819      	ldr	r1, [r3, #0]
+ 8000dbe:	f041 0101 	orr.w	r1, r1, #1
+ 8000dc2:	6019      	str	r1, [r3, #0]
+ 8000dc4:	6999      	ldr	r1, [r3, #24]
+ 8000dc6:	f421 10f8 	bic.w	r0, r1, #2031616	; 0x1f0000
+ 8000dca:	68d1      	ldr	r1, [r2, #12]
+ 8000dcc:	6809      	ldr	r1, [r1, #0]
+ 8000dce:	4301      	orrs	r1, r0
+ 8000dd0:	6199      	str	r1, [r3, #24]
+ 8000dd2:	68d9      	ldr	r1, [r3, #12]
+ 8000dd4:	f441 7180 	orr.w	r1, r1, #256	; 0x100
+ 8000dd8:	60d9      	str	r1, [r3, #12]
+ 8000dda:	6899      	ldr	r1, [r3, #8]
+ 8000ddc:	f021 0007 	bic.w	r0, r1, #7
+ 8000de0:	7c91      	ldrb	r1, [r2, #18]
+ 8000de2:	4301      	orrs	r1, r0
+ 8000de4:	6099      	str	r1, [r3, #8]
+ 8000de6:	6899      	ldr	r1, [r3, #8]
+ 8000de8:	7cd0      	ldrb	r0, [r2, #19]
+ 8000dea:	f021 0170 	bic.w	r1, r1, #112	; 0x70
+ 8000dee:	ea41 1100 	orr.w	r1, r1, r0, lsl #4
+ 8000df2:	6099      	str	r1, [r3, #8]
+ 8000df4:	6899      	ldr	r1, [r3, #8]
+ 8000df6:	7d10      	ldrb	r0, [r2, #20]
+ 8000df8:	f421 61e0 	bic.w	r1, r1, #1792	; 0x700
+ 8000dfc:	ea41 2100 	orr.w	r1, r1, r0, lsl #8
+ 8000e00:	6099      	str	r1, [r3, #8]
+ 8000e02:	6899      	ldr	r1, [r3, #8]
+ 8000e04:	7d50      	ldrb	r0, [r2, #21]
+ 8000e06:	f421 42e0 	bic.w	r2, r1, #28672	; 0x7000
+ 8000e0a:	ea42 3200 	orr.w	r2, r2, r0, lsl #12
+ 8000e0e:	609a      	str	r2, [r3, #8]
+ 8000e10:	681a      	ldr	r2, [r3, #0]
+ 8000e12:	6821      	ldr	r1, [r4, #0]
+ 8000e14:	f022 0240 	bic.w	r2, r2, #64	; 0x40
+ 8000e18:	601a      	str	r2, [r3, #0]
+ 8000e1a:	681a      	ldr	r2, [r3, #0]
+ 8000e1c:	6848      	ldr	r0, [r1, #4]
+ 8000e1e:	f022 0201 	bic.w	r2, r2, #1
+ 8000e22:	601a      	str	r2, [r3, #0]
+ 8000e24:	6863      	ldr	r3, [r4, #4]
+ 8000e26:	69e2      	ldr	r2, [r4, #28]
+ 8000e28:	7c51      	ldrb	r1, [r2, #17]
+ 8000e2a:	7b9a      	ldrb	r2, [r3, #14]
+ 8000e2c:	f7ff fd9a 	bl	8000964 <XMC_CAN_AllocateMOtoNodeList>
+ 8000e30:	6821      	ldr	r1, [r4, #0]
+ 8000e32:	6a22      	ldr	r2, [r4, #32]
+ 8000e34:	68a3      	ldr	r3, [r4, #8]
+ 8000e36:	6848      	ldr	r0, [r1, #4]
+ 8000e38:	7c51      	ldrb	r1, [r2, #17]
+ 8000e3a:	7b9a      	ldrb	r2, [r3, #14]
+ 8000e3c:	f7ff fd92 	bl	8000964 <XMC_CAN_AllocateMOtoNodeList>
+ 8000e40:	6821      	ldr	r1, [r4, #0]
+ 8000e42:	6a22      	ldr	r2, [r4, #32]
+ 8000e44:	68e3      	ldr	r3, [r4, #12]
+ 8000e46:	6848      	ldr	r0, [r1, #4]
+ 8000e48:	7c51      	ldrb	r1, [r2, #17]
+ 8000e4a:	7b9a      	ldrb	r2, [r3, #14]
+ 8000e4c:	f7ff fd8a 	bl	8000964 <XMC_CAN_AllocateMOtoNodeList>
+ 8000e50:	6821      	ldr	r1, [r4, #0]
+ 8000e52:	6a62      	ldr	r2, [r4, #36]	; 0x24
+ 8000e54:	6923      	ldr	r3, [r4, #16]
+ 8000e56:	6848      	ldr	r0, [r1, #4]
+ 8000e58:	7c51      	ldrb	r1, [r2, #17]
+ 8000e5a:	7b9a      	ldrb	r2, [r3, #14]
+ 8000e5c:	f7ff fd82 	bl	8000964 <XMC_CAN_AllocateMOtoNodeList>
+ 8000e60:	6821      	ldr	r1, [r4, #0]
+ 8000e62:	6a62      	ldr	r2, [r4, #36]	; 0x24
+ 8000e64:	6963      	ldr	r3, [r4, #20]
+ 8000e66:	6848      	ldr	r0, [r1, #4]
+ 8000e68:	7c51      	ldrb	r1, [r2, #17]
+ 8000e6a:	7b9a      	ldrb	r2, [r3, #14]
+ 8000e6c:	f7ff fd7a 	bl	8000964 <XMC_CAN_AllocateMOtoNodeList>
+ 8000e70:	1d26      	adds	r6, r4, #4
+ 8000e72:	f104 0718 	add.w	r7, r4, #24
+ 8000e76:	6833      	ldr	r3, [r6, #0]
+ 8000e78:	6818      	ldr	r0, [r3, #0]
+ 8000e7a:	f7ff fdfd 	bl	8000a78 <XMC_CAN_MO_Config>
+ 8000e7e:	f856 1b04 	ldr.w	r1, [r6], #4
+ 8000e82:	680b      	ldr	r3, [r1, #0]
+ 8000e84:	681a      	ldr	r2, [r3, #0]
+ 8000e86:	6893      	ldr	r3, [r2, #8]
+ 8000e88:	f023 0007 	bic.w	r0, r3, #7
+ 8000e8c:	7c0b      	ldrb	r3, [r1, #16]
+ 8000e8e:	4303      	orrs	r3, r0
+ 8000e90:	6093      	str	r3, [r2, #8]
+ 8000e92:	6893      	ldr	r3, [r2, #8]
+ 8000e94:	7bc9      	ldrb	r1, [r1, #15]
+ 8000e96:	f023 0370 	bic.w	r3, r3, #112	; 0x70
+ 8000e9a:	ea43 1301 	orr.w	r3, r3, r1, lsl #4
+ 8000e9e:	42be      	cmp	r6, r7
+ 8000ea0:	6093      	str	r3, [r2, #8]
+ 8000ea2:	d1e8      	bne.n	8000e76 <MULTICAN_CONFIG_0_lInit+0x1d6>
+ 8000ea4:	6860      	ldr	r0, [r4, #4]
+ 8000ea6:	6881      	ldr	r1, [r0, #8]
+ 8000ea8:	6800      	ldr	r0, [r0, #0]
+ 8000eaa:	790b      	ldrb	r3, [r1, #4]
+ 8000eac:	794a      	ldrb	r2, [r1, #5]
+ 8000eae:	ea43 2202 	orr.w	r2, r3, r2, lsl #8
+ 8000eb2:	798b      	ldrb	r3, [r1, #6]
+ 8000eb4:	6809      	ldr	r1, [r1, #0]
+ 8000eb6:	ea42 4203 	orr.w	r2, r2, r3, lsl #16
+ 8000eba:	f022 427f 	bic.w	r2, r2, #4278190080	; 0xff000000
+ 8000ebe:	f7ff feb3 	bl	8000c28 <XMC_CAN_GATEWAY_InitSourceObject>
+ 8000ec2:	68a0      	ldr	r0, [r4, #8]
+ 8000ec4:	6842      	ldr	r2, [r0, #4]
+ 8000ec6:	6800      	ldr	r0, [r0, #0]
+ 8000ec8:	7851      	ldrb	r1, [r2, #1]
+ 8000eca:	7813      	ldrb	r3, [r2, #0]
+ 8000ecc:	ea43 2301 	orr.w	r3, r3, r1, lsl #8
+ 8000ed0:	7891      	ldrb	r1, [r2, #2]
+ 8000ed2:	ea43 4101 	orr.w	r1, r3, r1, lsl #16
+ 8000ed6:	f7ff fe75 	bl	8000bc4 <XMC_CAN_TXFIFO_ConfigMOBaseObject>
+ 8000eda:	68a1      	ldr	r1, [r4, #8]
+ 8000edc:	680b      	ldr	r3, [r1, #0]
+ 8000ede:	6849      	ldr	r1, [r1, #4]
+ 8000ee0:	681a      	ldr	r2, [r3, #0]
+ 8000ee2:	7809      	ldrb	r1, [r1, #0]
+ 8000ee4:	6853      	ldr	r3, [r2, #4]
+ 8000ee6:	f023 437f 	bic.w	r3, r3, #4278190080	; 0xff000000
+ 8000eea:	ea43 6301 	orr.w	r3, r3, r1, lsl #24
+ 8000eee:	2688      	movs	r6, #136	; 0x88
+ 8000ef0:	6053      	str	r3, [r2, #4]
+ 8000ef2:	61d6      	str	r6, [r2, #28]
+ 8000ef4:	68e0      	ldr	r0, [r4, #12]
+ 8000ef6:	6842      	ldr	r2, [r0, #4]
+ 8000ef8:	6800      	ldr	r0, [r0, #0]
+ 8000efa:	7851      	ldrb	r1, [r2, #1]
+ 8000efc:	7813      	ldrb	r3, [r2, #0]
+ 8000efe:	ea43 2301 	orr.w	r3, r3, r1, lsl #8
+ 8000f02:	7891      	ldrb	r1, [r2, #2]
+ 8000f04:	ea43 4101 	orr.w	r1, r3, r1, lsl #16
+ 8000f08:	f7ff fe76 	bl	8000bf8 <XMC_CAN_TXFIFO_ConfigMOSlaveObject>
+ 8000f0c:	68e3      	ldr	r3, [r4, #12]
+ 8000f0e:	681b      	ldr	r3, [r3, #0]
+ 8000f10:	681b      	ldr	r3, [r3, #0]
+ 8000f12:	61de      	str	r6, [r3, #28]
+ 8000f14:	6963      	ldr	r3, [r4, #20]
+ 8000f16:	681b      	ldr	r3, [r3, #0]
+ 8000f18:	681a      	ldr	r2, [r3, #0]
+ 8000f1a:	6813      	ldr	r3, [r2, #0]
+ 8000f1c:	f443 3380 	orr.w	r3, r3, #65536	; 0x10000
+ 8000f20:	6013      	str	r3, [r2, #0]
+ 8000f22:	e000      	b.n	8000f26 <MULTICAN_CONFIG_0_lInit+0x286>
+ 8000f24:	2501      	movs	r5, #1
+ 8000f26:	4628      	mov	r0, r5
+ 8000f28:	bdf8      	pop	{r3, r4, r5, r6, r7, pc}
+ 8000f2a:	bf00      	nop
+ 8000f2c:	1ffe892c 	.word	0x1ffe892c
+
+08000f30 <INTERRUPT_Init>:
+ 8000f30:	4b1f      	ldr	r3, [pc, #124]	; (8000fb0 <INTERRUPT_Init+0x80>)
+ 8000f32:	b5f0      	push	{r4, r5, r6, r7, lr}
+ 8000f34:	68d9      	ldr	r1, [r3, #12]
+ 8000f36:	7805      	ldrb	r5, [r0, #0]
+ 8000f38:	7842      	ldrb	r2, [r0, #1]
+ 8000f3a:	7887      	ldrb	r7, [r0, #2]
+ 8000f3c:	f3c1 2102 	ubfx	r1, r1, #8, #3
+ 8000f40:	f1c1 0e07 	rsb	lr, r1, #7
+ 8000f44:	f1be 0f06 	cmp.w	lr, #6
+ 8000f48:	bf28      	it	cs
+ 8000f4a:	f04f 0e06 	movcs.w	lr, #6
+ 8000f4e:	b101      	cbz	r1, 8000f52 <INTERRUPT_Init+0x22>
+ 8000f50:	3901      	subs	r1, #1
+ 8000f52:	2401      	movs	r4, #1
+ 8000f54:	fa04 f301 	lsl.w	r3, r4, r1
+ 8000f58:	3b01      	subs	r3, #1
+ 8000f5a:	fa04 f40e 	lsl.w	r4, r4, lr
+ 8000f5e:	ea03 0607 	and.w	r6, r3, r7
+ 8000f62:	1e63      	subs	r3, r4, #1
+ 8000f64:	4013      	ands	r3, r2
+ 8000f66:	408b      	lsls	r3, r1
+ 8000f68:	b26a      	sxtb	r2, r5
+ 8000f6a:	2a00      	cmp	r2, #0
+ 8000f6c:	ea43 0306 	orr.w	r3, r3, r6
+ 8000f70:	ea4f 0383 	mov.w	r3, r3, lsl #2
+ 8000f74:	bfaf      	iteee	ge
+ 8000f76:	f102 4260 	addge.w	r2, r2, #3758096384	; 0xe0000000
+ 8000f7a:	f005 050f 	andlt.w	r5, r5, #15
+ 8000f7e:	4a0d      	ldrlt	r2, [pc, #52]	; (8000fb4 <INTERRUPT_Init+0x84>)
+ 8000f80:	b2db      	uxtblt	r3, r3
+ 8000f82:	bfa5      	ittet	ge
+ 8000f84:	f502 4261 	addge.w	r2, r2, #57600	; 0xe100
+ 8000f88:	b2db      	uxtbge	r3, r3
+ 8000f8a:	5553      	strblt	r3, [r2, r5]
+ 8000f8c:	f882 3300 	strbge.w	r3, [r2, #768]	; 0x300
+ 8000f90:	78c3      	ldrb	r3, [r0, #3]
+ 8000f92:	b153      	cbz	r3, 8000faa <INTERRUPT_Init+0x7a>
+ 8000f94:	7803      	ldrb	r3, [r0, #0]
+ 8000f96:	2101      	movs	r1, #1
+ 8000f98:	b25a      	sxtb	r2, r3
+ 8000f9a:	f003 031f 	and.w	r3, r3, #31
+ 8000f9e:	fa01 f303 	lsl.w	r3, r1, r3
+ 8000fa2:	0952      	lsrs	r2, r2, #5
+ 8000fa4:	4904      	ldr	r1, [pc, #16]	; (8000fb8 <INTERRUPT_Init+0x88>)
+ 8000fa6:	f841 3022 	str.w	r3, [r1, r2, lsl #2]
+ 8000faa:	2000      	movs	r0, #0
+ 8000fac:	bdf0      	pop	{r4, r5, r6, r7, pc}
+ 8000fae:	bf00      	nop
+ 8000fb0:	e000ed00 	.word	0xe000ed00
+ 8000fb4:	e000ed14 	.word	0xe000ed14
+ 8000fb8:	e000e100 	.word	0xe000e100
+
+08000fbc <GLOBAL_CAN_Init>:
+ 8000fbc:	7a43      	ldrb	r3, [r0, #9]
+ 8000fbe:	b510      	push	{r4, lr}
+ 8000fc0:	4604      	mov	r4, r0
+ 8000fc2:	b933      	cbnz	r3, 8000fd2 <GLOBAL_CAN_Init+0x16>
+ 8000fc4:	6840      	ldr	r0, [r0, #4]
+ 8000fc6:	7a21      	ldrb	r1, [r4, #8]
+ 8000fc8:	6822      	ldr	r2, [r4, #0]
+ 8000fca:	f7ff fcf9 	bl	80009c0 <XMC_CAN_Init>
+ 8000fce:	2301      	movs	r3, #1
+ 8000fd0:	7263      	strb	r3, [r4, #9]
+ 8000fd2:	2000      	movs	r0, #0
+ 8000fd4:	bd10      	pop	{r4, pc}
+
+08000fd6 <DIGITAL_IO_Init>:
+ 8000fd6:	b510      	push	{r4, lr}
+ 8000fd8:	4604      	mov	r4, r0
+ 8000fda:	1d22      	adds	r2, r4, #4
+ 8000fdc:	7c21      	ldrb	r1, [r4, #16]
+ 8000fde:	6800      	ldr	r0, [r0, #0]
+ 8000fe0:	f7ff f9b8 	bl	8000354 <XMC_GPIO_Init>
+ 8000fe4:	6820      	ldr	r0, [r4, #0]
+ 8000fe6:	7c21      	ldrb	r1, [r4, #16]
+ 8000fe8:	7c62      	ldrb	r2, [r4, #17]
+ 8000fea:	f7ff fe49 	bl	8000c80 <XMC_GPIO_SetHardwareControl>
+ 8000fee:	2000      	movs	r0, #0
+ 8000ff0:	bd10      	pop	{r4, pc}
+	...
+
+08000ff4 <SystemCoreSetup>:
+ 8000ff4:	4b19      	ldr	r3, [pc, #100]	; (800105c <SystemCoreSetup+0x68>)
+ 8000ff6:	4a1a      	ldr	r2, [pc, #104]	; (8001060 <SystemCoreSetup+0x6c>)
+ 8000ff8:	68d9      	ldr	r1, [r3, #12]
+ 8000ffa:	f421 61e0 	bic.w	r1, r1, #1792	; 0x700
+ 8000ffe:	0409      	lsls	r1, r1, #16
+ 8001000:	0c09      	lsrs	r1, r1, #16
+ 8001002:	430a      	orrs	r2, r1
+ 8001004:	60da      	str	r2, [r3, #12]
+ 8001006:	b672      	cpsid	i
+ 8001008:	4a16      	ldr	r2, [pc, #88]	; (8001064 <SystemCoreSetup+0x70>)
+ 800100a:	609a      	str	r2, [r3, #8]
+ 800100c:	f3bf 8f4f 	dsb	sy
+ 8001010:	b662      	cpsie	i
+ 8001012:	f8d3 2088 	ldr.w	r2, [r3, #136]	; 0x88
+ 8001016:	4814      	ldr	r0, [pc, #80]	; (8001068 <SystemCoreSetup+0x74>)
+ 8001018:	f442 0270 	orr.w	r2, r2, #15728640	; 0xf00000
+ 800101c:	f241 0114 	movw	r1, #4116	; 0x1014
+ 8001020:	f8c3 2088 	str.w	r2, [r3, #136]	; 0x88
+ 8001024:	5842      	ldr	r2, [r0, r1]
+ 8001026:	f022 020f 	bic.w	r2, r2, #15
+ 800102a:	f042 0204 	orr.w	r2, r2, #4
+ 800102e:	5042      	str	r2, [r0, r1]
+ 8001030:	695a      	ldr	r2, [r3, #20]
+ 8001032:	f022 0210 	bic.w	r2, r2, #16
+ 8001036:	615a      	str	r2, [r3, #20]
+ 8001038:	695a      	ldr	r2, [r3, #20]
+ 800103a:	f022 0208 	bic.w	r2, r2, #8
+ 800103e:	615a      	str	r2, [r3, #20]
+ 8001040:	6a5a      	ldr	r2, [r3, #36]	; 0x24
+ 8001042:	f422 3280 	bic.w	r2, r2, #65536	; 0x10000
+ 8001046:	625a      	str	r2, [r3, #36]	; 0x24
+ 8001048:	6a5a      	ldr	r2, [r3, #36]	; 0x24
+ 800104a:	f422 3200 	bic.w	r2, r2, #131072	; 0x20000
+ 800104e:	625a      	str	r2, [r3, #36]	; 0x24
+ 8001050:	6a5a      	ldr	r2, [r3, #36]	; 0x24
+ 8001052:	f422 2280 	bic.w	r2, r2, #262144	; 0x40000
+ 8001056:	625a      	str	r2, [r3, #36]	; 0x24
+ 8001058:	4770      	bx	lr
+ 800105a:	bf00      	nop
+ 800105c:	e000ed00 	.word	0xe000ed00
+ 8001060:	05fa0100 	.word	0x05fa0100
+ 8001064:	08000000 	.word	0x08000000
+ 8001068:	58001000 	.word	0x58001000
+
+0800106c <CLOCK_XMC4_Init>:
+ 800106c:	2301      	movs	r3, #1
+ 800106e:	7003      	strb	r3, [r0, #0]
+ 8001070:	2000      	movs	r0, #0
+ 8001072:	4770      	bx	lr
+
+08001074 <OSCHP_GetFrequency>:
+ 8001074:	4800      	ldr	r0, [pc, #0]	; (8001078 <OSCHP_GetFrequency+0x4>)
+ 8001076:	4770      	bx	lr
+ 8001078:	00b71b00 	.word	0x00b71b00
+
+0800107c <SystemCoreClockSetup>:
+ 800107c:	b530      	push	{r4, r5, lr}
+ 800107e:	4d11      	ldr	r5, [pc, #68]	; (80010c4 <SystemCoreClockSetup+0x48>)
+ 8001080:	cd0f      	ldmia	r5!, {r0, r1, r2, r3}
+ 8001082:	b087      	sub	sp, #28
+ 8001084:	ac01      	add	r4, sp, #4
+ 8001086:	c40f      	stmia	r4!, {r0, r1, r2, r3}
+ 8001088:	682b      	ldr	r3, [r5, #0]
+ 800108a:	6023      	str	r3, [r4, #0]
+ 800108c:	a801      	add	r0, sp, #4
+ 800108e:	f7ff fbaf 	bl	80007f0 <XMC_SCU_CLOCK_Init>
+ 8001092:	2000      	movs	r0, #0
+ 8001094:	f7ff f9f8 	bl	8000488 <XMC_SCU_HIB_SetRtcClockSource>
+ 8001098:	2000      	movs	r0, #0
+ 800109a:	f7ff f9d1 	bl	8000440 <XMC_SCU_CLOCK_SetUsbClockSource>
+ 800109e:	2004      	movs	r0, #4
+ 80010a0:	f7ff fa3a 	bl	8000518 <XMC_SCU_CLOCK_SetUsbClockDivider>
+ 80010a4:	2120      	movs	r1, #32
+ 80010a6:	2001      	movs	r0, #1
+ 80010a8:	f7ff fa5e 	bl	8000568 <XMC_SCU_CLOCK_StartUsbPll>
+ 80010ac:	2000      	movs	r0, #0
+ 80010ae:	f7ff f9d1 	bl	8000454 <XMC_SCU_CLOCK_SetWdtClockSource>
+ 80010b2:	2001      	movs	r0, #1
+ 80010b4:	f7ff fa44 	bl	8000540 <XMC_SCU_CLOCK_SetWdtClockDivider>
+ 80010b8:	2001      	movs	r0, #1
+ 80010ba:	f7ff fa37 	bl	800052c <XMC_SCU_CLOCK_SetEbuClockDivider>
+ 80010be:	b007      	add	sp, #28
+ 80010c0:	bd30      	pop	{r4, r5, pc}
+ 80010c2:	bf00      	nop
+ 80010c4:	08001338 	.word	0x08001338
+
+080010c8 <DAVE_Init>:
+ 80010c8:	b508      	push	{r3, lr}
+ 80010ca:	4809      	ldr	r0, [pc, #36]	; (80010f0 <DAVE_Init+0x28>)
+ 80010cc:	f7ff ffce 	bl	800106c <CLOCK_XMC4_Init>
+ 80010d0:	b960      	cbnz	r0, 80010ec <DAVE_Init+0x24>
+ 80010d2:	4808      	ldr	r0, [pc, #32]	; (80010f4 <DAVE_Init+0x2c>)
+ 80010d4:	f7ff fde2 	bl	8000c9c <MULTICAN_CONFIG_Init>
+ 80010d8:	b940      	cbnz	r0, 80010ec <DAVE_Init+0x24>
+ 80010da:	4807      	ldr	r0, [pc, #28]	; (80010f8 <DAVE_Init+0x30>)
+ 80010dc:	f7ff ff7b 	bl	8000fd6 <DIGITAL_IO_Init>
+ 80010e0:	b920      	cbnz	r0, 80010ec <DAVE_Init+0x24>
+ 80010e2:	4806      	ldr	r0, [pc, #24]	; (80010fc <DAVE_Init+0x34>)
+ 80010e4:	e8bd 4008 	ldmia.w	sp!, {r3, lr}
+ 80010e8:	f7ff bf22 	b.w	8000f30 <INTERRUPT_Init>
+ 80010ec:	bd08      	pop	{r3, pc}
+ 80010ee:	bf00      	nop
+ 80010f0:	1ffe8974 	.word	0x1ffe8974
+ 80010f4:	1ffe892c 	.word	0x1ffe892c
+ 80010f8:	08001324 	.word	0x08001324
+ 80010fc:	08001320 	.word	0x08001320
+
+08001100 <main>:
+ 8001100:	e92d 41f0 	stmdb	sp!, {r4, r5, r6, r7, r8, lr}
+ 8001104:	f7ff ffe0 	bl	80010c8 <DAVE_Init>
+ 8001108:	2801      	cmp	r0, #1
+ 800110a:	d100      	bne.n	800110e <main+0xe>
+ 800110c:	e7fe      	b.n	800110c <main+0xc>
+ 800110e:	2500      	movs	r5, #0
+ 8001110:	4e32      	ldr	r6, [pc, #200]	; (80011dc <main+0xdc>)
+ 8001112:	4c33      	ldr	r4, [pc, #204]	; (80011e0 <main+0xe0>)
+ 8001114:	6931      	ldr	r1, [r6, #16]
+ 8001116:	f815 e004 	ldrb.w	lr, [r5, r4]
+ 800111a:	680b      	ldr	r3, [r1, #0]
+ 800111c:	ea4f 0cc5 	mov.w	ip, r5, lsl #3
+ 8001120:	f883 e00c 	strb.w	lr, [r3, #12]
+ 8001124:	4637      	mov	r7, r6
+ 8001126:	2300      	movs	r3, #0
+ 8001128:	b2da      	uxtb	r2, r3
+ 800112a:	4572      	cmp	r2, lr
+ 800112c:	6808      	ldr	r0, [r1, #0]
+ 800112e:	d207      	bcs.n	8001140 <main+0x40>
+ 8001130:	4a2c      	ldr	r2, [pc, #176]	; (80011e4 <main+0xe4>)
+ 8001132:	441a      	add	r2, r3
+ 8001134:	4418      	add	r0, r3
+ 8001136:	f812 200c 	ldrb.w	r2, [r2, ip]
+ 800113a:	7402      	strb	r2, [r0, #16]
+ 800113c:	3301      	adds	r3, #1
+ 800113e:	e7f3      	b.n	8001128 <main+0x28>
+ 8001140:	6802      	ldr	r2, [r0, #0]
+ 8001142:	69d3      	ldr	r3, [r2, #28]
+ 8001144:	05db      	lsls	r3, r3, #23
+ 8001146:	d4fc      	bmi.n	8001142 <main+0x42>
+ 8001148:	f7ff fc7a 	bl	8000a40 <XMC_CAN_MO_UpdateData>
+ 800114c:	f8df 80a8 	ldr.w	r8, [pc, #168]	; 80011f8 <main+0xf8>
+ 8001150:	f888 0000 	strb.w	r0, [r8]
+ 8001154:	b100      	cbz	r0, 8001158 <main+0x58>
+ 8001156:	e7fe      	b.n	8001156 <main+0x56>
+ 8001158:	6933      	ldr	r3, [r6, #16]
+ 800115a:	6818      	ldr	r0, [r3, #0]
+ 800115c:	f7ff fcca 	bl	8000af4 <XMC_CAN_MO_Transmit>
+ 8001160:	f888 0000 	strb.w	r0, [r8]
+ 8001164:	b100      	cbz	r0, 8001168 <main+0x68>
+ 8001166:	e7fe      	b.n	8001166 <main+0x66>
+ 8001168:	b90d      	cbnz	r5, 800116e <main+0x6e>
+ 800116a:	2501      	movs	r5, #1
+ 800116c:	e7d0      	b.n	8001110 <main+0x10>
+ 800116e:	4b1e      	ldr	r3, [pc, #120]	; (80011e8 <main+0xe8>)
+ 8001170:	781b      	ldrb	r3, [r3, #0]
+ 8001172:	2b02      	cmp	r3, #2
+ 8001174:	d1fd      	bne.n	8001172 <main+0x72>
+ 8001176:	687b      	ldr	r3, [r7, #4]
+ 8001178:	681b      	ldr	r3, [r3, #0]
+ 800117a:	681a      	ldr	r2, [r3, #0]
+ 800117c:	6853      	ldr	r3, [r2, #4]
+ 800117e:	f3c3 4307 	ubfx	r3, r3, #16, #8
+ 8001182:	2b01      	cmp	r3, #1
+ 8001184:	d1fa      	bne.n	800117c <main+0x7c>
+ 8001186:	68bb      	ldr	r3, [r7, #8]
+ 8001188:	681b      	ldr	r3, [r3, #0]
+ 800118a:	681a      	ldr	r2, [r3, #0]
+ 800118c:	6853      	ldr	r3, [r2, #4]
+ 800118e:	f3c3 4307 	ubfx	r3, r3, #16, #8
+ 8001192:	2b01      	cmp	r3, #1
+ 8001194:	d1fa      	bne.n	800118c <main+0x8c>
+ 8001196:	2300      	movs	r3, #0
+ 8001198:	4a14      	ldr	r2, [pc, #80]	; (80011ec <main+0xec>)
+ 800119a:	5ce0      	ldrb	r0, [r4, r3]
+ 800119c:	5c9a      	ldrb	r2, [r3, r2]
+ 800119e:	4282      	cmp	r2, r0
+ 80011a0:	d102      	bne.n	80011a8 <main+0xa8>
+ 80011a2:	00dd      	lsls	r5, r3, #3
+ 80011a4:	2200      	movs	r2, #0
+ 80011a6:	e00b      	b.n	80011c0 <main+0xc0>
+ 80011a8:	e7fe      	b.n	80011a8 <main+0xa8>
+ 80011aa:	490e      	ldr	r1, [pc, #56]	; (80011e4 <main+0xe4>)
+ 80011ac:	4411      	add	r1, r2
+ 80011ae:	3201      	adds	r2, #1
+ 80011b0:	5d4e      	ldrb	r6, [r1, r5]
+ 80011b2:	490f      	ldr	r1, [pc, #60]	; (80011f0 <main+0xf0>)
+ 80011b4:	18af      	adds	r7, r5, r2
+ 80011b6:	4439      	add	r1, r7
+ 80011b8:	f811 1c01 	ldrb.w	r1, [r1, #-1]
+ 80011bc:	42b1      	cmp	r1, r6
+ 80011be:	d103      	bne.n	80011c8 <main+0xc8>
+ 80011c0:	b2d1      	uxtb	r1, r2
+ 80011c2:	4281      	cmp	r1, r0
+ 80011c4:	d3f1      	bcc.n	80011aa <main+0xaa>
+ 80011c6:	e000      	b.n	80011ca <main+0xca>
+ 80011c8:	e7fe      	b.n	80011c8 <main+0xc8>
+ 80011ca:	b90b      	cbnz	r3, 80011d0 <main+0xd0>
+ 80011cc:	2301      	movs	r3, #1
+ 80011ce:	e7e3      	b.n	8001198 <main+0x98>
+ 80011d0:	4a08      	ldr	r2, [pc, #32]	; (80011f4 <main+0xf4>)
+ 80011d2:	6811      	ldr	r1, [r2, #0]
+ 80011d4:	7c12      	ldrb	r2, [r2, #16]
+ 80011d6:	4093      	lsls	r3, r2
+ 80011d8:	604b      	str	r3, [r1, #4]
+ 80011da:	e7fe      	b.n	80011da <main+0xda>
+ 80011dc:	1ffe892c 	.word	0x1ffe892c
+ 80011e0:	1ffe8970 	.word	0x1ffe8970
+ 80011e4:	1ffe8960 	.word	0x1ffe8960
+ 80011e8:	1ffe8987 	.word	0x1ffe8987
+ 80011ec:	1ffe8985 	.word	0x1ffe8985
+ 80011f0:	1ffe8975 	.word	0x1ffe8975
+ 80011f4:	08001324 	.word	0x08001324
+ 80011f8:	1ffe8988 	.word	0x1ffe8988
+
+080011fc <CAN0_1_IRQHandler>:
+ 80011fc:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
+ 80011fe:	4c0f      	ldr	r4, [pc, #60]	; (800123c <CAN0_1_IRQHandler+0x40>)
+ 8001200:	6963      	ldr	r3, [r4, #20]
+ 8001202:	6818      	ldr	r0, [r3, #0]
+ 8001204:	f7ff fc86 	bl	8000b14 <XMC_CAN_MO_Receive>
+ 8001208:	4b0d      	ldr	r3, [pc, #52]	; (8001240 <CAN0_1_IRQHandler+0x44>)
+ 800120a:	7018      	strb	r0, [r3, #0]
+ 800120c:	b100      	cbz	r0, 8001210 <CAN0_1_IRQHandler+0x14>
+ 800120e:	e7fe      	b.n	800120e <CAN0_1_IRQHandler+0x12>
+ 8001210:	6962      	ldr	r2, [r4, #20]
+ 8001212:	490c      	ldr	r1, [pc, #48]	; (8001244 <CAN0_1_IRQHandler+0x48>)
+ 8001214:	6812      	ldr	r2, [r2, #0]
+ 8001216:	780b      	ldrb	r3, [r1, #0]
+ 8001218:	4c0b      	ldr	r4, [pc, #44]	; (8001248 <CAN0_1_IRQHandler+0x4c>)
+ 800121a:	7b15      	ldrb	r5, [r2, #12]
+ 800121c:	54e5      	strb	r5, [r4, r3]
+ 800121e:	320f      	adds	r2, #15
+ 8001220:	00de      	lsls	r6, r3, #3
+ 8001222:	b2c4      	uxtb	r4, r0
+ 8001224:	42ac      	cmp	r4, r5
+ 8001226:	d206      	bcs.n	8001236 <CAN0_1_IRQHandler+0x3a>
+ 8001228:	4c08      	ldr	r4, [pc, #32]	; (800124c <CAN0_1_IRQHandler+0x50>)
+ 800122a:	f812 7f01 	ldrb.w	r7, [r2, #1]!
+ 800122e:	4404      	add	r4, r0
+ 8001230:	3001      	adds	r0, #1
+ 8001232:	55a7      	strb	r7, [r4, r6]
+ 8001234:	e7f5      	b.n	8001222 <CAN0_1_IRQHandler+0x26>
+ 8001236:	3301      	adds	r3, #1
+ 8001238:	700b      	strb	r3, [r1, #0]
+ 800123a:	bdf8      	pop	{r3, r4, r5, r6, r7, pc}
+ 800123c:	1ffe892c 	.word	0x1ffe892c
+ 8001240:	1ffe8988 	.word	0x1ffe8988
+ 8001244:	1ffe8987 	.word	0x1ffe8987
+ 8001248:	1ffe8985 	.word	0x1ffe8985
+ 800124c:	1ffe8975 	.word	0x1ffe8975
+
+08001250 <__libc_init_array>:
+ 8001250:	b570      	push	{r4, r5, r6, lr}
+ 8001252:	4b0e      	ldr	r3, [pc, #56]	; (800128c <__libc_init_array+0x3c>)
+ 8001254:	4c0e      	ldr	r4, [pc, #56]	; (8001290 <__libc_init_array+0x40>)
+ 8001256:	1ae4      	subs	r4, r4, r3
+ 8001258:	10a4      	asrs	r4, r4, #2
+ 800125a:	2500      	movs	r5, #0
+ 800125c:	461e      	mov	r6, r3
+ 800125e:	42a5      	cmp	r5, r4
+ 8001260:	d004      	beq.n	800126c <__libc_init_array+0x1c>
+ 8001262:	f856 3025 	ldr.w	r3, [r6, r5, lsl #2]
+ 8001266:	4798      	blx	r3
+ 8001268:	3501      	adds	r5, #1
+ 800126a:	e7f8      	b.n	800125e <__libc_init_array+0xe>
+ 800126c:	f7ff fd15 	bl	8000c9a <_init>
+ 8001270:	4c08      	ldr	r4, [pc, #32]	; (8001294 <__libc_init_array+0x44>)
+ 8001272:	4b09      	ldr	r3, [pc, #36]	; (8001298 <__libc_init_array+0x48>)
+ 8001274:	1ae4      	subs	r4, r4, r3
+ 8001276:	10a4      	asrs	r4, r4, #2
+ 8001278:	2500      	movs	r5, #0
+ 800127a:	461e      	mov	r6, r3
+ 800127c:	42a5      	cmp	r5, r4
+ 800127e:	d004      	beq.n	800128a <__libc_init_array+0x3a>
+ 8001280:	f856 3025 	ldr.w	r3, [r6, r5, lsl #2]
+ 8001284:	4798      	blx	r3
+ 8001286:	3501      	adds	r5, #1
+ 8001288:	e7f8      	b.n	800127c <__libc_init_array+0x2c>
+ 800128a:	bd70      	pop	{r4, r5, r6, pc}
+ 800128c:	1ffe8974 	.word	0x1ffe8974
+ 8001290:	1ffe8974 	.word	0x1ffe8974
+ 8001294:	1ffe8974 	.word	0x1ffe8974
+ 8001298:	1ffe8974 	.word	0x1ffe8974
+
+0800129c <MULTICAN_CONFIG_0_BitTimeConfig_node1>:
+ 800129c:	08954400 0007a120 00011f40              .D.. ...@...
+
+080012a8 <MULTICAN_CONFIG_0_fc_node0>:
+ 80012a8:	00000000                                ....
+
+080012ac <MULTICAN_CONFIG_0_Node2>:
+ 80012ac:	1ffe8954 48014400 080012f8 080012c8     T....D.H........
+ 80012bc:	00000200 00000000 00010000              ............
+
+080012c8 <MULTICAN_CONFIG_0_fc_node2>:
+ 80012c8:	00000000                                ....
+
+080012cc <MULTICAN_CONFIG_0_BitTimeConfig_node0>:
+ 80012cc:	08954400 0007a120 00011f40              .D.. ...@...
+
+080012d8 <MULTICAN_CONFIG_0_fc_node1>:
+ 80012d8:	00000000                                ....
+
+080012dc <MULTICAN_CONFIG_0_Node1>:
+ 80012dc:	1ffe8954 48014300 0800129c 080012d8     T....C.H........
+ 80012ec:	00000100 00000000 00010000              ............
+
+080012f8 <MULTICAN_CONFIG_0_BitTimeConfig_node2>:
+ 80012f8:	08954400 0007a120 00011f40              .D.. ...@...
+
+08001304 <MULTICAN_CONFIG_0_Node0>:
+ 8001304:	1ffe8954 48014200 080012cc 080012a8     T....B.H........
+	...
+ 800131c:	00010000                                ....
+
+08001320 <INTERRUPT_0>:
+ 8001320:	01003f4d                                M?..
+
+08001324 <DIGITAL_IO_0>:
+ 8001324:	48028500 00000080 00010000 00000000     ...H............
+ 8001334:	00000009 01010230 00010000 00000000     ....0...........
+ 8001344:	00010000 01010102                       ........

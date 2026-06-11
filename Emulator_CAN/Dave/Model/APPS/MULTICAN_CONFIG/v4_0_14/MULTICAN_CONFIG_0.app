@@ -39,8 +39,8 @@
   <virtualSignals name="event_node_frame_count5" URI="http://resources/4.0.14/app/MULTICAN_CONFIG/0/vs_can_cfcinp5" hwSignal="cfcinp" hwResource="//@hwResources.5" required="false" visible="true"/>
   <virtualSignals name="event_lmo_00_txinp" URI="http://resources/4.0.14/app/MULTICAN_CONFIG/0/vs_message0_txinp" hwSignal="txinp" hwResource="//@hwResources.6" visible="true"/>
   <virtualSignals name="event_lmo_00_rxinp" URI="http://resources/4.0.14/app/MULTICAN_CONFIG/0/vs_message0_rxinp" hwSignal="rxinp" hwResource="//@hwResources.6" visible="true"/>
-  <virtualSignals name="event_lmo_01_txinp" URI="http://resources/4.0.14/app/MULTICAN_CONFIG/0/vs_message1_txinp" hwSignal="txinp" hwResource="//@hwResources.7" required="false" visible="true"/>
-  <virtualSignals name="event_lmo_01_rxinp" URI="http://resources/4.0.14/app/MULTICAN_CONFIG/0/vs_message1_rxinp" hwSignal="rxinp" hwResource="//@hwResources.7" required="false" visible="true"/>
+  <virtualSignals name="event_lmo_01_txinp" URI="http://resources/4.0.14/app/MULTICAN_CONFIG/0/vs_message1_txinp" hwSignal="txinp" hwResource="//@hwResources.7" visible="true"/>
+  <virtualSignals name="event_lmo_01_rxinp" URI="http://resources/4.0.14/app/MULTICAN_CONFIG/0/vs_message1_rxinp" hwSignal="rxinp" hwResource="//@hwResources.7" visible="true"/>
   <virtualSignals name="event_lmo_02_txinp" URI="http://resources/4.0.14/app/MULTICAN_CONFIG/0/vs_message2_txinp" hwSignal="txinp" hwResource="//@hwResources.8" required="false" visible="true"/>
   <virtualSignals name="event_lmo_02_rxinp" URI="http://resources/4.0.14/app/MULTICAN_CONFIG/0/vs_message2_rxinp" hwSignal="rxinp" hwResource="//@hwResources.8" required="false" visible="true"/>
   <virtualSignals name="event_lmo_03_txinp" URI="http://resources/4.0.14/app/MULTICAN_CONFIG/0/vs_message3_txinp" hwSignal="txinp" hwResource="//@hwResources.9" required="false" visible="true"/>
@@ -561,7 +561,9 @@
   <hwResources name="MO_0" URI="http://resources/4.0.14/app/MULTICAN_CONFIG/0/hwres_can_mobj0" resourceGroupUri="peripheral/can/*/mo/0" mResGrpUri="peripheral/can/*/mo/0">
     <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/can/can_0.dd#//@provided.0"/>
   </hwResources>
-  <hwResources name="MO_1" URI="http://resources/4.0.14/app/MULTICAN_CONFIG/0/hwres_can_mobj1" resourceGroupUri="" required="false" mResGrpUri="peripheral/can/*/mo/1"/>
+  <hwResources name="MO_1" URI="http://resources/4.0.14/app/MULTICAN_CONFIG/0/hwres_can_mobj1" resourceGroupUri="peripheral/can/*/mo/1" mResGrpUri="peripheral/can/*/mo/1">
+    <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/can/can_0.dd#//@provided.17"/>
+  </hwResources>
   <hwResources name="MO_2" URI="http://resources/4.0.14/app/MULTICAN_CONFIG/0/hwres_can_mobj2" resourceGroupUri="" required="false" mResGrpUri="peripheral/can/*/mo/2"/>
   <hwResources name="MO_3" URI="http://resources/4.0.14/app/MULTICAN_CONFIG/0/hwres_can_mobj3" resourceGroupUri="" required="false" mResGrpUri="peripheral/can/*/mo/3"/>
   <hwResources name="MO_4" URI="http://resources/4.0.14/app/MULTICAN_CONFIG/0/hwres_can_mobj4" resourceGroupUri="" required="false" mResGrpUri="peripheral/can/*/mo/4"/>

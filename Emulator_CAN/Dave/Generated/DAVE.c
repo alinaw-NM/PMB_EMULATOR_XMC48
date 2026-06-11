@@ -76,6 +76,16 @@ __WEAK DAVE_STATUS_t DAVE_Init(void)
   {
 	 /**  Initialization of MULTICAN_CONFIG APP instance MULTICAN_CONFIG_0 */
 	 init_status = (DAVE_STATUS_t)MULTICAN_CONFIG_Init(&MULTICAN_CONFIG_0); 
+   } 
+  if (init_status == DAVE_STATUS_SUCCESS)
+  {
+	 /**  Initialization of DIGITAL_IO APP instance LED1 */
+	 init_status = (DAVE_STATUS_t)DIGITAL_IO_Init(&LED1); 
+   } 
+  if (init_status == DAVE_STATUS_SUCCESS)
+  {
+	 /**  Initialization of DIGITAL_IO APP instance LED2 */
+	 init_status = (DAVE_STATUS_t)DIGITAL_IO_Init(&LED2); 
    }  
   return init_status;
 } /**  End of function DAVE_Init */

@@ -1,0 +1,75 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,4
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "main.c"
+  16              	 .section .text.startup.main,"ax",%progbits
+  17              	 .align 1
+  18              	 .global main
+  19              	 .thumb
+  20              	 .thumb_func
+  22              	main:
+  23              	 
+  24              	 
+  25 0000 10B5     	 push {r4,lr}
+  26 0002 ADF6984D 	 subw sp,sp,#3224
+  27              	
+  28 0006 72B6     	 cpsid i
+  29              	
+  30              	 .thumb
+  31 0008 FFF7FEFF 	 bl DAVE_Init
+  32 000c 0446     	 mov r4,r0
+  33 000e 00B1     	 cbz r0,.L2
+  34              	.L7:
+  35 0010 FEE7     	 b .L7
+  36              	.L2:
+  37 0012 FFF7FEFF 	 bl PMB_Emulator_Init
+  38 0016 0DF10201 	 add r1,sp,#2
+  39 001a 01A8     	 add r0,sp,#4
+  40 001c ADF80240 	 strh r4,[sp,#2]
+  41 0020 FFF7FEFF 	 bl PMB_LoopbackTest_Run
+  42 0024 074A     	 ldr r2,.L9
+  43 0026 084B     	 ldr r3,.L9+4
+  44 0028 0028     	 cmp r0,#0
+  45 002a 14BF     	 ite ne
+  46 002c 1846     	 movne r0,r3
+  47 002e 1046     	 moveq r0,r2
+  48 0030 0123     	 movs r3,#1
+  49 0032 017C     	 ldrb r1,[r0,#16]
+  50 0034 0268     	 ldr r2,[r0]
+  51 0036 8B40     	 lsls r3,r3,r1
+  52 0038 5360     	 str r3,[r2,#4]
+  53              	.L5:
+  54 003a FFF7FEFF 	 bl PMB_Emulator_Run
+  55 003e FFF7FEFF 	 bl PMB_UpdateEU
+  56 0042 FAE7     	 b .L5
+  57              	.L10:
+  58              	 .align 2
+  59              	.L9:
+  60 0044 00000000 	 .word LED2
+  61 0048 00000000 	 .word LED1
+  63              	 .ident "GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20141119 (release) [ARM/embedded-4_9-branch revision 218278]"
+DEFINED SYMBOLS
+                            *ABS*:00000000 main.c
+    {standard input}:17     .text.startup.main:00000000 $t
+    {standard input}:22     .text.startup.main:00000000 main
+    {standard input}:60     .text.startup.main:00000044 $d
+
+UNDEFINED SYMBOLS
+DAVE_Init
+PMB_Emulator_Init
+PMB_LoopbackTest_Run
+PMB_Emulator_Run
+PMB_UpdateEU
+LED2
+LED1
