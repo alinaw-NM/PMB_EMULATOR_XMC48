@@ -2403,409 +2403,511 @@
  387 0090 A0C00010 	 .word 268484768
  388              	 .cfi_endproc
  389              	.LFE253:
- 391              	 .section .text.main,"ax",%progbits
+ 391              	 .section .text.loopback_test,"ax",%progbits
  392              	 .align 2
- 393              	 .global main
- 394              	 .thumb
- 395              	 .thumb_func
- 397              	main:
- 398              	.LFB254:
+ 393              	 .thumb
+ 394              	 .thumb_func
+ 396              	loopback_test:
+ 397              	.LFB254:
  100:../main.c     **** 
- 101:../main.c     **** int main(void)
- 102:../main.c     **** {
- 399              	 .loc 3 102 0
- 400              	 .cfi_startproc
+ 101:../main.c     **** static void loopback_test(uint16_t data_id, const uint8_t expected[6]){
+ 398              	 .loc 3 101 0
+ 399              	 .cfi_startproc
+ 400              	 
  401              	 
- 402              	 
- 403 0000 80B5     	 push {r7,lr}
- 404              	.LCFI28:
- 405              	 .cfi_def_cfa_offset 8
- 406              	 .cfi_offset 7,-8
- 407              	 .cfi_offset 14,-4
- 408 0002 84B0     	 sub sp,sp,#16
- 409              	.LCFI29:
- 410              	 .cfi_def_cfa_offset 24
- 411 0004 00AF     	 add r7,sp,#0
- 412              	.LCFI30:
- 413              	 .cfi_def_cfa_register 7
- 103:../main.c     ****     DAVE_STATUS_t app_status;
- 104:../main.c     **** 
- 105:../main.c     ****     app_status = DAVE_Init();
- 414              	 .loc 3 105 0
- 415 0006 FFF7FEFF 	 bl DAVE_Init
- 416 000a 0346     	 mov r3,r0
- 417 000c FB73     	 strb r3,[r7,#15]
- 106:../main.c     ****     if (app_status == DAVE_STATUS_FAILURE)
- 418              	 .loc 3 106 0
- 419 000e FB7B     	 ldrb r3,[r7,#15]
- 420 0010 012B     	 cmp r3,#1
- 421 0012 00D1     	 bne .L19
- 422              	.L20:
- 107:../main.c     ****     {
- 108:../main.c     ****         XMC_DEBUG("DAVE APPs initialization failed\n");
- 109:../main.c     ****         while (1U) {}
- 423              	 .loc 3 109 0 discriminator 1
- 424 0014 FEE7     	 b .L20
- 425              	.L19:
- 110:../main.c     ****     }
- 111:../main.c     **** 
- 112:../main.c     ****     PMB_Emulator_Init();
- 426              	 .loc 3 112 0
- 427 0016 FFF7FEFF 	 bl PMB_Emulator_Init
- 113:../main.c     ****     fixture_init();
- 428              	 .loc 3 113 0
- 429 001a FFF7FEFF 	 bl fixture_init
- 430              	.LBB2:
- 114:../main.c     **** 
- 115:../main.c     ****     /* Pre-load known telemetry values so bytes 0-5 of the response are
- 116:../main.c     ****      * non-zero and predictable for data integrity verification. */
- 117:../main.c     ****     {
- 118:../main.c     ****         PMB_Registers_t *regs = PMB_GetRegsMutable();
- 431              	 .loc 3 118 0
- 432 001e FFF7FEFF 	 bl PMB_GetRegsMutable
- 433 0022 B860     	 str r0,[r7,#8]
- 119:../main.c     ****         regs->telem.chg_curr   = 0x123U;
- 434              	 .loc 3 119 0
- 435 0024 BB68     	 ldr r3,[r7,#8]
- 436 0026 40F22312 	 movw r2,#291
- 437 002a 1A80     	 strh r2,[r3]
- 120:../main.c     ****         regs->telem.batt1_curr = 0x456U;
- 438              	 .loc 3 120 0
- 439 002c BB68     	 ldr r3,[r7,#8]
- 440 002e 40F25642 	 movw r2,#1110
- 441 0032 5A80     	 strh r2,[r3,#2]
- 121:../main.c     ****         regs->telem.batt2_curr = 0x789U;
- 442              	 .loc 3 121 0
- 443 0034 BB68     	 ldr r3,[r7,#8]
- 444 0036 40F28972 	 movw r2,#1929
- 445 003a 9A80     	 strh r2,[r3,#4]
- 446              	.LBE2:
- 122:../main.c     ****     }
- 123:../main.c     **** 
- 124:../main.c     ****     /* --- Loopback verification ---
- 125:../main.c     ****      * Send a PMB read request for REG_TELEMETRY_GROUP_1 via the fixture TX (MO3).
- 126:../main.c     ****      * The emulator should receive it on MO0, build a response, transmit via MO1,
- 127:../main.c     ****      * which is then received on the fixture RX (MO4) and captured by the ISR.
- 128:../main.c     ****      * Verify DLC, echoed packet counter, and the response src/dst addresses. */
- 129:../main.c     ****     s_fixture_rx_ready = 0U;
- 447              	 .loc 3 129 0
- 448 003c 304B     	 ldr r3,.L36
- 449 003e 0022     	 movs r2,#0
- 450 0040 1A70     	 strb r2,[r3]
- 130:../main.c     ****     fixture_send_read(REG_TELEMETRY_GROUP_1);
- 451              	 .loc 3 130 0
- 452 0042 0020     	 movs r0,#0
- 453 0044 FFF7FEFF 	 bl fixture_send_read
- 131:../main.c     **** 
- 132:../main.c     ****     /* Keep running the emulator until the loopback response arrives on MO4. */
- 133:../main.c     ****     while (!s_fixture_rx_ready)
- 454              	 .loc 3 133 0
- 455 0048 01E0     	 b .L21
- 456              	.L22:
- 134:../main.c     ****     {
- 135:../main.c     ****         PMB_Emulator_Run();
- 457              	 .loc 3 135 0
- 458 004a FFF7FEFF 	 bl PMB_Emulator_Run
- 459              	.L21:
- 133:../main.c     ****     {
- 460              	 .loc 3 133 0
- 461 004e 2C4B     	 ldr r3,.L36
- 462 0050 1B78     	 ldrb r3,[r3]
- 463 0052 DBB2     	 uxtb r3,r3
- 464 0054 002B     	 cmp r3,#0
- 465 0056 F8D0     	 beq .L22
- 136:../main.c     ****     }
- 137:../main.c     **** 
- 138:../main.c     ****     /* Verify response fields */
- 139:../main.c     ****     if (s_fixture_rx_dlc != 8U)
- 466              	 .loc 3 139 0
- 467 0058 2A4B     	 ldr r3,.L36+4
- 468 005a 1B78     	 ldrb r3,[r3]
- 469 005c 082B     	 cmp r3,#8
- 470 005e 00D0     	 beq .L23
- 471              	.L24:
- 140:../main.c     ****     {
- 141:../main.c     ****         XMC_DEBUG("loopback: DLC mismatch\n");
- 142:../main.c     ****         while (1U) {}
- 472              	 .loc 3 142 0 discriminator 2
- 473 0060 FEE7     	 b .L24
- 474              	.L23:
- 143:../main.c     ****     }
- 144:../main.c     ****     if (s_fixture_rx_data[6] != TEST_PKT_LO || s_fixture_rx_data[7] != TEST_PKT_HI)
- 475              	 .loc 3 144 0
- 476 0062 294B     	 ldr r3,.L36+8
- 477 0064 9B79     	 ldrb r3,[r3,#6]
- 478 0066 342B     	 cmp r3,#52
- 479 0068 03D1     	 bne .L25
- 480              	 .loc 3 144 0 is_stmt 0 discriminator 1
- 481 006a 274B     	 ldr r3,.L36+8
- 482 006c DB79     	 ldrb r3,[r3,#7]
- 483 006e 122B     	 cmp r3,#18
- 484 0070 00D0     	 beq .L26
- 485              	.L25:
- 145:../main.c     ****     {
- 146:../main.c     ****         XMC_DEBUG("loopback: packet counter not echoed\n");
- 147:../main.c     ****         while (1U) {}
- 486              	 .loc 3 147 0 is_stmt 1 discriminator 3
- 487 0072 FEE7     	 b .L25
- 488              	.L26:
- 148:../main.c     ****     }
- 149:../main.c     ****     if (PMB_GET_DST(s_fixture_rx_id) != FIXTURE_ADDR)
- 489              	 .loc 3 149 0
- 490 0074 254B     	 ldr r3,.L36+12
- 491 0076 1B68     	 ldr r3,[r3]
- 492 0078 1B0A     	 lsrs r3,r3,#8
- 493 007a DBB2     	 uxtb r3,r3
- 494 007c A02B     	 cmp r3,#160
- 495 007e 00D0     	 beq .L27
- 496              	.L28:
- 150:../main.c     ****     {
- 151:../main.c     ****         XMC_DEBUG("loopback: response dst wrong\n");
- 152:../main.c     ****         while (1U) {}
- 497              	 .loc 3 152 0 discriminator 4
- 498 0080 FEE7     	 b .L28
- 499              	.L27:
- 153:../main.c     ****     }
- 154:../main.c     ****     if (PMB_GET_SRC(s_fixture_rx_id) != PMB_ADDR)
- 500              	 .loc 3 154 0
- 501 0082 224B     	 ldr r3,.L36+12
- 502 0084 1B68     	 ldr r3,[r3]
- 503 0086 DBB2     	 uxtb r3,r3
- 504 0088 C02B     	 cmp r3,#192
- 505 008a 00D0     	 beq .L29
- 506              	.L30:
- 155:../main.c     ****     {
- 156:../main.c     ****         XMC_DEBUG("loopback: response src wrong\n");
- 157:../main.c     ****         while (1U) {}
- 507              	 .loc 3 157 0 discriminator 5
- 508 008c FEE7     	 b .L30
- 509              	.L29:
- 158:../main.c     ****     }
- 159:../main.c     ****     /* Verify bytes 0-5 match the pack12 encoding of the pre-loaded telemetry */
- 160:../main.c     ****     if (s_fixture_rx_data[0] != 0x23U || s_fixture_rx_data[1] != 0x01U ||
- 510              	 .loc 3 160 0
- 511 008e 1E4B     	 ldr r3,.L36+8
- 512 0090 1B78     	 ldrb r3,[r3]
- 513 0092 232B     	 cmp r3,#35
- 514 0094 13D1     	 bne .L31
- 515              	 .loc 3 160 0 is_stmt 0 discriminator 1
- 516 0096 1C4B     	 ldr r3,.L36+8
- 517 0098 5B78     	 ldrb r3,[r3,#1]
- 518 009a 012B     	 cmp r3,#1
- 519 009c 0FD1     	 bne .L31
- 161:../main.c     ****         s_fixture_rx_data[2] != 0x56U || s_fixture_rx_data[3] != 0x04U ||
- 520              	 .loc 3 161 0 is_stmt 1 discriminator 2
- 521 009e 1A4B     	 ldr r3,.L36+8
- 522 00a0 9B78     	 ldrb r3,[r3,#2]
- 160:../main.c     ****         s_fixture_rx_data[2] != 0x56U || s_fixture_rx_data[3] != 0x04U ||
- 523              	 .loc 3 160 0 discriminator 2
- 524 00a2 562B     	 cmp r3,#86
- 525 00a4 0BD1     	 bne .L31
- 526              	 .loc 3 161 0
- 527 00a6 184B     	 ldr r3,.L36+8
- 528 00a8 DB78     	 ldrb r3,[r3,#3]
- 529 00aa 042B     	 cmp r3,#4
- 530 00ac 07D1     	 bne .L31
- 162:../main.c     ****         s_fixture_rx_data[4] != 0x89U || s_fixture_rx_data[5] != 0x07U)
- 531              	 .loc 3 162 0 discriminator 1
- 532 00ae 164B     	 ldr r3,.L36+8
- 533 00b0 1B79     	 ldrb r3,[r3,#4]
- 161:../main.c     ****         s_fixture_rx_data[2] != 0x56U || s_fixture_rx_data[3] != 0x04U ||
- 534              	 .loc 3 161 0 discriminator 1
- 535 00b2 892B     	 cmp r3,#137
- 536 00b4 03D1     	 bne .L31
- 537              	 .loc 3 162 0
- 538 00b6 144B     	 ldr r3,.L36+8
- 539 00b8 5B79     	 ldrb r3,[r3,#5]
- 540 00ba 072B     	 cmp r3,#7
- 541 00bc 00D0     	 beq .L32
- 542              	.L31:
+ 402 0000 80B5     	 push {r7,lr}
+ 403              	.LCFI28:
+ 404              	 .cfi_def_cfa_offset 8
+ 405              	 .cfi_offset 7,-8
+ 406              	 .cfi_offset 14,-4
+ 407 0002 86B0     	 sub sp,sp,#24
+ 408              	.LCFI29:
+ 409              	 .cfi_def_cfa_offset 32
+ 410 0004 00AF     	 add r7,sp,#0
+ 411              	.LCFI30:
+ 412              	 .cfi_def_cfa_register 7
+ 413 0006 0346     	 mov r3,r0
+ 414 0008 3960     	 str r1,[r7]
+ 415 000a FB80     	 strh r3,[r7,#6]
+ 102:../main.c     ****     s_fixture_rx_ready = 0U;
+ 416              	 .loc 3 102 0
+ 417 000c 314B     	 ldr r3,.L37
+ 418 000e 0022     	 movs r2,#0
+ 419 0010 1A70     	 strb r2,[r3]
+ 103:../main.c     ****     fixture_send_read(data_id);
+ 420              	 .loc 3 103 0
+ 421 0012 FB88     	 ldrh r3,[r7,#6]
+ 422 0014 1846     	 mov r0,r3
+ 423 0016 FFF7FEFF 	 bl fixture_send_read
+ 104:../main.c     ****     while (!s_fixture_rx_ready)
+ 424              	 .loc 3 104 0
+ 425 001a 01E0     	 b .L19
+ 426              	.L20:
+ 105:../main.c     ****     {
+ 106:../main.c     ****         PMB_Emulator_Run();
+ 427              	 .loc 3 106 0
+ 428 001c FFF7FEFF 	 bl PMB_Emulator_Run
+ 429              	.L19:
+ 104:../main.c     ****     while (!s_fixture_rx_ready)
+ 430              	 .loc 3 104 0
+ 431 0020 2C4B     	 ldr r3,.L37
+ 432 0022 1B78     	 ldrb r3,[r3]
+ 433 0024 DBB2     	 uxtb r3,r3
+ 434 0026 002B     	 cmp r3,#0
+ 435 0028 F8D0     	 beq .L20
+ 107:../main.c     ****     }
+ 108:../main.c     **** 
+ 109:../main.c     ****     /* Verify response fields */
+ 110:../main.c     ****     if (s_fixture_rx_dlc != 8U)
+ 436              	 .loc 3 110 0
+ 437 002a 2B4B     	 ldr r3,.L37+4
+ 438 002c 1B78     	 ldrb r3,[r3]
+ 439 002e 082B     	 cmp r3,#8
+ 440 0030 00D0     	 beq .L21
+ 441              	.L22:
+ 111:../main.c     ****     {
+ 112:../main.c     ****         XMC_DEBUG("loopback: DLC mismatch\n");
+ 113:../main.c     ****         while (1U) {}
+ 442              	 .loc 3 113 0 discriminator 1
+ 443 0032 FEE7     	 b .L22
+ 444              	.L21:
+ 114:../main.c     ****     }
+ 115:../main.c     ****     if (s_fixture_rx_data[6] != TEST_PKT_LO || s_fixture_rx_data[7] != TEST_PKT_HI)
+ 445              	 .loc 3 115 0
+ 446 0034 294B     	 ldr r3,.L37+8
+ 447 0036 9B79     	 ldrb r3,[r3,#6]
+ 448 0038 342B     	 cmp r3,#52
+ 449 003a 03D1     	 bne .L23
+ 450              	 .loc 3 115 0 is_stmt 0 discriminator 1
+ 451 003c 274B     	 ldr r3,.L37+8
+ 452 003e DB79     	 ldrb r3,[r3,#7]
+ 453 0040 122B     	 cmp r3,#18
+ 454 0042 00D0     	 beq .L24
+ 455              	.L23:
+ 116:../main.c     ****     {
+ 117:../main.c     ****         XMC_DEBUG("loopback: packet counter not echoed\n");
+ 118:../main.c     ****         while (1U) {}
+ 456              	 .loc 3 118 0 is_stmt 1 discriminator 2
+ 457 0044 FEE7     	 b .L23
+ 458              	.L24:
+ 119:../main.c     ****     }
+ 120:../main.c     ****     if (PMB_GET_DST(s_fixture_rx_id) != FIXTURE_ADDR)
+ 459              	 .loc 3 120 0
+ 460 0046 264B     	 ldr r3,.L37+12
+ 461 0048 1B68     	 ldr r3,[r3]
+ 462 004a 1B0A     	 lsrs r3,r3,#8
+ 463 004c DBB2     	 uxtb r3,r3
+ 464 004e A02B     	 cmp r3,#160
+ 465 0050 00D0     	 beq .L25
+ 466              	.L26:
+ 121:../main.c     ****     {
+ 122:../main.c     ****         XMC_DEBUG("loopback: response dst wrong\n");
+ 123:../main.c     ****         while (1U) {}
+ 467              	 .loc 3 123 0 discriminator 3
+ 468 0052 FEE7     	 b .L26
+ 469              	.L25:
+ 124:../main.c     ****     }
+ 125:../main.c     ****     if (PMB_GET_SRC(s_fixture_rx_id) != PMB_ADDR)
+ 470              	 .loc 3 125 0
+ 471 0054 224B     	 ldr r3,.L37+12
+ 472 0056 1B68     	 ldr r3,[r3]
+ 473 0058 DBB2     	 uxtb r3,r3
+ 474 005a C02B     	 cmp r3,#192
+ 475 005c 00D0     	 beq .L27
+ 476              	.L28:
+ 126:../main.c     ****     {
+ 127:../main.c     ****         XMC_DEBUG("loopback: response src wrong\n");
+ 128:../main.c     ****         while (1U) {}
+ 477              	 .loc 3 128 0 discriminator 4
+ 478 005e FEE7     	 b .L28
+ 479              	.L27:
+ 129:../main.c     ****     }
+ 130:../main.c     ****     uint8_t i;
+ 131:../main.c     ****     for (i = 0U; i < 6U; i++)
+ 480              	 .loc 3 131 0
+ 481 0060 0023     	 movs r3,#0
+ 482 0062 FB75     	 strb r3,[r7,#23]
+ 483 0064 0CE0     	 b .L29
+ 484              	.L32:
+ 132:../main.c     ****     {
+ 133:../main.c     ****         if (s_fixture_rx_data[i] != expected[i])
+ 485              	 .loc 3 133 0
+ 486 0066 FB7D     	 ldrb r3,[r7,#23]
+ 487 0068 1C4A     	 ldr r2,.L37+8
+ 488 006a D25C     	 ldrb r2,[r2,r3]
+ 489 006c FB7D     	 ldrb r3,[r7,#23]
+ 490 006e 3968     	 ldr r1,[r7]
+ 491 0070 0B44     	 add r3,r3,r1
+ 492 0072 1B78     	 ldrb r3,[r3]
+ 493 0074 9A42     	 cmp r2,r3
+ 494 0076 00D0     	 beq .L30
+ 495              	.L31:
+ 134:../main.c     ****         {
+ 135:../main.c     ****             XMC_DEBUG("loopback: data mismatch\n");
+ 136:../main.c     ****             while (1U) {}
+ 496              	 .loc 3 136 0 discriminator 5
+ 497 0078 FEE7     	 b .L31
+ 498              	.L30:
+ 131:../main.c     ****     {
+ 499              	 .loc 3 131 0 discriminator 2
+ 500 007a FB7D     	 ldrb r3,[r7,#23]
+ 501 007c 0133     	 adds r3,r3,#1
+ 502 007e FB75     	 strb r3,[r7,#23]
+ 503              	.L29:
+ 131:../main.c     ****     {
+ 504              	 .loc 3 131 0 is_stmt 0 discriminator 1
+ 505 0080 FB7D     	 ldrb r3,[r7,#23]
+ 506 0082 052B     	 cmp r3,#5
+ 507 0084 EFD9     	 bls .L32
+ 137:../main.c     ****         }
+ 138:../main.c     ****     }
+ 139:../main.c     **** 
+ 140:../main.c     ****     /* Blink LED once to signal loopback pass */
+ 141:../main.c     ****     XMC_GPIO_SetOutputHigh(DIGITAL_IO_0.gpio_port, DIGITAL_IO_0.gpio_pin);
+ 508              	 .loc 3 141 0 is_stmt 1
+ 509 0086 174B     	 ldr r3,.L37+16
+ 510 0088 1A68     	 ldr r2,[r3]
+ 511 008a 164B     	 ldr r3,.L37+16
+ 512 008c 1B7C     	 ldrb r3,[r3,#16]
+ 513 008e 1046     	 mov r0,r2
+ 514 0090 1946     	 mov r1,r3
+ 515 0092 FFF7FEFF 	 bl XMC_GPIO_SetOutputHigh
+ 516              	.LBB2:
+ 142:../main.c     ****     for (volatile uint32_t d = 0U; d < 14400000U; d++) {}
+ 517              	 .loc 3 142 0
+ 518 0096 0023     	 movs r3,#0
+ 519 0098 3B61     	 str r3,[r7,#16]
+ 520 009a 02E0     	 b .L33
+ 521              	.L34:
+ 522              	 .loc 3 142 0 is_stmt 0 discriminator 3
+ 523 009c 3B69     	 ldr r3,[r7,#16]
+ 524 009e 0133     	 adds r3,r3,#1
+ 525 00a0 3B61     	 str r3,[r7,#16]
+ 526              	.L33:
+ 527              	 .loc 3 142 0 discriminator 1
+ 528 00a2 3B69     	 ldr r3,[r7,#16]
+ 529 00a4 104A     	 ldr r2,.L37+20
+ 530 00a6 9342     	 cmp r3,r2
+ 531 00a8 F8D9     	 bls .L34
+ 532              	.LBE2:
+ 143:../main.c     ****     XMC_GPIO_SetOutputLow(DIGITAL_IO_0.gpio_port, DIGITAL_IO_0.gpio_pin);
+ 533              	 .loc 3 143 0 is_stmt 1
+ 534 00aa 0E4B     	 ldr r3,.L37+16
+ 535 00ac 1A68     	 ldr r2,[r3]
+ 536 00ae 0D4B     	 ldr r3,.L37+16
+ 537 00b0 1B7C     	 ldrb r3,[r3,#16]
+ 538 00b2 1046     	 mov r0,r2
+ 539 00b4 1946     	 mov r1,r3
+ 540 00b6 FFF7FEFF 	 bl XMC_GPIO_SetOutputLow
+ 541              	.LBB3:
+ 144:../main.c     ****     for (volatile uint32_t d = 0U; d < 14400000U; d++) {}
+ 542              	 .loc 3 144 0
+ 543 00ba 0023     	 movs r3,#0
+ 544 00bc FB60     	 str r3,[r7,#12]
+ 545 00be 02E0     	 b .L35
+ 546              	.L36:
+ 547              	 .loc 3 144 0 is_stmt 0 discriminator 3
+ 548 00c0 FB68     	 ldr r3,[r7,#12]
+ 549 00c2 0133     	 adds r3,r3,#1
+ 550 00c4 FB60     	 str r3,[r7,#12]
+ 551              	.L35:
+ 552              	 .loc 3 144 0 discriminator 1
+ 553 00c6 FB68     	 ldr r3,[r7,#12]
+ 554 00c8 074A     	 ldr r2,.L37+20
+ 555 00ca 9342     	 cmp r3,r2
+ 556 00cc F8D9     	 bls .L36
+ 557              	.LBE3:
+ 145:../main.c     **** }
+ 558              	 .loc 3 145 0 is_stmt 1
+ 559 00ce 1837     	 adds r7,r7,#24
+ 560              	.LCFI31:
+ 561              	 .cfi_def_cfa_offset 8
+ 562 00d0 BD46     	 mov sp,r7
+ 563              	.LCFI32:
+ 564              	 .cfi_def_cfa_register 13
+ 565              	 
+ 566 00d2 80BD     	 pop {r7,pc}
+ 567              	.L38:
+ 568              	 .align 2
+ 569              	.L37:
+ 570 00d4 00000000 	 .word s_fixture_rx_ready
+ 571 00d8 00000000 	 .word s_fixture_rx_dlc
+ 572 00dc 00000000 	 .word s_fixture_rx_data
+ 573 00e0 00000000 	 .word s_fixture_rx_id
+ 574 00e4 00000000 	 .word DIGITAL_IO_0
+ 575 00e8 FFB9DB00 	 .word 14399999
+ 576              	 .cfi_endproc
+ 577              	.LFE254:
+ 579              	 .section .text.main,"ax",%progbits
+ 580              	 .align 2
+ 581              	 .global main
+ 582              	 .thumb
+ 583              	 .thumb_func
+ 585              	main:
+ 586              	.LFB255:
+ 146:../main.c     **** 
+ 147:../main.c     **** int main(void)
+ 148:../main.c     **** {
+ 587              	 .loc 3 148 0
+ 588              	 .cfi_startproc
+ 589              	 
+ 590              	 
+ 591 0000 80B5     	 push {r7,lr}
+ 592              	.LCFI33:
+ 593              	 .cfi_def_cfa_offset 8
+ 594              	 .cfi_offset 7,-8
+ 595              	 .cfi_offset 14,-4
+ 596 0002 84B0     	 sub sp,sp,#16
+ 597              	.LCFI34:
+ 598              	 .cfi_def_cfa_offset 24
+ 599 0004 00AF     	 add r7,sp,#0
+ 600              	.LCFI35:
+ 601              	 .cfi_def_cfa_register 7
+ 149:../main.c     ****     DAVE_STATUS_t app_status;
+ 150:../main.c     **** 
+ 151:../main.c     ****     app_status = DAVE_Init();
+ 602              	 .loc 3 151 0
+ 603 0006 FFF7FEFF 	 bl DAVE_Init
+ 604 000a 0346     	 mov r3,r0
+ 605 000c FB73     	 strb r3,[r7,#15]
+ 152:../main.c     ****     if (app_status == DAVE_STATUS_FAILURE)
+ 606              	 .loc 3 152 0
+ 607 000e FB7B     	 ldrb r3,[r7,#15]
+ 608 0010 012B     	 cmp r3,#1
+ 609 0012 00D1     	 bne .L40
+ 610              	.L41:
+ 153:../main.c     ****     {
+ 154:../main.c     ****         XMC_DEBUG("DAVE APPs initialization failed\n");
+ 155:../main.c     ****         while (1U) {}
+ 611              	 .loc 3 155 0 discriminator 1
+ 612 0014 FEE7     	 b .L41
+ 613              	.L40:
+ 156:../main.c     ****     }
+ 157:../main.c     **** 
+ 158:../main.c     ****     PMB_Emulator_Init();
+ 614              	 .loc 3 158 0
+ 615 0016 FFF7FEFF 	 bl PMB_Emulator_Init
+ 159:../main.c     ****     fixture_init();
+ 616              	 .loc 3 159 0
+ 617 001a FFF7FEFF 	 bl fixture_init
+ 618              	.LBB4:
+ 160:../main.c     **** 
+ 161:../main.c     ****     /* Pre-load known telemetry values so bytes 0-5 of the response are
+ 162:../main.c     ****      * non-zero and predictable for data integrity verification. */
  163:../main.c     ****     {
- 164:../main.c     ****         XMC_DEBUG("loopback: data corruption detected\n");
- 165:../main.c     ****         while (1U) {}
- 543              	 .loc 3 165 0 discriminator 6
- 544 00be FEE7     	 b .L31
- 545              	.L32:
- 166:../main.c     ****     }
- 167:../main.c     **** 
- 168:../main.c     ****     /* Blink LED once to signal loopback pass */
- 169:../main.c     ****     XMC_GPIO_SetOutputHigh(DIGITAL_IO_0.gpio_port, DIGITAL_IO_0.gpio_pin);
- 546              	 .loc 3 169 0
- 547 00c0 134B     	 ldr r3,.L36+16
- 548 00c2 1A68     	 ldr r2,[r3]
- 549 00c4 124B     	 ldr r3,.L36+16
- 550 00c6 1B7C     	 ldrb r3,[r3,#16]
- 551 00c8 1046     	 mov r0,r2
- 552 00ca 1946     	 mov r1,r3
- 553 00cc FFF7FEFF 	 bl XMC_GPIO_SetOutputHigh
- 554              	.LBB3:
- 170:../main.c     ****     for (volatile uint32_t d = 0U; d < 14400000U; d++) {}
- 555              	 .loc 3 170 0
- 556 00d0 0023     	 movs r3,#0
- 557 00d2 7B60     	 str r3,[r7,#4]
- 558 00d4 02E0     	 b .L33
- 559              	.L34:
- 560              	 .loc 3 170 0 is_stmt 0 discriminator 3
- 561 00d6 7B68     	 ldr r3,[r7,#4]
- 562 00d8 0133     	 adds r3,r3,#1
- 563 00da 7B60     	 str r3,[r7,#4]
- 564              	.L33:
- 565              	 .loc 3 170 0 discriminator 1
- 566 00dc 7B68     	 ldr r3,[r7,#4]
- 567 00de 0D4A     	 ldr r2,.L36+20
- 568 00e0 9342     	 cmp r3,r2
- 569 00e2 F8D9     	 bls .L34
- 570              	.LBE3:
- 171:../main.c     ****     XMC_GPIO_SetOutputLow(DIGITAL_IO_0.gpio_port, DIGITAL_IO_0.gpio_pin);
- 571              	 .loc 3 171 0 is_stmt 1
- 572 00e4 0A4B     	 ldr r3,.L36+16
- 573 00e6 1A68     	 ldr r2,[r3]
- 574 00e8 094B     	 ldr r3,.L36+16
- 575 00ea 1B7C     	 ldrb r3,[r3,#16]
- 576 00ec 1046     	 mov r0,r2
- 577 00ee 1946     	 mov r1,r3
- 578 00f0 FFF7FEFF 	 bl XMC_GPIO_SetOutputLow
- 579              	.L35:
- 172:../main.c     **** 
- 173:../main.c     ****     /* Normal emulator loop */
- 174:../main.c     ****     while (1U)
- 175:../main.c     ****     {
- 176:../main.c     ****         PMB_Emulator_Run();
- 580              	 .loc 3 176 0 discriminator 1
- 581 00f4 FFF7FEFF 	 bl PMB_Emulator_Run
- 177:../main.c     ****         PMB_UpdateEU();
- 582              	 .loc 3 177 0 discriminator 1
- 583 00f8 FFF7FEFF 	 bl PMB_UpdateEU
- 178:../main.c     ****     }
- 584              	 .loc 3 178 0 discriminator 1
- 585 00fc FAE7     	 b .L35
- 586              	.L37:
- 587 00fe 00BF     	 .align 2
- 588              	.L36:
- 589 0100 00000000 	 .word s_fixture_rx_ready
- 590 0104 00000000 	 .word s_fixture_rx_dlc
- 591 0108 00000000 	 .word s_fixture_rx_data
- 592 010c 00000000 	 .word s_fixture_rx_id
- 593 0110 00000000 	 .word DIGITAL_IO_0
- 594 0114 FFB9DB00 	 .word 14399999
- 595              	 .cfi_endproc
- 596              	.LFE254:
- 598              	 .section .text.CAN0_0_IRQHandler,"ax",%progbits
- 599              	 .align 2
- 600              	 .global CAN0_0_IRQHandler
- 601              	 .thumb
- 602              	 .thumb_func
- 604              	CAN0_0_IRQHandler:
- 605              	.LFB255:
- 179:../main.c     **** }
- 180:../main.c     **** 
- 181:../main.c     **** /* ISR for MO4 (FIXTURE_RX_MO) service request — fires when a PMB response
- 182:../main.c     ****  * arrives on the fixture RX during loopback verification. */
- 183:../main.c     **** void CAN_IRQHandler(void)
- 184:../main.c     **** {
- 606              	 .loc 3 184 0
- 607              	 .cfi_startproc
- 608              	 
- 609              	 
- 610 0000 80B5     	 push {r7,lr}
- 611              	.LCFI31:
- 612              	 .cfi_def_cfa_offset 8
- 613              	 .cfi_offset 7,-8
- 614              	 .cfi_offset 14,-4
- 615 0002 82B0     	 sub sp,sp,#8
- 616              	.LCFI32:
- 617              	 .cfi_def_cfa_offset 16
- 618 0004 00AF     	 add r7,sp,#0
- 619              	.LCFI33:
- 620              	 .cfi_def_cfa_register 7
- 185:../main.c     ****     uint8_t i;
- 186:../main.c     ****     XMC_CAN_MO_t *mo = MULTICAN_CONFIG_0.lmobj_ptr[FIXTURE_RX_MO]->mo_ptr;
- 621              	 .loc 3 186 0
- 622 0006 144B     	 ldr r3,.L41
- 623 0008 5B69     	 ldr r3,[r3,#20]
- 624 000a 1B68     	 ldr r3,[r3]
- 625 000c 3B60     	 str r3,[r7]
- 187:../main.c     **** 
- 188:../main.c     ****     XMC_CAN_MO_Receive(mo);
- 626              	 .loc 3 188 0
- 627 000e 3868     	 ldr r0,[r7]
- 628 0010 FFF7FEFF 	 bl XMC_CAN_MO_Receive
- 189:../main.c     ****     s_fixture_rx_id  = mo->can_identifier;
- 629              	 .loc 3 189 0
- 630 0014 3B68     	 ldr r3,[r7]
- 631 0016 5B68     	 ldr r3,[r3,#4]
- 632 0018 C3F31C03 	 ubfx r3,r3,#0,#29
- 633 001c 1A46     	 mov r2,r3
- 634 001e 0F4B     	 ldr r3,.L41+4
- 635 0020 1A60     	 str r2,[r3]
- 190:../main.c     ****     s_fixture_rx_dlc = mo->can_data_length;
- 636              	 .loc 3 190 0
- 637 0022 3B68     	 ldr r3,[r7]
- 638 0024 1A7B     	 ldrb r2,[r3,#12]
- 639 0026 0E4B     	 ldr r3,.L41+8
- 640 0028 1A70     	 strb r2,[r3]
- 191:../main.c     ****     for (i = 0U; i < 8U; i++) s_fixture_rx_data[i] = mo->can_data_byte[i];
- 641              	 .loc 3 191 0
- 642 002a 0023     	 movs r3,#0
- 643 002c FB71     	 strb r3,[r7,#7]
- 644 002e 09E0     	 b .L39
- 645              	.L40:
- 646              	 .loc 3 191 0 is_stmt 0 discriminator 3
- 647 0030 FB79     	 ldrb r3,[r7,#7]
- 648 0032 FA79     	 ldrb r2,[r7,#7]
- 649 0034 3968     	 ldr r1,[r7]
- 650 0036 0A44     	 add r2,r2,r1
- 651 0038 117C     	 ldrb r1,[r2,#16]
- 652 003a 0A4A     	 ldr r2,.L41+12
- 653 003c D154     	 strb r1,[r2,r3]
- 654 003e FB79     	 ldrb r3,[r7,#7]
- 655 0040 0133     	 adds r3,r3,#1
- 656 0042 FB71     	 strb r3,[r7,#7]
- 657              	.L39:
- 658              	 .loc 3 191 0 discriminator 1
- 659 0044 FB79     	 ldrb r3,[r7,#7]
- 660 0046 072B     	 cmp r3,#7
- 661 0048 F2D9     	 bls .L40
- 192:../main.c     ****     s_fixture_rx_ready = 1U;
- 662              	 .loc 3 192 0 is_stmt 1
- 663 004a 074B     	 ldr r3,.L41+16
- 664 004c 0122     	 movs r2,#1
- 665 004e 1A70     	 strb r2,[r3]
- 193:../main.c     **** }
- 666              	 .loc 3 193 0
- 667 0050 0837     	 adds r7,r7,#8
- 668              	.LCFI34:
- 669              	 .cfi_def_cfa_offset 8
- 670 0052 BD46     	 mov sp,r7
- 671              	.LCFI35:
- 672              	 .cfi_def_cfa_register 13
- 673              	 
- 674 0054 80BD     	 pop {r7,pc}
- 675              	.L42:
- 676 0056 00BF     	 .align 2
- 677              	.L41:
- 678 0058 00000000 	 .word MULTICAN_CONFIG_0
- 679 005c 00000000 	 .word s_fixture_rx_id
- 680 0060 00000000 	 .word s_fixture_rx_dlc
- 681 0064 00000000 	 .word s_fixture_rx_data
- 682 0068 00000000 	 .word s_fixture_rx_ready
- 683              	 .cfi_endproc
- 684              	.LFE255:
- 686              	 .text
- 687              	.Letext0:
- 688              	 .file 4 "c:\\infineon\\tools\\dave ide\\4.5.0.202105191637\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\machine\\_default_types.h"
- 689              	 .file 5 "c:\\infineon\\tools\\dave ide\\4.5.0.202105191637\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\stdint.h"
- 690              	 .file 6 "C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/MULTICAN_SELF_RUNTHRU/Libraries/CMSIS/Infineon/XMC4800_series/Include/XMC4800.h"
- 691              	 .file 7 "C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/MULTICAN_SELF_RUNTHRU/Libraries/XMCLib/inc/xmc4_gpio.h"
- 692              	 .file 8 "C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/MULTICAN_SELF_RUNTHRU/Dave/Generated/GLOBAL_CAN/global_can.h"
- 693              	 .file 9 "C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/MULTICAN_SELF_RUNTHRU/Dave/Generated/MULTICAN_CONFIG/multican_config.h"
- 694              	 .file 10 "C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/MULTICAN_SELF_RUNTHRU/Dave/Generated/DIGITAL_IO/digital_io.h"
- 695              	 .file 11 "C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/MULTICAN_SELF_RUNTHRU/Dave/Generated/DAVE.h"
- 696              	 .file 12 "../PMB/pmb_v2_can_emulator.h"
- 697              	 .file 13 "C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/MULTICAN_SELF_RUNTHRU/Libraries/CMSIS/Include/cmsis_gcc.h"
- 698              	 .file 14 "C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/MULTICAN_SELF_RUNTHRU/Libraries/CMSIS/Include/core_cm4.h"
- 699              	 .file 15 "C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/MULTICAN_SELF_RUNTHRU/Libraries/CMSIS/Infineon/XMC4800_series/Include/system_XMC4800.h"
- 700              	 .file 16 "C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/MULTICAN_SELF_RUNTHRU/Dave/Generated/DIGITAL_IO/digital_io_extern.h"
+ 164:../main.c     ****         PMB_Registers_t *regs = PMB_GetRegsMutable();
+ 619              	 .loc 3 164 0
+ 620 001e FFF7FEFF 	 bl PMB_GetRegsMutable
+ 621 0022 B860     	 str r0,[r7,#8]
+ 165:../main.c     ****         regs->telem.chg_curr   = 0x123U;
+ 622              	 .loc 3 165 0
+ 623 0024 BB68     	 ldr r3,[r7,#8]
+ 624 0026 40F22312 	 movw r2,#291
+ 625 002a 1A80     	 strh r2,[r3]
+ 166:../main.c     ****         regs->telem.batt1_curr = 0x456U;
+ 626              	 .loc 3 166 0
+ 627 002c BB68     	 ldr r3,[r7,#8]
+ 628 002e 40F25642 	 movw r2,#1110
+ 629 0032 5A80     	 strh r2,[r3,#2]
+ 167:../main.c     ****         regs->telem.batt2_curr = 0x789U;
+ 630              	 .loc 3 167 0
+ 631 0034 BB68     	 ldr r3,[r7,#8]
+ 632 0036 40F28972 	 movw r2,#1929
+ 633 003a 9A80     	 strh r2,[r3,#4]
+ 634              	.LBE4:
+ 635              	.LBB5:
+ 168:../main.c     ****     }
+ 169:../main.c     ****      {
+ 170:../main.c     ****         PMB_Registers_t *regs = PMB_GetRegsMutable();
+ 636              	 .loc 3 170 0
+ 637 003c FFF7FEFF 	 bl PMB_GetRegsMutable
+ 638 0040 7860     	 str r0,[r7,#4]
+ 171:../main.c     ****         regs->telem.ll_imon   = 0x123U;
+ 639              	 .loc 3 171 0
+ 640 0042 7B68     	 ldr r3,[r7,#4]
+ 641 0044 40F22312 	 movw r2,#291
+ 642 0048 DA80     	 strh r2,[r3,#6]
+ 172:../main.c     ****         regs->telem.rl_imon = 0x456U;
+ 643              	 .loc 3 172 0
+ 644 004a 7B68     	 ldr r3,[r7,#4]
+ 645 004c 40F25642 	 movw r2,#1110
+ 646 0050 1A81     	 strh r2,[r3,#8]
+ 173:../main.c     ****         regs->telem.la_imon = 0x789U;
+ 647              	 .loc 3 173 0
+ 648 0052 7B68     	 ldr r3,[r7,#4]
+ 649 0054 40F28972 	 movw r2,#1929
+ 650 0058 5A81     	 strh r2,[r3,#10]
+ 651              	.LBE5:
+ 174:../main.c     ****     }
+ 175:../main.c     **** 
+ 176:../main.c     ****     static const uint8_t grp1_expected[6] = {0x23U, 0x01U, 0x56U, 0x04U, 0x89U, 0x07U};
+ 177:../main.c     ****     static const uint8_t grp2_expected[6] = {0x23U, 0x01U, 0x56U, 0x04U, 0x89U, 0x07U};
+ 178:../main.c     **** 
+ 179:../main.c     ****     loopback_test(REG_TELEMETRY_GROUP_1, grp1_expected);
+ 652              	 .loc 3 179 0
+ 653 005a 0020     	 movs r0,#0
+ 654 005c 0549     	 ldr r1,.L43
+ 655 005e FFF7FEFF 	 bl loopback_test
+ 180:../main.c     ****     loopback_test(REG_TELEMETRY_GROUP_2, grp2_expected);
+ 656              	 .loc 3 180 0
+ 657 0062 0120     	 movs r0,#1
+ 658 0064 0449     	 ldr r1,.L43+4
+ 659 0066 FFF7FEFF 	 bl loopback_test
+ 660              	.L42:
+ 181:../main.c     **** 
+ 182:../main.c     ****     /* Normal emulator loop */
+ 183:../main.c     ****     while (1U)
+ 184:../main.c     ****     {
+ 185:../main.c     ****         PMB_Emulator_Run();
+ 661              	 .loc 3 185 0 discriminator 1
+ 662 006a FFF7FEFF 	 bl PMB_Emulator_Run
+ 186:../main.c     ****         PMB_UpdateEU();
+ 663              	 .loc 3 186 0 discriminator 1
+ 664 006e FFF7FEFF 	 bl PMB_UpdateEU
+ 187:../main.c     ****     }
+ 665              	 .loc 3 187 0 discriminator 1
+ 666 0072 FAE7     	 b .L42
+ 667              	.L44:
+ 668              	 .align 2
+ 669              	.L43:
+ 670 0074 00000000 	 .word grp1_expected.8941
+ 671 0078 00000000 	 .word grp2_expected.8942
+ 672              	 .cfi_endproc
+ 673              	.LFE255:
+ 675              	 .section .text.CAN0_0_IRQHandler,"ax",%progbits
+ 676              	 .align 2
+ 677              	 .global CAN0_0_IRQHandler
+ 678              	 .thumb
+ 679              	 .thumb_func
+ 681              	CAN0_0_IRQHandler:
+ 682              	.LFB256:
+ 188:../main.c     **** }
+ 189:../main.c     **** 
+ 190:../main.c     **** /* ISR for MO4 (FIXTURE_RX_MO) service request — fires when a PMB response
+ 191:../main.c     ****  * arrives on the fixture RX during loopback verification. */
+ 192:../main.c     **** void CAN_IRQHandler(void)
+ 193:../main.c     **** {
+ 683              	 .loc 3 193 0
+ 684              	 .cfi_startproc
+ 685              	 
+ 686              	 
+ 687 0000 80B5     	 push {r7,lr}
+ 688              	.LCFI36:
+ 689              	 .cfi_def_cfa_offset 8
+ 690              	 .cfi_offset 7,-8
+ 691              	 .cfi_offset 14,-4
+ 692 0002 82B0     	 sub sp,sp,#8
+ 693              	.LCFI37:
+ 694              	 .cfi_def_cfa_offset 16
+ 695 0004 00AF     	 add r7,sp,#0
+ 696              	.LCFI38:
+ 697              	 .cfi_def_cfa_register 7
+ 194:../main.c     ****     uint8_t i;
+ 195:../main.c     ****     XMC_CAN_MO_t *mo = MULTICAN_CONFIG_0.lmobj_ptr[FIXTURE_RX_MO]->mo_ptr;
+ 698              	 .loc 3 195 0
+ 699 0006 144B     	 ldr r3,.L48
+ 700 0008 5B69     	 ldr r3,[r3,#20]
+ 701 000a 1B68     	 ldr r3,[r3]
+ 702 000c 3B60     	 str r3,[r7]
+ 196:../main.c     **** 
+ 197:../main.c     ****     XMC_CAN_MO_Receive(mo);
+ 703              	 .loc 3 197 0
+ 704 000e 3868     	 ldr r0,[r7]
+ 705 0010 FFF7FEFF 	 bl XMC_CAN_MO_Receive
+ 198:../main.c     ****     s_fixture_rx_id  = mo->can_identifier;
+ 706              	 .loc 3 198 0
+ 707 0014 3B68     	 ldr r3,[r7]
+ 708 0016 5B68     	 ldr r3,[r3,#4]
+ 709 0018 C3F31C03 	 ubfx r3,r3,#0,#29
+ 710 001c 1A46     	 mov r2,r3
+ 711 001e 0F4B     	 ldr r3,.L48+4
+ 712 0020 1A60     	 str r2,[r3]
+ 199:../main.c     ****     s_fixture_rx_dlc = mo->can_data_length;
+ 713              	 .loc 3 199 0
+ 714 0022 3B68     	 ldr r3,[r7]
+ 715 0024 1A7B     	 ldrb r2,[r3,#12]
+ 716 0026 0E4B     	 ldr r3,.L48+8
+ 717 0028 1A70     	 strb r2,[r3]
+ 200:../main.c     ****     for (i = 0U; i < 8U; i++) s_fixture_rx_data[i] = mo->can_data_byte[i];
+ 718              	 .loc 3 200 0
+ 719 002a 0023     	 movs r3,#0
+ 720 002c FB71     	 strb r3,[r7,#7]
+ 721 002e 09E0     	 b .L46
+ 722              	.L47:
+ 723              	 .loc 3 200 0 is_stmt 0 discriminator 3
+ 724 0030 FB79     	 ldrb r3,[r7,#7]
+ 725 0032 FA79     	 ldrb r2,[r7,#7]
+ 726 0034 3968     	 ldr r1,[r7]
+ 727 0036 0A44     	 add r2,r2,r1
+ 728 0038 117C     	 ldrb r1,[r2,#16]
+ 729 003a 0A4A     	 ldr r2,.L48+12
+ 730 003c D154     	 strb r1,[r2,r3]
+ 731 003e FB79     	 ldrb r3,[r7,#7]
+ 732 0040 0133     	 adds r3,r3,#1
+ 733 0042 FB71     	 strb r3,[r7,#7]
+ 734              	.L46:
+ 735              	 .loc 3 200 0 discriminator 1
+ 736 0044 FB79     	 ldrb r3,[r7,#7]
+ 737 0046 072B     	 cmp r3,#7
+ 738 0048 F2D9     	 bls .L47
+ 201:../main.c     ****     s_fixture_rx_ready = 1U;
+ 739              	 .loc 3 201 0 is_stmt 1
+ 740 004a 074B     	 ldr r3,.L48+16
+ 741 004c 0122     	 movs r2,#1
+ 742 004e 1A70     	 strb r2,[r3]
+ 202:../main.c     **** }
+ 743              	 .loc 3 202 0
+ 744 0050 0837     	 adds r7,r7,#8
+ 745              	.LCFI39:
+ 746              	 .cfi_def_cfa_offset 8
+ 747 0052 BD46     	 mov sp,r7
+ 748              	.LCFI40:
+ 749              	 .cfi_def_cfa_register 13
+ 750              	 
+ 751 0054 80BD     	 pop {r7,pc}
+ 752              	.L49:
+ 753 0056 00BF     	 .align 2
+ 754              	.L48:
+ 755 0058 00000000 	 .word MULTICAN_CONFIG_0
+ 756 005c 00000000 	 .word s_fixture_rx_id
+ 757 0060 00000000 	 .word s_fixture_rx_dlc
+ 758 0064 00000000 	 .word s_fixture_rx_data
+ 759 0068 00000000 	 .word s_fixture_rx_ready
+ 760              	 .cfi_endproc
+ 761              	.LFE256:
+ 763              	 .section .rodata.grp1_expected.8941,"a",%progbits
+ 764              	 .align 2
+ 767              	grp1_expected.8941:
+ 768 0000 23       	 .byte 35
+ 769 0001 01       	 .byte 1
+ 770 0002 56       	 .byte 86
+ 771 0003 04       	 .byte 4
+ 772 0004 89       	 .byte -119
+ 773 0005 07       	 .byte 7
+ 774 0006 0000     	 .section .rodata.grp2_expected.8942,"a",%progbits
+ 775              	 .align 2
+ 778              	grp2_expected.8942:
+ 779 0000 23       	 .byte 35
+ 780 0001 01       	 .byte 1
+ 781 0002 56       	 .byte 86
+ 782 0003 04       	 .byte 4
+ 783 0004 89       	 .byte -119
+ 784 0005 07       	 .byte 7
+ 785 0006 0000     	 .text
+ 786              	.Letext0:
+ 787              	 .file 4 "c:\\infineon\\tools\\dave ide\\4.5.0.202105191637\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 788              	 .file 5 "c:\\infineon\\tools\\dave ide\\4.5.0.202105191637\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\stdint.h"
+ 789              	 .file 6 "C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/MULTICAN_SELF_RUNTHRU/Libraries/CMSIS/Infineon/XMC4800_series/Include/XMC4800.h"
+ 790              	 .file 7 "C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/MULTICAN_SELF_RUNTHRU/Libraries/XMCLib/inc/xmc4_gpio.h"
+ 791              	 .file 8 "C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/MULTICAN_SELF_RUNTHRU/Dave/Generated/GLOBAL_CAN/global_can.h"
+ 792              	 .file 9 "C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/MULTICAN_SELF_RUNTHRU/Dave/Generated/MULTICAN_CONFIG/multican_config.h"
+ 793              	 .file 10 "C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/MULTICAN_SELF_RUNTHRU/Dave/Generated/DIGITAL_IO/digital_io.h"
+ 794              	 .file 11 "C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/MULTICAN_SELF_RUNTHRU/Dave/Generated/DAVE.h"
+ 795              	 .file 12 "../PMB/pmb_v2_can_emulator.h"
+ 796              	 .file 13 "C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/MULTICAN_SELF_RUNTHRU/Libraries/CMSIS/Include/cmsis_gcc.h"
+ 797              	 .file 14 "C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/MULTICAN_SELF_RUNTHRU/Libraries/CMSIS/Include/core_cm4.h"
+ 798              	 .file 15 "C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/MULTICAN_SELF_RUNTHRU/Libraries/CMSIS/Infineon/XMC4800_series/Include/system_XMC4800.h"
+ 799              	 .file 16 "C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/MULTICAN_SELF_RUNTHRU/Dave/Generated/DIGITAL_IO/digital_io_extern.h"
 DEFINED SYMBOLS
                             *ABS*:00000000 main.c
     {standard input}:20     .text.XMC_GPIO_SetOutputHigh:00000000 $t
@@ -2828,12 +2930,19 @@ DEFINED SYMBOLS
     {standard input}:275    .text.fixture_send_read:00000000 $t
     {standard input}:279    .text.fixture_send_read:00000000 fixture_send_read
     {standard input}:386    .text.fixture_send_read:0000008c $d
-    {standard input}:392    .text.main:00000000 $t
-    {standard input}:397    .text.main:00000000 main
-    {standard input}:589    .text.main:00000100 $d
-    {standard input}:599    .text.CAN0_0_IRQHandler:00000000 $t
-    {standard input}:604    .text.CAN0_0_IRQHandler:00000000 CAN0_0_IRQHandler
-    {standard input}:678    .text.CAN0_0_IRQHandler:00000058 $d
+    {standard input}:392    .text.loopback_test:00000000 $t
+    {standard input}:396    .text.loopback_test:00000000 loopback_test
+    {standard input}:570    .text.loopback_test:000000d4 $d
+    {standard input}:580    .text.main:00000000 $t
+    {standard input}:585    .text.main:00000000 main
+    {standard input}:670    .text.main:00000074 $d
+    {standard input}:767    .rodata.grp1_expected.8941:00000000 grp1_expected.8941
+    {standard input}:778    .rodata.grp2_expected.8942:00000000 grp2_expected.8942
+    {standard input}:676    .text.CAN0_0_IRQHandler:00000000 $t
+    {standard input}:681    .text.CAN0_0_IRQHandler:00000000 CAN0_0_IRQHandler
+    {standard input}:755    .text.CAN0_0_IRQHandler:00000058 $d
+    {standard input}:764    .rodata.grp1_expected.8941:00000000 $d
+    {standard input}:775    .rodata.grp2_expected.8942:00000000 $d
                      .debug_frame:00000010 $d
 
 UNDEFINED SYMBOLS
@@ -2841,10 +2950,10 @@ XMC_CAN_MO_Config
 MULTICAN_CONFIG_0
 XMC_CAN_MO_UpdateData
 XMC_CAN_MO_Transmit
+PMB_Emulator_Run
+DIGITAL_IO_0
 DAVE_Init
 PMB_Emulator_Init
 PMB_GetRegsMutable
-PMB_Emulator_Run
 PMB_UpdateEU
-DIGITAL_IO_0
 XMC_CAN_MO_Receive

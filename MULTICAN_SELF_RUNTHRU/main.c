@@ -98,38 +98,9 @@ static void fixture_send_read(uint16_t data_id)
     }
 }
 
-int main(void)
-{
-    DAVE_STATUS_t app_status;
-
-    app_status = DAVE_Init();
-    if (app_status == DAVE_STATUS_FAILURE)
-    {
-        XMC_DEBUG("DAVE APPs initialization failed\n");
-        while (1U) {}
-    }
-
-    PMB_Emulator_Init();
-    fixture_init();
-
-    /* Pre-load known telemetry values so bytes 0-5 of the response are
-     * non-zero and predictable for data integrity verification. */
-    {
-        PMB_Registers_t *regs = PMB_GetRegsMutable();
-        regs->telem.chg_curr   = 0x123U;
-        regs->telem.batt1_curr = 0x456U;
-        regs->telem.batt2_curr = 0x789U;
-    }
-
-    /* --- Loopback verification ---
-     * Send a PMB read request for REG_TELEMETRY_GROUP_1 via the fixture TX (MO3).
-     * The emulator should receive it on MO0, build a response, transmit via MO1,
-     * which is then received on the fixture RX (MO4) and captured by the ISR.
-     * Verify DLC, echoed packet counter, and the response src/dst addresses. */
+static void loopback_test(uint16_t data_id, const uint8_t expected[6]){
     s_fixture_rx_ready = 0U;
-    fixture_send_read(REG_TELEMETRY_GROUP_1);
-
-    /* Keep running the emulator until the loopback response arrives on MO4. */
+    fixture_send_read(data_id);
     while (!s_fixture_rx_ready)
     {
         PMB_Emulator_Run();
@@ -156,19 +127,57 @@ int main(void)
         XMC_DEBUG("loopback: response src wrong\n");
         while (1U) {}
     }
-    /* Verify bytes 0-5 match the pack12 encoding of the pre-loaded telemetry */
-    if (s_fixture_rx_data[0] != 0x23U || s_fixture_rx_data[1] != 0x01U ||
-        s_fixture_rx_data[2] != 0x56U || s_fixture_rx_data[3] != 0x04U ||
-        s_fixture_rx_data[4] != 0x89U || s_fixture_rx_data[5] != 0x07U)
+    uint8_t i;
+    for (i = 0U; i < 6U; i++)
     {
-        XMC_DEBUG("loopback: data corruption detected\n");
-        while (1U) {}
+        if (s_fixture_rx_data[i] != expected[i])
+        {
+            XMC_DEBUG("loopback: data mismatch\n");
+            while (1U) {}
+        }
     }
 
     /* Blink LED once to signal loopback pass */
     XMC_GPIO_SetOutputHigh(DIGITAL_IO_0.gpio_port, DIGITAL_IO_0.gpio_pin);
     for (volatile uint32_t d = 0U; d < 14400000U; d++) {}
     XMC_GPIO_SetOutputLow(DIGITAL_IO_0.gpio_port, DIGITAL_IO_0.gpio_pin);
+    for (volatile uint32_t d = 0U; d < 14400000U; d++) {}
+}
+
+int main(void)
+{
+    DAVE_STATUS_t app_status;
+
+    app_status = DAVE_Init();
+    if (app_status == DAVE_STATUS_FAILURE)
+    {
+        XMC_DEBUG("DAVE APPs initialization failed\n");
+        while (1U) {}
+    }
+
+    PMB_Emulator_Init();
+    fixture_init();
+
+    /* Pre-load known telemetry values so bytes 0-5 of the response are
+     * non-zero and predictable for data integrity verification. */
+    {
+        PMB_Registers_t *regs = PMB_GetRegsMutable();
+        regs->telem.chg_curr   = 0x123U;
+        regs->telem.batt1_curr = 0x456U;
+        regs->telem.batt2_curr = 0x789U;
+    }
+     {
+        PMB_Registers_t *regs = PMB_GetRegsMutable();
+        regs->telem.ll_imon   = 0x123U;
+        regs->telem.rl_imon = 0x456U;
+        regs->telem.la_imon = 0x789U;
+    }
+
+    static const uint8_t grp1_expected[6] = {0x23U, 0x01U, 0x56U, 0x04U, 0x89U, 0x07U};
+    static const uint8_t grp2_expected[6] = {0x23U, 0x01U, 0x56U, 0x04U, 0x89U, 0x07U};
+
+    loopback_test(REG_TELEMETRY_GROUP_1, grp1_expected);
+    loopback_test(REG_TELEMETRY_GROUP_2, grp2_expected);
 
     /* Normal emulator loop */
     while (1U)
