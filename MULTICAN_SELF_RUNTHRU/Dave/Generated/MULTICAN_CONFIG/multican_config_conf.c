@@ -241,8 +241,8 @@ XMC_CAN_MO_t  MULTICAN_CONFIG_0_LMO_01 =
 
 MULTICAN_CONFIG_NODE_LMO_t MULTICAN_CONFIG_0_LMO_01_Config =
 {
-  .mo_ptr     = (XMC_CAN_MO_t*)&MULTICAN_CONFIG_0_LMO_01,    
-  .list       = 2U,
+  .mo_ptr     = (XMC_CAN_MO_t*)&MULTICAN_CONFIG_0_LMO_01,
+  .list       = 3U,
   .number     = 1U,
   .tx_sr      = 0U,
   .rx_sr      = 0U,
@@ -307,8 +307,8 @@ XMC_CAN_MO_t  MULTICAN_CONFIG_0_LMO_03 =
 
 MULTICAN_CONFIG_NODE_LMO_t MULTICAN_CONFIG_0_LMO_03_Config =
 {
-  .mo_ptr     = (XMC_CAN_MO_t*)&MULTICAN_CONFIG_0_LMO_03,    
-  .list       = 3U,
+  .mo_ptr     = (XMC_CAN_MO_t*)&MULTICAN_CONFIG_0_LMO_03,
+  .list       = 2U,
   .number     = 3U,
   .tx_sr      = 0U,
   .rx_sr      = 0U,
@@ -340,7 +340,7 @@ XMC_CAN_MO_t  MULTICAN_CONFIG_0_LMO_04 =
 
 MULTICAN_CONFIG_NODE_LMO_t MULTICAN_CONFIG_0_LMO_04_Config =
 {
-  .mo_ptr     = (XMC_CAN_MO_t*)&MULTICAN_CONFIG_0_LMO_04,    
+  .mo_ptr     = (XMC_CAN_MO_t*)&MULTICAN_CONFIG_0_LMO_04,
   .list       = 3U,
   .number     = 4U,
   .tx_sr      = 0U,
@@ -500,13 +500,13 @@ MULTICAN_CONFIG_STATUS_t MULTICAN_CONFIG_0_lInit()
     XMC_CAN_AllocateMOtoNodeList(MULTICAN_CONFIG_0.global_ptr->canglobal_ptr, MULTICAN_CONFIG_0.node1->node_num,
                                  MULTICAN_CONFIG_0.lmobj_ptr[0]->number);
 
-    XMC_CAN_AllocateMOtoNodeList(MULTICAN_CONFIG_0.global_ptr->canglobal_ptr, MULTICAN_CONFIG_0.node1->node_num,
+    XMC_CAN_AllocateMOtoNodeList(MULTICAN_CONFIG_0.global_ptr->canglobal_ptr, MULTICAN_CONFIG_0.node2->node_num,
                                  MULTICAN_CONFIG_0.lmobj_ptr[1]->number);
 
     XMC_CAN_AllocateMOtoNodeList(MULTICAN_CONFIG_0.global_ptr->canglobal_ptr, MULTICAN_CONFIG_0.node1->node_num,
                                  MULTICAN_CONFIG_0.lmobj_ptr[2]->number);
 
-    XMC_CAN_AllocateMOtoNodeList(MULTICAN_CONFIG_0.global_ptr->canglobal_ptr, MULTICAN_CONFIG_0.node2->node_num,
+    XMC_CAN_AllocateMOtoNodeList(MULTICAN_CONFIG_0.global_ptr->canglobal_ptr, MULTICAN_CONFIG_0.node1->node_num,
                                  MULTICAN_CONFIG_0.lmobj_ptr[3]->number);
 
     XMC_CAN_AllocateMOtoNodeList(MULTICAN_CONFIG_0.global_ptr->canglobal_ptr, MULTICAN_CONFIG_0.node2->node_num,

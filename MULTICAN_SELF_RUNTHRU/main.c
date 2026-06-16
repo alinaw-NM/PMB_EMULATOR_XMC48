@@ -48,7 +48,7 @@ static          uint8_t  s_fixture_rx_data[8];
 static          uint8_t  s_fixture_rx_dlc;
 static          uint32_t s_fixture_rx_id;
 
-void CAN_IRQHandler(void);
+void CAN0_0_IRQHandler(void);
 
 /* Configure MO3/MO4 so they can act as a PMB fixture for loopback testing.
  * MO3 becomes a plain extended TX; MO4 is filtered to accept PMB responses
@@ -180,7 +180,7 @@ int main(void)
 
 /* ISR for MO4 (FIXTURE_RX_MO) service request — fires when a PMB response
  * arrives on the fixture RX during loopback verification. */
-void CAN_IRQHandler(void)
+void CAN0_0_IRQHandler(void)
 {
     uint8_t i;
     XMC_CAN_MO_t *mo = MULTICAN_CONFIG_0.lmobj_ptr[FIXTURE_RX_MO]->mo_ptr;
