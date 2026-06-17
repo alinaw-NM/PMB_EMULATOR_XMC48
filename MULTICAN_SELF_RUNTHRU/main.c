@@ -32,6 +32,8 @@
 *******************************************************************************/
 
 #include <DAVE.h>
+#include <stddef.h>
+#include <string.h>
 #include "PMB/pmb_v2_can_emulator.h"
 
 /* MO indices for the fixture side — these are the Node2 objects used only
@@ -98,7 +100,13 @@ static void fixture_send_read(uint16_t data_id)
     }
 }
 
-static void loopback_test(uint16_t data_id, const uint8_t expected[6]){
+/* chk_lo..chk_hi (exclusive) is the slice of data[0..5] the emulator actively
+ * packs for this data_id.  Bytes outside that range are not checked because
+ * XMC_CAN_MO_Receive does not overwrite MO data bytes that the incoming frame
+ * leaves unchanged, so they may contain stale data from the previous frame. */
+static void loopback_test(uint16_t data_id, const uint8_t expected[6],
+                          uint8_t chk_lo, uint8_t chk_hi)
+{
     s_fixture_rx_ready = 0U;
     fixture_send_read(data_id);
     while (!s_fixture_rx_ready)
@@ -128,7 +136,7 @@ static void loopback_test(uint16_t data_id, const uint8_t expected[6]){
         while (1U) {}
     }
     uint8_t i;
-    for (i = 0U; i < 6U; i++)
+    for (i = chk_lo; i < chk_hi; i++)
     {
         if (s_fixture_rx_data[i] != expected[i])
         {
@@ -137,11 +145,291 @@ static void loopback_test(uint16_t data_id, const uint8_t expected[6]){
         }
     }
 
-    /* Blink LED once to signal loopback pass */
+}
+
+/* ============================================================
+ * SOS LED blink (Morse: ... --- ...)
+ * Timing unit ≈ 50 ms at 120 MHz.
+ * ============================================================ */
+#define SOS_DOT    6000000U   /* 1 unit  on  */
+#define SOS_DASH  18000000U   /* 3 units on  */
+#define SOS_EGAP   6000000U   /* 1 unit  off — between elements */
+#define SOS_LGAP  18000000U   /* 3 units off — between letters  */
+#define SOS_WGAP  42000000U   /* 7 units off — after full SOS   */
+
+static void led_on(uint32_t cycles)
+{
     XMC_GPIO_SetOutputHigh(DIGITAL_IO_0.gpio_port, DIGITAL_IO_0.gpio_pin);
-    for (volatile uint32_t d = 0U; d < 14400000U; d++) {}
+    for (volatile uint32_t d = 0U; d < cycles; d++) {}
+}
+
+static void led_off(uint32_t cycles)
+{
     XMC_GPIO_SetOutputLow(DIGITAL_IO_0.gpio_port, DIGITAL_IO_0.gpio_pin);
-    for (volatile uint32_t d = 0U; d < 14400000U; d++) {}
+    for (volatile uint32_t d = 0U; d < cycles; d++) {}
+}
+
+static void blink_sos(void)
+{
+    /* S: dot dot dot */
+    led_on(SOS_DOT);  led_off(SOS_EGAP);
+    led_on(SOS_DOT);  led_off(SOS_EGAP);
+    led_on(SOS_DOT);  led_off(SOS_LGAP);
+    /* O: dash dash dash */
+    led_on(SOS_DASH); led_off(SOS_EGAP);
+    led_on(SOS_DASH); led_off(SOS_EGAP);
+    led_on(SOS_DASH); led_off(SOS_LGAP);
+    /* S: dot dot dot */
+    led_on(SOS_DOT);  led_off(SOS_EGAP);
+    led_on(SOS_DOT);  led_off(SOS_EGAP);
+    led_on(SOS_DOT);  led_off(SOS_WGAP);
+}
+
+/* ============================================================
+ * Table-driven full loopback test suite
+ * ============================================================
+ *
+ * Each entry maps a data_id to the byte range in PMB_Registers_t that
+ * the emulator reads when building the response.  The runner writes a fixed
+ * seed pattern to those raw struct bytes, then issues a CAN read request and
+ * verifies that exactly those bytes come back in the response payload.
+ *
+ * Seed odd bytes (hi of each uint16_t pair) are 0x01/0x04/0x07 — all ≤ 0x0F
+ * — so pack12's upper-nibble mask leaves them unchanged and expected == seed
+ * for every register type without any special casing.
+ *
+ * Special case 0xCC (REG_NEG_LIM_GRP2): the emulator packs its two fields at
+ * payload bytes [2..5] instead of [0..3].  payload_off captures this offset.
+ * ============================================================ */
+
+typedef struct {
+    uint16_t data_id;
+    uint16_t reg_offset;   /* offsetof(PMB_Registers_t, field) */
+    uint8_t  n_active;     /* bytes written to the struct / verified in response */
+    uint8_t  payload_off;  /* byte index in data[0..5] where the fields begin    */
+} PMBTestVec_t;
+
+static const uint8_t s_seed6[6] = {0x23U, 0x01U, 0x56U, 0x04U, 0x89U, 0x07U};
+
+#define OFS(f) ((uint16_t)offsetof(PMB_Registers_t, f))
+
+static const PMBTestVec_t s_test_table[] = {
+
+    /* === TELEMETRY (0x00-0x1A, pack12, uint16_t fields) === */
+    { REG_TELEMETRY_GROUP_1,  OFS(telem.chg_curr),          6U, 0U },
+    { REG_TELEMETRY_GROUP_2,  OFS(telem.ll_imon),           6U, 0U },
+    { REG_TELEMETRY_GROUP_3,  OFS(telem.ra_imon),           6U, 0U },
+    { REG_TELEMETRY_GROUP_4,  OFS(telem.hv),                6U, 0U },
+    { REG_TELEMETRY_GROUP_5,  OFS(telem.nk_imon),           6U, 0U },
+    { REG_TELEMETRY_GROUP_6,  OFS(telem.user_hv),           4U, 0U },
+    { REG_TELEMETRY_GROUP_7,  OFS(telem.pc_24v),            4U, 0U },
+    { REG_TELEMETRY_GROUP_8,  OFS(telem.user_24v),          4U, 0U },
+    { REG_TELEMETRY_GROUP_9,  OFS(telem.pc_a_12v),          4U, 0U },
+    { REG_TELEMETRY_GROUP_10, OFS(telem.pc_b_12v),          4U, 0U },
+    { REG_TELEMETRY_GROUP_11, OFS(telem.v24_imon0),         6U, 0U },
+    { REG_TELEMETRY_GROUP_12, OFS(telem.v12_imon0),         6U, 0U },
+    { REG_TELEMETRY_GROUP_13, OFS(telem.v24_bus_voltage),   4U, 0U },
+    { REG_TELEMETRY_GROUP_14, OFS(telem.v5),                4U, 0U },
+    { REG_TELEMETRY_GROUP_15, OFS(telem.v3v3),              4U, 0U },
+    { REG_TELEMETRY_GROUP_16, OFS(telem.aux_24v),           4U, 0U },
+    { REG_TELEMETRY_GROUP_17, OFS(telem.aux_12v),           4U, 0U },
+    { REG_TELEMETRY_GROUP_18, OFS(telem.estop_rec_a_12v),   4U, 0U },
+    { REG_TELEMETRY_GROUP_19, OFS(telem.v12_b_imon3),       4U, 0U },
+    { REG_TELEMETRY_GROUP_20, OFS(telem.hv_or),             4U, 0U },
+    { REG_TELEMETRY_GROUP_21, OFS(telem.temp0),             6U, 0U },
+    { REG_TELEMETRY_GROUP_22, OFS(telem.temp3),             6U, 0U },
+    { REG_TELEMETRY_GROUP_23, OFS(telem.ex_temp0),          4U, 0U },
+    { REG_TELEMETRY_GROUP_24, OFS(telem.lidar_a_12v),       4U, 0U },
+    { REG_TELEMETRY_GROUP_25, OFS(telem.sto_24v),           4U, 0U },
+    { REG_TELEMETRY_GROUP_26, OFS(telem.eth_2v5),           4U, 0U },
+    { REG_TELEMETRY_GROUP_27, OFS(telem.ecat_3v3),          4U, 0U },
+
+    /* === STATUS BIT-MAPPED (0x1B-0x1E, byte fields) === */
+    { REG_COMP_PDG,       OFS(status.comp_pdg),       3U, 0U },
+    { REG_PDG_FAULT_GRP1, OFS(status.pdg_fault_grp1), 3U, 0U },
+    { REG_PDG_FAULT_GRP2, OFS(status.pdg_fault_grp2), 2U, 0U },
+    { REG_PDG_FAULT_GRP3, OFS(status.pdg_fault_grp3), 2U, 0U },
+
+    /* === POWER ENABLE (0x1F-0x23, byte fields) === */
+    { REG_POWER_ENABLE_GRP1, OFS(pwr_enable.grp1),          1U, 0U },
+    { REG_POWER_ENABLE_GRP2, OFS(pwr_enable.grp2),          3U, 0U },
+    { REG_POWER_ENABLE_GRP3, OFS(pwr_enable.grp3),          4U, 0U },
+    { REG_PERIPHERAL_INPUTS, OFS(pwr_enable.periph_inputs),  1U, 0U },
+    { REG_POWER_ENABLE_GRP4, OFS(pwr_enable.grp4),          3U, 0U },
+
+    /* === ADC OFFSETS (0x30-0x4A, pack16, int16_t fields) === */
+    { REG_ADC_OFFSET_GRP1,  OFS(calib_offset.chg_curr_ofs),          6U, 0U },
+    { REG_ADC_OFFSET_GRP2,  OFS(calib_offset.ll_imon_ofs),           6U, 0U },
+    { REG_ADC_OFFSET_GRP3,  OFS(calib_offset.ra_imon_ofs),           6U, 0U },
+    { REG_ADC_OFFSET_GRP4,  OFS(calib_offset.hv_ofs),                6U, 0U },
+    { REG_ADC_OFFSET_GRP5,  OFS(calib_offset.nk_imon_ofs),           6U, 0U },
+    { REG_ADC_OFFSET_GRP6,  OFS(calib_offset.user_hv_ofs),           4U, 0U },
+    { REG_ADC_OFFSET_GRP7,  OFS(calib_offset.pc_24v_ofs),            4U, 0U },
+    { REG_ADC_OFFSET_GRP8,  OFS(calib_offset.user_24v_ofs),          4U, 0U },
+    { REG_ADC_OFFSET_GRP9,  OFS(calib_offset.pc_a_12v_ofs),          4U, 0U },
+    { REG_ADC_OFFSET_GRP10, OFS(calib_offset.pc_b_12v_ofs),          4U, 0U },
+    { REG_ADC_OFFSET_GRP11, OFS(calib_offset.v24_imon0_ofs),         6U, 0U },
+    { REG_ADC_OFFSET_GRP12, OFS(calib_offset.v12_imon0_ofs),         6U, 0U },
+    { REG_ADC_OFFSET_GRP13, OFS(calib_offset.v24_ofs),               4U, 0U },
+    { REG_ADC_OFFSET_GRP14, OFS(calib_offset.v5_ofs),                4U, 0U },
+    { REG_ADC_OFFSET_GRP15, OFS(calib_offset.v3v3_ofs),              4U, 0U },
+    { REG_ADC_OFFSET_GRP16, OFS(calib_offset.aux_24v_ofs),           4U, 0U },
+    { REG_ADC_OFFSET_GRP17, OFS(calib_offset.aux_12v_ofs),           4U, 0U },
+    { REG_ADC_OFFSET_GRP18, OFS(calib_offset.estop_rec_a_12v_ofs),   4U, 0U },
+    { REG_ADC_OFFSET_GRP19, OFS(calib_offset.v12_b_imon3_ofs),       4U, 0U },
+    { REG_ADC_OFFSET_GRP20, OFS(calib_offset.hv_or_ofs),             4U, 0U },
+    { REG_ADC_OFFSET_GRP21, OFS(calib_offset.temp0_ofs),             6U, 0U },
+    { REG_ADC_OFFSET_GRP22, OFS(calib_offset.temp3_ofs),             6U, 0U },
+    { REG_ADC_OFFSET_GRP23, OFS(calib_offset.ex_temp0_ofs),          4U, 0U },
+    { REG_ADC_OFFSET_GRP24, OFS(calib_offset.lidar_a_12v_ofs),       4U, 0U },
+    { REG_ADC_OFFSET_GRP25, OFS(calib_offset.sto_24v_ofs),           4U, 0U },
+    { REG_ADC_OFFSET_GRP26, OFS(calib_offset.eth_2v5_ofs),           4U, 0U },
+    { REG_ADC_OFFSET_GRP27, OFS(calib_offset.ecat_3v3_ofs),          4U, 0U },
+
+    /* === ADC SCALES (0x50-0x6A, pack16, int16_t fields) === */
+    { REG_ADC_SCALE_GRP1,  OFS(calib_scale.chg_curr_scl),           6U, 0U },
+    { REG_ADC_SCALE_GRP2,  OFS(calib_scale.ll_imon_scl),            6U, 0U },
+    { REG_ADC_SCALE_GRP3,  OFS(calib_scale.ra_imon_scl),            6U, 0U },
+    { REG_ADC_SCALE_GRP4,  OFS(calib_scale.hv_scl),                 6U, 0U },
+    { REG_ADC_SCALE_GRP5,  OFS(calib_scale.nk_imon_scl),            6U, 0U },
+    { REG_ADC_SCALE_GRP6,  OFS(calib_scale.user_hv_scl),            4U, 0U },
+    { REG_ADC_SCALE_GRP7,  OFS(calib_scale.pc_24v_scl),             4U, 0U },
+    { REG_ADC_SCALE_GRP8,  OFS(calib_scale.user_24v_scl),           4U, 0U },
+    { REG_ADC_SCALE_GRP9,  OFS(calib_scale.pc_a_12v_scl),           4U, 0U },
+    { REG_ADC_SCALE_GRP10, OFS(calib_scale.pc_b_12v_scl),           4U, 0U },
+    { REG_ADC_SCALE_GRP11, OFS(calib_scale.v24_imon0_scl),          6U, 0U },
+    { REG_ADC_SCALE_GRP12, OFS(calib_scale.v12_imon0_scl),          6U, 0U },
+    { REG_ADC_SCALE_GRP13, OFS(calib_scale.v24_scl),                4U, 0U },
+    { REG_ADC_SCALE_GRP14, OFS(calib_scale.v5_scl),                 4U, 0U },
+    { REG_ADC_SCALE_GRP15, OFS(calib_scale.v3v3_scl),               4U, 0U },
+    { REG_ADC_SCALE_GRP16, OFS(calib_scale.aux_24v_scl),            4U, 0U },
+    { REG_ADC_SCALE_GRP17, OFS(calib_scale.aux_12v_scl),            4U, 0U },
+    { REG_ADC_SCALE_GRP18, OFS(calib_scale.estop_rec_a_12v_scl),    4U, 0U },
+    { REG_ADC_SCALE_GRP19, OFS(calib_scale.v12_b_imon3_scl),        4U, 0U },
+    { REG_ADC_SCALE_GRP20, OFS(calib_scale.hv_or_scl),              4U, 0U },
+    { REG_ADC_SCALE_GRP21, OFS(calib_scale.temp0_scl),              6U, 0U },
+    { REG_ADC_SCALE_GRP22, OFS(calib_scale.temp3_scl),              6U, 0U },
+    { REG_ADC_SCALE_GRP23, OFS(calib_scale.ex_temp0_scl),           4U, 0U },
+    { REG_ADC_SCALE_GRP24, OFS(calib_scale.lidar_a_12v_scl),        4U, 0U },
+    { REG_ADC_SCALE_GRP25, OFS(calib_scale.sto_24v_scl),            4U, 0U },
+    { REG_ADC_SCALE_GRP26, OFS(calib_scale.eth_2v5_scl),            4U, 0U },
+    { REG_ADC_SCALE_GRP27, OFS(calib_scale.ecat_3v3_scl),           4U, 0U },
+
+    /* === EU (0x70-0x8A, pack16, int16_t fields) === */
+    { REG_EU_GRP1,  OFS(eu.chg_curr_eu),           6U, 0U },
+    { REG_EU_GRP2,  OFS(eu.ll_imon_eu),            6U, 0U },
+    { REG_EU_GRP3,  OFS(eu.ra_imon_eu),            6U, 0U },
+    { REG_EU_GRP4,  OFS(eu.hv_eu),                 6U, 0U },
+    { REG_EU_GRP5,  OFS(eu.nk_imon_eu),            6U, 0U },
+    { REG_EU_GRP6,  OFS(eu.user_hv_eu),            4U, 0U },
+    { REG_EU_GRP7,  OFS(eu.pc_24v_eu),             4U, 0U },
+    { REG_EU_GRP8,  OFS(eu.user_24v_eu),           4U, 0U },
+    { REG_EU_GRP9,  OFS(eu.pc_a_12v_eu),           4U, 0U },
+    { REG_EU_GRP10, OFS(eu.pc_b_12v_eu),           4U, 0U },
+    { REG_EU_GRP11, OFS(eu.v24_imon0_eu),          6U, 0U },
+    { REG_EU_GRP12, OFS(eu.v12_imon0_eu),          6U, 0U },
+    { REG_EU_GRP13, OFS(eu.v24_eu),                4U, 0U },
+    { REG_EU_GRP14, OFS(eu.v5_eu),                 4U, 0U },
+    { REG_EU_GRP15, OFS(eu.v3v3_eu),               4U, 0U },
+    { REG_EU_GRP16, OFS(eu.aux_24v_eu),            4U, 0U },
+    { REG_EU_GRP17, OFS(eu.aux_12v_eu),            4U, 0U },
+    { REG_EU_GRP18, OFS(eu.estop_rec_a_12v_eu),    4U, 0U },
+    { REG_EU_GRP19, OFS(eu.v12_b_imon3_eu),        4U, 0U },
+    { REG_EU_GRP20, OFS(eu.hv_or_eu),              4U, 0U },
+    { REG_EU_GRP21, OFS(eu.temp0_eu),              6U, 0U },
+    { REG_EU_GRP22, OFS(eu.temp3_eu),              6U, 0U },
+    { REG_EU_GRP23, OFS(eu.ex_temp0_eu),           4U, 0U },
+    { REG_EU_GRP24, OFS(eu.lidar_a_12v_eu),        4U, 0U },
+    { REG_EU_GRP25, OFS(eu.sto_24v_eu),            4U, 0U },
+    { REG_EU_GRP26, OFS(eu.eth_2v5_eu),            4U, 0U },
+    { REG_EU_GRP27, OFS(eu.ecat_3v3_eu),           4U, 0U },
+    /* Derived EU (0x90-0x91) */
+    { REG_DERIVED_EU_GRP1, OFS(eu.v12_a_total_curr_eu), 6U, 0U },
+    { REG_DERIVED_EU_GRP2, OFS(eu.batt_total_curr_eu),  2U, 0U },
+
+    /* === ERROR CODE (0xA0, uint32_t little-endian) === */
+    { REG_ERROR_CODE, OFS(error_code), 4U, 0U },
+
+    /* === FAULT REGISTERS (0xA8-0xAA, byte fields) === */
+    { REG_FAULT_REG1, OFS(fault_regs.reg1), 1U, 0U },
+    { REG_FAULT_REG2, OFS(fault_regs.reg2), 3U, 0U },
+    { REG_FAULT_REG3, OFS(fault_regs.reg3), 4U, 0U },
+
+    /* === SOFT LIMITS (0xB0-0xCA, pack16, int16_t fields) === */
+    { REG_SOFT_LIM_GRP1,  OFS(soft_limits.chg_curr_lim),           6U, 0U },
+    { REG_SOFT_LIM_GRP2,  OFS(soft_limits.ll_imon_lim),            6U, 0U },
+    { REG_SOFT_LIM_GRP3,  OFS(soft_limits.ra_imon_lim),            6U, 0U },
+    { REG_SOFT_LIM_GRP4,  OFS(soft_limits.hv_lim),                 6U, 0U },
+    { REG_SOFT_LIM_GRP5,  OFS(soft_limits.nk_imon_lim),            6U, 0U },
+    { REG_SOFT_LIM_GRP6,  OFS(soft_limits.user_hv_lim),            4U, 0U },
+    { REG_SOFT_LIM_GRP7,  OFS(soft_limits.pc_24v_lim),             4U, 0U },
+    { REG_SOFT_LIM_GRP8,  OFS(soft_limits.user_24v_lim),           4U, 0U },
+    { REG_SOFT_LIM_GRP9,  OFS(soft_limits.pc_a_12v_lim),           4U, 0U },
+    { REG_SOFT_LIM_GRP10, OFS(soft_limits.pc_b_12v_lim),           4U, 0U },
+    { REG_SOFT_LIM_GRP11, OFS(soft_limits.v24_imon0_lim),          6U, 0U },
+    { REG_SOFT_LIM_GRP12, OFS(soft_limits.v12_imon0_lim),          6U, 0U },
+    { REG_SOFT_LIM_GRP13, OFS(soft_limits.v24_lim),                4U, 0U },
+    { REG_SOFT_LIM_GRP14, OFS(soft_limits.v5_lim),                 4U, 0U },
+    { REG_SOFT_LIM_GRP15, OFS(soft_limits.v3v3_lim),               4U, 0U },
+    { REG_SOFT_LIM_GRP16, OFS(soft_limits.aux_24v_lim),            4U, 0U },
+    { REG_SOFT_LIM_GRP17, OFS(soft_limits.aux_12v_lim),            4U, 0U },
+    { REG_SOFT_LIM_GRP18, OFS(soft_limits.estop_rec_a_12v_lim),    4U, 0U },
+    { REG_SOFT_LIM_GRP19, OFS(soft_limits.v12_b_imon3_lim),        4U, 0U },
+    { REG_SOFT_LIM_GRP20, OFS(soft_limits.hv_or_lim),              4U, 0U },
+    { REG_SOFT_LIM_GRP21, OFS(soft_limits.temp0_plim),             6U, 0U },
+    { REG_SOFT_LIM_GRP22, OFS(soft_limits.temp3_plim),             6U, 0U },
+    { REG_SOFT_LIM_GRP23, OFS(soft_limits.ex_temp0_plim),          4U, 0U },
+    { REG_SOFT_LIM_GRP24, OFS(soft_limits.lidar_a_12v_lim),        4U, 0U },
+    { REG_SOFT_LIM_GRP25, OFS(soft_limits.sto_24v_lim),            4U, 0U },
+    { REG_SOFT_LIM_GRP26, OFS(soft_limits.eth_2v5_lim),            4U, 0U },
+    { REG_SOFT_LIM_GRP27, OFS(soft_limits.ecat_3v3_lim),           4U, 0U },
+    /* Neg / derived limits (0xCB-0xCF) */
+    { REG_NEG_LIM_GRP1, OFS(soft_limits.v12_a_total_curr_lim), 6U, 0U },
+    /* 0xCC packs fields at data[2..5], not data[0..3] — payload_off=2 */
+    { REG_NEG_LIM_GRP2, OFS(soft_limits.batt1_curr_nlim),      4U, 2U },
+    { REG_NEG_LIM_GRP3, OFS(soft_limits.temp0_nlim),           6U, 0U },
+    { REG_NEG_LIM_GRP4, OFS(soft_limits.temp3_nlim),           6U, 0U },
+    { REG_NEG_LIM_GRP5, OFS(soft_limits.ex_temp0_nlim),        4U, 0U },
+
+    /* === LIMIT FAULT FLAGS (0xD0-0xD9, byte arrays) === */
+    { REG_SOFT_LIM_FAULT_GRP1, OFS(lim_faults.soft_grp1), 6U, 0U },
+    { REG_SOFT_LIM_FAULT_GRP2, OFS(lim_faults.soft_grp2), 3U, 0U },
+    { REG_HARD_LIM_FAULT_GRP1, OFS(lim_faults.hard_grp1), 6U, 0U },
+    { REG_HARD_LIM_FAULT_GRP2, OFS(lim_faults.hard_grp2), 3U, 0U },
+
+    /* === BUILD INFO + WRITE PROTECT === */
+    { REG_HW_FW_REVISION, OFS(build_info.hw_rev),  4U, 0U },
+    { REG_WRITE_PROTECT,  OFS(write_protect.b1),   5U, 0U },
+};
+
+#define TEST_TABLE_LEN ((uint8_t)(sizeof(s_test_table) / sizeof(s_test_table[0])))
+
+static void run_all_loopback_tests(void)
+{
+    uint8_t expected[6];
+    uint8_t i, j;
+
+    for (i = 0U; i < TEST_TABLE_LEN; i++)
+    {
+        const PMBTestVec_t *tv = &s_test_table[i];
+        PMB_Registers_t *regs  = PMB_GetRegsMutable();
+
+        /* Stamp seed bytes directly into the struct at the field's raw address.
+         * For payload_off > 0 (only 0xCC today) the seed slice that maps to
+         * the active payload positions is used so expected == seed. */
+        memcpy((uint8_t *)regs + tv->reg_offset,
+               s_seed6 + tv->payload_off,
+               tv->n_active);
+
+        /* Build expected: seed at [payload_off .. payload_off+n_active), zeros elsewhere */
+        memset(expected, 0U, 6U);
+        for (j = 0U; j < tv->n_active; j++) {
+            expected[tv->payload_off + j] = s_seed6[tv->payload_off + j];
+        }
+
+        loopback_test(tv->data_id, expected,
+                      tv->payload_off, (uint8_t)(tv->payload_off + tv->n_active));
+    }
 }
 
 int main(void)
@@ -158,32 +446,12 @@ int main(void)
     PMB_Emulator_Init();
     fixture_init();
 
-    /* Pre-load known telemetry values so bytes 0-5 of the response are
-     * non-zero and predictable for data integrity verification. */
-    {
-        PMB_Registers_t *regs = PMB_GetRegsMutable();
-        regs->telem.chg_curr   = 0x123U;
-        regs->telem.batt1_curr = 0x456U;
-        regs->telem.batt2_curr = 0x789U;
-    }
-     {
-        PMB_Registers_t *regs = PMB_GetRegsMutable();
-        regs->telem.ll_imon   = 0x123U;
-        regs->telem.rl_imon = 0x456U;
-        regs->telem.la_imon = 0x789U;
-    }
+    run_all_loopback_tests();
 
-    static const uint8_t grp1_expected[6] = {0x23U, 0x01U, 0x56U, 0x04U, 0x89U, 0x07U};
-    static const uint8_t grp2_expected[6] = {0x23U, 0x01U, 0x56U, 0x04U, 0x89U, 0x07U};
-
-    loopback_test(REG_TELEMETRY_GROUP_1, grp1_expected);
-    loopback_test(REG_TELEMETRY_GROUP_2, grp2_expected);
-
-    /* Normal emulator loop */
+    /* All tests passed — blink SOS continuously */
     while (1U)
     {
-        PMB_Emulator_Run();
-        PMB_UpdateEU();
+        blink_sos();
     }
 }
 
