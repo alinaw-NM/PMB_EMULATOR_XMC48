@@ -5064,12 +5064,12 @@
  282 001a 7047     	 bx lr
  283              	 .cfi_endproc
  284              	.LFE239:
- 286              	 .section .text.XMC_USIC_CH_RXFIFO_IsEmpty,"ax",%progbits
+ 286              	 .section .text.XMC_USIC_CH_RXFIFO_Flush,"ax",%progbits
  287              	 .align 2
  288              	 .thumb
  289              	 .thumb_func
- 291              	XMC_USIC_CH_RXFIFO_IsEmpty:
- 292              	.LFB242:
+ 291              	XMC_USIC_CH_RXFIFO_Flush:
+ 292              	.LFB240:
 2115:C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/Battery_BMS_XMC4800-F144x2048_1/Libraries/XMCLib/inc\xmc_usic.h **** 
 2116:C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/Battery_BMS_XMC4800-F144x2048_1/Libraries/XMCLib/inc\xmc_usic.h **** /**
 2117:C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/Battery_BMS_XMC4800-F144x2048_1/Libraries/XMCLib/inc\xmc_usic.h ****  * @param channel Pointer to USIC channel handler of type @ref XMC_USIC_CH_t \n
@@ -5085,8 +5085,49 @@
 2127:C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/Battery_BMS_XMC4800-F144x2048_1/Libraries/XMCLib/inc\xmc_usic.h ****  */
 2128:C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/Battery_BMS_XMC4800-F144x2048_1/Libraries/XMCLib/inc\xmc_usic.h **** __STATIC_INLINE void XMC_USIC_CH_RXFIFO_Flush(XMC_USIC_CH_t *const channel)
 2129:C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/Battery_BMS_XMC4800-F144x2048_1/Libraries/XMCLib/inc\xmc_usic.h **** {
+ 293              	 .loc 3 2129 0
+ 294              	 .cfi_startproc
+ 295              	 
+ 296              	 
+ 297              	 
+ 298 0000 80B4     	 push {r7}
+ 299              	.LCFI30:
+ 300              	 .cfi_def_cfa_offset 4
+ 301              	 .cfi_offset 7,-4
+ 302 0002 83B0     	 sub sp,sp,#12
+ 303              	.LCFI31:
+ 304              	 .cfi_def_cfa_offset 16
+ 305 0004 00AF     	 add r7,sp,#0
+ 306              	.LCFI32:
+ 307              	 .cfi_def_cfa_register 7
+ 308 0006 7860     	 str r0,[r7,#4]
 2130:C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/Battery_BMS_XMC4800-F144x2048_1/Libraries/XMCLib/inc\xmc_usic.h ****   channel->TRBSCR = (uint32_t)USIC_CH_TRBSCR_FLUSHRB_Msk;
+ 309              	 .loc 3 2130 0
+ 310 0008 7B68     	 ldr r3,[r7,#4]
+ 311 000a 4FF48042 	 mov r2,#16384
+ 312 000e C3F81821 	 str r2,[r3,#280]
 2131:C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/Battery_BMS_XMC4800-F144x2048_1/Libraries/XMCLib/inc\xmc_usic.h **** }
+ 313              	 .loc 3 2131 0
+ 314 0012 0C37     	 adds r7,r7,#12
+ 315              	.LCFI33:
+ 316              	 .cfi_def_cfa_offset 4
+ 317 0014 BD46     	 mov sp,r7
+ 318              	.LCFI34:
+ 319              	 .cfi_def_cfa_register 13
+ 320              	 
+ 321 0016 5DF8047B 	 ldr r7,[sp],#4
+ 322              	.LCFI35:
+ 323              	 .cfi_restore 7
+ 324              	 .cfi_def_cfa_offset 0
+ 325 001a 7047     	 bx lr
+ 326              	 .cfi_endproc
+ 327              	.LFE240:
+ 329              	 .section .text.XMC_USIC_CH_RXFIFO_IsEmpty,"ax",%progbits
+ 330              	 .align 2
+ 331              	 .thumb
+ 332              	 .thumb_func
+ 334              	XMC_USIC_CH_RXFIFO_IsEmpty:
+ 335              	.LFB242:
 2132:C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/Battery_BMS_XMC4800-F144x2048_1/Libraries/XMCLib/inc\xmc_usic.h **** 
 2133:C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/Battery_BMS_XMC4800-F144x2048_1/Libraries/XMCLib/inc\xmc_usic.h **** /**
 2134:C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/Battery_BMS_XMC4800-F144x2048_1/Libraries/XMCLib/inc\xmc_usic.h ****  * @param channel Pointer to USIC channel handler of type @ref XMC_USIC_CH_t \n
@@ -5124,56 +5165,56 @@
 2166:C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/Battery_BMS_XMC4800-F144x2048_1/Libraries/XMCLib/inc\xmc_usic.h ****  */
 2167:C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/Battery_BMS_XMC4800-F144x2048_1/Libraries/XMCLib/inc\xmc_usic.h **** __STATIC_INLINE bool XMC_USIC_CH_RXFIFO_IsEmpty(XMC_USIC_CH_t *const channel)
 2168:C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/Battery_BMS_XMC4800-F144x2048_1/Libraries/XMCLib/inc\xmc_usic.h **** {
- 293              	 .loc 3 2168 0
- 294              	 .cfi_startproc
- 295              	 
- 296              	 
- 297              	 
- 298 0000 80B4     	 push {r7}
- 299              	.LCFI30:
- 300              	 .cfi_def_cfa_offset 4
- 301              	 .cfi_offset 7,-4
- 302 0002 83B0     	 sub sp,sp,#12
- 303              	.LCFI31:
- 304              	 .cfi_def_cfa_offset 16
- 305 0004 00AF     	 add r7,sp,#0
- 306              	.LCFI32:
- 307              	 .cfi_def_cfa_register 7
- 308 0006 7860     	 str r0,[r7,#4]
+ 336              	 .loc 3 2168 0
+ 337              	 .cfi_startproc
+ 338              	 
+ 339              	 
+ 340              	 
+ 341 0000 80B4     	 push {r7}
+ 342              	.LCFI36:
+ 343              	 .cfi_def_cfa_offset 4
+ 344              	 .cfi_offset 7,-4
+ 345 0002 83B0     	 sub sp,sp,#12
+ 346              	.LCFI37:
+ 347              	 .cfi_def_cfa_offset 16
+ 348 0004 00AF     	 add r7,sp,#0
+ 349              	.LCFI38:
+ 350              	 .cfi_def_cfa_register 7
+ 351 0006 7860     	 str r0,[r7,#4]
 2169:C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/Battery_BMS_XMC4800-F144x2048_1/Libraries/XMCLib/inc\xmc_usic.h ****   return (bool)(channel->TRBSR & USIC_CH_TRBSR_REMPTY_Msk);
- 309              	 .loc 3 2169 0
- 310 0008 7B68     	 ldr r3,[r7,#4]
- 311 000a D3F81431 	 ldr r3,[r3,#276]
- 312 000e 03F00803 	 and r3,r3,#8
- 313 0012 002B     	 cmp r3,#0
- 314 0014 14BF     	 ite ne
- 315 0016 0123     	 movne r3,#1
- 316 0018 0023     	 moveq r3,#0
- 317 001a DBB2     	 uxtb r3,r3
+ 352              	 .loc 3 2169 0
+ 353 0008 7B68     	 ldr r3,[r7,#4]
+ 354 000a D3F81431 	 ldr r3,[r3,#276]
+ 355 000e 03F00803 	 and r3,r3,#8
+ 356 0012 002B     	 cmp r3,#0
+ 357 0014 14BF     	 ite ne
+ 358 0016 0123     	 movne r3,#1
+ 359 0018 0023     	 moveq r3,#0
+ 360 001a DBB2     	 uxtb r3,r3
 2170:C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/Battery_BMS_XMC4800-F144x2048_1/Libraries/XMCLib/inc\xmc_usic.h **** }
- 318              	 .loc 3 2170 0
- 319 001c 1846     	 mov r0,r3
- 320 001e 0C37     	 adds r7,r7,#12
- 321              	.LCFI33:
- 322              	 .cfi_def_cfa_offset 4
- 323 0020 BD46     	 mov sp,r7
- 324              	.LCFI34:
- 325              	 .cfi_def_cfa_register 13
- 326              	 
- 327 0022 5DF8047B 	 ldr r7,[sp],#4
- 328              	.LCFI35:
- 329              	 .cfi_restore 7
- 330              	 .cfi_def_cfa_offset 0
- 331 0026 7047     	 bx lr
- 332              	 .cfi_endproc
- 333              	.LFE242:
- 335              	 .section .text.XMC_UART_CH_GetStatusFlag,"ax",%progbits
- 336              	 .align 2
- 337              	 .thumb
- 338              	 .thumb_func
- 340              	XMC_UART_CH_GetStatusFlag:
- 341              	.LFB258:
- 342              	 .file 4 "C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/Battery_BMS_XMC4800-F144x2048_1/Libraries/XMCLib/inc/xmc_uart.h"
+ 361              	 .loc 3 2170 0
+ 362 001c 1846     	 mov r0,r3
+ 363 001e 0C37     	 adds r7,r7,#12
+ 364              	.LCFI39:
+ 365              	 .cfi_def_cfa_offset 4
+ 366 0020 BD46     	 mov sp,r7
+ 367              	.LCFI40:
+ 368              	 .cfi_def_cfa_register 13
+ 369              	 
+ 370 0022 5DF8047B 	 ldr r7,[sp],#4
+ 371              	.LCFI41:
+ 372              	 .cfi_restore 7
+ 373              	 .cfi_def_cfa_offset 0
+ 374 0026 7047     	 bx lr
+ 375              	 .cfi_endproc
+ 376              	.LFE242:
+ 378              	 .section .text.XMC_UART_CH_GetStatusFlag,"ax",%progbits
+ 379              	 .align 2
+ 380              	 .thumb
+ 381              	 .thumb_func
+ 383              	XMC_UART_CH_GetStatusFlag:
+ 384              	.LFB258:
+ 385              	 .file 4 "C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/Battery_BMS_XMC4800-F144x2048_1/Libraries/XMCLib/inc/xmc_uart.h"
    1:C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/Battery_BMS_XMC4800-F144x2048_1/Libraries/XMCLib/inc\xmc_uart.h **** /**
    2:C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/Battery_BMS_XMC4800-F144x2048_1/Libraries/XMCLib/inc\xmc_uart.h **** * @file xmc_uart.h
    3:C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/Battery_BMS_XMC4800-F144x2048_1/Libraries/XMCLib/inc\xmc_uart.h **** * @date 2020-12-05
@@ -5779,566 +5820,720 @@
  603:C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/Battery_BMS_XMC4800-F144x2048_1/Libraries/XMCLib/inc\xmc_uart.h ****  */
  604:C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/Battery_BMS_XMC4800-F144x2048_1/Libraries/XMCLib/inc\xmc_uart.h **** __STATIC_INLINE uint32_t XMC_UART_CH_GetStatusFlag(XMC_USIC_CH_t *const channel)
  605:C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/Battery_BMS_XMC4800-F144x2048_1/Libraries/XMCLib/inc\xmc_uart.h **** {
- 343              	 .loc 4 605 0
- 344              	 .cfi_startproc
- 345              	 
- 346              	 
- 347              	 
- 348 0000 80B4     	 push {r7}
- 349              	.LCFI36:
- 350              	 .cfi_def_cfa_offset 4
- 351              	 .cfi_offset 7,-4
- 352 0002 83B0     	 sub sp,sp,#12
- 353              	.LCFI37:
- 354              	 .cfi_def_cfa_offset 16
- 355 0004 00AF     	 add r7,sp,#0
- 356              	.LCFI38:
- 357              	 .cfi_def_cfa_register 7
- 358 0006 7860     	 str r0,[r7,#4]
+ 386              	 .loc 4 605 0
+ 387              	 .cfi_startproc
+ 388              	 
+ 389              	 
+ 390              	 
+ 391 0000 80B4     	 push {r7}
+ 392              	.LCFI42:
+ 393              	 .cfi_def_cfa_offset 4
+ 394              	 .cfi_offset 7,-4
+ 395 0002 83B0     	 sub sp,sp,#12
+ 396              	.LCFI43:
+ 397              	 .cfi_def_cfa_offset 16
+ 398 0004 00AF     	 add r7,sp,#0
+ 399              	.LCFI44:
+ 400              	 .cfi_def_cfa_register 7
+ 401 0006 7860     	 str r0,[r7,#4]
  606:C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/Battery_BMS_XMC4800-F144x2048_1/Libraries/XMCLib/inc\xmc_uart.h ****   return channel->PSR_ASCMode;
- 359              	 .loc 4 606 0
- 360 0008 7B68     	 ldr r3,[r7,#4]
- 361 000a 9B6C     	 ldr r3,[r3,#72]
+ 402              	 .loc 4 606 0
+ 403 0008 7B68     	 ldr r3,[r7,#4]
+ 404 000a 9B6C     	 ldr r3,[r3,#72]
  607:C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/Battery_BMS_XMC4800-F144x2048_1/Libraries/XMCLib/inc\xmc_uart.h **** }
- 362              	 .loc 4 607 0
- 363 000c 1846     	 mov r0,r3
- 364 000e 0C37     	 adds r7,r7,#12
- 365              	.LCFI39:
- 366              	 .cfi_def_cfa_offset 4
- 367 0010 BD46     	 mov sp,r7
- 368              	.LCFI40:
- 369              	 .cfi_def_cfa_register 13
- 370              	 
- 371 0012 5DF8047B 	 ldr r7,[sp],#4
- 372              	.LCFI41:
- 373              	 .cfi_restore 7
- 374              	 .cfi_def_cfa_offset 0
- 375 0016 7047     	 bx lr
- 376              	 .cfi_endproc
- 377              	.LFE258:
- 379              	 .section .text.delay_ms,"ax",%progbits
- 380              	 .align 2
- 381              	 .thumb
- 382              	 .thumb_func
- 384              	delay_ms:
- 385              	.LFB300:
- 386              	 .file 5 "../main.c"
+ 405              	 .loc 4 607 0
+ 406 000c 1846     	 mov r0,r3
+ 407 000e 0C37     	 adds r7,r7,#12
+ 408              	.LCFI45:
+ 409              	 .cfi_def_cfa_offset 4
+ 410 0010 BD46     	 mov sp,r7
+ 411              	.LCFI46:
+ 412              	 .cfi_def_cfa_register 13
+ 413              	 
+ 414 0012 5DF8047B 	 ldr r7,[sp],#4
+ 415              	.LCFI47:
+ 416              	 .cfi_restore 7
+ 417              	 .cfi_def_cfa_offset 0
+ 418 0016 7047     	 bx lr
+ 419              	 .cfi_endproc
+ 420              	.LFE258:
+ 422              	 .section .text.delay_ms,"ax",%progbits
+ 423              	 .align 2
+ 424              	 .thumb
+ 425              	 .thumb_func
+ 427              	delay_ms:
+ 428              	.LFB300:
+ 429              	 .file 5 "../main.c"
    1:../main.c     **** /*
    2:../main.c     ****  * main.c — BMS RS485 diagnostic
    3:../main.c     ****  *
    4:../main.c     ****  * Sends one analog-read request every 2 s, collects the BMS response
    5:../main.c     ****  * into a buffer without any printf inside the receive loop (avoids
-   6:../main.c     ****  * RXFIFO overflow), then prints all received bytes via SWO.
+   6:../main.c     ****  * RXFIFO overflow), then prints all received bytes and decoded fields via SWO.
    7:../main.c     ****  *
-   8:../main.c     ****  * rs485_send flushes the TX echo only after a 10 ms guard delay so
-   9:../main.c     ****  * that the THVD1406DR auto-direction turnaround completes before we
-  10:../main.c     ****  * listen for the BMS reply.
+   8:../main.c     ****  * rs485_send flushes RXFIFO before TX (clears stale bytes from the previous
+   9:../main.c     ****  * cycle) and immediately after TRANSMISSION_IDLE (discards the TX echo before
+  10:../main.c     ****  * the BMS has had time to start its reply) so only the BMS response is collected.
   11:../main.c     ****  *
-  12:../main.c     ****  * If BMS shows "(none)" → check A/B polarity and frame format.
-  13:../main.c     ****  */
-  14:../main.c     **** 
-  15:../main.c     **** #include "DAVE.h"
-  16:../main.c     **** #include "xmc_uart.h"
+  12:../main.c     ****  * The decoder scans raw[] for the first '~' that parses successfully so that
+  13:../main.c     ****  * stray noise bytes before the frame do not cause a framing error.
+  14:../main.c     ****  *
+  15:../main.c     ****  * If BMS shows "(none)" → check A/B polarity, bias resistors, and frame format.
+  16:../main.c     ****  */
   17:../main.c     **** 
-  18:../main.c     **** extern void initialise_monitor_handles(void);
-  19:../main.c     **** 
-  20:../main.c     **** #define BMS_CH (UART_0.channel)
+  18:../main.c     **** #include "DAVE.h"
+  19:../main.c     **** #include "xmc_uart.h"
+  20:../main.c     **** #include "scud_bms.h"
   21:../main.c     **** 
-  22:../main.c     **** /*
-  23:../main.c     ****  * Busy-wait. At 144 MHz the inner loop body is ~5 cycles,
-  24:../main.c     ****  * so 28800 iterations ≈ 1 ms.
-  25:../main.c     ****  */
-  26:../main.c     **** static void delay_ms(uint32_t ms)
-  27:../main.c     **** {
- 387              	 .loc 5 27 0
- 388              	 .cfi_startproc
- 389              	 
- 390              	 
- 391              	 
- 392 0000 80B4     	 push {r7}
- 393              	.LCFI42:
- 394              	 .cfi_def_cfa_offset 4
- 395              	 .cfi_offset 7,-4
- 396 0002 85B0     	 sub sp,sp,#20
- 397              	.LCFI43:
- 398              	 .cfi_def_cfa_offset 24
- 399 0004 00AF     	 add r7,sp,#0
- 400              	.LCFI44:
- 401              	 .cfi_def_cfa_register 7
- 402 0006 7860     	 str r0,[r7,#4]
- 403              	.LBB10:
-  28:../main.c     ****     for (volatile uint32_t i = 0; i < ms * 28800U; i++) {}
- 404              	 .loc 5 28 0
- 405 0008 0023     	 movs r3,#0
- 406 000a FB60     	 str r3,[r7,#12]
- 407 000c 02E0     	 b .L17
- 408              	.L18:
- 409              	 .loc 5 28 0 is_stmt 0 discriminator 3
- 410 000e FB68     	 ldr r3,[r7,#12]
- 411 0010 0133     	 adds r3,r3,#1
- 412 0012 FB60     	 str r3,[r7,#12]
- 413              	.L17:
- 414              	 .loc 5 28 0 discriminator 1
- 415 0014 7B68     	 ldr r3,[r7,#4]
- 416 0016 4FF4E142 	 mov r2,#28800
- 417 001a 02FB03F2 	 mul r2,r2,r3
- 418 001e FB68     	 ldr r3,[r7,#12]
- 419 0020 9A42     	 cmp r2,r3
- 420 0022 F4D8     	 bhi .L18
- 421              	.LBE10:
-  29:../main.c     **** }
- 422              	 .loc 5 29 0 is_stmt 1
- 423 0024 1437     	 adds r7,r7,#20
- 424              	.LCFI45:
- 425              	 .cfi_def_cfa_offset 4
- 426 0026 BD46     	 mov sp,r7
- 427              	.LCFI46:
- 428              	 .cfi_def_cfa_register 13
- 429              	 
- 430 0028 5DF8047B 	 ldr r7,[sp],#4
- 431              	.LCFI47:
- 432              	 .cfi_restore 7
- 433              	 .cfi_def_cfa_offset 0
- 434 002c 7047     	 bx lr
- 435              	 .cfi_endproc
- 436              	.LFE300:
- 438 002e 00BF     	 .section .text.rs485_send,"ax",%progbits
- 439              	 .align 2
- 440              	 .thumb
- 441              	 .thumb_func
- 443              	rs485_send:
- 444              	.LFB301:
-  30:../main.c     **** 
-  31:../main.c     **** /*
-  32:../main.c     ****  * Transmit buf[0..len-1] over RS485.
-  33:../main.c     ****  * Blocks until the USIC shift register has finished the last byte so that
-  34:../main.c     ****  * all echo bytes have arrived in RXFIFO before the caller reads them.
-  35:../main.c     ****  */
-  36:../main.c     **** static void rs485_send(const uint8_t *buf, uint32_t len)
-  37:../main.c     **** {
- 445              	 .loc 5 37 0
- 446              	 .cfi_startproc
- 447              	 
- 448              	 
- 449 0000 80B5     	 push {r7,lr}
- 450              	.LCFI48:
- 451              	 .cfi_def_cfa_offset 8
- 452              	 .cfi_offset 7,-8
- 453              	 .cfi_offset 14,-4
- 454 0002 84B0     	 sub sp,sp,#16
- 455              	.LCFI49:
- 456              	 .cfi_def_cfa_offset 24
- 457 0004 00AF     	 add r7,sp,#0
- 458              	.LCFI50:
- 459              	 .cfi_def_cfa_register 7
- 460 0006 7860     	 str r0,[r7,#4]
- 461 0008 3960     	 str r1,[r7]
- 462              	.LBB11:
-  38:../main.c     ****     for (uint32_t i = 0; i < len; i++) {
- 463              	 .loc 5 38 0
- 464 000a 0023     	 movs r3,#0
- 465 000c FB60     	 str r3,[r7,#12]
- 466 000e 16E0     	 b .L20
- 467              	.L22:
-  39:../main.c     ****         while (XMC_USIC_CH_TXFIFO_IsFull(BMS_CH)) {}
- 468              	 .loc 5 39 0
- 469 0010 00BF     	 nop
- 470              	.L21:
- 471              	 .loc 5 39 0 is_stmt 0 discriminator 1
- 472 0012 1A4B     	 ldr r3,.L25
- 473 0014 1B68     	 ldr r3,[r3]
- 474 0016 1846     	 mov r0,r3
- 475 0018 FFF7FEFF 	 bl XMC_USIC_CH_TXFIFO_IsFull
- 476 001c 0346     	 mov r3,r0
- 477 001e 002B     	 cmp r3,#0
- 478 0020 F7D1     	 bne .L21
-  40:../main.c     ****         XMC_USIC_CH_TXFIFO_PutData(BMS_CH, (uint16_t)buf[i]);
- 479              	 .loc 5 40 0 is_stmt 1 discriminator 2
- 480 0022 164B     	 ldr r3,.L25
- 481 0024 1968     	 ldr r1,[r3]
- 482 0026 7A68     	 ldr r2,[r7,#4]
- 483 0028 FB68     	 ldr r3,[r7,#12]
- 484 002a 1344     	 add r3,r3,r2
- 485 002c 1B78     	 ldrb r3,[r3]
- 486 002e 9BB2     	 uxth r3,r3
- 487 0030 0846     	 mov r0,r1
- 488 0032 1946     	 mov r1,r3
- 489 0034 FFF7FEFF 	 bl XMC_USIC_CH_TXFIFO_PutData
-  38:../main.c     ****     for (uint32_t i = 0; i < len; i++) {
- 490              	 .loc 5 38 0 discriminator 2
- 491 0038 FB68     	 ldr r3,[r7,#12]
- 492 003a 0133     	 adds r3,r3,#1
- 493 003c FB60     	 str r3,[r7,#12]
- 494              	.L20:
-  38:../main.c     ****     for (uint32_t i = 0; i < len; i++) {
- 495              	 .loc 5 38 0 is_stmt 0 discriminator 1
- 496 003e FA68     	 ldr r2,[r7,#12]
- 497 0040 3B68     	 ldr r3,[r7]
- 498 0042 9A42     	 cmp r2,r3
- 499 0044 E4D3     	 bcc .L22
- 500              	.LBE11:
-  41:../main.c     ****     }
-  42:../main.c     ****     while (!XMC_USIC_CH_TXFIFO_IsEmpty(BMS_CH)) {}
- 501              	 .loc 5 42 0 is_stmt 1
- 502 0046 00BF     	 nop
- 503              	.L23:
- 504              	 .loc 5 42 0 is_stmt 0 discriminator 1
- 505 0048 0C4B     	 ldr r3,.L25
- 506 004a 1B68     	 ldr r3,[r3]
- 507 004c 1846     	 mov r0,r3
- 508 004e FFF7FEFF 	 bl XMC_USIC_CH_TXFIFO_IsEmpty
- 509 0052 0346     	 mov r3,r0
- 510 0054 83F00103 	 eor r3,r3,#1
- 511 0058 DBB2     	 uxtb r3,r3
- 512 005a 002B     	 cmp r3,#0
- 513 005c F4D1     	 bne .L23
-  43:../main.c     ****     while (!(XMC_UART_CH_GetStatusFlag(BMS_CH) & XMC_UART_CH_STATUS_FLAG_TRANSMISSION_IDLE)) {}
- 514              	 .loc 5 43 0 is_stmt 1
- 515 005e 00BF     	 nop
- 516              	.L24:
- 517              	 .loc 5 43 0 is_stmt 0 discriminator 1
- 518 0060 064B     	 ldr r3,.L25
- 519 0062 1B68     	 ldr r3,[r3]
- 520 0064 1846     	 mov r0,r3
- 521 0066 FFF7FEFF 	 bl XMC_UART_CH_GetStatusFlag
- 522 006a 0346     	 mov r3,r0
- 523 006c 03F00103 	 and r3,r3,#1
- 524 0070 002B     	 cmp r3,#0
- 525 0072 F5D0     	 beq .L24
-  44:../main.c     **** }
- 526              	 .loc 5 44 0 is_stmt 1
- 527 0074 1037     	 adds r7,r7,#16
- 528              	.LCFI51:
- 529              	 .cfi_def_cfa_offset 8
- 530 0076 BD46     	 mov sp,r7
- 531              	.LCFI52:
- 532              	 .cfi_def_cfa_register 13
- 533              	 
- 534 0078 80BD     	 pop {r7,pc}
- 535              	.L26:
- 536 007a 00BF     	 .align 2
- 537              	.L25:
- 538 007c 00000000 	 .word UART_0
- 539              	 .cfi_endproc
- 540              	.LFE301:
- 542              	 .section .rodata
- 543              	 .align 2
- 544              	.LC0:
- 545 0000 424D5320 	 .ascii "BMS RS485 diagnostic (115200 8N1, USIC1_CH0 P2.14/P"
- 545      52533438 
- 545      35206469 
- 545      61676E6F 
- 545      73746963 
- 546 0033 322E3135 	 .ascii "2.15)\015\000"
- 546      290D00
- 547 003a 0000     	 .align 2
- 548              	.LC1:
- 549 003c 54582020 	 .ascii "TX  (%u bytes):\000"
- 549      28257520 
- 549      62797465 
- 549      73293A00 
- 550              	 .align 2
- 551              	.LC2:
- 552 004c 20253032 	 .ascii " %02X\000"
- 552      5800
- 553 0052 0000     	 .align 2
- 554              	.LC3:
- 555 0054 0D00     	 .ascii "\015\000"
- 556 0056 0000     	 .align 2
- 557              	.LC4:
- 558 0058 52415720 	 .ascii "RAW  (%u bytes):\000"
- 558      20282575 
- 558      20627974 
- 558      6573293A 
- 558      00
- 559 0069 000000   	 .align 2
- 560              	.LC5:
- 561 006c 20286E6F 	 .ascii " (none)\000"
- 561      6E652900 
- 562              	 .align 2
- 563              	.LC6:
- 564 0074 0D0A0D00 	 .ascii "\015\012\015\000"
- 565              	 .section .text.main,"ax",%progbits
- 566              	 .align 2
- 567              	 .global main
- 568              	 .thumb
- 569              	 .thumb_func
- 571              	main:
- 572              	.LFB302:
-  45:../main.c     **** 
-  46:../main.c     **** int main(void)
-  47:../main.c     **** {
- 573              	 .loc 5 47 0
- 574              	 .cfi_startproc
- 575              	 
- 576              	 
- 577 0000 90B5     	 push {r4,r7,lr}
- 578              	.LCFI53:
- 579              	 .cfi_def_cfa_offset 12
- 580              	 .cfi_offset 4,-12
- 581              	 .cfi_offset 7,-8
- 582              	 .cfi_offset 14,-4
- 583 0002 C5B0     	 sub sp,sp,#276
- 584              	.LCFI54:
- 585              	 .cfi_def_cfa_offset 288
- 586 0004 00AF     	 add r7,sp,#0
- 587              	.LCFI55:
- 588              	 .cfi_def_cfa_register 7
-  48:../main.c     ****     DAVE_Init();
- 589              	 .loc 5 48 0
- 590 0006 FFF7FEFF 	 bl DAVE_Init
-  49:../main.c     ****     initialise_monitor_handles();
- 591              	 .loc 5 49 0
- 592 000a FFF7FEFF 	 bl initialise_monitor_handles
-  50:../main.c     **** 
-  51:../main.c     ****     /* Polling mode — disable the DAVE-enabled FIFO interrupts. */
-  52:../main.c     ****     NVIC_DisableIRQ((IRQn_Type)91); /* USIC1 SR1 — TX FIFO */
- 593              	 .loc 5 52 0
- 594 000e 5B20     	 movs r0,#91
- 595 0010 FFF7FEFF 	 bl __NVIC_DisableIRQ
-  53:../main.c     ****     NVIC_DisableIRQ((IRQn_Type)90); /* USIC1 SR0 — RX FIFO */
- 596              	 .loc 5 53 0
- 597 0014 5A20     	 movs r0,#90
- 598 0016 FFF7FEFF 	 bl __NVIC_DisableIRQ
-  54:../main.c     **** 
-  55:../main.c     ****     XMC_DEBUG("BMS RS485 diagnostic (115200 8N1, USIC1_CH0 P2.14/P2.15)\r\n");
- 599              	 .loc 5 55 0
- 600 001a 4048     	 ldr r0,.L38
- 601 001c FFF7FEFF 	 bl puts
- 602              	.L37:
- 603              	.LBB12:
-  56:../main.c     **** 
-  57:../main.c     ****     /*
-  58:../main.c     ****      * Analog read request frame (hand-verified against scud_bms.c build_frame):
-  59:../main.c     ****      *   ~ VER  ADR  CID1 CID2 LENGTH INFO CHKSUM \r
-  60:../main.c     ****      *   ~ 22   00   4A   42   E002   01   FD29   \r
-  61:../main.c     ****      *
-  62:../main.c     ****      * CHKSUM = two's-complement of ASCII body bytes = 0xFD29.
-  63:../main.c     ****      */
-  64:../main.c     ****     static const uint8_t req[] = {
-  65:../main.c     ****         '~','2','2','0','0','4','A','4','2',
-  66:../main.c     ****         'E','0','0','2','0','1','F','D','2','9','\r'
-  67:../main.c     ****     };
-  68:../main.c     **** 
-  69:../main.c     ****     while (1)
-  70:../main.c     ****     {
-  71:../main.c     ****         /* --- 1. Print the frame we are about to send --- */
-  72:../main.c     ****         XMC_DEBUG("TX  (%u bytes):", (unsigned)sizeof(req));
- 604              	 .loc 5 72 0
- 605 0020 3F48     	 ldr r0,.L38+4
- 606 0022 1421     	 movs r1,#20
- 607 0024 FFF7FEFF 	 bl printf
- 608              	.LBB13:
-  73:../main.c     ****         for (uint32_t i = 0; i < sizeof(req); i++)
- 609              	 .loc 5 73 0
- 610 0028 0023     	 movs r3,#0
- 611 002a C7F80C31 	 str r3,[r7,#268]
- 612 002e 0DE0     	 b .L28
- 613              	.L29:
-  74:../main.c     ****             XMC_DEBUG(" %02X", (unsigned)req[i]);
- 614              	 .loc 5 74 0 discriminator 3
- 615 0030 3C4A     	 ldr r2,.L38+8
- 616 0032 D7F80C31 	 ldr r3,[r7,#268]
- 617 0036 1344     	 add r3,r3,r2
- 618 0038 1B78     	 ldrb r3,[r3]
- 619 003a 3B48     	 ldr r0,.L38+12
- 620 003c 1946     	 mov r1,r3
- 621 003e FFF7FEFF 	 bl printf
-  73:../main.c     ****         for (uint32_t i = 0; i < sizeof(req); i++)
- 622              	 .loc 5 73 0 discriminator 3
- 623 0042 D7F80C31 	 ldr r3,[r7,#268]
- 624 0046 0133     	 adds r3,r3,#1
- 625 0048 C7F80C31 	 str r3,[r7,#268]
- 626              	.L28:
-  73:../main.c     ****         for (uint32_t i = 0; i < sizeof(req); i++)
- 627              	 .loc 5 73 0 is_stmt 0 discriminator 1
- 628 004c D7F80C31 	 ldr r3,[r7,#268]
- 629 0050 132B     	 cmp r3,#19
- 630 0052 EDD9     	 bls .L29
- 631              	.LBE13:
-  75:../main.c     ****         XMC_DEBUG("\r\n");
- 632              	 .loc 5 75 0 is_stmt 1
- 633 0054 3548     	 ldr r0,.L38+16
- 634 0056 FFF7FEFF 	 bl puts
-  76:../main.c     **** 
-  77:../main.c     ****         rs485_send(req, sizeof(req));
- 635              	 .loc 5 77 0
- 636 005a 3248     	 ldr r0,.L38+8
- 637 005c 1421     	 movs r1,#20
- 638 005e FFF7FEFF 	 bl rs485_send
+  22:../main.c     **** extern void initialise_monitor_handles(void);
+  23:../main.c     **** 
+  24:../main.c     **** #define BMS_CH (UART_0.channel)
+  25:../main.c     **** 
+  26:../main.c     **** /*
+  27:../main.c     ****  * Busy-wait. At 144 MHz the inner loop body is ~5 cycles,
+  28:../main.c     ****  * so 28800 iterations ≈ 1 ms.
+  29:../main.c     ****  */
+  30:../main.c     **** static void delay_ms(uint32_t ms)
+  31:../main.c     **** {
+ 430              	 .loc 5 31 0
+ 431              	 .cfi_startproc
+ 432              	 
+ 433              	 
+ 434              	 
+ 435 0000 80B4     	 push {r7}
+ 436              	.LCFI48:
+ 437              	 .cfi_def_cfa_offset 4
+ 438              	 .cfi_offset 7,-4
+ 439 0002 85B0     	 sub sp,sp,#20
+ 440              	.LCFI49:
+ 441              	 .cfi_def_cfa_offset 24
+ 442 0004 00AF     	 add r7,sp,#0
+ 443              	.LCFI50:
+ 444              	 .cfi_def_cfa_register 7
+ 445 0006 7860     	 str r0,[r7,#4]
+ 446              	.LBB10:
+  32:../main.c     ****     for (volatile uint32_t i = 0; i < ms * 28800U; i++) {}
+ 447              	 .loc 5 32 0
+ 448 0008 0023     	 movs r3,#0
+ 449 000a FB60     	 str r3,[r7,#12]
+ 450 000c 02E0     	 b .L18
+ 451              	.L19:
+ 452              	 .loc 5 32 0 is_stmt 0 discriminator 3
+ 453 000e FB68     	 ldr r3,[r7,#12]
+ 454 0010 0133     	 adds r3,r3,#1
+ 455 0012 FB60     	 str r3,[r7,#12]
+ 456              	.L18:
+ 457              	 .loc 5 32 0 discriminator 1
+ 458 0014 7B68     	 ldr r3,[r7,#4]
+ 459 0016 4FF4E142 	 mov r2,#28800
+ 460 001a 02FB03F2 	 mul r2,r2,r3
+ 461 001e FB68     	 ldr r3,[r7,#12]
+ 462 0020 9A42     	 cmp r2,r3
+ 463 0022 F4D8     	 bhi .L19
+ 464              	.LBE10:
+  33:../main.c     **** }
+ 465              	 .loc 5 33 0 is_stmt 1
+ 466 0024 1437     	 adds r7,r7,#20
+ 467              	.LCFI51:
+ 468              	 .cfi_def_cfa_offset 4
+ 469 0026 BD46     	 mov sp,r7
+ 470              	.LCFI52:
+ 471              	 .cfi_def_cfa_register 13
+ 472              	 
+ 473 0028 5DF8047B 	 ldr r7,[sp],#4
+ 474              	.LCFI53:
+ 475              	 .cfi_restore 7
+ 476              	 .cfi_def_cfa_offset 0
+ 477 002c 7047     	 bx lr
+ 478              	 .cfi_endproc
+ 479              	.LFE300:
+ 481 002e 00BF     	 .section .text.rs485_send,"ax",%progbits
+ 482              	 .align 2
+ 483              	 .thumb
+ 484              	 .thumb_func
+ 486              	rs485_send:
+ 487              	.LFB301:
+  34:../main.c     **** 
+  35:../main.c     **** /*
+  36:../main.c     ****  * Transmit buf[0..len-1] over RS485.
+  37:../main.c     ****  * Blocks until the USIC shift register has finished the last byte so that
+  38:../main.c     ****  * all echo bytes have arrived in RXFIFO before the caller reads them.
+  39:../main.c     ****  */
+  40:../main.c     **** static void rs485_send(const uint8_t *buf, uint32_t len)
+  41:../main.c     **** {
+ 488              	 .loc 5 41 0
+ 489              	 .cfi_startproc
+ 490              	 
+ 491              	 
+ 492 0000 80B5     	 push {r7,lr}
+ 493              	.LCFI54:
+ 494              	 .cfi_def_cfa_offset 8
+ 495              	 .cfi_offset 7,-8
+ 496              	 .cfi_offset 14,-4
+ 497 0002 84B0     	 sub sp,sp,#16
+ 498              	.LCFI55:
+ 499              	 .cfi_def_cfa_offset 24
+ 500 0004 00AF     	 add r7,sp,#0
+ 501              	.LCFI56:
+ 502              	 .cfi_def_cfa_register 7
+ 503 0006 7860     	 str r0,[r7,#4]
+ 504 0008 3960     	 str r1,[r7]
+  42:../main.c     ****     XMC_USIC_CH_RXFIFO_Flush(BMS_CH); /* discard stale bytes from previous cycle */
+ 505              	 .loc 5 42 0
+ 506 000a 214B     	 ldr r3,.L26
+ 507 000c 1B68     	 ldr r3,[r3]
+ 508 000e 1846     	 mov r0,r3
+ 509 0010 FFF7FEFF 	 bl XMC_USIC_CH_RXFIFO_Flush
+ 510              	.LBB11:
+  43:../main.c     **** 
+  44:../main.c     ****     for (uint32_t i = 0; i < len; i++) {
+ 511              	 .loc 5 44 0
+ 512 0014 0023     	 movs r3,#0
+ 513 0016 FB60     	 str r3,[r7,#12]
+ 514 0018 16E0     	 b .L21
+ 515              	.L23:
+  45:../main.c     ****         while (XMC_USIC_CH_TXFIFO_IsFull(BMS_CH)) {}
+ 516              	 .loc 5 45 0
+ 517 001a 00BF     	 nop
+ 518              	.L22:
+ 519              	 .loc 5 45 0 is_stmt 0 discriminator 1
+ 520 001c 1C4B     	 ldr r3,.L26
+ 521 001e 1B68     	 ldr r3,[r3]
+ 522 0020 1846     	 mov r0,r3
+ 523 0022 FFF7FEFF 	 bl XMC_USIC_CH_TXFIFO_IsFull
+ 524 0026 0346     	 mov r3,r0
+ 525 0028 002B     	 cmp r3,#0
+ 526 002a F7D1     	 bne .L22
+  46:../main.c     ****         XMC_USIC_CH_TXFIFO_PutData(BMS_CH, (uint16_t)buf[i]);
+ 527              	 .loc 5 46 0 is_stmt 1 discriminator 2
+ 528 002c 184B     	 ldr r3,.L26
+ 529 002e 1968     	 ldr r1,[r3]
+ 530 0030 7A68     	 ldr r2,[r7,#4]
+ 531 0032 FB68     	 ldr r3,[r7,#12]
+ 532 0034 1344     	 add r3,r3,r2
+ 533 0036 1B78     	 ldrb r3,[r3]
+ 534 0038 9BB2     	 uxth r3,r3
+ 535 003a 0846     	 mov r0,r1
+ 536 003c 1946     	 mov r1,r3
+ 537 003e FFF7FEFF 	 bl XMC_USIC_CH_TXFIFO_PutData
+  44:../main.c     ****         while (XMC_USIC_CH_TXFIFO_IsFull(BMS_CH)) {}
+ 538              	 .loc 5 44 0 discriminator 2
+ 539 0042 FB68     	 ldr r3,[r7,#12]
+ 540 0044 0133     	 adds r3,r3,#1
+ 541 0046 FB60     	 str r3,[r7,#12]
+ 542              	.L21:
+  44:../main.c     ****         while (XMC_USIC_CH_TXFIFO_IsFull(BMS_CH)) {}
+ 543              	 .loc 5 44 0 is_stmt 0 discriminator 1
+ 544 0048 FA68     	 ldr r2,[r7,#12]
+ 545 004a 3B68     	 ldr r3,[r7]
+ 546 004c 9A42     	 cmp r2,r3
+ 547 004e E4D3     	 bcc .L23
+ 548              	.LBE11:
+  47:../main.c     ****     }
+  48:../main.c     ****     while (!XMC_USIC_CH_TXFIFO_IsEmpty(BMS_CH)) {}
+ 549              	 .loc 5 48 0 is_stmt 1
+ 550 0050 00BF     	 nop
+ 551              	.L24:
+ 552              	 .loc 5 48 0 is_stmt 0 discriminator 1
+ 553 0052 0F4B     	 ldr r3,.L26
+ 554 0054 1B68     	 ldr r3,[r3]
+ 555 0056 1846     	 mov r0,r3
+ 556 0058 FFF7FEFF 	 bl XMC_USIC_CH_TXFIFO_IsEmpty
+ 557 005c 0346     	 mov r3,r0
+ 558 005e 83F00103 	 eor r3,r3,#1
+ 559 0062 DBB2     	 uxtb r3,r3
+ 560 0064 002B     	 cmp r3,#0
+ 561 0066 F4D1     	 bne .L24
+  49:../main.c     ****     while (!(XMC_UART_CH_GetStatusFlag(BMS_CH) & XMC_UART_CH_STATUS_FLAG_TRANSMISSION_IDLE)) {}
+ 562              	 .loc 5 49 0 is_stmt 1
+ 563 0068 00BF     	 nop
+ 564              	.L25:
+ 565              	 .loc 5 49 0 is_stmt 0 discriminator 1
+ 566 006a 094B     	 ldr r3,.L26
+ 567 006c 1B68     	 ldr r3,[r3]
+ 568 006e 1846     	 mov r0,r3
+ 569 0070 FFF7FEFF 	 bl XMC_UART_CH_GetStatusFlag
+ 570 0074 0346     	 mov r3,r0
+ 571 0076 03F00103 	 and r3,r3,#1
+ 572 007a 002B     	 cmp r3,#0
+ 573 007c F5D0     	 beq .L25
+  50:../main.c     ****     /* Flush echo immediately — all echo bytes are in RXFIFO by TRANSMISSION_IDLE,
+  51:../main.c     ****      * and the BMS has not yet started its reply (it still needs to process the frame).
+  52:../main.c     ****      * No delay here: a delay risks eating the leading bytes of the BMS response. */
+  53:../main.c     ****     XMC_USIC_CH_RXFIFO_Flush(BMS_CH);
+ 574              	 .loc 5 53 0 is_stmt 1
+ 575 007e 044B     	 ldr r3,.L26
+ 576 0080 1B68     	 ldr r3,[r3]
+ 577 0082 1846     	 mov r0,r3
+ 578 0084 FFF7FEFF 	 bl XMC_USIC_CH_RXFIFO_Flush
+  54:../main.c     **** }
+ 579              	 .loc 5 54 0
+ 580 0088 1037     	 adds r7,r7,#16
+ 581              	.LCFI57:
+ 582              	 .cfi_def_cfa_offset 8
+ 583 008a BD46     	 mov sp,r7
+ 584              	.LCFI58:
+ 585              	 .cfi_def_cfa_register 13
+ 586              	 
+ 587 008c 80BD     	 pop {r7,pc}
+ 588              	.L27:
+ 589 008e 00BF     	 .align 2
+ 590              	.L26:
+ 591 0090 00000000 	 .word UART_0
+ 592              	 .cfi_endproc
+ 593              	.LFE301:
+ 595              	 .section .rodata
+ 596              	 .align 2
+ 597              	.LC0:
+ 598 0000 424D5320 	 .ascii "BMS RS485 diagnostic (115200 8N1, USIC1_CH0 P2.14/P"
+ 598      52533438 
+ 598      35206469 
+ 598      61676E6F 
+ 598      73746963 
+ 599 0033 322E3135 	 .ascii "2.15)\015\000"
+ 599      290D00
+ 600 003a 0000     	 .align 2
+ 601              	.LC1:
+ 602 003c 54582020 	 .ascii "TX  (%u bytes):\000"
+ 602      28257520 
+ 602      62797465 
+ 602      73293A00 
+ 603              	 .align 2
+ 604              	.LC2:
+ 605 004c 20253032 	 .ascii " %02X\000"
+ 605      5800
+ 606 0052 0000     	 .align 2
+ 607              	.LC3:
+ 608 0054 0D00     	 .ascii "\015\000"
+ 609 0056 0000     	 .align 2
+ 610              	.LC4:
+ 611 0058 52415720 	 .ascii "RAW  (%u bytes):\000"
+ 611      20282575 
+ 611      20627974 
+ 611      6573293A 
+ 611      00
+ 612 0069 000000   	 .align 2
+ 613              	.LC5:
+ 614 006c 20286E6F 	 .ascii " (none)\000"
+ 614      6E652900 
+ 615              	 .align 2
+ 616              	.LC6:
+ 617 0074 28667261 	 .ascii "(frame at offset %u, %u noise byte(s) skipped)\015\012"
+ 617      6D652061 
+ 617      74206F66 
+ 617      66736574 
+ 617      2025752C 
+ 618 00a4 00       	 .ascii "\000"
+ 619 00a5 000000   	 .align 2
+ 620              	.LC7:
+ 621 00a8 4465636F 	 .ascii "Decode: %s\015\012\000"
+ 621      64653A20 
+ 621      25730D0A 
+ 621      00
+ 622 00b5 000000   	 .section .text.main,"ax",%progbits
+ 623              	 .align 2
+ 624              	 .global main
+ 625              	 .thumb
+ 626              	 .thumb_func
+ 628              	main:
+ 629              	.LFB302:
+  55:../main.c     **** 
+  56:../main.c     **** int main(void)
+  57:../main.c     **** {
+ 630              	 .loc 5 57 0
+ 631              	 .cfi_startproc
+ 632              	 
+ 633              	 
+ 634 0000 90B5     	 push {r4,r7,lr}
+ 635              	.LCFI59:
+ 636              	 .cfi_def_cfa_offset 12
+ 637              	 .cfi_offset 4,-12
+ 638              	 .cfi_offset 7,-8
+ 639              	 .cfi_offset 14,-4
+ 640 0002 EBB0     	 sub sp,sp,#428
+ 641              	.LCFI60:
+ 642              	 .cfi_def_cfa_offset 440
+ 643 0004 00AF     	 add r7,sp,#0
+ 644              	.LCFI61:
+ 645              	 .cfi_def_cfa_register 7
+  58:../main.c     ****     DAVE_Init();
+ 646              	 .loc 5 58 0
+ 647 0006 FFF7FEFF 	 bl DAVE_Init
+  59:../main.c     ****     initialise_monitor_handles();
+ 648              	 .loc 5 59 0
+ 649 000a FFF7FEFF 	 bl initialise_monitor_handles
+  60:../main.c     **** 
+  61:../main.c     ****     /* Polling mode — disable the DAVE-enabled FIFO interrupts. */
+  62:../main.c     ****     NVIC_DisableIRQ((IRQn_Type)91); /* USIC1 SR1 — TX FIFO */
+ 650              	 .loc 5 62 0
+ 651 000e 5B20     	 movs r0,#91
+ 652 0010 FFF7FEFF 	 bl __NVIC_DisableIRQ
+  63:../main.c     ****     NVIC_DisableIRQ((IRQn_Type)90); /* USIC1 SR0 — RX FIFO */
+ 653              	 .loc 5 63 0
+ 654 0014 5A20     	 movs r0,#90
+ 655 0016 FFF7FEFF 	 bl __NVIC_DisableIRQ
+  64:../main.c     **** 
+  65:../main.c     ****     XMC_DEBUG("BMS RS485 diagnostic (115200 8N1, USIC1_CH0 P2.14/P2.15)\r\n");
+ 656              	 .loc 5 65 0
+ 657 001a 7248     	 ldr r0,.L46
+ 658 001c FFF7FEFF 	 bl puts
+ 659              	.L45:
+ 660              	.LBB12:
+  66:../main.c     **** 
+  67:../main.c     ****     /*
+  68:../main.c     ****      * Analog read request frame (hand-verified against scud_bms.c build_frame):
+  69:../main.c     ****      *   ~ VER  ADR  CID1 CID2 LENGTH INFO CHKSUM \r
+  70:../main.c     ****      *   ~ 22   00   4A   42   E002   01   FD29   \r
+  71:../main.c     ****      *
+  72:../main.c     ****      * CHKSUM = two's-complement of ASCII body bytes = 0xFD29.
+  73:../main.c     ****      */
+  74:../main.c     ****     static const uint8_t req[] = {
+  75:../main.c     ****         '~','2','2','0','0','4','A','4','2',
+  76:../main.c     ****         'E','0','0','2','0','1','F','D','2','9','\r'
+  77:../main.c     ****     };
   78:../main.c     **** 
-  79:../main.c     ****         /* --- 2. Collect everything: echo bytes then BMS response --- */
-  80:../main.c     ****         uint8_t  raw[256];
-  81:../main.c     ****         uint32_t raw_n = 0;
- 639              	 .loc 5 81 0
- 640 0062 0023     	 movs r3,#0
- 641 0064 C7F80831 	 str r3,[r7,#264]
-  82:../main.c     ****         uint32_t ticks = 500U * 28800U;   /* initial wait ~500 ms */
- 642              	 .loc 5 82 0
- 643 0068 314B     	 ldr r3,.L38+20
- 644 006a C7F80431 	 str r3,[r7,#260]
-  83:../main.c     ****         while (ticks > 0 && raw_n < sizeof(raw)) {
- 645              	 .loc 5 83 0
- 646 006e 21E0     	 b .L30
- 647              	.L33:
-  84:../main.c     ****             if (!XMC_USIC_CH_RXFIFO_IsEmpty(BMS_CH)) {
- 648              	 .loc 5 84 0
- 649 0070 304B     	 ldr r3,.L38+24
- 650 0072 1B68     	 ldr r3,[r3]
- 651 0074 1846     	 mov r0,r3
- 652 0076 FFF7FEFF 	 bl XMC_USIC_CH_RXFIFO_IsEmpty
- 653 007a 0346     	 mov r3,r0
- 654 007c 83F00103 	 eor r3,r3,#1
- 655 0080 DBB2     	 uxtb r3,r3
- 656 0082 002B     	 cmp r3,#0
- 657 0084 11D0     	 beq .L31
-  85:../main.c     ****                 raw[raw_n++] = (uint8_t)XMC_USIC_CH_RXFIFO_GetData(BMS_CH);
- 658              	 .loc 5 85 0
- 659 0086 D7F80841 	 ldr r4,[r7,#264]
- 660 008a 631C     	 adds r3,r4,#1
- 661 008c C7F80831 	 str r3,[r7,#264]
- 662 0090 284B     	 ldr r3,.L38+24
- 663 0092 1B68     	 ldr r3,[r3]
- 664 0094 1846     	 mov r0,r3
- 665 0096 FFF7FEFF 	 bl XMC_USIC_CH_RXFIFO_GetData
- 666 009a 0346     	 mov r3,r0
- 667 009c DAB2     	 uxtb r2,r3
- 668 009e 3B46     	 mov r3,r7
- 669 00a0 1A55     	 strb r2,[r3,r4]
-  86:../main.c     ****                 ticks = 50U * 28800U;     /* extend ~50 ms after each byte */
- 670              	 .loc 5 86 0
- 671 00a2 254B     	 ldr r3,.L38+28
- 672 00a4 C7F80431 	 str r3,[r7,#260]
- 673 00a8 04E0     	 b .L30
- 674              	.L31:
-  87:../main.c     ****             } else {
-  88:../main.c     ****                 ticks--;
- 675              	 .loc 5 88 0
- 676 00aa D7F80431 	 ldr r3,[r7,#260]
- 677 00ae 013B     	 subs r3,r3,#1
- 678 00b0 C7F80431 	 str r3,[r7,#260]
- 679              	.L30:
-  83:../main.c     ****             if (!XMC_USIC_CH_RXFIFO_IsEmpty(BMS_CH)) {
- 680              	 .loc 5 83 0
- 681 00b4 D7F80431 	 ldr r3,[r7,#260]
- 682 00b8 002B     	 cmp r3,#0
- 683 00ba 03D0     	 beq .L32
-  83:../main.c     ****             if (!XMC_USIC_CH_RXFIFO_IsEmpty(BMS_CH)) {
+  79:../main.c     ****     while (1)
+  80:../main.c     ****     {
+  81:../main.c     ****         /* --- 1. Print the frame we are about to send --- */
+  82:../main.c     ****         XMC_DEBUG("TX  (%u bytes):", (unsigned)sizeof(req));
+ 661              	 .loc 5 82 0
+ 662 0020 7148     	 ldr r0,.L46+4
+ 663 0022 1421     	 movs r1,#20
+ 664 0024 FFF7FEFF 	 bl printf
+ 665              	.LBB13:
+  83:../main.c     ****         for (uint32_t i = 0; i < sizeof(req); i++)
+ 666              	 .loc 5 83 0
+ 667 0028 0023     	 movs r3,#0
+ 668 002a C7F8A431 	 str r3,[r7,#420]
+ 669 002e 0DE0     	 b .L29
+ 670              	.L30:
+  84:../main.c     ****             XMC_DEBUG(" %02X", (unsigned)req[i]);
+ 671              	 .loc 5 84 0 discriminator 3
+ 672 0030 6E4A     	 ldr r2,.L46+8
+ 673 0032 D7F8A431 	 ldr r3,[r7,#420]
+ 674 0036 1344     	 add r3,r3,r2
+ 675 0038 1B78     	 ldrb r3,[r3]
+ 676 003a 6D48     	 ldr r0,.L46+12
+ 677 003c 1946     	 mov r1,r3
+ 678 003e FFF7FEFF 	 bl printf
+  83:../main.c     ****         for (uint32_t i = 0; i < sizeof(req); i++)
+ 679              	 .loc 5 83 0 discriminator 3
+ 680 0042 D7F8A431 	 ldr r3,[r7,#420]
+ 681 0046 0133     	 adds r3,r3,#1
+ 682 0048 C7F8A431 	 str r3,[r7,#420]
+ 683              	.L29:
+  83:../main.c     ****         for (uint32_t i = 0; i < sizeof(req); i++)
  684              	 .loc 5 83 0 is_stmt 0 discriminator 1
- 685 00bc D7F80831 	 ldr r3,[r7,#264]
- 686 00c0 FF2B     	 cmp r3,#255
- 687 00c2 D5D9     	 bls .L33
- 688              	.L32:
-  89:../main.c     ****             }
-  90:../main.c     ****         }
-  91:../main.c     **** 
-  92:../main.c     ****         /* --- 3. Print everything raw --- */
-  93:../main.c     ****         XMC_DEBUG("RAW  (%u bytes):", (unsigned)raw_n);
- 689              	 .loc 5 93 0 is_stmt 1
- 690 00c4 1D48     	 ldr r0,.L38+32
- 691 00c6 D7F80811 	 ldr r1,[r7,#264]
- 692 00ca FFF7FEFF 	 bl printf
- 693              	.LBB14:
-  94:../main.c     ****         for (uint32_t i = 0; i < raw_n; i++)
- 694              	 .loc 5 94 0
- 695 00ce 0023     	 movs r3,#0
- 696 00d0 C7F80031 	 str r3,[r7,#256]
- 697 00d4 0DE0     	 b .L34
- 698              	.L35:
-  95:../main.c     ****             XMC_DEBUG(" %02X", (unsigned)raw[i]);
- 699              	 .loc 5 95 0 discriminator 3
- 700 00d6 3A46     	 mov r2,r7
- 701 00d8 D7F80031 	 ldr r3,[r7,#256]
- 702 00dc 1344     	 add r3,r3,r2
- 703 00de 1B78     	 ldrb r3,[r3]
- 704 00e0 1148     	 ldr r0,.L38+12
- 705 00e2 1946     	 mov r1,r3
- 706 00e4 FFF7FEFF 	 bl printf
-  94:../main.c     ****         for (uint32_t i = 0; i < raw_n; i++)
- 707              	 .loc 5 94 0 discriminator 3
- 708 00e8 D7F80031 	 ldr r3,[r7,#256]
- 709 00ec 0133     	 adds r3,r3,#1
- 710 00ee C7F80031 	 str r3,[r7,#256]
- 711              	.L34:
-  94:../main.c     ****         for (uint32_t i = 0; i < raw_n; i++)
- 712              	 .loc 5 94 0 is_stmt 0 discriminator 1
- 713 00f2 D7F80021 	 ldr r2,[r7,#256]
- 714 00f6 D7F80831 	 ldr r3,[r7,#264]
- 715 00fa 9A42     	 cmp r2,r3
- 716 00fc EBD3     	 bcc .L35
- 717              	.LBE14:
-  96:../main.c     ****         if (raw_n == 0)
- 718              	 .loc 5 96 0 is_stmt 1
- 719 00fe D7F80831 	 ldr r3,[r7,#264]
- 720 0102 002B     	 cmp r3,#0
- 721 0104 02D1     	 bne .L36
-  97:../main.c     ****             XMC_DEBUG(" (none)");
- 722              	 .loc 5 97 0
- 723 0106 0E48     	 ldr r0,.L38+36
- 724 0108 FFF7FEFF 	 bl printf
- 725              	.L36:
-  98:../main.c     ****         XMC_DEBUG("\r\n\r\n");
- 726              	 .loc 5 98 0
- 727 010c 0D48     	 ldr r0,.L38+40
- 728 010e FFF7FEFF 	 bl puts
-  99:../main.c     **** 
- 100:../main.c     ****         delay_ms(2000);
- 729              	 .loc 5 100 0
- 730 0112 4FF4FA60 	 mov r0,#2000
- 731 0116 FFF7FEFF 	 bl delay_ms
- 732              	.LBE12:
- 101:../main.c     ****     }
- 733              	 .loc 5 101 0
- 734 011a 81E7     	 b .L37
- 735              	.L39:
- 736              	 .align 2
- 737              	.L38:
- 738 011c 00000000 	 .word .LC0
- 739 0120 3C000000 	 .word .LC1
- 740 0124 00000000 	 .word req.9565
- 741 0128 4C000000 	 .word .LC2
- 742 012c 54000000 	 .word .LC3
- 743 0130 00BADB00 	 .word 14400000
- 744 0134 00000000 	 .word UART_0
- 745 0138 00F91500 	 .word 1440000
- 746 013c 58000000 	 .word .LC4
- 747 0140 6C000000 	 .word .LC5
- 748 0144 74000000 	 .word .LC6
- 749              	 .cfi_endproc
- 750              	.LFE302:
- 752              	 .section .rodata.req.9565,"a",%progbits
- 753              	 .align 2
- 756              	req.9565:
- 757 0000 7E       	 .byte 126
- 758 0001 32       	 .byte 50
- 759 0002 32       	 .byte 50
- 760 0003 30       	 .byte 48
- 761 0004 30       	 .byte 48
- 762 0005 34       	 .byte 52
- 763 0006 41       	 .byte 65
- 764 0007 34       	 .byte 52
- 765 0008 32       	 .byte 50
- 766 0009 45       	 .byte 69
- 767 000a 30       	 .byte 48
- 768 000b 30       	 .byte 48
- 769 000c 32       	 .byte 50
- 770 000d 30       	 .byte 48
- 771 000e 31       	 .byte 49
- 772 000f 46       	 .byte 70
- 773 0010 44       	 .byte 68
- 774 0011 32       	 .byte 50
- 775 0012 39       	 .byte 57
- 776 0013 0D       	 .byte 13
- 777              	 .text
- 778              	.Letext0:
- 779              	 .file 6 "c:\\infineon\\tools\\dave ide\\4.5.0.202105191637\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\machine\\_default_types.h"
- 780              	 .file 7 "c:\\infineon\\tools\\dave ide\\4.5.0.202105191637\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\stdint.h"
- 781              	 .file 8 "C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/Battery_BMS_XMC4800-F144x2048_1/Libraries/CMSIS/Infineon/XMC4800_series/Include/XMC4800.h"
- 782              	 .file 9 "C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/Battery_BMS_XMC4800-F144x2048_1/Libraries/XMCLib/inc/xmc_gpio.h"
- 783              	 .file 10 "C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/Battery_BMS_XMC4800-F144x2048_1/Libraries/XMCLib/inc/xmc4_gpio.h"
- 784              	 .file 11 "C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/Battery_BMS_XMC4800-F144x2048_1/Dave/Generated/UART/uart.h"
- 785              	 .file 12 "C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/Battery_BMS_XMC4800-F144x2048_1/Libraries/CMSIS/Infineon/XMC4800_series/Include/system_XMC4800.h"
- 786              	 .file 13 "C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/Battery_BMS_XMC4800-F144x2048_1/Dave/Generated/UART/uart_extern.h"
+ 685 004c D7F8A431 	 ldr r3,[r7,#420]
+ 686 0050 132B     	 cmp r3,#19
+ 687 0052 EDD9     	 bls .L30
+ 688              	.LBE13:
+  85:../main.c     ****         XMC_DEBUG("\r\n");
+ 689              	 .loc 5 85 0 is_stmt 1
+ 690 0054 6748     	 ldr r0,.L46+16
+ 691 0056 FFF7FEFF 	 bl puts
+  86:../main.c     **** 
+  87:../main.c     ****         rs485_send(req, sizeof(req));
+ 692              	 .loc 5 87 0
+ 693 005a 6448     	 ldr r0,.L46+8
+ 694 005c 1421     	 movs r1,#20
+ 695 005e FFF7FEFF 	 bl rs485_send
+  88:../main.c     **** 
+  89:../main.c     ****         /* --- 2. Collect everything: echo bytes then BMS response --- */
+  90:../main.c     ****         uint8_t  raw[256];
+  91:../main.c     ****         uint32_t raw_n = 0;
+ 696              	 .loc 5 91 0
+ 697 0062 0023     	 movs r3,#0
+ 698 0064 C7F8A031 	 str r3,[r7,#416]
+  92:../main.c     ****         uint32_t ticks = 500U * 28800U;   /* initial wait ~500 ms */
+ 699              	 .loc 5 92 0
+ 700 0068 634B     	 ldr r3,.L46+20
+ 701 006a C7F89C31 	 str r3,[r7,#412]
+  93:../main.c     ****         while (ticks > 0 && raw_n < sizeof(raw)) {
+ 702              	 .loc 5 93 0
+ 703 006e 22E0     	 b .L31
+ 704              	.L34:
+  94:../main.c     ****             if (!XMC_USIC_CH_RXFIFO_IsEmpty(BMS_CH)) {
+ 705              	 .loc 5 94 0
+ 706 0070 624B     	 ldr r3,.L46+24
+ 707 0072 1B68     	 ldr r3,[r3]
+ 708 0074 1846     	 mov r0,r3
+ 709 0076 FFF7FEFF 	 bl XMC_USIC_CH_RXFIFO_IsEmpty
+ 710 007a 0346     	 mov r3,r0
+ 711 007c 83F00103 	 eor r3,r3,#1
+ 712 0080 DBB2     	 uxtb r3,r3
+ 713 0082 002B     	 cmp r3,#0
+ 714 0084 12D0     	 beq .L32
+  95:../main.c     ****                 raw[raw_n++] = (uint8_t)XMC_USIC_CH_RXFIFO_GetData(BMS_CH);
+ 715              	 .loc 5 95 0
+ 716 0086 D7F8A041 	 ldr r4,[r7,#416]
+ 717 008a 631C     	 adds r3,r4,#1
+ 718 008c C7F8A031 	 str r3,[r7,#416]
+ 719 0090 5A4B     	 ldr r3,.L46+24
+ 720 0092 1B68     	 ldr r3,[r3]
+ 721 0094 1846     	 mov r0,r3
+ 722 0096 FFF7FEFF 	 bl XMC_USIC_CH_RXFIFO_GetData
+ 723 009a 0346     	 mov r3,r0
+ 724 009c DAB2     	 uxtb r2,r3
+ 725 009e 07F18C03 	 add r3,r7,#140
+ 726 00a2 1A55     	 strb r2,[r3,r4]
+  96:../main.c     ****                 ticks = 50U * 28800U;     /* extend ~50 ms after each byte */
+ 727              	 .loc 5 96 0
+ 728 00a4 564B     	 ldr r3,.L46+28
+ 729 00a6 C7F89C31 	 str r3,[r7,#412]
+ 730 00aa 04E0     	 b .L31
+ 731              	.L32:
+  97:../main.c     ****             } else {
+  98:../main.c     ****                 ticks--;
+ 732              	 .loc 5 98 0
+ 733 00ac D7F89C31 	 ldr r3,[r7,#412]
+ 734 00b0 013B     	 subs r3,r3,#1
+ 735 00b2 C7F89C31 	 str r3,[r7,#412]
+ 736              	.L31:
+  93:../main.c     ****             if (!XMC_USIC_CH_RXFIFO_IsEmpty(BMS_CH)) {
+ 737              	 .loc 5 93 0
+ 738 00b6 D7F89C31 	 ldr r3,[r7,#412]
+ 739 00ba 002B     	 cmp r3,#0
+ 740 00bc 03D0     	 beq .L33
+  93:../main.c     ****             if (!XMC_USIC_CH_RXFIFO_IsEmpty(BMS_CH)) {
+ 741              	 .loc 5 93 0 is_stmt 0 discriminator 1
+ 742 00be D7F8A031 	 ldr r3,[r7,#416]
+ 743 00c2 FF2B     	 cmp r3,#255
+ 744 00c4 D4D9     	 bls .L34
+ 745              	.L33:
+  99:../main.c     ****             }
+ 100:../main.c     ****         }
+ 101:../main.c     **** 
+ 102:../main.c     ****         /* --- 3. Print everything raw --- */
+ 103:../main.c     ****         XMC_DEBUG("RAW  (%u bytes):", (unsigned)raw_n);
+ 746              	 .loc 5 103 0 is_stmt 1
+ 747 00c6 4F48     	 ldr r0,.L46+32
+ 748 00c8 D7F8A011 	 ldr r1,[r7,#416]
+ 749 00cc FFF7FEFF 	 bl printf
+ 750              	.LBB14:
+ 104:../main.c     ****         for (uint32_t i = 0; i < raw_n; i++)
+ 751              	 .loc 5 104 0
+ 752 00d0 0023     	 movs r3,#0
+ 753 00d2 C7F89831 	 str r3,[r7,#408]
+ 754 00d6 0EE0     	 b .L35
+ 755              	.L36:
+ 105:../main.c     ****             XMC_DEBUG(" %02X", (unsigned)raw[i]);
+ 756              	 .loc 5 105 0 discriminator 3
+ 757 00d8 07F18C02 	 add r2,r7,#140
+ 758 00dc D7F89831 	 ldr r3,[r7,#408]
+ 759 00e0 1344     	 add r3,r3,r2
+ 760 00e2 1B78     	 ldrb r3,[r3]
+ 761 00e4 4248     	 ldr r0,.L46+12
+ 762 00e6 1946     	 mov r1,r3
+ 763 00e8 FFF7FEFF 	 bl printf
+ 104:../main.c     ****         for (uint32_t i = 0; i < raw_n; i++)
+ 764              	 .loc 5 104 0 discriminator 3
+ 765 00ec D7F89831 	 ldr r3,[r7,#408]
+ 766 00f0 0133     	 adds r3,r3,#1
+ 767 00f2 C7F89831 	 str r3,[r7,#408]
+ 768              	.L35:
+ 104:../main.c     ****         for (uint32_t i = 0; i < raw_n; i++)
+ 769              	 .loc 5 104 0 is_stmt 0 discriminator 1
+ 770 00f6 D7F89821 	 ldr r2,[r7,#408]
+ 771 00fa D7F8A031 	 ldr r3,[r7,#416]
+ 772 00fe 9A42     	 cmp r2,r3
+ 773 0100 EAD3     	 bcc .L36
+ 774              	.LBE14:
+ 106:../main.c     ****         if (raw_n == 0)
+ 775              	 .loc 5 106 0 is_stmt 1
+ 776 0102 D7F8A031 	 ldr r3,[r7,#416]
+ 777 0106 002B     	 cmp r3,#0
+ 778 0108 02D1     	 bne .L37
+ 107:../main.c     ****             XMC_DEBUG(" (none)");
+ 779              	 .loc 5 107 0
+ 780 010a 3F48     	 ldr r0,.L46+36
+ 781 010c FFF7FEFF 	 bl printf
+ 782              	.L37:
+ 108:../main.c     ****         XMC_DEBUG("\r\n");
+ 783              	 .loc 5 108 0
+ 784 0110 3848     	 ldr r0,.L46+16
+ 785 0112 FFF7FEFF 	 bl puts
+ 109:../main.c     **** 
+ 110:../main.c     ****         /* --- 4. Decode: scan for the first '~' that parses as a valid BMS frame --- */
+ 111:../main.c     ****         ScudAnalog_t analog;
+ 112:../main.c     ****         ScudStatus_t st      = SCUD_ERR_FRAMING;
+ 786              	 .loc 5 112 0
+ 787 0116 0223     	 movs r3,#2
+ 788 0118 87F89731 	 strb r3,[r7,#407]
+ 113:../main.c     ****         uint32_t     found_i = 0U;
+ 789              	 .loc 5 113 0
+ 790 011c 0023     	 movs r3,#0
+ 791 011e C7F89031 	 str r3,[r7,#400]
+ 792              	.LBB15:
+ 114:../main.c     ****         for (uint32_t i = 0U; i < raw_n && st != SCUD_OK; i++)
+ 793              	 .loc 5 114 0
+ 794 0122 0023     	 movs r3,#0
+ 795 0124 C7F88C31 	 str r3,[r7,#396]
+ 796 0128 27E0     	 b .L38
+ 797              	.L41:
+ 115:../main.c     ****         {
+ 116:../main.c     ****             if (raw[i] == (uint8_t)'~')
+ 798              	 .loc 5 116 0
+ 799 012a 07F18C02 	 add r2,r7,#140
+ 800 012e D7F88C31 	 ldr r3,[r7,#396]
+ 801 0132 1344     	 add r3,r3,r2
+ 802 0134 1B78     	 ldrb r3,[r3]
+ 803 0136 7E2B     	 cmp r3,#126
+ 804 0138 1AD1     	 bne .L39
+ 117:../main.c     ****             {
+ 118:../main.c     ****                 st = SCUD_DecodeAnalog(&raw[i], raw_n - i, &analog);
+ 805              	 .loc 5 118 0
+ 806 013a 07F18C02 	 add r2,r7,#140
+ 807 013e D7F88C31 	 ldr r3,[r7,#396]
+ 808 0142 D118     	 adds r1,r2,r3
+ 809 0144 D7F8A021 	 ldr r2,[r7,#416]
+ 810 0148 D7F88C31 	 ldr r3,[r7,#396]
+ 811 014c D21A     	 subs r2,r2,r3
+ 812 014e 3B1D     	 adds r3,r7,#4
+ 813 0150 0846     	 mov r0,r1
+ 814 0152 1146     	 mov r1,r2
+ 815 0154 1A46     	 mov r2,r3
+ 816 0156 FFF7FEFF 	 bl SCUD_DecodeAnalog
+ 817 015a 0346     	 mov r3,r0
+ 818 015c 87F89731 	 strb r3,[r7,#407]
+ 119:../main.c     ****                 if (st == SCUD_OK) found_i = i;
+ 819              	 .loc 5 119 0
+ 820 0160 97F89731 	 ldrb r3,[r7,#407]
+ 821 0164 002B     	 cmp r3,#0
+ 822 0166 03D1     	 bne .L39
+ 823              	 .loc 5 119 0 is_stmt 0 discriminator 1
+ 824 0168 D7F88C31 	 ldr r3,[r7,#396]
+ 825 016c C7F89031 	 str r3,[r7,#400]
+ 826              	.L39:
+ 114:../main.c     ****         {
+ 827              	 .loc 5 114 0 is_stmt 1 discriminator 2
+ 828 0170 D7F88C31 	 ldr r3,[r7,#396]
+ 829 0174 0133     	 adds r3,r3,#1
+ 830 0176 C7F88C31 	 str r3,[r7,#396]
+ 831              	.L38:
+ 114:../main.c     ****         {
+ 832              	 .loc 5 114 0 is_stmt 0 discriminator 1
+ 833 017a D7F88C21 	 ldr r2,[r7,#396]
+ 834 017e D7F8A031 	 ldr r3,[r7,#416]
+ 835 0182 9A42     	 cmp r2,r3
+ 836 0184 03D2     	 bcs .L40
+ 114:../main.c     ****         {
+ 837              	 .loc 5 114 0 discriminator 3
+ 838 0186 97F89731 	 ldrb r3,[r7,#407]
+ 839 018a 002B     	 cmp r3,#0
+ 840 018c CDD1     	 bne .L41
+ 841              	.L40:
+ 842              	.LBE15:
+ 120:../main.c     ****             }
+ 121:../main.c     ****         }
+ 122:../main.c     ****         if (st == SCUD_OK)
+ 843              	 .loc 5 122 0 is_stmt 1
+ 844 018e 97F89731 	 ldrb r3,[r7,#407]
+ 845 0192 002B     	 cmp r3,#0
+ 846 0194 0FD1     	 bne .L42
+ 123:../main.c     ****         {
+ 124:../main.c     ****             if (found_i > 0U)
+ 847              	 .loc 5 124 0
+ 848 0196 D7F89031 	 ldr r3,[r7,#400]
+ 849 019a 002B     	 cmp r3,#0
+ 850 019c 06D0     	 beq .L43
+ 125:../main.c     ****                 XMC_DEBUG("(frame at offset %u, %u noise byte(s) skipped)\r\n",
+ 851              	 .loc 5 125 0
+ 852 019e 1B48     	 ldr r0,.L46+40
+ 853 01a0 D7F89011 	 ldr r1,[r7,#400]
+ 854 01a4 D7F89021 	 ldr r2,[r7,#400]
+ 855 01a8 FFF7FEFF 	 bl printf
+ 856              	.L43:
+ 126:../main.c     ****                           (unsigned)found_i, (unsigned)found_i);
+ 127:../main.c     ****             SCUD_PrintAnalog(&analog);
+ 857              	 .loc 5 127 0
+ 858 01ac 3B1D     	 adds r3,r7,#4
+ 859 01ae 1846     	 mov r0,r3
+ 860 01b0 FFF7FEFF 	 bl SCUD_PrintAnalog
+ 861 01b4 0DE0     	 b .L44
+ 862              	.L42:
+ 128:../main.c     ****         }
+ 129:../main.c     ****         else if (raw_n > 0U)
+ 863              	 .loc 5 129 0
+ 864 01b6 D7F8A031 	 ldr r3,[r7,#416]
+ 865 01ba 002B     	 cmp r3,#0
+ 866 01bc 09D0     	 beq .L44
+ 130:../main.c     ****         {
+ 131:../main.c     ****             XMC_DEBUG("Decode: %s\r\n", SCUD_StatusStr(st));
+ 867              	 .loc 5 131 0
+ 868 01be 97F89731 	 ldrb r3,[r7,#407]
+ 869 01c2 1846     	 mov r0,r3
+ 870 01c4 FFF7FEFF 	 bl SCUD_StatusStr
+ 871 01c8 0346     	 mov r3,r0
+ 872 01ca 1148     	 ldr r0,.L46+44
+ 873 01cc 1946     	 mov r1,r3
+ 874 01ce FFF7FEFF 	 bl printf
+ 875              	.L44:
+ 132:../main.c     ****         }
+ 133:../main.c     ****         XMC_DEBUG("\r\n");
+ 876              	 .loc 5 133 0
+ 877 01d2 0848     	 ldr r0,.L46+16
+ 878 01d4 FFF7FEFF 	 bl puts
+ 134:../main.c     **** 
+ 135:../main.c     ****         delay_ms(2000);
+ 879              	 .loc 5 135 0
+ 880 01d8 4FF4FA60 	 mov r0,#2000
+ 881 01dc FFF7FEFF 	 bl delay_ms
+ 882              	.LBE12:
+ 136:../main.c     ****     }
+ 883              	 .loc 5 136 0
+ 884 01e0 1EE7     	 b .L45
+ 885              	.L47:
+ 886 01e2 00BF     	 .align 2
+ 887              	.L46:
+ 888 01e4 00000000 	 .word .LC0
+ 889 01e8 3C000000 	 .word .LC1
+ 890 01ec 00000000 	 .word req.9615
+ 891 01f0 4C000000 	 .word .LC2
+ 892 01f4 54000000 	 .word .LC3
+ 893 01f8 00BADB00 	 .word 14400000
+ 894 01fc 00000000 	 .word UART_0
+ 895 0200 00F91500 	 .word 1440000
+ 896 0204 58000000 	 .word .LC4
+ 897 0208 6C000000 	 .word .LC5
+ 898 020c 74000000 	 .word .LC6
+ 899 0210 A8000000 	 .word .LC7
+ 900              	 .cfi_endproc
+ 901              	.LFE302:
+ 903              	 .section .rodata.req.9615,"a",%progbits
+ 904              	 .align 2
+ 907              	req.9615:
+ 908 0000 7E       	 .byte 126
+ 909 0001 32       	 .byte 50
+ 910 0002 32       	 .byte 50
+ 911 0003 30       	 .byte 48
+ 912 0004 30       	 .byte 48
+ 913 0005 34       	 .byte 52
+ 914 0006 41       	 .byte 65
+ 915 0007 34       	 .byte 52
+ 916 0008 32       	 .byte 50
+ 917 0009 45       	 .byte 69
+ 918 000a 30       	 .byte 48
+ 919 000b 30       	 .byte 48
+ 920 000c 32       	 .byte 50
+ 921 000d 30       	 .byte 48
+ 922 000e 31       	 .byte 49
+ 923 000f 46       	 .byte 70
+ 924 0010 44       	 .byte 68
+ 925 0011 32       	 .byte 50
+ 926 0012 39       	 .byte 57
+ 927 0013 0D       	 .byte 13
+ 928              	 .text
+ 929              	.Letext0:
+ 930              	 .file 6 "c:\\infineon\\tools\\dave ide\\4.5.0.202105191637\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 931              	 .file 7 "c:\\infineon\\tools\\dave ide\\4.5.0.202105191637\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\stdint.h"
+ 932              	 .file 8 "C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/Battery_BMS_XMC4800-F144x2048_1/Libraries/CMSIS/Infineon/XMC4800_series/Include/XMC4800.h"
+ 933              	 .file 9 "C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/Battery_BMS_XMC4800-F144x2048_1/Libraries/XMCLib/inc/xmc_gpio.h"
+ 934              	 .file 10 "C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/Battery_BMS_XMC4800-F144x2048_1/Libraries/XMCLib/inc/xmc4_gpio.h"
+ 935              	 .file 11 "C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/Battery_BMS_XMC4800-F144x2048_1/Dave/Generated/UART/uart.h"
+ 936              	 .file 12 "../scud_bms.h"
+ 937              	 .file 13 "C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/Battery_BMS_XMC4800-F144x2048_1/Libraries/CMSIS/Infineon/XMC4800_series/Include/system_XMC4800.h"
+ 938              	 .file 14 "C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/Battery_BMS_XMC4800-F144x2048_1/Dave/Generated/UART/uart_extern.h"
 DEFINED SYMBOLS
                             *ABS*:00000000 main.c
     {standard input}:20     .text.__NVIC_DisableIRQ:00000000 $t
@@ -6352,21 +6547,23 @@ DEFINED SYMBOLS
     {standard input}:198    .text.XMC_USIC_CH_TXFIFO_IsEmpty:00000000 XMC_USIC_CH_TXFIFO_IsEmpty
     {standard input}:243    .text.XMC_USIC_CH_RXFIFO_GetData:00000000 $t
     {standard input}:247    .text.XMC_USIC_CH_RXFIFO_GetData:00000000 XMC_USIC_CH_RXFIFO_GetData
-    {standard input}:287    .text.XMC_USIC_CH_RXFIFO_IsEmpty:00000000 $t
-    {standard input}:291    .text.XMC_USIC_CH_RXFIFO_IsEmpty:00000000 XMC_USIC_CH_RXFIFO_IsEmpty
-    {standard input}:336    .text.XMC_UART_CH_GetStatusFlag:00000000 $t
-    {standard input}:340    .text.XMC_UART_CH_GetStatusFlag:00000000 XMC_UART_CH_GetStatusFlag
-    {standard input}:380    .text.delay_ms:00000000 $t
-    {standard input}:384    .text.delay_ms:00000000 delay_ms
-    {standard input}:439    .text.rs485_send:00000000 $t
-    {standard input}:443    .text.rs485_send:00000000 rs485_send
-    {standard input}:538    .text.rs485_send:0000007c $d
-    {standard input}:543    .rodata:00000000 $d
-    {standard input}:566    .text.main:00000000 $t
-    {standard input}:571    .text.main:00000000 main
-    {standard input}:738    .text.main:0000011c $d
-    {standard input}:756    .rodata.req.9565:00000000 req.9565
-    {standard input}:753    .rodata.req.9565:00000000 $d
+    {standard input}:287    .text.XMC_USIC_CH_RXFIFO_Flush:00000000 $t
+    {standard input}:291    .text.XMC_USIC_CH_RXFIFO_Flush:00000000 XMC_USIC_CH_RXFIFO_Flush
+    {standard input}:330    .text.XMC_USIC_CH_RXFIFO_IsEmpty:00000000 $t
+    {standard input}:334    .text.XMC_USIC_CH_RXFIFO_IsEmpty:00000000 XMC_USIC_CH_RXFIFO_IsEmpty
+    {standard input}:379    .text.XMC_UART_CH_GetStatusFlag:00000000 $t
+    {standard input}:383    .text.XMC_UART_CH_GetStatusFlag:00000000 XMC_UART_CH_GetStatusFlag
+    {standard input}:423    .text.delay_ms:00000000 $t
+    {standard input}:427    .text.delay_ms:00000000 delay_ms
+    {standard input}:482    .text.rs485_send:00000000 $t
+    {standard input}:486    .text.rs485_send:00000000 rs485_send
+    {standard input}:591    .text.rs485_send:00000090 $d
+    {standard input}:596    .rodata:00000000 $d
+    {standard input}:623    .text.main:00000000 $t
+    {standard input}:628    .text.main:00000000 main
+    {standard input}:888    .text.main:000001e4 $d
+    {standard input}:907    .rodata.req.9615:00000000 req.9615
+    {standard input}:904    .rodata.req.9615:00000000 $d
                      .debug_frame:00000010 $d
 
 UNDEFINED SYMBOLS
@@ -6375,3 +6572,6 @@ DAVE_Init
 initialise_monitor_handles
 puts
 printf
+SCUD_DecodeAnalog
+SCUD_PrintAnalog
+SCUD_StatusStr

@@ -1,1 +1,0 @@
-For Testing the XMC4800 IoT devlopment kit with MultiCAN using the PMB CAN Protocol V2, use the MULTICAN_SELF_RUNTHRU project with this [guide](https://docs.google.com/document/d/1vdwhsgc6IMsU3_l6YWoHc9-eJxBvD52ws-STaFjeV5k/edit?usp=sharing) on setting up DAVE IDE. 

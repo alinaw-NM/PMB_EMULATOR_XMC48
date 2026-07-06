@@ -4675,1088 +4675,1283 @@
  1646 00b6 90BD     	 pop {r4,r7,pc}
  1647              	 .cfi_endproc
  1648              	.LFE309:
- 1650              	 .section .text.SCUD_ReadAnalog,"ax",%progbits
+ 1650              	 .section .text.decode_analog_info,"ax",%progbits
  1651              	 .align 2
- 1652              	 .global SCUD_ReadAnalog
- 1653              	 .thumb
- 1654              	 .thumb_func
- 1656              	SCUD_ReadAnalog:
- 1657              	.LFB310:
+ 1652              	 .thumb
+ 1653              	 .thumb_func
+ 1655              	decode_analog_info:
+ 1656              	.LFB310:
  268:../scud_bms.c **** 
  269:../scud_bms.c **** /* -------------------------------------------------------------------------
  270:../scud_bms.c ****  * Public API
  271:../scud_bms.c ****  * ---------------------------------------------------------------------- */
  272:../scud_bms.c **** 
- 273:../scud_bms.c **** ScudStatus_t SCUD_ReadAnalog(ScudAnalog_t *out)
- 274:../scud_bms.c **** {
- 1658              	 .loc 3 274 0
- 1659              	 .cfi_startproc
+ 273:../scud_bms.c **** static ScudStatus_t decode_analog_info(const uint8_t *info, uint32_t info_len,
+ 274:../scud_bms.c ****                                        ScudAnalog_t *out)
+ 275:../scud_bms.c **** {
+ 1657              	 .loc 3 275 0
+ 1658              	 .cfi_startproc
+ 1659              	 
  1660              	 
  1661              	 
- 1662 0000 80B5     	 push {r7,lr}
+ 1662 0000 80B4     	 push {r7}
  1663              	.LCFI95:
- 1664              	 .cfi_def_cfa_offset 8
- 1665              	 .cfi_offset 7,-8
- 1666              	 .cfi_offset 14,-4
- 1667 0002 A8B0     	 sub sp,sp,#160
- 1668              	.LCFI96:
- 1669              	 .cfi_def_cfa_offset 168
- 1670 0004 00AF     	 add r7,sp,#0
- 1671              	.LCFI97:
- 1672              	 .cfi_def_cfa_register 7
- 1673 0006 7860     	 str r0,[r7,#4]
- 275:../scud_bms.c ****     uint8_t  info[128];
- 276:../scud_bms.c ****     uint32_t info_len;
+ 1664              	 .cfi_def_cfa_offset 4
+ 1665              	 .cfi_offset 7,-4
+ 1666 0002 89B0     	 sub sp,sp,#36
+ 1667              	.LCFI96:
+ 1668              	 .cfi_def_cfa_offset 40
+ 1669 0004 00AF     	 add r7,sp,#0
+ 1670              	.LCFI97:
+ 1671              	 .cfi_def_cfa_register 7
+ 1672 0006 F860     	 str r0,[r7,#12]
+ 1673 0008 B960     	 str r1,[r7,#8]
+ 1674 000a 7A60     	 str r2,[r7,#4]
+ 276:../scud_bms.c ****     if (info_len < 27U) return SCUD_ERR_TOO_SHORT;
+ 1675              	 .loc 3 276 0
+ 1676 000c BB68     	 ldr r3,[r7,#8]
+ 1677 000e 1A2B     	 cmp r3,#26
+ 1678 0010 01D8     	 bhi .L80
+ 1679              	 .loc 3 276 0 is_stmt 0 discriminator 1
+ 1680 0012 0523     	 movs r3,#5
+ 1681 0014 69E1     	 b .L81
+ 1682              	.L80:
  277:../scud_bms.c **** 
- 278:../scud_bms.c ****     ScudStatus_t st = do_txn(SCUD_CID2_ANALOG, info, &info_len);
- 1674              	 .loc 3 278 0
- 1675 0008 07F11002 	 add r2,r7,#16
- 1676 000c 07F10C03 	 add r3,r7,#12
- 1677 0010 4220     	 movs r0,#66
- 1678 0012 1146     	 mov r1,r2
- 1679 0014 1A46     	 mov r2,r3
- 1680 0016 FFF7FEFF 	 bl do_txn
- 1681 001a 0346     	 mov r3,r0
- 1682 001c 87F89230 	 strb r3,[r7,#146]
- 279:../scud_bms.c ****     if (st != SCUD_OK) return st;
- 1683              	 .loc 3 279 0
- 1684 0020 97F89230 	 ldrb r3,[r7,#146]
- 1685 0024 002B     	 cmp r3,#0
- 1686 0026 02D0     	 beq .L80
- 1687              	 .loc 3 279 0 is_stmt 0 discriminator 1
- 1688 0028 97F89230 	 ldrb r3,[r7,#146]
- 1689 002c 96E1     	 b .L95
- 1690              	.L80:
- 280:../scud_bms.c ****     if (info_len < 27U) return SCUD_ERR_TOO_SHORT;
- 1691              	 .loc 3 280 0 is_stmt 1
- 1692 002e FB68     	 ldr r3,[r7,#12]
- 1693 0030 1A2B     	 cmp r3,#26
- 1694 0032 01D8     	 bhi .L82
- 1695              	 .loc 3 280 0 is_stmt 0 discriminator 1
- 1696 0034 0523     	 movs r3,#5
- 1697 0036 91E1     	 b .L95
- 1698              	.L82:
- 281:../scud_bms.c **** 
- 282:../scud_bms.c ****     out->data_flag   = info[0];
- 1699              	 .loc 3 282 0 is_stmt 1
- 1700 0038 3A7C     	 ldrb r2,[r7,#16]
- 1701 003a 7B68     	 ldr r3,[r7,#4]
- 1702 003c 1A70     	 strb r2,[r3]
- 283:../scud_bms.c ****     out->pack_num    = info[1];
- 1703              	 .loc 3 283 0
- 1704 003e 7A7C     	 ldrb r2,[r7,#17]
- 1705 0040 7B68     	 ldr r3,[r7,#4]
- 1706 0042 5A70     	 strb r2,[r3,#1]
- 284:../scud_bms.c ****     out->total_mv    = (uint32_t)info[2]        | ((uint32_t)info[3]  << 8)
- 1707              	 .loc 3 284 0
- 1708 0044 BB7C     	 ldrb r3,[r7,#18]
- 1709 0046 1A46     	 mov r2,r3
- 1710 0048 FB7C     	 ldrb r3,[r7,#19]
- 1711 004a 1B02     	 lsls r3,r3,#8
- 1712 004c 1A43     	 orrs r2,r2,r3
- 285:../scud_bms.c ****                      | ((uint32_t)info[4] << 16) | ((uint32_t)info[5] << 24);
- 1713              	 .loc 3 285 0
- 1714 004e 3B7D     	 ldrb r3,[r7,#20]
- 1715 0050 1B04     	 lsls r3,r3,#16
- 1716 0052 1A43     	 orrs r2,r2,r3
- 1717 0054 7B7D     	 ldrb r3,[r7,#21]
- 1718 0056 1B06     	 lsls r3,r3,#24
- 1719 0058 1A43     	 orrs r2,r2,r3
- 284:../scud_bms.c ****     out->total_mv    = (uint32_t)info[2]        | ((uint32_t)info[3]  << 8)
- 1720              	 .loc 3 284 0
- 1721 005a 7B68     	 ldr r3,[r7,#4]
- 1722 005c 5A60     	 str r2,[r3,#4]
- 286:../scud_bms.c ****     out->current_ma  = (int32_t)((uint32_t)info[6]        | ((uint32_t)info[7]  << 8)
- 1723              	 .loc 3 286 0
- 1724 005e BB7D     	 ldrb r3,[r7,#22]
- 1725 0060 1A46     	 mov r2,r3
- 1726 0062 FB7D     	 ldrb r3,[r7,#23]
- 1727 0064 1B02     	 lsls r3,r3,#8
- 1728 0066 1A43     	 orrs r2,r2,r3
- 287:../scud_bms.c ****                                | ((uint32_t)info[8] << 16) | ((uint32_t)info[9] << 24));
- 1729              	 .loc 3 287 0
- 1730 0068 3B7E     	 ldrb r3,[r7,#24]
- 1731 006a 1B04     	 lsls r3,r3,#16
- 1732 006c 1A43     	 orrs r2,r2,r3
- 1733 006e 7B7E     	 ldrb r3,[r7,#25]
- 1734 0070 1B06     	 lsls r3,r3,#24
- 1735 0072 1343     	 orrs r3,r3,r2
- 286:../scud_bms.c ****     out->current_ma  = (int32_t)((uint32_t)info[6]        | ((uint32_t)info[7]  << 8)
- 1736              	 .loc 3 286 0
- 1737 0074 1A46     	 mov r2,r3
- 1738 0076 7B68     	 ldr r3,[r7,#4]
- 1739 0078 9A60     	 str r2,[r3,#8]
- 288:../scud_bms.c ****     out->soc         = info[10];
- 1740              	 .loc 3 288 0
- 1741 007a BA7E     	 ldrb r2,[r7,#26]
- 1742 007c 7B68     	 ldr r3,[r7,#4]
- 1743 007e 1A73     	 strb r2,[r3,#12]
- 289:../scud_bms.c ****     out->soh         = info[11];
- 1744              	 .loc 3 289 0
- 1745 0080 FA7E     	 ldrb r2,[r7,#27]
- 1746 0082 7B68     	 ldr r3,[r7,#4]
- 1747 0084 5A73     	 strb r2,[r3,#13]
- 290:../scud_bms.c ****     out->cycle_count = (uint16_t)((uint16_t)info[12] | ((uint16_t)info[13] << 8));
- 1748              	 .loc 3 290 0
- 1749 0086 3B7F     	 ldrb r3,[r7,#28]
- 1750 0088 9AB2     	 uxth r2,r3
- 1751 008a 7B7F     	 ldrb r3,[r7,#29]
- 1752 008c 1B02     	 lsls r3,r3,#8
- 1753 008e 9BB2     	 uxth r3,r3
- 1754 0090 1343     	 orrs r3,r3,r2
- 1755 0092 9BB2     	 uxth r3,r3
- 1756 0094 9AB2     	 uxth r2,r3
- 1757 0096 7B68     	 ldr r3,[r7,#4]
- 1758 0098 DA81     	 strh r2,[r3,#14]
- 291:../scud_bms.c ****     out->rmc_mah     = (uint32_t)info[14]        | ((uint32_t)info[15] << 8)
- 1759              	 .loc 3 291 0
- 1760 009a BB7F     	 ldrb r3,[r7,#30]
- 1761 009c 1A46     	 mov r2,r3
- 1762 009e FB7F     	 ldrb r3,[r7,#31]
- 1763 00a0 1B02     	 lsls r3,r3,#8
- 1764 00a2 1A43     	 orrs r2,r2,r3
- 292:../scud_bms.c ****                      | ((uint32_t)info[16] << 16) | ((uint32_t)info[17] << 24);
- 1765              	 .loc 3 292 0
- 1766 00a4 97F82030 	 ldrb r3,[r7,#32]
- 1767 00a8 1B04     	 lsls r3,r3,#16
- 1768 00aa 1A43     	 orrs r2,r2,r3
- 1769 00ac 97F82130 	 ldrb r3,[r7,#33]
- 1770 00b0 1B06     	 lsls r3,r3,#24
- 1771 00b2 1A43     	 orrs r2,r2,r3
- 291:../scud_bms.c ****     out->rmc_mah     = (uint32_t)info[14]        | ((uint32_t)info[15] << 8)
- 1772              	 .loc 3 291 0
- 1773 00b4 7B68     	 ldr r3,[r7,#4]
- 1774 00b6 1A61     	 str r2,[r3,#16]
- 293:../scud_bms.c ****     out->fcc_mah     = (uint32_t)info[18]        | ((uint32_t)info[19] << 8)
- 1775              	 .loc 3 293 0
- 1776 00b8 97F82230 	 ldrb r3,[r7,#34]
- 1777 00bc 1A46     	 mov r2,r3
- 1778 00be 97F82330 	 ldrb r3,[r7,#35]
- 1779 00c2 1B02     	 lsls r3,r3,#8
- 1780 00c4 1A43     	 orrs r2,r2,r3
- 294:../scud_bms.c ****                      | ((uint32_t)info[20] << 16) | ((uint32_t)info[21] << 24);
- 1781              	 .loc 3 294 0
- 1782 00c6 97F82430 	 ldrb r3,[r7,#36]
- 1783 00ca 1B04     	 lsls r3,r3,#16
- 1784 00cc 1A43     	 orrs r2,r2,r3
- 1785 00ce 97F82530 	 ldrb r3,[r7,#37]
- 1786 00d2 1B06     	 lsls r3,r3,#24
- 1787 00d4 1A43     	 orrs r2,r2,r3
- 293:../scud_bms.c ****     out->fcc_mah     = (uint32_t)info[18]        | ((uint32_t)info[19] << 8)
- 1788              	 .loc 3 293 0
- 1789 00d6 7B68     	 ldr r3,[r7,#4]
- 1790 00d8 5A61     	 str r2,[r3,#20]
- 295:../scud_bms.c ****     out->design_mah  = (uint32_t)info[22]        | ((uint32_t)info[23] << 8)
- 1791              	 .loc 3 295 0
- 1792 00da 97F82630 	 ldrb r3,[r7,#38]
- 1793 00de 1A46     	 mov r2,r3
- 1794 00e0 97F82730 	 ldrb r3,[r7,#39]
- 1795 00e4 1B02     	 lsls r3,r3,#8
- 1796 00e6 1A43     	 orrs r2,r2,r3
- 296:../scud_bms.c ****                      | ((uint32_t)info[24] << 16) | ((uint32_t)info[25] << 24);
- 1797              	 .loc 3 296 0
- 1798 00e8 97F82830 	 ldrb r3,[r7,#40]
- 1799 00ec 1B04     	 lsls r3,r3,#16
- 1800 00ee 1A43     	 orrs r2,r2,r3
- 1801 00f0 97F82930 	 ldrb r3,[r7,#41]
- 1802 00f4 1B06     	 lsls r3,r3,#24
- 1803 00f6 1A43     	 orrs r2,r2,r3
- 295:../scud_bms.c ****     out->design_mah  = (uint32_t)info[22]        | ((uint32_t)info[23] << 8)
- 1804              	 .loc 3 295 0
- 1805 00f8 7B68     	 ldr r3,[r7,#4]
- 1806 00fa 9A61     	 str r2,[r3,#24]
- 297:../scud_bms.c **** 
- 298:../scud_bms.c ****     uint8_t  m   = info[26];
- 1807              	 .loc 3 298 0
- 1808 00fc 97F82A30 	 ldrb r3,[r7,#42]
- 1809 0100 87F89F30 	 strb r3,[r7,#159]
- 299:../scud_bms.c ****     uint32_t off = 27U;
- 1810              	 .loc 3 299 0
- 1811 0104 1B23     	 movs r3,#27
- 1812 0106 C7F89830 	 str r3,[r7,#152]
- 300:../scud_bms.c ****     if (m > SCUD_MAX_CELLS) m = SCUD_MAX_CELLS;
- 1813              	 .loc 3 300 0
- 1814 010a 97F89F30 	 ldrb r3,[r7,#159]
- 1815 010e 202B     	 cmp r3,#32
- 1816 0110 02D9     	 bls .L83
- 1817              	 .loc 3 300 0 is_stmt 0 discriminator 1
- 1818 0112 2023     	 movs r3,#32
- 1819 0114 87F89F30 	 strb r3,[r7,#159]
- 1820              	.L83:
- 301:../scud_bms.c ****     out->cell_count = m;
- 1821              	 .loc 3 301 0 is_stmt 1
- 1822 0118 7B68     	 ldr r3,[r7,#4]
- 1823 011a 97F89F20 	 ldrb r2,[r7,#159]
- 1824 011e 1A77     	 strb r2,[r3,#28]
- 302:../scud_bms.c **** 
- 303:../scud_bms.c ****     if (info_len < off + (uint32_t)m * 2U + 4U) return SCUD_ERR_TOO_SHORT;
- 1825              	 .loc 3 303 0
- 1826 0120 97F89F30 	 ldrb r3,[r7,#159]
- 1827 0124 5A00     	 lsls r2,r3,#1
- 1828 0126 D7F89830 	 ldr r3,[r7,#152]
- 1829 012a 1344     	 add r3,r3,r2
- 1830 012c 1A1D     	 adds r2,r3,#4
- 1831 012e FB68     	 ldr r3,[r7,#12]
- 1832 0130 9A42     	 cmp r2,r3
- 1833 0132 01D9     	 bls .L84
- 1834              	 .loc 3 303 0 is_stmt 0 discriminator 1
- 1835 0134 0523     	 movs r3,#5
- 1836 0136 11E1     	 b .L95
- 1837              	.L84:
- 1838              	.LBB10:
- 304:../scud_bms.c ****     for (uint8_t i = 0U; i < m; i++)
- 1839              	 .loc 3 304 0 is_stmt 1
- 1840 0138 0023     	 movs r3,#0
- 1841 013a 87F89730 	 strb r3,[r7,#151]
- 1842 013e 25E0     	 b .L85
- 1843              	.L86:
- 305:../scud_bms.c ****     {
- 306:../scud_bms.c ****         out->cell_mv[i] = (uint16_t)((uint16_t)info[off] | ((uint16_t)info[off + 1U] << 8));
- 1844              	 .loc 3 306 0 discriminator 3
- 1845 0140 97F89730 	 ldrb r3,[r7,#151]
- 1846 0144 07F11001 	 add r1,r7,#16
- 1847 0148 D7F89820 	 ldr r2,[r7,#152]
- 1848 014c 0A44     	 add r2,r2,r1
- 1849 014e 1278     	 ldrb r2,[r2]
- 1850 0150 91B2     	 uxth r1,r2
- 1851 0152 D7F89820 	 ldr r2,[r7,#152]
- 1852 0156 0132     	 adds r2,r2,#1
- 1853 0158 07F1A000 	 add r0,r7,#160
- 1854 015c 0244     	 add r2,r2,r0
- 1855 015e 12F8902C 	 ldrb r2,[r2,#-144]
- 1856 0162 1202     	 lsls r2,r2,#8
- 1857 0164 92B2     	 uxth r2,r2
- 1858 0166 0A43     	 orrs r2,r2,r1
- 1859 0168 92B2     	 uxth r2,r2
- 1860 016a 91B2     	 uxth r1,r2
- 1861 016c 7A68     	 ldr r2,[r7,#4]
- 1862 016e 0C33     	 adds r3,r3,#12
- 1863 0170 5B00     	 lsls r3,r3,#1
- 1864 0172 1344     	 add r3,r3,r2
- 1865 0174 0A46     	 mov r2,r1
- 1866 0176 DA80     	 strh r2,[r3,#6]
- 307:../scud_bms.c ****         off += 2U;
- 1867              	 .loc 3 307 0 discriminator 3
- 1868 0178 D7F89830 	 ldr r3,[r7,#152]
- 1869 017c 0233     	 adds r3,r3,#2
- 1870 017e C7F89830 	 str r3,[r7,#152]
- 304:../scud_bms.c ****     for (uint8_t i = 0U; i < m; i++)
- 1871              	 .loc 3 304 0 discriminator 3
- 1872 0182 97F89730 	 ldrb r3,[r7,#151]
- 1873 0186 0133     	 adds r3,r3,#1
- 1874 0188 87F89730 	 strb r3,[r7,#151]
- 1875              	.L85:
- 304:../scud_bms.c ****     for (uint8_t i = 0U; i < m; i++)
- 1876              	 .loc 3 304 0 is_stmt 0 discriminator 1
- 1877 018c 97F89720 	 ldrb r2,[r7,#151]
- 1878 0190 97F89F30 	 ldrb r3,[r7,#159]
- 1879 0194 9A42     	 cmp r2,r3
- 1880 0196 D3D3     	 bcc .L86
- 1881              	.LBE10:
- 308:../scud_bms.c ****     }
- 309:../scud_bms.c ****     out->cell_high_idx = info[off++];
- 1882              	 .loc 3 309 0 is_stmt 1
- 1883 0198 D7F89830 	 ldr r3,[r7,#152]
- 1884 019c 5A1C     	 adds r2,r3,#1
- 1885 019e C7F89820 	 str r2,[r7,#152]
- 1886 01a2 07F1A002 	 add r2,r7,#160
- 1887 01a6 1344     	 add r3,r3,r2
- 1888 01a8 13F8902C 	 ldrb r2,[r3,#-144]
- 1889 01ac 7B68     	 ldr r3,[r7,#4]
- 1890 01ae 83F85E20 	 strb r2,[r3,#94]
- 310:../scud_bms.c ****     out->cell_low_idx  = info[off++];
- 1891              	 .loc 3 310 0
- 1892 01b2 D7F89830 	 ldr r3,[r7,#152]
- 1893 01b6 5A1C     	 adds r2,r3,#1
- 1894 01b8 C7F89820 	 str r2,[r7,#152]
- 1895 01bc 07F1A002 	 add r2,r7,#160
- 1896 01c0 1344     	 add r3,r3,r2
- 1897 01c2 13F8902C 	 ldrb r2,[r3,#-144]
- 1898 01c6 7B68     	 ldr r3,[r7,#4]
- 1899 01c8 83F85F20 	 strb r2,[r3,#95]
- 311:../scud_bms.c ****     out->cell_vdiff_mv = (uint16_t)((uint16_t)info[off] | ((uint16_t)info[off + 1U] << 8));
- 1900              	 .loc 3 311 0
- 1901 01cc 07F11002 	 add r2,r7,#16
- 1902 01d0 D7F89830 	 ldr r3,[r7,#152]
- 1903 01d4 1344     	 add r3,r3,r2
- 1904 01d6 1B78     	 ldrb r3,[r3]
- 1905 01d8 9AB2     	 uxth r2,r3
- 1906 01da D7F89830 	 ldr r3,[r7,#152]
- 1907 01de 0133     	 adds r3,r3,#1
- 1908 01e0 07F1A001 	 add r1,r7,#160
- 1909 01e4 0B44     	 add r3,r3,r1
- 1910 01e6 13F8903C 	 ldrb r3,[r3,#-144]
- 1911 01ea 1B02     	 lsls r3,r3,#8
- 1912 01ec 9BB2     	 uxth r3,r3
- 1913 01ee 1343     	 orrs r3,r3,r2
- 1914 01f0 9BB2     	 uxth r3,r3
- 1915 01f2 9AB2     	 uxth r2,r3
- 1916 01f4 7B68     	 ldr r3,[r7,#4]
- 1917 01f6 A3F86020 	 strh r2,[r3,#96]
- 312:../scud_bms.c ****     off += 2U;
- 1918              	 .loc 3 312 0
- 1919 01fa D7F89830 	 ldr r3,[r7,#152]
- 1920 01fe 0233     	 adds r3,r3,#2
- 1921 0200 C7F89830 	 str r3,[r7,#152]
- 313:../scud_bms.c **** 
- 314:../scud_bms.c ****     uint8_t n = info[off++];
- 1922              	 .loc 3 314 0
- 1923 0204 D7F89830 	 ldr r3,[r7,#152]
- 1924 0208 5A1C     	 adds r2,r3,#1
- 1925 020a C7F89820 	 str r2,[r7,#152]
- 1926 020e 07F1A002 	 add r2,r7,#160
- 1927 0212 1344     	 add r3,r3,r2
- 1928 0214 13F8903C 	 ldrb r3,[r3,#-144]
- 1929 0218 87F89630 	 strb r3,[r7,#150]
- 315:../scud_bms.c ****     if (n > SCUD_MAX_TEMPS) n = SCUD_MAX_TEMPS;
- 1930              	 .loc 3 315 0
- 1931 021c 97F89630 	 ldrb r3,[r7,#150]
- 1932 0220 082B     	 cmp r3,#8
- 1933 0222 02D9     	 bls .L87
- 1934              	 .loc 3 315 0 is_stmt 0 discriminator 1
- 1935 0224 0823     	 movs r3,#8
- 1936 0226 87F89630 	 strb r3,[r7,#150]
- 1937              	.L87:
- 316:../scud_bms.c ****     out->cell_temp_count = n;
- 1938              	 .loc 3 316 0 is_stmt 1
- 1939 022a 7B68     	 ldr r3,[r7,#4]
- 1940 022c 97F89620 	 ldrb r2,[r7,#150]
- 1941 0230 83F86220 	 strb r2,[r3,#98]
- 317:../scud_bms.c ****     if (info_len < off + (uint32_t)n * 2U) return SCUD_ERR_TOO_SHORT;
- 1942              	 .loc 3 317 0
- 1943 0234 97F89630 	 ldrb r3,[r7,#150]
- 1944 0238 5A00     	 lsls r2,r3,#1
- 1945 023a D7F89830 	 ldr r3,[r7,#152]
- 1946 023e 1A44     	 add r2,r2,r3
- 1947 0240 FB68     	 ldr r3,[r7,#12]
- 1948 0242 9A42     	 cmp r2,r3
- 1949 0244 01D9     	 bls .L88
- 1950              	 .loc 3 317 0 is_stmt 0 discriminator 1
- 1951 0246 0523     	 movs r3,#5
- 1952 0248 88E0     	 b .L95
- 1953              	.L88:
- 1954              	.LBB11:
- 318:../scud_bms.c ****     for (uint8_t i = 0U; i < n; i++)
- 1955              	 .loc 3 318 0 is_stmt 1
- 1956 024a 0023     	 movs r3,#0
- 1957 024c 87F89530 	 strb r3,[r7,#149]
- 1958 0250 24E0     	 b .L89
- 1959              	.L90:
- 319:../scud_bms.c ****     {
- 320:../scud_bms.c ****         out->cell_temps_c[i] = (int16_t)((uint16_t)info[off] | ((uint16_t)info[off + 1U] << 8));
- 1960              	 .loc 3 320 0 discriminator 3
- 1961 0252 97F89530 	 ldrb r3,[r7,#149]
- 1962 0256 07F11001 	 add r1,r7,#16
- 1963 025a D7F89820 	 ldr r2,[r7,#152]
- 1964 025e 0A44     	 add r2,r2,r1
- 1965 0260 1278     	 ldrb r2,[r2]
- 1966 0262 91B2     	 uxth r1,r2
- 1967 0264 D7F89820 	 ldr r2,[r7,#152]
- 1968 0268 0132     	 adds r2,r2,#1
- 1969 026a 07F1A000 	 add r0,r7,#160
- 1970 026e 0244     	 add r2,r2,r0
- 1971 0270 12F8902C 	 ldrb r2,[r2,#-144]
- 1972 0274 1202     	 lsls r2,r2,#8
- 1973 0276 92B2     	 uxth r2,r2
- 1974 0278 0A43     	 orrs r2,r2,r1
- 1975 027a 91B2     	 uxth r1,r2
- 1976 027c 7A68     	 ldr r2,[r7,#4]
- 1977 027e 3033     	 adds r3,r3,#48
- 1978 0280 5B00     	 lsls r3,r3,#1
- 1979 0282 1344     	 add r3,r3,r2
- 1980 0284 0A46     	 mov r2,r1
- 1981 0286 9A80     	 strh r2,[r3,#4]
- 321:../scud_bms.c ****         off += 2U;
- 1982              	 .loc 3 321 0 discriminator 3
- 1983 0288 D7F89830 	 ldr r3,[r7,#152]
- 1984 028c 0233     	 adds r3,r3,#2
- 1985 028e C7F89830 	 str r3,[r7,#152]
- 318:../scud_bms.c ****     for (uint8_t i = 0U; i < n; i++)
- 1986              	 .loc 3 318 0 discriminator 3
- 1987 0292 97F89530 	 ldrb r3,[r7,#149]
- 1988 0296 0133     	 adds r3,r3,#1
- 1989 0298 87F89530 	 strb r3,[r7,#149]
- 1990              	.L89:
- 318:../scud_bms.c ****     for (uint8_t i = 0U; i < n; i++)
- 1991              	 .loc 3 318 0 is_stmt 0 discriminator 1
- 1992 029c 97F89520 	 ldrb r2,[r7,#149]
- 1993 02a0 97F89630 	 ldrb r3,[r7,#150]
- 1994 02a4 9A42     	 cmp r2,r3
- 1995 02a6 D4D3     	 bcc .L90
- 1996              	.LBE11:
- 322:../scud_bms.c ****     }
- 323:../scud_bms.c **** 
- 324:../scud_bms.c ****     out->other_temp_count = 0U;
- 1997              	 .loc 3 324 0 is_stmt 1
- 1998 02a8 7B68     	 ldr r3,[r7,#4]
- 1999 02aa 0022     	 movs r2,#0
- 2000 02ac 83F87420 	 strb r2,[r3,#116]
- 325:../scud_bms.c ****     if (off < info_len)
- 2001              	 .loc 3 325 0
- 2002 02b0 FB68     	 ldr r3,[r7,#12]
- 2003 02b2 D7F89820 	 ldr r2,[r7,#152]
- 2004 02b6 9A42     	 cmp r2,r3
- 2005 02b8 4FD2     	 bcs .L91
- 2006              	.LBB12:
- 326:../scud_bms.c ****     {
- 327:../scud_bms.c ****         uint8_t k = info[off++];
- 2007              	 .loc 3 327 0
- 2008 02ba D7F89830 	 ldr r3,[r7,#152]
- 2009 02be 5A1C     	 adds r2,r3,#1
- 2010 02c0 C7F89820 	 str r2,[r7,#152]
- 2011 02c4 07F1A002 	 add r2,r7,#160
- 2012 02c8 1344     	 add r3,r3,r2
- 2013 02ca 13F8903C 	 ldrb r3,[r3,#-144]
- 2014 02ce 87F89430 	 strb r3,[r7,#148]
- 328:../scud_bms.c ****         if (k > SCUD_MAX_TEMPS) k = SCUD_MAX_TEMPS;
- 2015              	 .loc 3 328 0
- 2016 02d2 97F89430 	 ldrb r3,[r7,#148]
- 2017 02d6 082B     	 cmp r3,#8
- 2018 02d8 02D9     	 bls .L92
- 2019              	 .loc 3 328 0 is_stmt 0 discriminator 1
- 2020 02da 0823     	 movs r3,#8
- 2021 02dc 87F89430 	 strb r3,[r7,#148]
- 2022              	.L92:
- 329:../scud_bms.c ****         out->other_temp_count = k;
- 2023              	 .loc 3 329 0 is_stmt 1
- 2024 02e0 7B68     	 ldr r3,[r7,#4]
- 2025 02e2 97F89420 	 ldrb r2,[r7,#148]
- 2026 02e6 83F87420 	 strb r2,[r3,#116]
- 330:../scud_bms.c ****         if (info_len >= off + (uint32_t)k * 2U)
- 2027              	 .loc 3 330 0
- 2028 02ea 97F89430 	 ldrb r3,[r7,#148]
- 2029 02ee 5A00     	 lsls r2,r3,#1
- 2030 02f0 D7F89830 	 ldr r3,[r7,#152]
- 2031 02f4 1A44     	 add r2,r2,r3
- 2032 02f6 FB68     	 ldr r3,[r7,#12]
- 2033 02f8 9A42     	 cmp r2,r3
- 2034 02fa 2ED8     	 bhi .L91
- 2035              	.LBB13:
- 331:../scud_bms.c ****         {
- 332:../scud_bms.c ****             for (uint8_t i = 0U; i < k; i++)
- 2036              	 .loc 3 332 0
- 2037 02fc 0023     	 movs r3,#0
- 2038 02fe 87F89330 	 strb r3,[r7,#147]
- 2039 0302 24E0     	 b .L93
- 2040              	.L94:
- 333:../scud_bms.c ****             {
- 334:../scud_bms.c ****                 out->other_temps_c[i] =
- 2041              	 .loc 3 334 0 discriminator 3
- 2042 0304 97F89330 	 ldrb r3,[r7,#147]
- 335:../scud_bms.c ****                     (int16_t)((uint16_t)info[off] | ((uint16_t)info[off + 1U] << 8));
- 2043              	 .loc 3 335 0 discriminator 3
- 2044 0308 07F11001 	 add r1,r7,#16
- 2045 030c D7F89820 	 ldr r2,[r7,#152]
- 2046 0310 0A44     	 add r2,r2,r1
- 2047 0312 1278     	 ldrb r2,[r2]
- 2048 0314 91B2     	 uxth r1,r2
- 2049 0316 D7F89820 	 ldr r2,[r7,#152]
- 2050 031a 0132     	 adds r2,r2,#1
- 2051 031c 07F1A000 	 add r0,r7,#160
- 2052 0320 0244     	 add r2,r2,r0
- 2053 0322 12F8902C 	 ldrb r2,[r2,#-144]
- 2054 0326 1202     	 lsls r2,r2,#8
- 2055 0328 92B2     	 uxth r2,r2
- 2056 032a 0A43     	 orrs r2,r2,r1
- 2057 032c 91B2     	 uxth r1,r2
- 334:../scud_bms.c ****                     (int16_t)((uint16_t)info[off] | ((uint16_t)info[off + 1U] << 8));
- 2058              	 .loc 3 334 0 discriminator 3
- 2059 032e 7A68     	 ldr r2,[r7,#4]
- 2060 0330 3833     	 adds r3,r3,#56
- 2061 0332 5B00     	 lsls r3,r3,#1
- 2062 0334 1344     	 add r3,r3,r2
- 2063 0336 0A46     	 mov r2,r1
- 2064 0338 DA80     	 strh r2,[r3,#6]
- 336:../scud_bms.c ****                 off += 2U;
- 2065              	 .loc 3 336 0 discriminator 3
- 2066 033a D7F89830 	 ldr r3,[r7,#152]
- 2067 033e 0233     	 adds r3,r3,#2
- 2068 0340 C7F89830 	 str r3,[r7,#152]
- 332:../scud_bms.c ****             {
- 2069              	 .loc 3 332 0 discriminator 3
- 2070 0344 97F89330 	 ldrb r3,[r7,#147]
- 2071 0348 0133     	 adds r3,r3,#1
- 2072 034a 87F89330 	 strb r3,[r7,#147]
- 2073              	.L93:
- 332:../scud_bms.c ****             {
- 2074              	 .loc 3 332 0 is_stmt 0 discriminator 1
- 2075 034e 97F89320 	 ldrb r2,[r7,#147]
- 2076 0352 97F89430 	 ldrb r3,[r7,#148]
- 2077 0356 9A42     	 cmp r2,r3
- 2078 0358 D4D3     	 bcc .L94
- 2079              	.L91:
- 2080              	.LBE13:
- 2081              	.LBE12:
- 337:../scud_bms.c ****             }
- 338:../scud_bms.c ****         }
- 339:../scud_bms.c ****     }
- 340:../scud_bms.c ****     return SCUD_OK;
- 2082              	 .loc 3 340 0 is_stmt 1
- 2083 035a 0023     	 movs r3,#0
- 2084              	.L95:
- 341:../scud_bms.c **** }
- 2085              	 .loc 3 341 0 discriminator 1
- 2086 035c 1846     	 mov r0,r3
- 2087 035e A037     	 adds r7,r7,#160
- 2088              	.LCFI98:
- 2089              	 .cfi_def_cfa_offset 8
- 2090 0360 BD46     	 mov sp,r7
- 2091              	.LCFI99:
- 2092              	 .cfi_def_cfa_register 13
- 2093              	 
- 2094 0362 80BD     	 pop {r7,pc}
- 2095              	 .cfi_endproc
- 2096              	.LFE310:
- 2098              	 .section .text.SCUD_ReadAlarms,"ax",%progbits
- 2099              	 .align 2
- 2100              	 .global SCUD_ReadAlarms
- 2101              	 .thumb
- 2102              	 .thumb_func
- 2104              	SCUD_ReadAlarms:
- 2105              	.LFB311:
- 342:../scud_bms.c **** 
- 343:../scud_bms.c **** ScudStatus_t SCUD_ReadAlarms(ScudAlarms_t *out)
- 344:../scud_bms.c **** {
- 2106              	 .loc 3 344 0
- 2107              	 .cfi_startproc
- 2108              	 
- 2109              	 
- 2110 0000 80B5     	 push {r7,lr}
- 2111              	.LCFI100:
- 2112              	 .cfi_def_cfa_offset 8
- 2113              	 .cfi_offset 7,-8
- 2114              	 .cfi_offset 14,-4
- 2115 0002 8CB0     	 sub sp,sp,#48
- 2116              	.LCFI101:
- 2117              	 .cfi_def_cfa_offset 56
- 2118 0004 00AF     	 add r7,sp,#0
- 2119              	.LCFI102:
- 2120              	 .cfi_def_cfa_register 7
- 2121 0006 7860     	 str r0,[r7,#4]
- 345:../scud_bms.c ****     uint8_t  info[32];
- 346:../scud_bms.c ****     uint32_t info_len;
- 347:../scud_bms.c **** 
- 348:../scud_bms.c ****     ScudStatus_t st = do_txn(SCUD_CID2_ALARM, info, &info_len);
- 2122              	 .loc 3 348 0
- 2123 0008 07F10C02 	 add r2,r7,#12
- 2124 000c 07F10803 	 add r3,r7,#8
- 2125 0010 4420     	 movs r0,#68
- 2126 0012 1146     	 mov r1,r2
- 2127 0014 1A46     	 mov r2,r3
- 2128 0016 FFF7FEFF 	 bl do_txn
- 2129 001a 0346     	 mov r3,r0
- 2130 001c 87F82F30 	 strb r3,[r7,#47]
- 349:../scud_bms.c ****     if (st != SCUD_OK) return st;
- 2131              	 .loc 3 349 0
- 2132 0020 97F82F30 	 ldrb r3,[r7,#47]
- 2133 0024 002B     	 cmp r3,#0
- 2134 0026 02D0     	 beq .L97
- 2135              	 .loc 3 349 0 is_stmt 0 discriminator 1
- 2136 0028 97F82F30 	 ldrb r3,[r7,#47]
- 2137 002c 1AE0     	 b .L100
- 2138              	.L97:
- 350:../scud_bms.c ****     if (info_len < 9U) return SCUD_ERR_TOO_SHORT;
- 2139              	 .loc 3 350 0 is_stmt 1
- 2140 002e BB68     	 ldr r3,[r7,#8]
- 2141 0030 082B     	 cmp r3,#8
- 2142 0032 01D8     	 bhi .L99
- 2143              	 .loc 3 350 0 is_stmt 0 discriminator 1
- 2144 0034 0523     	 movs r3,#5
- 2145 0036 15E0     	 b .L100
- 2146              	.L99:
- 351:../scud_bms.c **** 
- 352:../scud_bms.c ****     /* info[0]=DATA_FLAG, info[1]=PACK_NUM, info[2..8] = seven event bytes */
- 353:../scud_bms.c ****     out->voltage    = info[2];
- 2147              	 .loc 3 353 0 is_stmt 1
- 2148 0038 BA7B     	 ldrb r2,[r7,#14]
- 2149 003a 7B68     	 ldr r3,[r7,#4]
- 2150 003c 1A70     	 strb r2,[r3]
- 354:../scud_bms.c ****     out->current    = info[3];
- 2151              	 .loc 3 354 0
- 2152 003e FA7B     	 ldrb r2,[r7,#15]
- 2153 0040 7B68     	 ldr r3,[r7,#4]
- 2154 0042 5A70     	 strb r2,[r3,#1]
- 355:../scud_bms.c ****     out->cell_temp  = info[4];
- 2155              	 .loc 3 355 0
- 2156 0044 3A7C     	 ldrb r2,[r7,#16]
- 2157 0046 7B68     	 ldr r3,[r7,#4]
- 2158 0048 9A70     	 strb r2,[r3,#2]
- 356:../scud_bms.c ****     out->other_temp = info[5];
- 2159              	 .loc 3 356 0
- 2160 004a 7A7C     	 ldrb r2,[r7,#17]
- 2161 004c 7B68     	 ldr r3,[r7,#4]
- 2162 004e DA70     	 strb r2,[r3,#3]
- 357:../scud_bms.c ****     out->capacity   = info[6];
- 2163              	 .loc 3 357 0
- 2164 0050 BA7C     	 ldrb r2,[r7,#18]
- 2165 0052 7B68     	 ldr r3,[r7,#4]
- 2166 0054 1A71     	 strb r2,[r3,#4]
- 358:../scud_bms.c ****     out->other1     = info[7];
- 2167              	 .loc 3 358 0
- 2168 0056 FA7C     	 ldrb r2,[r7,#19]
- 2169 0058 7B68     	 ldr r3,[r7,#4]
- 2170 005a 5A71     	 strb r2,[r3,#5]
- 359:../scud_bms.c ****     out->other2     = info[8];
- 2171              	 .loc 3 359 0
- 2172 005c 3A7D     	 ldrb r2,[r7,#20]
- 2173 005e 7B68     	 ldr r3,[r7,#4]
- 2174 0060 9A71     	 strb r2,[r3,#6]
- 360:../scud_bms.c ****     return SCUD_OK;
- 2175              	 .loc 3 360 0
- 2176 0062 0023     	 movs r3,#0
- 2177              	.L100:
- 361:../scud_bms.c **** }
- 2178              	 .loc 3 361 0 discriminator 1
- 2179 0064 1846     	 mov r0,r3
- 2180 0066 3037     	 adds r7,r7,#48
- 2181              	.LCFI103:
- 2182              	 .cfi_def_cfa_offset 8
- 2183 0068 BD46     	 mov sp,r7
- 2184              	.LCFI104:
- 2185              	 .cfi_def_cfa_register 13
- 2186              	 
- 2187 006a 80BD     	 pop {r7,pc}
- 2188              	 .cfi_endproc
- 2189              	.LFE311:
- 2191              	 .section .rodata
- 2192 0026 0000     	 .align 2
- 2193              	.LC2:
- 2194 0028 563D256C 	 .ascii "V=%lu.%03lu V  I=%ld mA  SOC=%u%%  Vdiff=%u mV  RMC"
- 2194      752E2530 
- 2194      336C7520 
- 2194      56202049 
- 2194      3D256C64 
- 2195 005b 3D256C75 	 .ascii "=%lu.%03lu Ah  FCC=%lu.%03lu Ah  Cyc=%u\012\000"
- 2195      2E253033 
- 2195      6C752041 
- 2195      68202046 
- 2195      43433D25 
- 2196              	 .align 2
- 2197              	.LC3:
- 2198 0084 43656C6C 	 .ascii "Cells [%u]:\000"
- 2198      73205B25 
- 2198      755D3A00 
- 2199              	 .align 2
- 2200              	.LC4:
- 2201 0090 20257500 	 .ascii " %u\000"
- 2202              	 .align 2
- 2203              	.LC5:
- 2204 0094 54656D70 	 .ascii "Temps [%u+%u]:\000"
- 2204      73205B25 
- 2204      752B2575 
- 2204      5D3A00
- 2205 00a3 00       	 .align 2
- 2206              	.LC6:
- 2207 00a4 20256400 	 .ascii " %d\000"
- 2208              	 .section .text.SCUD_PrintAnalog,"ax",%progbits
- 2209              	 .align 2
- 2210              	 .global SCUD_PrintAnalog
- 2211              	 .thumb
- 2212              	 .thumb_func
- 2214              	SCUD_PrintAnalog:
- 2215              	.LFB312:
- 362:../scud_bms.c **** 
- 363:../scud_bms.c **** void SCUD_PrintAnalog(const ScudAnalog_t *t)
- 364:../scud_bms.c **** {
- 2216              	 .loc 3 364 0
- 2217              	 .cfi_startproc
- 2218              	 
- 2219              	 
- 2220 0000 2DE9F043 	 push {r4,r5,r6,r7,r8,r9,lr}
- 2221              	.LCFI105:
- 2222              	 .cfi_def_cfa_offset 28
- 2223              	 .cfi_offset 4,-28
- 2224              	 .cfi_offset 5,-24
- 2225              	 .cfi_offset 6,-20
- 2226              	 .cfi_offset 7,-16
- 2227              	 .cfi_offset 8,-12
- 2228              	 .cfi_offset 9,-8
- 2229              	 .cfi_offset 14,-4
- 2230 0004 8DB0     	 sub sp,sp,#52
- 2231              	.LCFI106:
- 2232              	 .cfi_def_cfa_offset 80
- 2233 0006 08AF     	 add r7,sp,#32
- 2234              	.LCFI107:
- 2235              	 .cfi_def_cfa 7,48
- 2236 0008 7860     	 str r0,[r7,#4]
- 365:../scud_bms.c ****     uint8_t i;
+ 278:../scud_bms.c ****     out->data_flag   = info[0];
+ 1683              	 .loc 3 278 0 is_stmt 1
+ 1684 0016 FB68     	 ldr r3,[r7,#12]
+ 1685 0018 1A78     	 ldrb r2,[r3]
+ 1686 001a 7B68     	 ldr r3,[r7,#4]
+ 1687 001c 1A70     	 strb r2,[r3]
+ 279:../scud_bms.c ****     out->pack_num    = info[1];
+ 1688              	 .loc 3 279 0
+ 1689 001e FB68     	 ldr r3,[r7,#12]
+ 1690 0020 5A78     	 ldrb r2,[r3,#1]
+ 1691 0022 7B68     	 ldr r3,[r7,#4]
+ 1692 0024 5A70     	 strb r2,[r3,#1]
+ 280:../scud_bms.c ****     out->total_mv    = (uint32_t)info[2]        | ((uint32_t)info[3]  << 8)
+ 1693              	 .loc 3 280 0
+ 1694 0026 FB68     	 ldr r3,[r7,#12]
+ 1695 0028 0233     	 adds r3,r3,#2
+ 1696 002a 1B78     	 ldrb r3,[r3]
+ 1697 002c 1A46     	 mov r2,r3
+ 1698 002e FB68     	 ldr r3,[r7,#12]
+ 1699 0030 0333     	 adds r3,r3,#3
+ 1700 0032 1B78     	 ldrb r3,[r3]
+ 1701 0034 1B02     	 lsls r3,r3,#8
+ 1702 0036 1A43     	 orrs r2,r2,r3
+ 281:../scud_bms.c ****                      | ((uint32_t)info[4] << 16) | ((uint32_t)info[5] << 24);
+ 1703              	 .loc 3 281 0
+ 1704 0038 FB68     	 ldr r3,[r7,#12]
+ 1705 003a 0433     	 adds r3,r3,#4
+ 1706 003c 1B78     	 ldrb r3,[r3]
+ 1707 003e 1B04     	 lsls r3,r3,#16
+ 1708 0040 1A43     	 orrs r2,r2,r3
+ 1709 0042 FB68     	 ldr r3,[r7,#12]
+ 1710 0044 0533     	 adds r3,r3,#5
+ 1711 0046 1B78     	 ldrb r3,[r3]
+ 1712 0048 1B06     	 lsls r3,r3,#24
+ 1713 004a 1A43     	 orrs r2,r2,r3
+ 280:../scud_bms.c ****     out->total_mv    = (uint32_t)info[2]        | ((uint32_t)info[3]  << 8)
+ 1714              	 .loc 3 280 0
+ 1715 004c 7B68     	 ldr r3,[r7,#4]
+ 1716 004e 5A60     	 str r2,[r3,#4]
+ 282:../scud_bms.c ****     out->current_ma  = (int32_t)((uint32_t)info[6]        | ((uint32_t)info[7]  << 8)
+ 1717              	 .loc 3 282 0
+ 1718 0050 FB68     	 ldr r3,[r7,#12]
+ 1719 0052 0633     	 adds r3,r3,#6
+ 1720 0054 1B78     	 ldrb r3,[r3]
+ 1721 0056 1A46     	 mov r2,r3
+ 1722 0058 FB68     	 ldr r3,[r7,#12]
+ 1723 005a 0733     	 adds r3,r3,#7
+ 1724 005c 1B78     	 ldrb r3,[r3]
+ 1725 005e 1B02     	 lsls r3,r3,#8
+ 1726 0060 1A43     	 orrs r2,r2,r3
+ 283:../scud_bms.c ****                                | ((uint32_t)info[8] << 16) | ((uint32_t)info[9] << 24));
+ 1727              	 .loc 3 283 0
+ 1728 0062 FB68     	 ldr r3,[r7,#12]
+ 1729 0064 0833     	 adds r3,r3,#8
+ 1730 0066 1B78     	 ldrb r3,[r3]
+ 1731 0068 1B04     	 lsls r3,r3,#16
+ 1732 006a 1A43     	 orrs r2,r2,r3
+ 1733 006c FB68     	 ldr r3,[r7,#12]
+ 1734 006e 0933     	 adds r3,r3,#9
+ 1735 0070 1B78     	 ldrb r3,[r3]
+ 1736 0072 1B06     	 lsls r3,r3,#24
+ 1737 0074 1343     	 orrs r3,r3,r2
+ 282:../scud_bms.c ****     out->current_ma  = (int32_t)((uint32_t)info[6]        | ((uint32_t)info[7]  << 8)
+ 1738              	 .loc 3 282 0
+ 1739 0076 1A46     	 mov r2,r3
+ 1740 0078 7B68     	 ldr r3,[r7,#4]
+ 1741 007a 9A60     	 str r2,[r3,#8]
+ 284:../scud_bms.c ****     out->soc         = info[10];
+ 1742              	 .loc 3 284 0
+ 1743 007c FB68     	 ldr r3,[r7,#12]
+ 1744 007e 9A7A     	 ldrb r2,[r3,#10]
+ 1745 0080 7B68     	 ldr r3,[r7,#4]
+ 1746 0082 1A73     	 strb r2,[r3,#12]
+ 285:../scud_bms.c ****     out->soh         = info[11];
+ 1747              	 .loc 3 285 0
+ 1748 0084 FB68     	 ldr r3,[r7,#12]
+ 1749 0086 DA7A     	 ldrb r2,[r3,#11]
+ 1750 0088 7B68     	 ldr r3,[r7,#4]
+ 1751 008a 5A73     	 strb r2,[r3,#13]
+ 286:../scud_bms.c ****     out->cycle_count = (uint16_t)((uint16_t)info[12] | ((uint16_t)info[13] << 8));
+ 1752              	 .loc 3 286 0
+ 1753 008c FB68     	 ldr r3,[r7,#12]
+ 1754 008e 0C33     	 adds r3,r3,#12
+ 1755 0090 1B78     	 ldrb r3,[r3]
+ 1756 0092 9AB2     	 uxth r2,r3
+ 1757 0094 FB68     	 ldr r3,[r7,#12]
+ 1758 0096 0D33     	 adds r3,r3,#13
+ 1759 0098 1B78     	 ldrb r3,[r3]
+ 1760 009a 1B02     	 lsls r3,r3,#8
+ 1761 009c 9BB2     	 uxth r3,r3
+ 1762 009e 1343     	 orrs r3,r3,r2
+ 1763 00a0 9BB2     	 uxth r3,r3
+ 1764 00a2 9AB2     	 uxth r2,r3
+ 1765 00a4 7B68     	 ldr r3,[r7,#4]
+ 1766 00a6 DA81     	 strh r2,[r3,#14]
+ 287:../scud_bms.c ****     out->rmc_mah     = (uint32_t)info[14]        | ((uint32_t)info[15] << 8)
+ 1767              	 .loc 3 287 0
+ 1768 00a8 FB68     	 ldr r3,[r7,#12]
+ 1769 00aa 0E33     	 adds r3,r3,#14
+ 1770 00ac 1B78     	 ldrb r3,[r3]
+ 1771 00ae 1A46     	 mov r2,r3
+ 1772 00b0 FB68     	 ldr r3,[r7,#12]
+ 1773 00b2 0F33     	 adds r3,r3,#15
+ 1774 00b4 1B78     	 ldrb r3,[r3]
+ 1775 00b6 1B02     	 lsls r3,r3,#8
+ 1776 00b8 1A43     	 orrs r2,r2,r3
+ 288:../scud_bms.c ****                      | ((uint32_t)info[16] << 16) | ((uint32_t)info[17] << 24);
+ 1777              	 .loc 3 288 0
+ 1778 00ba FB68     	 ldr r3,[r7,#12]
+ 1779 00bc 1033     	 adds r3,r3,#16
+ 1780 00be 1B78     	 ldrb r3,[r3]
+ 1781 00c0 1B04     	 lsls r3,r3,#16
+ 1782 00c2 1A43     	 orrs r2,r2,r3
+ 1783 00c4 FB68     	 ldr r3,[r7,#12]
+ 1784 00c6 1133     	 adds r3,r3,#17
+ 1785 00c8 1B78     	 ldrb r3,[r3]
+ 1786 00ca 1B06     	 lsls r3,r3,#24
+ 1787 00cc 1A43     	 orrs r2,r2,r3
+ 287:../scud_bms.c ****     out->rmc_mah     = (uint32_t)info[14]        | ((uint32_t)info[15] << 8)
+ 1788              	 .loc 3 287 0
+ 1789 00ce 7B68     	 ldr r3,[r7,#4]
+ 1790 00d0 1A61     	 str r2,[r3,#16]
+ 289:../scud_bms.c ****     out->fcc_mah     = (uint32_t)info[18]        | ((uint32_t)info[19] << 8)
+ 1791              	 .loc 3 289 0
+ 1792 00d2 FB68     	 ldr r3,[r7,#12]
+ 1793 00d4 1233     	 adds r3,r3,#18
+ 1794 00d6 1B78     	 ldrb r3,[r3]
+ 1795 00d8 1A46     	 mov r2,r3
+ 1796 00da FB68     	 ldr r3,[r7,#12]
+ 1797 00dc 1333     	 adds r3,r3,#19
+ 1798 00de 1B78     	 ldrb r3,[r3]
+ 1799 00e0 1B02     	 lsls r3,r3,#8
+ 1800 00e2 1A43     	 orrs r2,r2,r3
+ 290:../scud_bms.c ****                      | ((uint32_t)info[20] << 16) | ((uint32_t)info[21] << 24);
+ 1801              	 .loc 3 290 0
+ 1802 00e4 FB68     	 ldr r3,[r7,#12]
+ 1803 00e6 1433     	 adds r3,r3,#20
+ 1804 00e8 1B78     	 ldrb r3,[r3]
+ 1805 00ea 1B04     	 lsls r3,r3,#16
+ 1806 00ec 1A43     	 orrs r2,r2,r3
+ 1807 00ee FB68     	 ldr r3,[r7,#12]
+ 1808 00f0 1533     	 adds r3,r3,#21
+ 1809 00f2 1B78     	 ldrb r3,[r3]
+ 1810 00f4 1B06     	 lsls r3,r3,#24
+ 1811 00f6 1A43     	 orrs r2,r2,r3
+ 289:../scud_bms.c ****     out->fcc_mah     = (uint32_t)info[18]        | ((uint32_t)info[19] << 8)
+ 1812              	 .loc 3 289 0
+ 1813 00f8 7B68     	 ldr r3,[r7,#4]
+ 1814 00fa 5A61     	 str r2,[r3,#20]
+ 291:../scud_bms.c ****     out->design_mah  = (uint32_t)info[22]        | ((uint32_t)info[23] << 8)
+ 1815              	 .loc 3 291 0
+ 1816 00fc FB68     	 ldr r3,[r7,#12]
+ 1817 00fe 1633     	 adds r3,r3,#22
+ 1818 0100 1B78     	 ldrb r3,[r3]
+ 1819 0102 1A46     	 mov r2,r3
+ 1820 0104 FB68     	 ldr r3,[r7,#12]
+ 1821 0106 1733     	 adds r3,r3,#23
+ 1822 0108 1B78     	 ldrb r3,[r3]
+ 1823 010a 1B02     	 lsls r3,r3,#8
+ 1824 010c 1A43     	 orrs r2,r2,r3
+ 292:../scud_bms.c ****                      | ((uint32_t)info[24] << 16) | ((uint32_t)info[25] << 24);
+ 1825              	 .loc 3 292 0
+ 1826 010e FB68     	 ldr r3,[r7,#12]
+ 1827 0110 1833     	 adds r3,r3,#24
+ 1828 0112 1B78     	 ldrb r3,[r3]
+ 1829 0114 1B04     	 lsls r3,r3,#16
+ 1830 0116 1A43     	 orrs r2,r2,r3
+ 1831 0118 FB68     	 ldr r3,[r7,#12]
+ 1832 011a 1933     	 adds r3,r3,#25
+ 1833 011c 1B78     	 ldrb r3,[r3]
+ 1834 011e 1B06     	 lsls r3,r3,#24
+ 1835 0120 1A43     	 orrs r2,r2,r3
+ 291:../scud_bms.c ****     out->design_mah  = (uint32_t)info[22]        | ((uint32_t)info[23] << 8)
+ 1836              	 .loc 3 291 0
+ 1837 0122 7B68     	 ldr r3,[r7,#4]
+ 1838 0124 9A61     	 str r2,[r3,#24]
+ 293:../scud_bms.c **** 
+ 294:../scud_bms.c ****     uint8_t  m   = info[26];
+ 1839              	 .loc 3 294 0
+ 1840 0126 FB68     	 ldr r3,[r7,#12]
+ 1841 0128 9B7E     	 ldrb r3,[r3,#26]
+ 1842 012a FB77     	 strb r3,[r7,#31]
+ 295:../scud_bms.c ****     uint32_t off = 27U;
+ 1843              	 .loc 3 295 0
+ 1844 012c 1B23     	 movs r3,#27
+ 1845 012e BB61     	 str r3,[r7,#24]
+ 296:../scud_bms.c ****     if (m > SCUD_MAX_CELLS) m = SCUD_MAX_CELLS;
+ 1846              	 .loc 3 296 0
+ 1847 0130 FB7F     	 ldrb r3,[r7,#31]
+ 1848 0132 202B     	 cmp r3,#32
+ 1849 0134 01D9     	 bls .L82
+ 1850              	 .loc 3 296 0 is_stmt 0 discriminator 1
+ 1851 0136 2023     	 movs r3,#32
+ 1852 0138 FB77     	 strb r3,[r7,#31]
+ 1853              	.L82:
+ 297:../scud_bms.c ****     out->cell_count = m;
+ 1854              	 .loc 3 297 0 is_stmt 1
+ 1855 013a 7B68     	 ldr r3,[r7,#4]
+ 1856 013c FA7F     	 ldrb r2,[r7,#31]
+ 1857 013e 1A77     	 strb r2,[r3,#28]
+ 298:../scud_bms.c **** 
+ 299:../scud_bms.c ****     if (info_len < off + (uint32_t)m * 2U + 4U) return SCUD_ERR_TOO_SHORT;
+ 1858              	 .loc 3 299 0
+ 1859 0140 FB7F     	 ldrb r3,[r7,#31]
+ 1860 0142 5A00     	 lsls r2,r3,#1
+ 1861 0144 BB69     	 ldr r3,[r7,#24]
+ 1862 0146 1344     	 add r3,r3,r2
+ 1863 0148 1A1D     	 adds r2,r3,#4
+ 1864 014a BB68     	 ldr r3,[r7,#8]
+ 1865 014c 9A42     	 cmp r2,r3
+ 1866 014e 01D9     	 bls .L83
+ 1867              	 .loc 3 299 0 is_stmt 0 discriminator 1
+ 1868 0150 0523     	 movs r3,#5
+ 1869 0152 CAE0     	 b .L81
+ 1870              	.L83:
+ 1871              	.LBB10:
+ 300:../scud_bms.c ****     for (uint8_t i = 0U; i < m; i++)
+ 1872              	 .loc 3 300 0 is_stmt 1
+ 1873 0154 0023     	 movs r3,#0
+ 1874 0156 FB75     	 strb r3,[r7,#23]
+ 1875 0158 1CE0     	 b .L84
+ 1876              	.L85:
+ 301:../scud_bms.c ****     {
+ 302:../scud_bms.c ****         out->cell_mv[i] = (uint16_t)((uint16_t)info[off] | ((uint16_t)info[off + 1U] << 8));
+ 1877              	 .loc 3 302 0 discriminator 3
+ 1878 015a FB7D     	 ldrb r3,[r7,#23]
+ 1879 015c F968     	 ldr r1,[r7,#12]
+ 1880 015e BA69     	 ldr r2,[r7,#24]
+ 1881 0160 0A44     	 add r2,r2,r1
+ 1882 0162 1278     	 ldrb r2,[r2]
+ 1883 0164 90B2     	 uxth r0,r2
+ 1884 0166 BA69     	 ldr r2,[r7,#24]
+ 1885 0168 0132     	 adds r2,r2,#1
+ 1886 016a F968     	 ldr r1,[r7,#12]
+ 1887 016c 0A44     	 add r2,r2,r1
+ 1888 016e 1278     	 ldrb r2,[r2]
+ 1889 0170 1202     	 lsls r2,r2,#8
+ 1890 0172 92B2     	 uxth r2,r2
+ 1891 0174 0146     	 mov r1,r0
+ 1892 0176 0A43     	 orrs r2,r2,r1
+ 1893 0178 92B2     	 uxth r2,r2
+ 1894 017a 91B2     	 uxth r1,r2
+ 1895 017c 7A68     	 ldr r2,[r7,#4]
+ 1896 017e 0C33     	 adds r3,r3,#12
+ 1897 0180 5B00     	 lsls r3,r3,#1
+ 1898 0182 1344     	 add r3,r3,r2
+ 1899 0184 0A46     	 mov r2,r1
+ 1900 0186 DA80     	 strh r2,[r3,#6]
+ 303:../scud_bms.c ****         off += 2U;
+ 1901              	 .loc 3 303 0 discriminator 3
+ 1902 0188 BB69     	 ldr r3,[r7,#24]
+ 1903 018a 0233     	 adds r3,r3,#2
+ 1904 018c BB61     	 str r3,[r7,#24]
+ 300:../scud_bms.c ****     for (uint8_t i = 0U; i < m; i++)
+ 1905              	 .loc 3 300 0 discriminator 3
+ 1906 018e FB7D     	 ldrb r3,[r7,#23]
+ 1907 0190 0133     	 adds r3,r3,#1
+ 1908 0192 FB75     	 strb r3,[r7,#23]
+ 1909              	.L84:
+ 300:../scud_bms.c ****     for (uint8_t i = 0U; i < m; i++)
+ 1910              	 .loc 3 300 0 is_stmt 0 discriminator 1
+ 1911 0194 FA7D     	 ldrb r2,[r7,#23]
+ 1912 0196 FB7F     	 ldrb r3,[r7,#31]
+ 1913 0198 9A42     	 cmp r2,r3
+ 1914 019a DED3     	 bcc .L85
+ 1915              	.LBE10:
+ 304:../scud_bms.c ****     }
+ 305:../scud_bms.c ****     out->cell_high_idx = info[off++];
+ 1916              	 .loc 3 305 0 is_stmt 1
+ 1917 019c BB69     	 ldr r3,[r7,#24]
+ 1918 019e 5A1C     	 adds r2,r3,#1
+ 1919 01a0 BA61     	 str r2,[r7,#24]
+ 1920 01a2 FA68     	 ldr r2,[r7,#12]
+ 1921 01a4 1344     	 add r3,r3,r2
+ 1922 01a6 1A78     	 ldrb r2,[r3]
+ 1923 01a8 7B68     	 ldr r3,[r7,#4]
+ 1924 01aa 83F85E20 	 strb r2,[r3,#94]
+ 306:../scud_bms.c ****     out->cell_low_idx  = info[off++];
+ 1925              	 .loc 3 306 0
+ 1926 01ae BB69     	 ldr r3,[r7,#24]
+ 1927 01b0 5A1C     	 adds r2,r3,#1
+ 1928 01b2 BA61     	 str r2,[r7,#24]
+ 1929 01b4 FA68     	 ldr r2,[r7,#12]
+ 1930 01b6 1344     	 add r3,r3,r2
+ 1931 01b8 1A78     	 ldrb r2,[r3]
+ 1932 01ba 7B68     	 ldr r3,[r7,#4]
+ 1933 01bc 83F85F20 	 strb r2,[r3,#95]
+ 307:../scud_bms.c ****     out->cell_vdiff_mv = (uint16_t)((uint16_t)info[off] | ((uint16_t)info[off + 1U] << 8));
+ 1934              	 .loc 3 307 0
+ 1935 01c0 FA68     	 ldr r2,[r7,#12]
+ 1936 01c2 BB69     	 ldr r3,[r7,#24]
+ 1937 01c4 1344     	 add r3,r3,r2
+ 1938 01c6 1B78     	 ldrb r3,[r3]
+ 1939 01c8 99B2     	 uxth r1,r3
+ 1940 01ca BB69     	 ldr r3,[r7,#24]
+ 1941 01cc 0133     	 adds r3,r3,#1
+ 1942 01ce FA68     	 ldr r2,[r7,#12]
+ 1943 01d0 1344     	 add r3,r3,r2
+ 1944 01d2 1B78     	 ldrb r3,[r3]
+ 1945 01d4 1B02     	 lsls r3,r3,#8
+ 1946 01d6 9BB2     	 uxth r3,r3
+ 1947 01d8 0A46     	 mov r2,r1
+ 1948 01da 1343     	 orrs r3,r3,r2
+ 1949 01dc 9BB2     	 uxth r3,r3
+ 1950 01de 9AB2     	 uxth r2,r3
+ 1951 01e0 7B68     	 ldr r3,[r7,#4]
+ 1952 01e2 A3F86020 	 strh r2,[r3,#96]
+ 308:../scud_bms.c ****     off += 2U;
+ 1953              	 .loc 3 308 0
+ 1954 01e6 BB69     	 ldr r3,[r7,#24]
+ 1955 01e8 0233     	 adds r3,r3,#2
+ 1956 01ea BB61     	 str r3,[r7,#24]
+ 309:../scud_bms.c **** 
+ 310:../scud_bms.c ****     uint8_t n = info[off++];
+ 1957              	 .loc 3 310 0
+ 1958 01ec BB69     	 ldr r3,[r7,#24]
+ 1959 01ee 5A1C     	 adds r2,r3,#1
+ 1960 01f0 BA61     	 str r2,[r7,#24]
+ 1961 01f2 FA68     	 ldr r2,[r7,#12]
+ 1962 01f4 1344     	 add r3,r3,r2
+ 1963 01f6 1B78     	 ldrb r3,[r3]
+ 1964 01f8 BB75     	 strb r3,[r7,#22]
+ 311:../scud_bms.c ****     if (n > SCUD_MAX_TEMPS) n = SCUD_MAX_TEMPS;
+ 1965              	 .loc 3 311 0
+ 1966 01fa BB7D     	 ldrb r3,[r7,#22]
+ 1967 01fc 082B     	 cmp r3,#8
+ 1968 01fe 01D9     	 bls .L86
+ 1969              	 .loc 3 311 0 is_stmt 0 discriminator 1
+ 1970 0200 0823     	 movs r3,#8
+ 1971 0202 BB75     	 strb r3,[r7,#22]
+ 1972              	.L86:
+ 312:../scud_bms.c ****     out->cell_temp_count = n;
+ 1973              	 .loc 3 312 0 is_stmt 1
+ 1974 0204 7B68     	 ldr r3,[r7,#4]
+ 1975 0206 BA7D     	 ldrb r2,[r7,#22]
+ 1976 0208 83F86220 	 strb r2,[r3,#98]
+ 313:../scud_bms.c ****     if (info_len < off + (uint32_t)n * 2U) return SCUD_ERR_TOO_SHORT;
+ 1977              	 .loc 3 313 0
+ 1978 020c BB7D     	 ldrb r3,[r7,#22]
+ 1979 020e 5A00     	 lsls r2,r3,#1
+ 1980 0210 BB69     	 ldr r3,[r7,#24]
+ 1981 0212 1A44     	 add r2,r2,r3
+ 1982 0214 BB68     	 ldr r3,[r7,#8]
+ 1983 0216 9A42     	 cmp r2,r3
+ 1984 0218 01D9     	 bls .L87
+ 1985              	 .loc 3 313 0 is_stmt 0 discriminator 1
+ 1986 021a 0523     	 movs r3,#5
+ 1987 021c 65E0     	 b .L81
+ 1988              	.L87:
+ 1989              	.LBB11:
+ 314:../scud_bms.c ****     for (uint8_t i = 0U; i < n; i++)
+ 1990              	 .loc 3 314 0 is_stmt 1
+ 1991 021e 0023     	 movs r3,#0
+ 1992 0220 7B75     	 strb r3,[r7,#21]
+ 1993 0222 1BE0     	 b .L88
+ 1994              	.L89:
+ 315:../scud_bms.c ****     {
+ 316:../scud_bms.c ****         out->cell_temps_c[i] = (int16_t)((uint16_t)info[off] | ((uint16_t)info[off + 1U] << 8));
+ 1995              	 .loc 3 316 0 discriminator 3
+ 1996 0224 7B7D     	 ldrb r3,[r7,#21]
+ 1997 0226 F968     	 ldr r1,[r7,#12]
+ 1998 0228 BA69     	 ldr r2,[r7,#24]
+ 1999 022a 0A44     	 add r2,r2,r1
+ 2000 022c 1278     	 ldrb r2,[r2]
+ 2001 022e 90B2     	 uxth r0,r2
+ 2002 0230 BA69     	 ldr r2,[r7,#24]
+ 2003 0232 0132     	 adds r2,r2,#1
+ 2004 0234 F968     	 ldr r1,[r7,#12]
+ 2005 0236 0A44     	 add r2,r2,r1
+ 2006 0238 1278     	 ldrb r2,[r2]
+ 2007 023a 1202     	 lsls r2,r2,#8
+ 2008 023c 92B2     	 uxth r2,r2
+ 2009 023e 0146     	 mov r1,r0
+ 2010 0240 0A43     	 orrs r2,r2,r1
+ 2011 0242 91B2     	 uxth r1,r2
+ 2012 0244 7A68     	 ldr r2,[r7,#4]
+ 2013 0246 3033     	 adds r3,r3,#48
+ 2014 0248 5B00     	 lsls r3,r3,#1
+ 2015 024a 1344     	 add r3,r3,r2
+ 2016 024c 0A46     	 mov r2,r1
+ 2017 024e 9A80     	 strh r2,[r3,#4]
+ 317:../scud_bms.c ****         off += 2U;
+ 2018              	 .loc 3 317 0 discriminator 3
+ 2019 0250 BB69     	 ldr r3,[r7,#24]
+ 2020 0252 0233     	 adds r3,r3,#2
+ 2021 0254 BB61     	 str r3,[r7,#24]
+ 314:../scud_bms.c ****     for (uint8_t i = 0U; i < n; i++)
+ 2022              	 .loc 3 314 0 discriminator 3
+ 2023 0256 7B7D     	 ldrb r3,[r7,#21]
+ 2024 0258 0133     	 adds r3,r3,#1
+ 2025 025a 7B75     	 strb r3,[r7,#21]
+ 2026              	.L88:
+ 314:../scud_bms.c ****     for (uint8_t i = 0U; i < n; i++)
+ 2027              	 .loc 3 314 0 is_stmt 0 discriminator 1
+ 2028 025c 7A7D     	 ldrb r2,[r7,#21]
+ 2029 025e BB7D     	 ldrb r3,[r7,#22]
+ 2030 0260 9A42     	 cmp r2,r3
+ 2031 0262 DFD3     	 bcc .L89
+ 2032              	.LBE11:
+ 318:../scud_bms.c ****     }
+ 319:../scud_bms.c **** 
+ 320:../scud_bms.c ****     out->other_temp_count = 0U;
+ 2033              	 .loc 3 320 0 is_stmt 1
+ 2034 0264 7B68     	 ldr r3,[r7,#4]
+ 2035 0266 0022     	 movs r2,#0
+ 2036 0268 83F87420 	 strb r2,[r3,#116]
+ 321:../scud_bms.c ****     if (off < info_len)
+ 2037              	 .loc 3 321 0
+ 2038 026c BA69     	 ldr r2,[r7,#24]
+ 2039 026e BB68     	 ldr r3,[r7,#8]
+ 2040 0270 9A42     	 cmp r2,r3
+ 2041 0272 39D2     	 bcs .L90
+ 2042              	.LBB12:
+ 322:../scud_bms.c ****     {
+ 323:../scud_bms.c ****         uint8_t k = info[off++];
+ 2043              	 .loc 3 323 0
+ 2044 0274 BB69     	 ldr r3,[r7,#24]
+ 2045 0276 5A1C     	 adds r2,r3,#1
+ 2046 0278 BA61     	 str r2,[r7,#24]
+ 2047 027a FA68     	 ldr r2,[r7,#12]
+ 2048 027c 1344     	 add r3,r3,r2
+ 2049 027e 1B78     	 ldrb r3,[r3]
+ 2050 0280 3B75     	 strb r3,[r7,#20]
+ 324:../scud_bms.c ****         if (k > SCUD_MAX_TEMPS) k = SCUD_MAX_TEMPS;
+ 2051              	 .loc 3 324 0
+ 2052 0282 3B7D     	 ldrb r3,[r7,#20]
+ 2053 0284 082B     	 cmp r3,#8
+ 2054 0286 01D9     	 bls .L91
+ 2055              	 .loc 3 324 0 is_stmt 0 discriminator 1
+ 2056 0288 0823     	 movs r3,#8
+ 2057 028a 3B75     	 strb r3,[r7,#20]
+ 2058              	.L91:
+ 325:../scud_bms.c ****         out->other_temp_count = k;
+ 2059              	 .loc 3 325 0 is_stmt 1
+ 2060 028c 7B68     	 ldr r3,[r7,#4]
+ 2061 028e 3A7D     	 ldrb r2,[r7,#20]
+ 2062 0290 83F87420 	 strb r2,[r3,#116]
+ 326:../scud_bms.c ****         if (info_len >= off + (uint32_t)k * 2U)
+ 2063              	 .loc 3 326 0
+ 2064 0294 3B7D     	 ldrb r3,[r7,#20]
+ 2065 0296 5A00     	 lsls r2,r3,#1
+ 2066 0298 BB69     	 ldr r3,[r7,#24]
+ 2067 029a 1A44     	 add r2,r2,r3
+ 2068 029c BB68     	 ldr r3,[r7,#8]
+ 2069 029e 9A42     	 cmp r2,r3
+ 2070 02a0 22D8     	 bhi .L90
+ 2071              	.LBB13:
+ 327:../scud_bms.c ****         {
+ 328:../scud_bms.c ****             for (uint8_t i = 0U; i < k; i++)
+ 2072              	 .loc 3 328 0
+ 2073 02a2 0023     	 movs r3,#0
+ 2074 02a4 FB74     	 strb r3,[r7,#19]
+ 2075 02a6 1BE0     	 b .L92
+ 2076              	.L93:
+ 329:../scud_bms.c ****             {
+ 330:../scud_bms.c ****                 out->other_temps_c[i] =
+ 2077              	 .loc 3 330 0 discriminator 3
+ 2078 02a8 FB7C     	 ldrb r3,[r7,#19]
+ 331:../scud_bms.c ****                     (int16_t)((uint16_t)info[off] | ((uint16_t)info[off + 1U] << 8));
+ 2079              	 .loc 3 331 0 discriminator 3
+ 2080 02aa F968     	 ldr r1,[r7,#12]
+ 2081 02ac BA69     	 ldr r2,[r7,#24]
+ 2082 02ae 0A44     	 add r2,r2,r1
+ 2083 02b0 1278     	 ldrb r2,[r2]
+ 2084 02b2 90B2     	 uxth r0,r2
+ 2085 02b4 BA69     	 ldr r2,[r7,#24]
+ 2086 02b6 0132     	 adds r2,r2,#1
+ 2087 02b8 F968     	 ldr r1,[r7,#12]
+ 2088 02ba 0A44     	 add r2,r2,r1
+ 2089 02bc 1278     	 ldrb r2,[r2]
+ 2090 02be 1202     	 lsls r2,r2,#8
+ 2091 02c0 92B2     	 uxth r2,r2
+ 2092 02c2 0146     	 mov r1,r0
+ 2093 02c4 0A43     	 orrs r2,r2,r1
+ 2094 02c6 91B2     	 uxth r1,r2
+ 330:../scud_bms.c ****                     (int16_t)((uint16_t)info[off] | ((uint16_t)info[off + 1U] << 8));
+ 2095              	 .loc 3 330 0 discriminator 3
+ 2096 02c8 7A68     	 ldr r2,[r7,#4]
+ 2097 02ca 3833     	 adds r3,r3,#56
+ 2098 02cc 5B00     	 lsls r3,r3,#1
+ 2099 02ce 1344     	 add r3,r3,r2
+ 2100 02d0 0A46     	 mov r2,r1
+ 2101 02d2 DA80     	 strh r2,[r3,#6]
+ 332:../scud_bms.c ****                 off += 2U;
+ 2102              	 .loc 3 332 0 discriminator 3
+ 2103 02d4 BB69     	 ldr r3,[r7,#24]
+ 2104 02d6 0233     	 adds r3,r3,#2
+ 2105 02d8 BB61     	 str r3,[r7,#24]
+ 328:../scud_bms.c ****             {
+ 2106              	 .loc 3 328 0 discriminator 3
+ 2107 02da FB7C     	 ldrb r3,[r7,#19]
+ 2108 02dc 0133     	 adds r3,r3,#1
+ 2109 02de FB74     	 strb r3,[r7,#19]
+ 2110              	.L92:
+ 328:../scud_bms.c ****             {
+ 2111              	 .loc 3 328 0 is_stmt 0 discriminator 1
+ 2112 02e0 FA7C     	 ldrb r2,[r7,#19]
+ 2113 02e2 3B7D     	 ldrb r3,[r7,#20]
+ 2114 02e4 9A42     	 cmp r2,r3
+ 2115 02e6 DFD3     	 bcc .L93
+ 2116              	.L90:
+ 2117              	.LBE13:
+ 2118              	.LBE12:
+ 333:../scud_bms.c ****             }
+ 334:../scud_bms.c ****         }
+ 335:../scud_bms.c ****     }
+ 336:../scud_bms.c ****     return SCUD_OK;
+ 2119              	 .loc 3 336 0 is_stmt 1
+ 2120 02e8 0023     	 movs r3,#0
+ 2121              	.L81:
+ 337:../scud_bms.c **** }
+ 2122              	 .loc 3 337 0
+ 2123 02ea 1846     	 mov r0,r3
+ 2124 02ec 2437     	 adds r7,r7,#36
+ 2125              	.LCFI98:
+ 2126              	 .cfi_def_cfa_offset 4
+ 2127 02ee BD46     	 mov sp,r7
+ 2128              	.LCFI99:
+ 2129              	 .cfi_def_cfa_register 13
+ 2130              	 
+ 2131 02f0 5DF8047B 	 ldr r7,[sp],#4
+ 2132              	.LCFI100:
+ 2133              	 .cfi_restore 7
+ 2134              	 .cfi_def_cfa_offset 0
+ 2135 02f4 7047     	 bx lr
+ 2136              	 .cfi_endproc
+ 2137              	.LFE310:
+ 2139 02f6 00BF     	 .section .text.SCUD_ReadAnalog,"ax",%progbits
+ 2140              	 .align 2
+ 2141              	 .global SCUD_ReadAnalog
+ 2142              	 .thumb
+ 2143              	 .thumb_func
+ 2145              	SCUD_ReadAnalog:
+ 2146              	.LFB311:
+ 338:../scud_bms.c **** 
+ 339:../scud_bms.c **** ScudStatus_t SCUD_ReadAnalog(ScudAnalog_t *out)
+ 340:../scud_bms.c **** {
+ 2147              	 .loc 3 340 0
+ 2148              	 .cfi_startproc
+ 2149              	 
+ 2150              	 
+ 2151 0000 80B5     	 push {r7,lr}
+ 2152              	.LCFI101:
+ 2153              	 .cfi_def_cfa_offset 8
+ 2154              	 .cfi_offset 7,-8
+ 2155              	 .cfi_offset 14,-4
+ 2156 0002 A4B0     	 sub sp,sp,#144
+ 2157              	.LCFI102:
+ 2158              	 .cfi_def_cfa_offset 152
+ 2159 0004 00AF     	 add r7,sp,#0
+ 2160              	.LCFI103:
+ 2161              	 .cfi_def_cfa_register 7
+ 2162 0006 7860     	 str r0,[r7,#4]
+ 341:../scud_bms.c ****     uint8_t  info[128];
+ 342:../scud_bms.c ****     uint32_t info_len;
+ 343:../scud_bms.c **** 
+ 344:../scud_bms.c ****     ScudStatus_t st = do_txn(SCUD_CID2_ANALOG, info, &info_len);
+ 2163              	 .loc 3 344 0
+ 2164 0008 07F10C02 	 add r2,r7,#12
+ 2165 000c 07F10803 	 add r3,r7,#8
+ 2166 0010 4220     	 movs r0,#66
+ 2167 0012 1146     	 mov r1,r2
+ 2168 0014 1A46     	 mov r2,r3
+ 2169 0016 FFF7FEFF 	 bl do_txn
+ 2170 001a 0346     	 mov r3,r0
+ 2171 001c 87F88F30 	 strb r3,[r7,#143]
+ 345:../scud_bms.c ****     if (st != SCUD_OK) return st;
+ 2172              	 .loc 3 345 0
+ 2173 0020 97F88F30 	 ldrb r3,[r7,#143]
+ 2174 0024 002B     	 cmp r3,#0
+ 2175 0026 02D0     	 beq .L95
+ 2176              	 .loc 3 345 0 is_stmt 0 discriminator 1
+ 2177 0028 97F88F30 	 ldrb r3,[r7,#143]
+ 2178 002c 08E0     	 b .L97
+ 2179              	.L95:
+ 346:../scud_bms.c ****     return decode_analog_info(info, info_len, out);
+ 2180              	 .loc 3 346 0 is_stmt 1
+ 2181 002e BB68     	 ldr r3,[r7,#8]
+ 2182 0030 07F10C02 	 add r2,r7,#12
+ 2183 0034 1046     	 mov r0,r2
+ 2184 0036 1946     	 mov r1,r3
+ 2185 0038 7A68     	 ldr r2,[r7,#4]
+ 2186 003a FFF7FEFF 	 bl decode_analog_info
+ 2187 003e 0346     	 mov r3,r0
+ 2188              	.L97:
+ 347:../scud_bms.c **** }
+ 2189              	 .loc 3 347 0 discriminator 1
+ 2190 0040 1846     	 mov r0,r3
+ 2191 0042 9037     	 adds r7,r7,#144
+ 2192              	.LCFI104:
+ 2193              	 .cfi_def_cfa_offset 8
+ 2194 0044 BD46     	 mov sp,r7
+ 2195              	.LCFI105:
+ 2196              	 .cfi_def_cfa_register 13
+ 2197              	 
+ 2198 0046 80BD     	 pop {r7,pc}
+ 2199              	 .cfi_endproc
+ 2200              	.LFE311:
+ 2202              	 .section .text.SCUD_DecodeAnalog,"ax",%progbits
+ 2203              	 .align 2
+ 2204              	 .global SCUD_DecodeAnalog
+ 2205              	 .thumb
+ 2206              	 .thumb_func
+ 2208              	SCUD_DecodeAnalog:
+ 2209              	.LFB312:
+ 348:../scud_bms.c **** 
+ 349:../scud_bms.c **** ScudStatus_t SCUD_DecodeAnalog(const uint8_t *raw_frame, uint32_t raw_len,
+ 350:../scud_bms.c ****                                 ScudAnalog_t *out)
+ 351:../scud_bms.c **** {
+ 2210              	 .loc 3 351 0
+ 2211              	 .cfi_startproc
+ 2212              	 
+ 2213              	 
+ 2214 0000 90B5     	 push {r4,r7,lr}
+ 2215              	.LCFI106:
+ 2216              	 .cfi_def_cfa_offset 12
+ 2217              	 .cfi_offset 4,-12
+ 2218              	 .cfi_offset 7,-8
+ 2219              	 .cfi_offset 14,-4
+ 2220 0002 ABB0     	 sub sp,sp,#172
+ 2221              	.LCFI107:
+ 2222              	 .cfi_def_cfa_offset 184
+ 2223 0004 02AF     	 add r7,sp,#8
+ 2224              	.LCFI108:
+ 2225              	 .cfi_def_cfa 7,176
+ 2226 0006 F860     	 str r0,[r7,#12]
+ 2227 0008 B960     	 str r1,[r7,#8]
+ 2228 000a 7A60     	 str r2,[r7,#4]
+ 352:../scud_bms.c ****     uint8_t  info[128];
+ 353:../scud_bms.c ****     uint32_t info_len;
+ 354:../scud_bms.c ****     uint8_t  rtn;
+ 355:../scud_bms.c **** 
+ 356:../scud_bms.c ****     ScudStatus_t st = parse_frame(raw_frame, raw_len, &rtn, info, &info_len);
+ 2229              	 .loc 3 356 0
+ 2230 000c 07F11702 	 add r2,r7,#23
+ 2231 0010 07F11C04 	 add r4,r7,#28
+ 2232 0014 07F11803 	 add r3,r7,#24
+ 2233 0018 0093     	 str r3,[sp]
+ 2234 001a F868     	 ldr r0,[r7,#12]
+ 2235 001c B968     	 ldr r1,[r7,#8]
+ 2236 001e 2346     	 mov r3,r4
+ 2237 0020 FFF7FEFF 	 bl parse_frame
+ 2238 0024 0346     	 mov r3,r0
+ 2239 0026 87F89F30 	 strb r3,[r7,#159]
+ 357:../scud_bms.c ****     if (st != SCUD_OK) return st;
+ 2240              	 .loc 3 357 0
+ 2241 002a 97F89F30 	 ldrb r3,[r7,#159]
+ 2242 002e 002B     	 cmp r3,#0
+ 2243 0030 02D0     	 beq .L99
+ 2244              	 .loc 3 357 0 is_stmt 0 discriminator 1
+ 2245 0032 97F89F30 	 ldrb r3,[r7,#159]
+ 2246 0036 0DE0     	 b .L102
+ 2247              	.L99:
+ 358:../scud_bms.c ****     if (rtn != 0x00U) return SCUD_ERR_RTN;
+ 2248              	 .loc 3 358 0 is_stmt 1
+ 2249 0038 FB7D     	 ldrb r3,[r7,#23]
+ 2250 003a 002B     	 cmp r3,#0
+ 2251 003c 01D0     	 beq .L101
+ 2252              	 .loc 3 358 0 is_stmt 0 discriminator 1
+ 2253 003e 0423     	 movs r3,#4
+ 2254 0040 08E0     	 b .L102
+ 2255              	.L101:
+ 359:../scud_bms.c ****     return decode_analog_info(info, info_len, out);
+ 2256              	 .loc 3 359 0 is_stmt 1
+ 2257 0042 BB69     	 ldr r3,[r7,#24]
+ 2258 0044 07F11C02 	 add r2,r7,#28
+ 2259 0048 1046     	 mov r0,r2
+ 2260 004a 1946     	 mov r1,r3
+ 2261 004c 7A68     	 ldr r2,[r7,#4]
+ 2262 004e FFF7FEFF 	 bl decode_analog_info
+ 2263 0052 0346     	 mov r3,r0
+ 2264              	.L102:
+ 360:../scud_bms.c **** }
+ 2265              	 .loc 3 360 0 discriminator 1
+ 2266 0054 1846     	 mov r0,r3
+ 2267 0056 A437     	 adds r7,r7,#164
+ 2268              	.LCFI109:
+ 2269              	 .cfi_def_cfa_offset 12
+ 2270 0058 BD46     	 mov sp,r7
+ 2271              	.LCFI110:
+ 2272              	 .cfi_def_cfa_register 13
+ 2273              	 
+ 2274 005a 90BD     	 pop {r4,r7,pc}
+ 2275              	 .cfi_endproc
+ 2276              	.LFE312:
+ 2278              	 .section .text.SCUD_ReadAlarms,"ax",%progbits
+ 2279              	 .align 2
+ 2280              	 .global SCUD_ReadAlarms
+ 2281              	 .thumb
+ 2282              	 .thumb_func
+ 2284              	SCUD_ReadAlarms:
+ 2285              	.LFB313:
+ 361:../scud_bms.c **** 
+ 362:../scud_bms.c **** ScudStatus_t SCUD_ReadAlarms(ScudAlarms_t *out)
+ 363:../scud_bms.c **** {
+ 2286              	 .loc 3 363 0
+ 2287              	 .cfi_startproc
+ 2288              	 
+ 2289              	 
+ 2290 0000 80B5     	 push {r7,lr}
+ 2291              	.LCFI111:
+ 2292              	 .cfi_def_cfa_offset 8
+ 2293              	 .cfi_offset 7,-8
+ 2294              	 .cfi_offset 14,-4
+ 2295 0002 8CB0     	 sub sp,sp,#48
+ 2296              	.LCFI112:
+ 2297              	 .cfi_def_cfa_offset 56
+ 2298 0004 00AF     	 add r7,sp,#0
+ 2299              	.LCFI113:
+ 2300              	 .cfi_def_cfa_register 7
+ 2301 0006 7860     	 str r0,[r7,#4]
+ 364:../scud_bms.c ****     uint8_t  info[32];
+ 365:../scud_bms.c ****     uint32_t info_len;
  366:../scud_bms.c **** 
- 367:../scud_bms.c ****     XMC_DEBUG("V=%lu.%03lu V  I=%ld mA  SOC=%u%%  Vdiff=%u mV  "
- 2237              	 .loc 3 367 0
- 2238 000a 7B68     	 ldr r3,[r7,#4]
- 2239 000c 5B68     	 ldr r3,[r3,#4]
- 2240 000e 564A     	 ldr r2,.L108
- 2241 0010 A2FB0323 	 umull r2,r3,r2,r3
- 2242 0014 4FEA931C 	 lsr ip,r3,#6
- 2243 0018 7B68     	 ldr r3,[r7,#4]
- 2244 001a 5B68     	 ldr r3,[r3,#4]
- 2245 001c 524A     	 ldr r2,.L108
- 2246 001e A2FB0312 	 umull r1,r2,r2,r3
- 2247 0022 9409     	 lsrs r4,r2,#6
- 2248 0024 4FF47A72 	 mov r2,#1000
- 2249 0028 02FB04F2 	 mul r2,r2,r4
- 2250 002c 9C1A     	 subs r4,r3,r2
- 2251 002e 7B68     	 ldr r3,[r7,#4]
- 2252 0030 D3F808E0 	 ldr lr,[r3,#8]
- 2253 0034 7B68     	 ldr r3,[r7,#4]
- 2254 0036 1B7B     	 ldrb r3,[r3,#12]
- 2255 0038 9946     	 mov r9,r3
- 2256 003a 7B68     	 ldr r3,[r7,#4]
- 2257 003c B3F86030 	 ldrh r3,[r3,#96]
- 2258 0040 9846     	 mov r8,r3
- 2259 0042 7B68     	 ldr r3,[r7,#4]
- 2260 0044 1B69     	 ldr r3,[r3,#16]
- 2261 0046 484A     	 ldr r2,.L108
- 2262 0048 A2FB0323 	 umull r2,r3,r2,r3
- 2263 004c 9D09     	 lsrs r5,r3,#6
- 2264 004e 7B68     	 ldr r3,[r7,#4]
- 2265 0050 1B69     	 ldr r3,[r3,#16]
- 2266 0052 454A     	 ldr r2,.L108
- 2267 0054 A2FB0312 	 umull r1,r2,r2,r3
- 2268 0058 9209     	 lsrs r2,r2,#6
- 2269 005a 4FF47A71 	 mov r1,#1000
- 2270 005e 01FB02F2 	 mul r2,r1,r2
- 2271 0062 9A1A     	 subs r2,r3,r2
- 2272 0064 7B68     	 ldr r3,[r7,#4]
- 2273 0066 5B69     	 ldr r3,[r3,#20]
- 2274 0068 3F49     	 ldr r1,.L108
- 2275 006a A1FB0313 	 umull r1,r3,r1,r3
- 2276 006e 9809     	 lsrs r0,r3,#6
- 2277 0070 7B68     	 ldr r3,[r7,#4]
- 2278 0072 5969     	 ldr r1,[r3,#20]
- 2279 0074 3C4B     	 ldr r3,.L108
- 2280 0076 A3FB0163 	 umull r6,r3,r3,r1
- 2281 007a 9B09     	 lsrs r3,r3,#6
- 2282 007c 4FF47A76 	 mov r6,#1000
- 2283 0080 06FB03F3 	 mul r3,r6,r3
- 2284 0084 CB1A     	 subs r3,r1,r3
- 2285 0086 7968     	 ldr r1,[r7,#4]
- 2286 0088 C989     	 ldrh r1,[r1,#14]
- 2287 008a CDF80090 	 str r9,[sp]
- 2288 008e CDF80480 	 str r8,[sp,#4]
- 2289 0092 0295     	 str r5,[sp,#8]
- 2290 0094 0392     	 str r2,[sp,#12]
- 2291 0096 0490     	 str r0,[sp,#16]
- 2292 0098 0593     	 str r3,[sp,#20]
- 2293 009a 0691     	 str r1,[sp,#24]
- 2294 009c 3348     	 ldr r0,.L108+4
- 2295 009e 6146     	 mov r1,ip
- 2296 00a0 2246     	 mov r2,r4
- 2297 00a2 7346     	 mov r3,lr
- 2298 00a4 FFF7FEFF 	 bl printf
- 368:../scud_bms.c ****               "RMC=%lu.%03lu Ah  FCC=%lu.%03lu Ah  Cyc=%u\n",
- 369:../scud_bms.c ****               (unsigned long)(t->total_mv / 1000U),
- 370:../scud_bms.c ****               (unsigned long)(t->total_mv % 1000U),
- 371:../scud_bms.c ****               (long)t->current_ma,
- 372:../scud_bms.c ****               (unsigned int)t->soc,
- 373:../scud_bms.c ****               (unsigned int)t->cell_vdiff_mv,
- 374:../scud_bms.c ****               (unsigned long)(t->rmc_mah / 1000U),
- 375:../scud_bms.c ****               (unsigned long)(t->rmc_mah % 1000U),
- 376:../scud_bms.c ****               (unsigned long)(t->fcc_mah / 1000U),
- 377:../scud_bms.c ****               (unsigned long)(t->fcc_mah % 1000U),
- 378:../scud_bms.c ****               (unsigned int)t->cycle_count);
- 379:../scud_bms.c **** 
- 380:../scud_bms.c ****     XMC_DEBUG("Cells [%u]:", (unsigned int)t->cell_count);
- 2299              	 .loc 3 380 0
- 2300 00a8 7B68     	 ldr r3,[r7,#4]
- 2301 00aa 1B7F     	 ldrb r3,[r3,#28]
- 2302 00ac 3048     	 ldr r0,.L108+8
- 2303 00ae 1946     	 mov r1,r3
- 2304 00b0 FFF7FEFF 	 bl printf
- 381:../scud_bms.c ****     for (i = 0U; i < t->cell_count; i++)
- 2305              	 .loc 3 381 0
- 2306 00b4 0023     	 movs r3,#0
- 2307 00b6 FB73     	 strb r3,[r7,#15]
- 2308 00b8 0CE0     	 b .L102
- 2309              	.L103:
- 382:../scud_bms.c ****         XMC_DEBUG(" %u", (unsigned int)t->cell_mv[i]);
- 2310              	 .loc 3 382 0 discriminator 3
- 2311 00ba FB7B     	 ldrb r3,[r7,#15]
- 2312 00bc 7A68     	 ldr r2,[r7,#4]
- 2313 00be 0C33     	 adds r3,r3,#12
- 2314 00c0 5B00     	 lsls r3,r3,#1
- 2315 00c2 1344     	 add r3,r3,r2
- 2316 00c4 DB88     	 ldrh r3,[r3,#6]
- 2317 00c6 2B48     	 ldr r0,.L108+12
- 2318 00c8 1946     	 mov r1,r3
- 2319 00ca FFF7FEFF 	 bl printf
- 381:../scud_bms.c ****     for (i = 0U; i < t->cell_count; i++)
- 2320              	 .loc 3 381 0 discriminator 3
- 2321 00ce FB7B     	 ldrb r3,[r7,#15]
- 2322 00d0 0133     	 adds r3,r3,#1
- 2323 00d2 FB73     	 strb r3,[r7,#15]
- 2324              	.L102:
- 381:../scud_bms.c ****     for (i = 0U; i < t->cell_count; i++)
- 2325              	 .loc 3 381 0 is_stmt 0 discriminator 1
- 2326 00d4 7B68     	 ldr r3,[r7,#4]
- 2327 00d6 1B7F     	 ldrb r3,[r3,#28]
- 2328 00d8 FA7B     	 ldrb r2,[r7,#15]
- 2329 00da 9A42     	 cmp r2,r3
- 2330 00dc EDD3     	 bcc .L103
- 383:../scud_bms.c ****     XMC_DEBUG("\n");
- 2331              	 .loc 3 383 0 is_stmt 1
- 2332 00de 0A20     	 movs r0,#10
- 2333 00e0 FFF7FEFF 	 bl putchar
- 384:../scud_bms.c **** 
- 385:../scud_bms.c ****     XMC_DEBUG("Temps [%u+%u]:",
- 2334              	 .loc 3 385 0
- 2335 00e4 7B68     	 ldr r3,[r7,#4]
- 2336 00e6 93F86230 	 ldrb r3,[r3,#98]
- 2337 00ea 1A46     	 mov r2,r3
- 2338 00ec 7B68     	 ldr r3,[r7,#4]
- 2339 00ee 93F87430 	 ldrb r3,[r3,#116]
- 2340 00f2 2148     	 ldr r0,.L108+16
- 2341 00f4 1146     	 mov r1,r2
- 2342 00f6 1A46     	 mov r2,r3
- 2343 00f8 FFF7FEFF 	 bl printf
- 386:../scud_bms.c ****               (unsigned int)t->cell_temp_count,
- 387:../scud_bms.c ****               (unsigned int)t->other_temp_count);
- 388:../scud_bms.c ****     for (i = 0U; i < t->cell_temp_count; i++)
- 2344              	 .loc 3 388 0
- 2345 00fc 0023     	 movs r3,#0
- 2346 00fe FB73     	 strb r3,[r7,#15]
- 2347 0100 0DE0     	 b .L104
- 2348              	.L105:
- 389:../scud_bms.c ****         XMC_DEBUG(" %d", (int)t->cell_temps_c[i]);
- 2349              	 .loc 3 389 0 discriminator 3
- 2350 0102 FB7B     	 ldrb r3,[r7,#15]
- 2351 0104 7A68     	 ldr r2,[r7,#4]
- 2352 0106 3033     	 adds r3,r3,#48
- 2353 0108 5B00     	 lsls r3,r3,#1
- 2354 010a 1344     	 add r3,r3,r2
- 2355 010c 9B88     	 ldrh r3,[r3,#4]
- 2356 010e 1BB2     	 sxth r3,r3
- 2357 0110 1A48     	 ldr r0,.L108+20
- 2358 0112 1946     	 mov r1,r3
- 2359 0114 FFF7FEFF 	 bl printf
- 388:../scud_bms.c ****         XMC_DEBUG(" %d", (int)t->cell_temps_c[i]);
- 2360              	 .loc 3 388 0 discriminator 3
- 2361 0118 FB7B     	 ldrb r3,[r7,#15]
- 2362 011a 0133     	 adds r3,r3,#1
- 2363 011c FB73     	 strb r3,[r7,#15]
- 2364              	.L104:
- 388:../scud_bms.c ****         XMC_DEBUG(" %d", (int)t->cell_temps_c[i]);
- 2365              	 .loc 3 388 0 is_stmt 0 discriminator 1
- 2366 011e 7B68     	 ldr r3,[r7,#4]
- 2367 0120 93F86230 	 ldrb r3,[r3,#98]
- 2368 0124 FA7B     	 ldrb r2,[r7,#15]
- 2369 0126 9A42     	 cmp r2,r3
- 2370 0128 EBD3     	 bcc .L105
- 390:../scud_bms.c ****     for (i = 0U; i < t->other_temp_count; i++)
- 2371              	 .loc 3 390 0 is_stmt 1
- 2372 012a 0023     	 movs r3,#0
- 2373 012c FB73     	 strb r3,[r7,#15]
- 2374 012e 0DE0     	 b .L106
- 2375              	.L107:
- 391:../scud_bms.c ****         XMC_DEBUG(" %d", (int)t->other_temps_c[i]);
- 2376              	 .loc 3 391 0 discriminator 3
- 2377 0130 FB7B     	 ldrb r3,[r7,#15]
- 2378 0132 7A68     	 ldr r2,[r7,#4]
- 2379 0134 3833     	 adds r3,r3,#56
- 2380 0136 5B00     	 lsls r3,r3,#1
- 2381 0138 1344     	 add r3,r3,r2
- 2382 013a DB88     	 ldrh r3,[r3,#6]
- 2383 013c 1BB2     	 sxth r3,r3
- 2384 013e 0F48     	 ldr r0,.L108+20
- 2385 0140 1946     	 mov r1,r3
- 2386 0142 FFF7FEFF 	 bl printf
- 390:../scud_bms.c ****     for (i = 0U; i < t->other_temp_count; i++)
- 2387              	 .loc 3 390 0 discriminator 3
- 2388 0146 FB7B     	 ldrb r3,[r7,#15]
- 2389 0148 0133     	 adds r3,r3,#1
- 2390 014a FB73     	 strb r3,[r7,#15]
- 2391              	.L106:
- 390:../scud_bms.c ****     for (i = 0U; i < t->other_temp_count; i++)
- 2392              	 .loc 3 390 0 is_stmt 0 discriminator 1
- 2393 014c 7B68     	 ldr r3,[r7,#4]
- 2394 014e 93F87430 	 ldrb r3,[r3,#116]
- 2395 0152 FA7B     	 ldrb r2,[r7,#15]
- 2396 0154 9A42     	 cmp r2,r3
- 2397 0156 EBD3     	 bcc .L107
- 392:../scud_bms.c ****     XMC_DEBUG("\n");
- 2398              	 .loc 3 392 0 is_stmt 1
- 2399 0158 0A20     	 movs r0,#10
- 2400 015a FFF7FEFF 	 bl putchar
- 393:../scud_bms.c **** }
- 2401              	 .loc 3 393 0
- 2402 015e 1437     	 adds r7,r7,#20
- 2403              	.LCFI108:
- 2404              	 .cfi_def_cfa_offset 28
- 2405 0160 BD46     	 mov sp,r7
- 2406              	.LCFI109:
- 2407              	 .cfi_def_cfa_register 13
- 2408              	 
- 2409 0162 BDE8F083 	 pop {r4,r5,r6,r7,r8,r9,pc}
- 2410              	.L109:
- 2411 0166 00BF     	 .align 2
- 2412              	.L108:
- 2413 0168 D34D6210 	 .word 274877907
- 2414 016c 28000000 	 .word .LC2
- 2415 0170 84000000 	 .word .LC3
- 2416 0174 90000000 	 .word .LC4
- 2417 0178 94000000 	 .word .LC5
- 2418 017c A4000000 	 .word .LC6
- 2419              	 .cfi_endproc
- 2420              	.LFE312:
- 2422              	 .section .rodata
- 2423              	 .align 2
- 2424              	.LC7:
- 2425 00a8 4F4B00   	 .ascii "OK\000"
- 2426 00ab 00       	 .align 2
- 2427              	.LC8:
- 2428 00ac 74696D65 	 .ascii "timeout\000"
- 2428      6F757400 
- 2429              	 .align 2
- 2430              	.LC9:
- 2431 00b4 6672616D 	 .ascii "framing error\000"
- 2431      696E6720 
- 2431      6572726F 
- 2431      7200
- 2432 00c2 0000     	 .align 2
- 2433              	.LC10:
- 2434 00c4 63686563 	 .ascii "checksum error\000"
- 2434      6B73756D 
- 2434      20657272 
- 2434      6F7200
- 2435 00d3 00       	 .align 2
- 2436              	.LC11:
- 2437 00d4 424D5320 	 .ascii "BMS returned error RTN\000"
- 2437      72657475 
- 2437      726E6564 
- 2437      20657272 
- 2437      6F722052 
- 2438 00eb 00       	 .align 2
- 2439              	.LC12:
- 2440 00ec 72657370 	 .ascii "response too short\000"
- 2440      6F6E7365 
- 2440      20746F6F 
- 2440      2073686F 
- 2440      727400
- 2441 00ff 00       	 .align 2
- 2442              	.LC13:
- 2443 0100 756E6B6E 	 .ascii "unknown error\000"
- 2443      6F776E20 
- 2443      6572726F 
- 2443      7200
- 2444 010e 0000     	 .section .text.SCUD_StatusStr,"ax",%progbits
- 2445              	 .align 2
- 2446              	 .global SCUD_StatusStr
- 2447              	 .thumb
- 2448              	 .thumb_func
- 2450              	SCUD_StatusStr:
- 2451              	.LFB313:
- 394:../scud_bms.c **** 
- 395:../scud_bms.c **** const char *SCUD_StatusStr(ScudStatus_t st)
- 396:../scud_bms.c **** {
- 2452              	 .loc 3 396 0
- 2453              	 .cfi_startproc
- 2454              	 
- 2455              	 
- 2456              	 
- 2457 0000 80B4     	 push {r7}
- 2458              	.LCFI110:
- 2459              	 .cfi_def_cfa_offset 4
- 2460              	 .cfi_offset 7,-4
- 2461 0002 83B0     	 sub sp,sp,#12
- 2462              	.LCFI111:
- 2463              	 .cfi_def_cfa_offset 16
- 2464 0004 00AF     	 add r7,sp,#0
- 2465              	.LCFI112:
- 2466              	 .cfi_def_cfa_register 7
- 2467 0006 0346     	 mov r3,r0
- 2468 0008 FB71     	 strb r3,[r7,#7]
- 397:../scud_bms.c ****     switch (st)
- 2469              	 .loc 3 397 0
- 2470 000a FB79     	 ldrb r3,[r7,#7]
- 2471 000c 052B     	 cmp r3,#5
- 2472 000e 1BD8     	 bhi .L111
- 2473 0010 01A2     	 adr r2,.L113
- 2474 0012 52F823F0 	 ldr pc,[r2,r3,lsl#2]
- 2475 0016 00BF     	 .p2align 2
- 2476              	.L113:
- 2477 0018 31000000 	 .word .L112+1
- 2478 001c 35000000 	 .word .L114+1
- 2479 0020 39000000 	 .word .L115+1
- 2480 0024 3D000000 	 .word .L116+1
- 2481 0028 41000000 	 .word .L117+1
- 2482 002c 45000000 	 .word .L118+1
- 2483              	 .p2align 1
- 2484              	.L112:
- 398:../scud_bms.c ****     {
- 399:../scud_bms.c ****         case SCUD_OK:            return "OK";
- 2485              	 .loc 3 399 0
- 2486 0030 094B     	 ldr r3,.L120
- 2487 0032 0AE0     	 b .L119
- 2488              	.L114:
- 400:../scud_bms.c ****         case SCUD_ERR_TIMEOUT:   return "timeout";
- 2489              	 .loc 3 400 0
- 2490 0034 094B     	 ldr r3,.L120+4
- 2491 0036 08E0     	 b .L119
- 2492              	.L115:
- 401:../scud_bms.c ****         case SCUD_ERR_FRAMING:   return "framing error";
- 2493              	 .loc 3 401 0
- 2494 0038 094B     	 ldr r3,.L120+8
- 2495 003a 06E0     	 b .L119
- 2496              	.L116:
- 402:../scud_bms.c ****         case SCUD_ERR_CHECKSUM:  return "checksum error";
- 2497              	 .loc 3 402 0
- 2498 003c 094B     	 ldr r3,.L120+12
- 2499 003e 04E0     	 b .L119
- 2500              	.L117:
- 403:../scud_bms.c ****         case SCUD_ERR_RTN:       return "BMS returned error RTN";
- 2501              	 .loc 3 403 0
- 2502 0040 094B     	 ldr r3,.L120+16
- 2503 0042 02E0     	 b .L119
- 2504              	.L118:
- 404:../scud_bms.c ****         case SCUD_ERR_TOO_SHORT: return "response too short";
- 2505              	 .loc 3 404 0
- 2506 0044 094B     	 ldr r3,.L120+20
- 2507 0046 00E0     	 b .L119
- 2508              	.L111:
- 405:../scud_bms.c ****         default:                 return "unknown error";
- 2509              	 .loc 3 405 0
- 2510 0048 094B     	 ldr r3,.L120+24
- 2511              	.L119:
- 406:../scud_bms.c ****     }
- 407:../scud_bms.c **** }
- 2512              	 .loc 3 407 0
- 2513 004a 1846     	 mov r0,r3
- 2514 004c 0C37     	 adds r7,r7,#12
- 2515              	.LCFI113:
- 2516              	 .cfi_def_cfa_offset 4
- 2517 004e BD46     	 mov sp,r7
- 2518              	.LCFI114:
- 2519              	 .cfi_def_cfa_register 13
- 2520              	 
- 2521 0050 5DF8047B 	 ldr r7,[sp],#4
- 2522              	.LCFI115:
- 2523              	 .cfi_restore 7
- 2524              	 .cfi_def_cfa_offset 0
- 2525 0054 7047     	 bx lr
- 2526              	.L121:
- 2527 0056 00BF     	 .align 2
- 2528              	.L120:
- 2529 0058 A8000000 	 .word .LC7
- 2530 005c AC000000 	 .word .LC8
- 2531 0060 B4000000 	 .word .LC9
- 2532 0064 C4000000 	 .word .LC10
- 2533 0068 D4000000 	 .word .LC11
- 2534 006c EC000000 	 .word .LC12
- 2535 0070 00010000 	 .word .LC13
- 2536              	 .cfi_endproc
- 2537              	.LFE313:
- 2539              	 .text
- 2540              	.Letext0:
- 2541              	 .file 4 "c:\\infineon\\tools\\dave ide\\4.5.0.202105191637\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\machine\\_default_types.h"
- 2542              	 .file 5 "c:\\infineon\\tools\\dave ide\\4.5.0.202105191637\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\stdint.h"
- 2543              	 .file 6 "../scud_bms.h"
- 2544              	 .file 7 "C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/Battery_BMS_XMC4800-F144x2048_1/Libraries/XMCLib/inc/xmc_gpio.h"
- 2545              	 .file 8 "C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/Battery_BMS_XMC4800-F144x2048_1/Libraries/XMCLib/inc/xmc4_gpio.h"
- 2546              	 .file 9 "C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/Battery_BMS_XMC4800-F144x2048_1/Dave/Generated/UART/uart.h"
- 2547              	 .file 10 "C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/Battery_BMS_XMC4800-F144x2048_1/Libraries/CMSIS/Include/cmsis_gcc.h"
- 2548              	 .file 11 "C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/Battery_BMS_XMC4800-F144x2048_1/Libraries/CMSIS/Include/core_cm4.h"
- 2549              	 .file 12 "C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/Battery_BMS_XMC4800-F144x2048_1/Libraries/CMSIS/Infineon/XMC4800_series/Include/system_XMC4800.h"
- 2550              	 .file 13 "C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/Battery_BMS_XMC4800-F144x2048_1/Dave/Generated/UART/uart_extern.h"
+ 367:../scud_bms.c ****     ScudStatus_t st = do_txn(SCUD_CID2_ALARM, info, &info_len);
+ 2302              	 .loc 3 367 0
+ 2303 0008 07F10C02 	 add r2,r7,#12
+ 2304 000c 07F10803 	 add r3,r7,#8
+ 2305 0010 4420     	 movs r0,#68
+ 2306 0012 1146     	 mov r1,r2
+ 2307 0014 1A46     	 mov r2,r3
+ 2308 0016 FFF7FEFF 	 bl do_txn
+ 2309 001a 0346     	 mov r3,r0
+ 2310 001c 87F82F30 	 strb r3,[r7,#47]
+ 368:../scud_bms.c ****     if (st != SCUD_OK) return st;
+ 2311              	 .loc 3 368 0
+ 2312 0020 97F82F30 	 ldrb r3,[r7,#47]
+ 2313 0024 002B     	 cmp r3,#0
+ 2314 0026 02D0     	 beq .L104
+ 2315              	 .loc 3 368 0 is_stmt 0 discriminator 1
+ 2316 0028 97F82F30 	 ldrb r3,[r7,#47]
+ 2317 002c 1AE0     	 b .L107
+ 2318              	.L104:
+ 369:../scud_bms.c ****     if (info_len < 9U) return SCUD_ERR_TOO_SHORT;
+ 2319              	 .loc 3 369 0 is_stmt 1
+ 2320 002e BB68     	 ldr r3,[r7,#8]
+ 2321 0030 082B     	 cmp r3,#8
+ 2322 0032 01D8     	 bhi .L106
+ 2323              	 .loc 3 369 0 is_stmt 0 discriminator 1
+ 2324 0034 0523     	 movs r3,#5
+ 2325 0036 15E0     	 b .L107
+ 2326              	.L106:
+ 370:../scud_bms.c **** 
+ 371:../scud_bms.c ****     /* info[0]=DATA_FLAG, info[1]=PACK_NUM, info[2..8] = seven event bytes */
+ 372:../scud_bms.c ****     out->voltage    = info[2];
+ 2327              	 .loc 3 372 0 is_stmt 1
+ 2328 0038 BA7B     	 ldrb r2,[r7,#14]
+ 2329 003a 7B68     	 ldr r3,[r7,#4]
+ 2330 003c 1A70     	 strb r2,[r3]
+ 373:../scud_bms.c ****     out->current    = info[3];
+ 2331              	 .loc 3 373 0
+ 2332 003e FA7B     	 ldrb r2,[r7,#15]
+ 2333 0040 7B68     	 ldr r3,[r7,#4]
+ 2334 0042 5A70     	 strb r2,[r3,#1]
+ 374:../scud_bms.c ****     out->cell_temp  = info[4];
+ 2335              	 .loc 3 374 0
+ 2336 0044 3A7C     	 ldrb r2,[r7,#16]
+ 2337 0046 7B68     	 ldr r3,[r7,#4]
+ 2338 0048 9A70     	 strb r2,[r3,#2]
+ 375:../scud_bms.c ****     out->other_temp = info[5];
+ 2339              	 .loc 3 375 0
+ 2340 004a 7A7C     	 ldrb r2,[r7,#17]
+ 2341 004c 7B68     	 ldr r3,[r7,#4]
+ 2342 004e DA70     	 strb r2,[r3,#3]
+ 376:../scud_bms.c ****     out->capacity   = info[6];
+ 2343              	 .loc 3 376 0
+ 2344 0050 BA7C     	 ldrb r2,[r7,#18]
+ 2345 0052 7B68     	 ldr r3,[r7,#4]
+ 2346 0054 1A71     	 strb r2,[r3,#4]
+ 377:../scud_bms.c ****     out->other1     = info[7];
+ 2347              	 .loc 3 377 0
+ 2348 0056 FA7C     	 ldrb r2,[r7,#19]
+ 2349 0058 7B68     	 ldr r3,[r7,#4]
+ 2350 005a 5A71     	 strb r2,[r3,#5]
+ 378:../scud_bms.c ****     out->other2     = info[8];
+ 2351              	 .loc 3 378 0
+ 2352 005c 3A7D     	 ldrb r2,[r7,#20]
+ 2353 005e 7B68     	 ldr r3,[r7,#4]
+ 2354 0060 9A71     	 strb r2,[r3,#6]
+ 379:../scud_bms.c ****     return SCUD_OK;
+ 2355              	 .loc 3 379 0
+ 2356 0062 0023     	 movs r3,#0
+ 2357              	.L107:
+ 380:../scud_bms.c **** }
+ 2358              	 .loc 3 380 0 discriminator 1
+ 2359 0064 1846     	 mov r0,r3
+ 2360 0066 3037     	 adds r7,r7,#48
+ 2361              	.LCFI114:
+ 2362              	 .cfi_def_cfa_offset 8
+ 2363 0068 BD46     	 mov sp,r7
+ 2364              	.LCFI115:
+ 2365              	 .cfi_def_cfa_register 13
+ 2366              	 
+ 2367 006a 80BD     	 pop {r7,pc}
+ 2368              	 .cfi_endproc
+ 2369              	.LFE313:
+ 2371              	 .section .rodata
+ 2372 0026 0000     	 .align 2
+ 2373              	.LC2:
+ 2374 0028 563D256C 	 .ascii "V=%lu.%03lu V  I=%ld mA  SOC=%u%%  Vdiff=%u mV  RMC"
+ 2374      752E2530 
+ 2374      336C7520 
+ 2374      56202049 
+ 2374      3D256C64 
+ 2375 005b 3D256C75 	 .ascii "=%lu.%03lu Ah  FCC=%lu.%03lu Ah  Cyc=%u\012\000"
+ 2375      2E253033 
+ 2375      6C752041 
+ 2375      68202046 
+ 2375      43433D25 
+ 2376              	 .align 2
+ 2377              	.LC3:
+ 2378 0084 43656C6C 	 .ascii "Cells [%u]:\000"
+ 2378      73205B25 
+ 2378      755D3A00 
+ 2379              	 .align 2
+ 2380              	.LC4:
+ 2381 0090 20257500 	 .ascii " %u\000"
+ 2382              	 .align 2
+ 2383              	.LC5:
+ 2384 0094 54656D70 	 .ascii "Temps [%u+%u]:\000"
+ 2384      73205B25 
+ 2384      752B2575 
+ 2384      5D3A00
+ 2385 00a3 00       	 .align 2
+ 2386              	.LC6:
+ 2387 00a4 20256400 	 .ascii " %d\000"
+ 2388              	 .section .text.SCUD_PrintAnalog,"ax",%progbits
+ 2389              	 .align 2
+ 2390              	 .global SCUD_PrintAnalog
+ 2391              	 .thumb
+ 2392              	 .thumb_func
+ 2394              	SCUD_PrintAnalog:
+ 2395              	.LFB314:
+ 381:../scud_bms.c **** 
+ 382:../scud_bms.c **** void SCUD_PrintAnalog(const ScudAnalog_t *t)
+ 383:../scud_bms.c **** {
+ 2396              	 .loc 3 383 0
+ 2397              	 .cfi_startproc
+ 2398              	 
+ 2399              	 
+ 2400 0000 2DE9F043 	 push {r4,r5,r6,r7,r8,r9,lr}
+ 2401              	.LCFI116:
+ 2402              	 .cfi_def_cfa_offset 28
+ 2403              	 .cfi_offset 4,-28
+ 2404              	 .cfi_offset 5,-24
+ 2405              	 .cfi_offset 6,-20
+ 2406              	 .cfi_offset 7,-16
+ 2407              	 .cfi_offset 8,-12
+ 2408              	 .cfi_offset 9,-8
+ 2409              	 .cfi_offset 14,-4
+ 2410 0004 8DB0     	 sub sp,sp,#52
+ 2411              	.LCFI117:
+ 2412              	 .cfi_def_cfa_offset 80
+ 2413 0006 08AF     	 add r7,sp,#32
+ 2414              	.LCFI118:
+ 2415              	 .cfi_def_cfa 7,48
+ 2416 0008 7860     	 str r0,[r7,#4]
+ 384:../scud_bms.c ****     uint8_t i;
+ 385:../scud_bms.c **** 
+ 386:../scud_bms.c ****     XMC_DEBUG("V=%lu.%03lu V  I=%ld mA  SOC=%u%%  Vdiff=%u mV  "
+ 2417              	 .loc 3 386 0
+ 2418 000a 7B68     	 ldr r3,[r7,#4]
+ 2419 000c 5B68     	 ldr r3,[r3,#4]
+ 2420 000e 564A     	 ldr r2,.L115
+ 2421 0010 A2FB0323 	 umull r2,r3,r2,r3
+ 2422 0014 4FEA931C 	 lsr ip,r3,#6
+ 2423 0018 7B68     	 ldr r3,[r7,#4]
+ 2424 001a 5B68     	 ldr r3,[r3,#4]
+ 2425 001c 524A     	 ldr r2,.L115
+ 2426 001e A2FB0312 	 umull r1,r2,r2,r3
+ 2427 0022 9409     	 lsrs r4,r2,#6
+ 2428 0024 4FF47A72 	 mov r2,#1000
+ 2429 0028 02FB04F2 	 mul r2,r2,r4
+ 2430 002c 9C1A     	 subs r4,r3,r2
+ 2431 002e 7B68     	 ldr r3,[r7,#4]
+ 2432 0030 D3F808E0 	 ldr lr,[r3,#8]
+ 2433 0034 7B68     	 ldr r3,[r7,#4]
+ 2434 0036 1B7B     	 ldrb r3,[r3,#12]
+ 2435 0038 9946     	 mov r9,r3
+ 2436 003a 7B68     	 ldr r3,[r7,#4]
+ 2437 003c B3F86030 	 ldrh r3,[r3,#96]
+ 2438 0040 9846     	 mov r8,r3
+ 2439 0042 7B68     	 ldr r3,[r7,#4]
+ 2440 0044 1B69     	 ldr r3,[r3,#16]
+ 2441 0046 484A     	 ldr r2,.L115
+ 2442 0048 A2FB0323 	 umull r2,r3,r2,r3
+ 2443 004c 9D09     	 lsrs r5,r3,#6
+ 2444 004e 7B68     	 ldr r3,[r7,#4]
+ 2445 0050 1B69     	 ldr r3,[r3,#16]
+ 2446 0052 454A     	 ldr r2,.L115
+ 2447 0054 A2FB0312 	 umull r1,r2,r2,r3
+ 2448 0058 9209     	 lsrs r2,r2,#6
+ 2449 005a 4FF47A71 	 mov r1,#1000
+ 2450 005e 01FB02F2 	 mul r2,r1,r2
+ 2451 0062 9A1A     	 subs r2,r3,r2
+ 2452 0064 7B68     	 ldr r3,[r7,#4]
+ 2453 0066 5B69     	 ldr r3,[r3,#20]
+ 2454 0068 3F49     	 ldr r1,.L115
+ 2455 006a A1FB0313 	 umull r1,r3,r1,r3
+ 2456 006e 9809     	 lsrs r0,r3,#6
+ 2457 0070 7B68     	 ldr r3,[r7,#4]
+ 2458 0072 5969     	 ldr r1,[r3,#20]
+ 2459 0074 3C4B     	 ldr r3,.L115
+ 2460 0076 A3FB0163 	 umull r6,r3,r3,r1
+ 2461 007a 9B09     	 lsrs r3,r3,#6
+ 2462 007c 4FF47A76 	 mov r6,#1000
+ 2463 0080 06FB03F3 	 mul r3,r6,r3
+ 2464 0084 CB1A     	 subs r3,r1,r3
+ 2465 0086 7968     	 ldr r1,[r7,#4]
+ 2466 0088 C989     	 ldrh r1,[r1,#14]
+ 2467 008a CDF80090 	 str r9,[sp]
+ 2468 008e CDF80480 	 str r8,[sp,#4]
+ 2469 0092 0295     	 str r5,[sp,#8]
+ 2470 0094 0392     	 str r2,[sp,#12]
+ 2471 0096 0490     	 str r0,[sp,#16]
+ 2472 0098 0593     	 str r3,[sp,#20]
+ 2473 009a 0691     	 str r1,[sp,#24]
+ 2474 009c 3348     	 ldr r0,.L115+4
+ 2475 009e 6146     	 mov r1,ip
+ 2476 00a0 2246     	 mov r2,r4
+ 2477 00a2 7346     	 mov r3,lr
+ 2478 00a4 FFF7FEFF 	 bl printf
+ 387:../scud_bms.c ****               "RMC=%lu.%03lu Ah  FCC=%lu.%03lu Ah  Cyc=%u\n",
+ 388:../scud_bms.c ****               (unsigned long)(t->total_mv / 1000U),
+ 389:../scud_bms.c ****               (unsigned long)(t->total_mv % 1000U),
+ 390:../scud_bms.c ****               (long)t->current_ma,
+ 391:../scud_bms.c ****               (unsigned int)t->soc,
+ 392:../scud_bms.c ****               (unsigned int)t->cell_vdiff_mv,
+ 393:../scud_bms.c ****               (unsigned long)(t->rmc_mah / 1000U),
+ 394:../scud_bms.c ****               (unsigned long)(t->rmc_mah % 1000U),
+ 395:../scud_bms.c ****               (unsigned long)(t->fcc_mah / 1000U),
+ 396:../scud_bms.c ****               (unsigned long)(t->fcc_mah % 1000U),
+ 397:../scud_bms.c ****               (unsigned int)t->cycle_count);
+ 398:../scud_bms.c **** 
+ 399:../scud_bms.c ****     XMC_DEBUG("Cells [%u]:", (unsigned int)t->cell_count);
+ 2479              	 .loc 3 399 0
+ 2480 00a8 7B68     	 ldr r3,[r7,#4]
+ 2481 00aa 1B7F     	 ldrb r3,[r3,#28]
+ 2482 00ac 3048     	 ldr r0,.L115+8
+ 2483 00ae 1946     	 mov r1,r3
+ 2484 00b0 FFF7FEFF 	 bl printf
+ 400:../scud_bms.c ****     for (i = 0U; i < t->cell_count; i++)
+ 2485              	 .loc 3 400 0
+ 2486 00b4 0023     	 movs r3,#0
+ 2487 00b6 FB73     	 strb r3,[r7,#15]
+ 2488 00b8 0CE0     	 b .L109
+ 2489              	.L110:
+ 401:../scud_bms.c ****         XMC_DEBUG(" %u", (unsigned int)t->cell_mv[i]);
+ 2490              	 .loc 3 401 0 discriminator 3
+ 2491 00ba FB7B     	 ldrb r3,[r7,#15]
+ 2492 00bc 7A68     	 ldr r2,[r7,#4]
+ 2493 00be 0C33     	 adds r3,r3,#12
+ 2494 00c0 5B00     	 lsls r3,r3,#1
+ 2495 00c2 1344     	 add r3,r3,r2
+ 2496 00c4 DB88     	 ldrh r3,[r3,#6]
+ 2497 00c6 2B48     	 ldr r0,.L115+12
+ 2498 00c8 1946     	 mov r1,r3
+ 2499 00ca FFF7FEFF 	 bl printf
+ 400:../scud_bms.c ****     for (i = 0U; i < t->cell_count; i++)
+ 2500              	 .loc 3 400 0 discriminator 3
+ 2501 00ce FB7B     	 ldrb r3,[r7,#15]
+ 2502 00d0 0133     	 adds r3,r3,#1
+ 2503 00d2 FB73     	 strb r3,[r7,#15]
+ 2504              	.L109:
+ 400:../scud_bms.c ****     for (i = 0U; i < t->cell_count; i++)
+ 2505              	 .loc 3 400 0 is_stmt 0 discriminator 1
+ 2506 00d4 7B68     	 ldr r3,[r7,#4]
+ 2507 00d6 1B7F     	 ldrb r3,[r3,#28]
+ 2508 00d8 FA7B     	 ldrb r2,[r7,#15]
+ 2509 00da 9A42     	 cmp r2,r3
+ 2510 00dc EDD3     	 bcc .L110
+ 402:../scud_bms.c ****     XMC_DEBUG("\n");
+ 2511              	 .loc 3 402 0 is_stmt 1
+ 2512 00de 0A20     	 movs r0,#10
+ 2513 00e0 FFF7FEFF 	 bl putchar
+ 403:../scud_bms.c **** 
+ 404:../scud_bms.c ****     XMC_DEBUG("Temps [%u+%u]:",
+ 2514              	 .loc 3 404 0
+ 2515 00e4 7B68     	 ldr r3,[r7,#4]
+ 2516 00e6 93F86230 	 ldrb r3,[r3,#98]
+ 2517 00ea 1A46     	 mov r2,r3
+ 2518 00ec 7B68     	 ldr r3,[r7,#4]
+ 2519 00ee 93F87430 	 ldrb r3,[r3,#116]
+ 2520 00f2 2148     	 ldr r0,.L115+16
+ 2521 00f4 1146     	 mov r1,r2
+ 2522 00f6 1A46     	 mov r2,r3
+ 2523 00f8 FFF7FEFF 	 bl printf
+ 405:../scud_bms.c ****               (unsigned int)t->cell_temp_count,
+ 406:../scud_bms.c ****               (unsigned int)t->other_temp_count);
+ 407:../scud_bms.c ****     for (i = 0U; i < t->cell_temp_count; i++)
+ 2524              	 .loc 3 407 0
+ 2525 00fc 0023     	 movs r3,#0
+ 2526 00fe FB73     	 strb r3,[r7,#15]
+ 2527 0100 0DE0     	 b .L111
+ 2528              	.L112:
+ 408:../scud_bms.c ****         XMC_DEBUG(" %d", (int)t->cell_temps_c[i]);
+ 2529              	 .loc 3 408 0 discriminator 3
+ 2530 0102 FB7B     	 ldrb r3,[r7,#15]
+ 2531 0104 7A68     	 ldr r2,[r7,#4]
+ 2532 0106 3033     	 adds r3,r3,#48
+ 2533 0108 5B00     	 lsls r3,r3,#1
+ 2534 010a 1344     	 add r3,r3,r2
+ 2535 010c 9B88     	 ldrh r3,[r3,#4]
+ 2536 010e 1BB2     	 sxth r3,r3
+ 2537 0110 1A48     	 ldr r0,.L115+20
+ 2538 0112 1946     	 mov r1,r3
+ 2539 0114 FFF7FEFF 	 bl printf
+ 407:../scud_bms.c ****         XMC_DEBUG(" %d", (int)t->cell_temps_c[i]);
+ 2540              	 .loc 3 407 0 discriminator 3
+ 2541 0118 FB7B     	 ldrb r3,[r7,#15]
+ 2542 011a 0133     	 adds r3,r3,#1
+ 2543 011c FB73     	 strb r3,[r7,#15]
+ 2544              	.L111:
+ 407:../scud_bms.c ****         XMC_DEBUG(" %d", (int)t->cell_temps_c[i]);
+ 2545              	 .loc 3 407 0 is_stmt 0 discriminator 1
+ 2546 011e 7B68     	 ldr r3,[r7,#4]
+ 2547 0120 93F86230 	 ldrb r3,[r3,#98]
+ 2548 0124 FA7B     	 ldrb r2,[r7,#15]
+ 2549 0126 9A42     	 cmp r2,r3
+ 2550 0128 EBD3     	 bcc .L112
+ 409:../scud_bms.c ****     for (i = 0U; i < t->other_temp_count; i++)
+ 2551              	 .loc 3 409 0 is_stmt 1
+ 2552 012a 0023     	 movs r3,#0
+ 2553 012c FB73     	 strb r3,[r7,#15]
+ 2554 012e 0DE0     	 b .L113
+ 2555              	.L114:
+ 410:../scud_bms.c ****         XMC_DEBUG(" %d", (int)t->other_temps_c[i]);
+ 2556              	 .loc 3 410 0 discriminator 3
+ 2557 0130 FB7B     	 ldrb r3,[r7,#15]
+ 2558 0132 7A68     	 ldr r2,[r7,#4]
+ 2559 0134 3833     	 adds r3,r3,#56
+ 2560 0136 5B00     	 lsls r3,r3,#1
+ 2561 0138 1344     	 add r3,r3,r2
+ 2562 013a DB88     	 ldrh r3,[r3,#6]
+ 2563 013c 1BB2     	 sxth r3,r3
+ 2564 013e 0F48     	 ldr r0,.L115+20
+ 2565 0140 1946     	 mov r1,r3
+ 2566 0142 FFF7FEFF 	 bl printf
+ 409:../scud_bms.c ****     for (i = 0U; i < t->other_temp_count; i++)
+ 2567              	 .loc 3 409 0 discriminator 3
+ 2568 0146 FB7B     	 ldrb r3,[r7,#15]
+ 2569 0148 0133     	 adds r3,r3,#1
+ 2570 014a FB73     	 strb r3,[r7,#15]
+ 2571              	.L113:
+ 409:../scud_bms.c ****     for (i = 0U; i < t->other_temp_count; i++)
+ 2572              	 .loc 3 409 0 is_stmt 0 discriminator 1
+ 2573 014c 7B68     	 ldr r3,[r7,#4]
+ 2574 014e 93F87430 	 ldrb r3,[r3,#116]
+ 2575 0152 FA7B     	 ldrb r2,[r7,#15]
+ 2576 0154 9A42     	 cmp r2,r3
+ 2577 0156 EBD3     	 bcc .L114
+ 411:../scud_bms.c ****     XMC_DEBUG("\n");
+ 2578              	 .loc 3 411 0 is_stmt 1
+ 2579 0158 0A20     	 movs r0,#10
+ 2580 015a FFF7FEFF 	 bl putchar
+ 412:../scud_bms.c **** }
+ 2581              	 .loc 3 412 0
+ 2582 015e 1437     	 adds r7,r7,#20
+ 2583              	.LCFI119:
+ 2584              	 .cfi_def_cfa_offset 28
+ 2585 0160 BD46     	 mov sp,r7
+ 2586              	.LCFI120:
+ 2587              	 .cfi_def_cfa_register 13
+ 2588              	 
+ 2589 0162 BDE8F083 	 pop {r4,r5,r6,r7,r8,r9,pc}
+ 2590              	.L116:
+ 2591 0166 00BF     	 .align 2
+ 2592              	.L115:
+ 2593 0168 D34D6210 	 .word 274877907
+ 2594 016c 28000000 	 .word .LC2
+ 2595 0170 84000000 	 .word .LC3
+ 2596 0174 90000000 	 .word .LC4
+ 2597 0178 94000000 	 .word .LC5
+ 2598 017c A4000000 	 .word .LC6
+ 2599              	 .cfi_endproc
+ 2600              	.LFE314:
+ 2602              	 .section .rodata
+ 2603              	 .align 2
+ 2604              	.LC7:
+ 2605 00a8 4F4B00   	 .ascii "OK\000"
+ 2606 00ab 00       	 .align 2
+ 2607              	.LC8:
+ 2608 00ac 74696D65 	 .ascii "timeout\000"
+ 2608      6F757400 
+ 2609              	 .align 2
+ 2610              	.LC9:
+ 2611 00b4 6672616D 	 .ascii "framing error\000"
+ 2611      696E6720 
+ 2611      6572726F 
+ 2611      7200
+ 2612 00c2 0000     	 .align 2
+ 2613              	.LC10:
+ 2614 00c4 63686563 	 .ascii "checksum error\000"
+ 2614      6B73756D 
+ 2614      20657272 
+ 2614      6F7200
+ 2615 00d3 00       	 .align 2
+ 2616              	.LC11:
+ 2617 00d4 424D5320 	 .ascii "BMS returned error RTN\000"
+ 2617      72657475 
+ 2617      726E6564 
+ 2617      20657272 
+ 2617      6F722052 
+ 2618 00eb 00       	 .align 2
+ 2619              	.LC12:
+ 2620 00ec 72657370 	 .ascii "response too short\000"
+ 2620      6F6E7365 
+ 2620      20746F6F 
+ 2620      2073686F 
+ 2620      727400
+ 2621 00ff 00       	 .align 2
+ 2622              	.LC13:
+ 2623 0100 756E6B6E 	 .ascii "unknown error\000"
+ 2623      6F776E20 
+ 2623      6572726F 
+ 2623      7200
+ 2624 010e 0000     	 .section .text.SCUD_StatusStr,"ax",%progbits
+ 2625              	 .align 2
+ 2626              	 .global SCUD_StatusStr
+ 2627              	 .thumb
+ 2628              	 .thumb_func
+ 2630              	SCUD_StatusStr:
+ 2631              	.LFB315:
+ 413:../scud_bms.c **** 
+ 414:../scud_bms.c **** const char *SCUD_StatusStr(ScudStatus_t st)
+ 415:../scud_bms.c **** {
+ 2632              	 .loc 3 415 0
+ 2633              	 .cfi_startproc
+ 2634              	 
+ 2635              	 
+ 2636              	 
+ 2637 0000 80B4     	 push {r7}
+ 2638              	.LCFI121:
+ 2639              	 .cfi_def_cfa_offset 4
+ 2640              	 .cfi_offset 7,-4
+ 2641 0002 83B0     	 sub sp,sp,#12
+ 2642              	.LCFI122:
+ 2643              	 .cfi_def_cfa_offset 16
+ 2644 0004 00AF     	 add r7,sp,#0
+ 2645              	.LCFI123:
+ 2646              	 .cfi_def_cfa_register 7
+ 2647 0006 0346     	 mov r3,r0
+ 2648 0008 FB71     	 strb r3,[r7,#7]
+ 416:../scud_bms.c ****     switch (st)
+ 2649              	 .loc 3 416 0
+ 2650 000a FB79     	 ldrb r3,[r7,#7]
+ 2651 000c 052B     	 cmp r3,#5
+ 2652 000e 1BD8     	 bhi .L118
+ 2653 0010 01A2     	 adr r2,.L120
+ 2654 0012 52F823F0 	 ldr pc,[r2,r3,lsl#2]
+ 2655 0016 00BF     	 .p2align 2
+ 2656              	.L120:
+ 2657 0018 31000000 	 .word .L119+1
+ 2658 001c 35000000 	 .word .L121+1
+ 2659 0020 39000000 	 .word .L122+1
+ 2660 0024 3D000000 	 .word .L123+1
+ 2661 0028 41000000 	 .word .L124+1
+ 2662 002c 45000000 	 .word .L125+1
+ 2663              	 .p2align 1
+ 2664              	.L119:
+ 417:../scud_bms.c ****     {
+ 418:../scud_bms.c ****         case SCUD_OK:            return "OK";
+ 2665              	 .loc 3 418 0
+ 2666 0030 094B     	 ldr r3,.L127
+ 2667 0032 0AE0     	 b .L126
+ 2668              	.L121:
+ 419:../scud_bms.c ****         case SCUD_ERR_TIMEOUT:   return "timeout";
+ 2669              	 .loc 3 419 0
+ 2670 0034 094B     	 ldr r3,.L127+4
+ 2671 0036 08E0     	 b .L126
+ 2672              	.L122:
+ 420:../scud_bms.c ****         case SCUD_ERR_FRAMING:   return "framing error";
+ 2673              	 .loc 3 420 0
+ 2674 0038 094B     	 ldr r3,.L127+8
+ 2675 003a 06E0     	 b .L126
+ 2676              	.L123:
+ 421:../scud_bms.c ****         case SCUD_ERR_CHECKSUM:  return "checksum error";
+ 2677              	 .loc 3 421 0
+ 2678 003c 094B     	 ldr r3,.L127+12
+ 2679 003e 04E0     	 b .L126
+ 2680              	.L124:
+ 422:../scud_bms.c ****         case SCUD_ERR_RTN:       return "BMS returned error RTN";
+ 2681              	 .loc 3 422 0
+ 2682 0040 094B     	 ldr r3,.L127+16
+ 2683 0042 02E0     	 b .L126
+ 2684              	.L125:
+ 423:../scud_bms.c ****         case SCUD_ERR_TOO_SHORT: return "response too short";
+ 2685              	 .loc 3 423 0
+ 2686 0044 094B     	 ldr r3,.L127+20
+ 2687 0046 00E0     	 b .L126
+ 2688              	.L118:
+ 424:../scud_bms.c ****         default:                 return "unknown error";
+ 2689              	 .loc 3 424 0
+ 2690 0048 094B     	 ldr r3,.L127+24
+ 2691              	.L126:
+ 425:../scud_bms.c ****     }
+ 426:../scud_bms.c **** }
+ 2692              	 .loc 3 426 0
+ 2693 004a 1846     	 mov r0,r3
+ 2694 004c 0C37     	 adds r7,r7,#12
+ 2695              	.LCFI124:
+ 2696              	 .cfi_def_cfa_offset 4
+ 2697 004e BD46     	 mov sp,r7
+ 2698              	.LCFI125:
+ 2699              	 .cfi_def_cfa_register 13
+ 2700              	 
+ 2701 0050 5DF8047B 	 ldr r7,[sp],#4
+ 2702              	.LCFI126:
+ 2703              	 .cfi_restore 7
+ 2704              	 .cfi_def_cfa_offset 0
+ 2705 0054 7047     	 bx lr
+ 2706              	.L128:
+ 2707 0056 00BF     	 .align 2
+ 2708              	.L127:
+ 2709 0058 A8000000 	 .word .LC7
+ 2710 005c AC000000 	 .word .LC8
+ 2711 0060 B4000000 	 .word .LC9
+ 2712 0064 C4000000 	 .word .LC10
+ 2713 0068 D4000000 	 .word .LC11
+ 2714 006c EC000000 	 .word .LC12
+ 2715 0070 00010000 	 .word .LC13
+ 2716              	 .cfi_endproc
+ 2717              	.LFE315:
+ 2719              	 .text
+ 2720              	.Letext0:
+ 2721              	 .file 4 "c:\\infineon\\tools\\dave ide\\4.5.0.202105191637\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 2722              	 .file 5 "c:\\infineon\\tools\\dave ide\\4.5.0.202105191637\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\stdint.h"
+ 2723              	 .file 6 "../scud_bms.h"
+ 2724              	 .file 7 "C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/Battery_BMS_XMC4800-F144x2048_1/Libraries/XMCLib/inc/xmc_gpio.h"
+ 2725              	 .file 8 "C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/Battery_BMS_XMC4800-F144x2048_1/Libraries/XMCLib/inc/xmc4_gpio.h"
+ 2726              	 .file 9 "C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/Battery_BMS_XMC4800-F144x2048_1/Dave/Generated/UART/uart.h"
+ 2727              	 .file 10 "C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/Battery_BMS_XMC4800-F144x2048_1/Libraries/CMSIS/Include/cmsis_gcc.h"
+ 2728              	 .file 11 "C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/Battery_BMS_XMC4800-F144x2048_1/Libraries/CMSIS/Include/core_cm4.h"
+ 2729              	 .file 12 "C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/Battery_BMS_XMC4800-F144x2048_1/Libraries/CMSIS/Infineon/XMC4800_series/Include/system_XMC4800.h"
+ 2730              	 .file 13 "C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/Battery_BMS_XMC4800-F144x2048_1/Dave/Generated/UART/uart_extern.h"
 DEFINED SYMBOLS
                             *ABS*:00000000 scud_bms.c
     {standard input}:20     .text.XMC_USIC_CH_TXFIFO_PutData:00000000 $t
@@ -5796,18 +5991,22 @@ DEFINED SYMBOLS
     {standard input}:1332   .text.parse_frame:00000000 parse_frame
     {standard input}:1537   .text.do_txn:00000000 $t
     {standard input}:1541   .text.do_txn:00000000 do_txn
-    {standard input}:1651   .text.SCUD_ReadAnalog:00000000 $t
-    {standard input}:1656   .text.SCUD_ReadAnalog:00000000 SCUD_ReadAnalog
-    {standard input}:2099   .text.SCUD_ReadAlarms:00000000 $t
-    {standard input}:2104   .text.SCUD_ReadAlarms:00000000 SCUD_ReadAlarms
-    {standard input}:2209   .text.SCUD_PrintAnalog:00000000 $t
-    {standard input}:2214   .text.SCUD_PrintAnalog:00000000 SCUD_PrintAnalog
-    {standard input}:2413   .text.SCUD_PrintAnalog:00000168 $d
-    {standard input}:2445   .text.SCUD_StatusStr:00000000 $t
-    {standard input}:2450   .text.SCUD_StatusStr:00000000 SCUD_StatusStr
-    {standard input}:2477   .text.SCUD_StatusStr:00000018 $d
-    {standard input}:2483   .text.SCUD_StatusStr:00000030 $t
-    {standard input}:2529   .text.SCUD_StatusStr:00000058 $d
+    {standard input}:1651   .text.decode_analog_info:00000000 $t
+    {standard input}:1655   .text.decode_analog_info:00000000 decode_analog_info
+    {standard input}:2140   .text.SCUD_ReadAnalog:00000000 $t
+    {standard input}:2145   .text.SCUD_ReadAnalog:00000000 SCUD_ReadAnalog
+    {standard input}:2203   .text.SCUD_DecodeAnalog:00000000 $t
+    {standard input}:2208   .text.SCUD_DecodeAnalog:00000000 SCUD_DecodeAnalog
+    {standard input}:2279   .text.SCUD_ReadAlarms:00000000 $t
+    {standard input}:2284   .text.SCUD_ReadAlarms:00000000 SCUD_ReadAlarms
+    {standard input}:2389   .text.SCUD_PrintAnalog:00000000 $t
+    {standard input}:2394   .text.SCUD_PrintAnalog:00000000 SCUD_PrintAnalog
+    {standard input}:2593   .text.SCUD_PrintAnalog:00000168 $d
+    {standard input}:2625   .text.SCUD_StatusStr:00000000 $t
+    {standard input}:2630   .text.SCUD_StatusStr:00000000 SCUD_StatusStr
+    {standard input}:2657   .text.SCUD_StatusStr:00000018 $d
+    {standard input}:2663   .text.SCUD_StatusStr:00000030 $t
+    {standard input}:2709   .text.SCUD_StatusStr:00000058 $d
                      .debug_frame:00000010 $d
 
 UNDEFINED SYMBOLS

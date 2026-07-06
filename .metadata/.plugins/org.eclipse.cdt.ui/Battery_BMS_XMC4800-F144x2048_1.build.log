@@ -1,11 +1,11 @@
-11:28:08 **** Incremental Build of configuration Debug for project Battery_BMS_XMC4800-F144x2048_1 ****
+12:28:19 **** Incremental Build of configuration Debug for project Battery_BMS_XMC4800-F144x2048_1 ****
 "\"C:\\Infineon\\Tools\\DAVE IDE\\4.5.0.202105191637\\eclipse\\ARM-GCC-49\\bin\\make\"" --output-sync -j16 all 
 'Invoking: ARM-GCC Print Size'
 "C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/ARM-GCC-49/bin/arm-none-eabi-size" --format=berkeley "Battery_BMS_XMC4800-F144x2048_1.elf"
    text	   data	    bss	    dec	    hex	filename
-  13896	    112	   2592	  16600	   40d8	Battery_BMS_XMC4800-F144x2048_1.elf
+  16612	    112	   2592	  19316	   4b74	Battery_BMS_XMC4800-F144x2048_1.elf
 'Finished building: Battery_BMS_XMC4800-F144x2048_1.siz'
 
 
-11:28:09 Build Finished (took 392ms)
+12:28:19 Build Finished (took 392ms)
 

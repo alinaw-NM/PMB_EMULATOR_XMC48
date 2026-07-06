@@ -3559,3 +3559,42 @@ For more details, see the JLinkGDBServerCL.exe console.
 
 !ENTRY ilg.gnuarmeclipse.debug.gdbjtag.jlink 4 1 2026-07-06 11:28:09.603
 !MESSAGE C:\Infineon\Tools\DAVE IDE\4.5.0.202105191637\eclipse\ARM-GCC-49/bin/arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.jlink 4 1 2026-07-06 11:44:55.048
+!MESSAGE C:\Program Files\SEGGER\JLink_V942\JLinkGDBServerCL.exe -if swd -device XMC4800-F144x2048 -endian little -speed 1000 -port 2331 -swoport 2332 -telnetport 2333 -vd -ir -localhostonly 1 -singlerun -strict -timeout 0
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.jlink 4 1 2026-07-06 11:44:55.215
+!MESSAGE C:\Infineon\Tools\DAVE IDE\4.5.0.202105191637\eclipse\ARM-GCC-49/bin/arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.jlink 4 1 2026-07-06 11:50:21.949
+!MESSAGE C:\Program Files\SEGGER\JLink_V942\JLinkGDBServerCL.exe -if swd -device XMC4800-F144x2048 -endian little -speed 1000 -port 2331 -swoport 2332 -telnetport 2333 -vd -ir -localhostonly 1 -singlerun -strict -timeout 0
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.jlink 4 1 2026-07-06 11:50:22.117
+!MESSAGE C:\Infineon\Tools\DAVE IDE\4.5.0.202105191637\eclipse\ARM-GCC-49/bin/arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.jlink 4 1 2026-07-06 12:04:50.044
+!MESSAGE C:\Program Files\SEGGER\JLink_V942\JLinkGDBServerCL.exe -if swd -device XMC4800-F144x2048 -endian little -speed 1000 -port 2331 -swoport 2332 -telnetport 2333 -vd -ir -localhostonly 1 -singlerun -strict -timeout 0
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.jlink 4 1 2026-07-06 12:04:50.220
+!MESSAGE C:\Infineon\Tools\DAVE IDE\4.5.0.202105191637\eclipse\ARM-GCC-49/bin/arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.jlink 4 1 2026-07-06 12:07:41.698
+!MESSAGE C:\Program Files\SEGGER\JLink_V942\JLinkGDBServerCL.exe -if swd -device XMC4800-F144x2048 -endian little -speed 1000 -port 2331 -swoport 2332 -telnetport 2333 -vd -ir -localhostonly 1 -singlerun -strict -timeout 0
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.jlink 4 1 2026-07-06 12:07:41.864
+!MESSAGE C:\Infineon\Tools\DAVE IDE\4.5.0.202105191637\eclipse\ARM-GCC-49/bin/arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.jlink 4 1 2026-07-06 12:28:19.950
+!MESSAGE C:\Program Files\SEGGER\JLink_V942\JLinkGDBServerCL.exe -if swd -device XMC4800-F144x2048 -endian little -speed 1000 -port 2331 -swoport 2332 -telnetport 2333 -vd -ir -localhostonly 1 -singlerun -strict -timeout 0
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.jlink 4 1 2026-07-06 12:28:20.120
+!MESSAGE C:\Infineon\Tools\DAVE IDE\4.5.0.202105191637\eclipse\ARM-GCC-49/bin/arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY APP_CONFIGURATOR 1 0 2026-07-06 12:29:30.996
+!MESSAGE USER_ACTION : Time taken for opening editor is: 598 msec 
+
+!ENTRY APP_CONFIGURATOR 1 0 2026-07-06 12:29:33.058
+!MESSAGE USER_ACTION : Time taken for opening editor is: 35 msec 
+
+!ENTRY com.dave.mbs.common 1 0 2026-07-06 15:18:20.149
+!MESSAGE Resource '/Battery_BMS' does not exist.

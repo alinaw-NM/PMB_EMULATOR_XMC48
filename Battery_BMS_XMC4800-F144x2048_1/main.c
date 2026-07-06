@@ -3,13 +3,16 @@
  *
  * Sends one analog-read request every 2 s, collects the BMS response
  * into a buffer without any printf inside the receive loop (avoids
- * RXFIFO overflow), then prints all received bytes via SWO.
+ * RXFIFO overflow), then prints all received bytes and decoded fields via SWO.
  *
- * rs485_send flushes the TX echo only after a 10 ms guard delay so
- * that the THVD1406DR auto-direction turnaround completes before we
- * listen for the BMS reply.
+ * rs485_send flushes RXFIFO before TX (clears stale bytes from the previous
+ * cycle) and immediately after TRANSMISSION_IDLE (discards the TX echo before
+ * the BMS has had time to start its reply) so only the BMS response is collected.
  *
- * If BMS shows "(none)" → check A/B polarity and frame format.
+ * The decoder scans raw[] for the first '~' that parses successfully so that
+ * stray noise bytes before the frame do not cause a framing error.
+ *
+ * If BMS shows "(none)" → check A/B polarity, bias resistors, and frame format.
  */
 
 #include "DAVE.h"
@@ -36,12 +39,18 @@ static void delay_ms(uint32_t ms)
  */
 static void rs485_send(const uint8_t *buf, uint32_t len)
 {
+    XMC_USIC_CH_RXFIFO_Flush(BMS_CH); /* discard stale bytes from previous cycle */
+
     for (uint32_t i = 0; i < len; i++) {
         while (XMC_USIC_CH_TXFIFO_IsFull(BMS_CH)) {}
         XMC_USIC_CH_TXFIFO_PutData(BMS_CH, (uint16_t)buf[i]);
     }
     while (!XMC_USIC_CH_TXFIFO_IsEmpty(BMS_CH)) {}
     while (!(XMC_UART_CH_GetStatusFlag(BMS_CH) & XMC_UART_CH_STATUS_FLAG_TRANSMISSION_IDLE)) {}
+    /* Flush echo immediately — all echo bytes are in RXFIFO by TRANSMISSION_IDLE,
+     * and the BMS has not yet started its reply (it still needs to process the frame).
+     * No delay here: a delay risks eating the leading bytes of the BMS response. */
+    XMC_USIC_CH_RXFIFO_Flush(BMS_CH);
 }
 
 int main(void)
@@ -98,16 +107,28 @@ int main(void)
             XMC_DEBUG(" (none)");
         XMC_DEBUG("\r\n");
 
-        /* --- 4. Decode BMS response (raw[] = echo[0..19] + frame[20..]) --- */
-        const uint32_t echo_len = sizeof(req);
-        if (raw_n > echo_len)
+        /* --- 4. Decode: scan for the first '~' that parses as a valid BMS frame --- */
+        ScudAnalog_t analog;
+        ScudStatus_t st      = SCUD_ERR_FRAMING;
+        uint32_t     found_i = 0U;
+        for (uint32_t i = 0U; i < raw_n && st != SCUD_OK; i++)
         {
-            ScudAnalog_t  analog;
-            ScudStatus_t  st = SCUD_DecodeAnalog(&raw[echo_len], raw_n - echo_len, &analog);
-            if (st == SCUD_OK)
-                SCUD_PrintAnalog(&analog);
-            else
-                XMC_DEBUG("Decode: %s\r\n", SCUD_StatusStr(st));
+            if (raw[i] == (uint8_t)'~')
+            {
+                st = SCUD_DecodeAnalog(&raw[i], raw_n - i, &analog);
+                if (st == SCUD_OK) found_i = i;
+            }
+        }
+        if (st == SCUD_OK)
+        {
+            if (found_i > 0U)
+                XMC_DEBUG("(frame at offset %u, %u noise byte(s) skipped)\r\n",
+                          (unsigned)found_i, (unsigned)found_i);
+            SCUD_PrintAnalog(&analog);
+        }
+        else if (raw_n > 0U)
+        {
+            XMC_DEBUG("Decode: %s\r\n", SCUD_StatusStr(st));
         }
         XMC_DEBUG("\r\n");
 
