@@ -10078,3 +10078,60 @@ make: *** [scud_bms.o] Error 1
   17452	    112	   2736	  20300	   4f4c	Battery_BMS_XMC4800-F144x2048_1.elf
 'Finished building: Battery_BMS_XMC4800-F144x2048_1.siz'
 
+10:58:43 **** Incremental Build of configuration Debug for project Battery_BMS_XMC4800-F144x2048_1 ****
+"\"C:\\Infineon\\Tools\\DAVE IDE\\4.5.0.202105191637\\eclipse\\ARM-GCC-49\\bin\\make\"" --output-sync -j16 all 
+'Building file: ../main.c'
+'Invoking: ARM-GCC C Compiler'
+"C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/ARM-GCC-49/bin/arm-none-eabi-gcc" -MMD -MT "main.o" -DXMC4800_F144x2048 -DXMC_DEBUG_ENABLE -I"C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/Battery_BMS_XMC4800-F144x2048_1/Libraries/XMCLib/inc" -I"C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/Battery_BMS_XMC4800-F144x2048_1/Libraries/CMSIS/Include" -I"C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/Battery_BMS_XMC4800-F144x2048_1/Libraries/CMSIS/Infineon/XMC4800_series/Include" -I"C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/Battery_BMS_XMC4800-F144x2048_1" -I"C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/Battery_BMS_XMC4800-F144x2048_1/Dave/Generated" -I"C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/Battery_BMS_XMC4800-F144x2048_1/Libraries" -O0 -ffunction-sections -fdata-sections -Wall -std=gnu99 -mfloat-abi=softfp -Wa,-adhlns="main.o.lst" -pipe -c -fmessage-length=0 -MMD -MP -MF"main.d" -MT"main.d main.o" -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mthumb -g -gdwarf-2 -o "main.o" "../main.c" 
+'Finished building: ../main.c'
+
+'Building file: ../scud_bms.c'
+'Invoking: ARM-GCC C Compiler'
+"C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/ARM-GCC-49/bin/arm-none-eabi-gcc" -MMD -MT "scud_bms.o" -DXMC4800_F144x2048 -DXMC_DEBUG_ENABLE -I"C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/Battery_BMS_XMC4800-F144x2048_1/Libraries/XMCLib/inc" -I"C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/Battery_BMS_XMC4800-F144x2048_1/Libraries/CMSIS/Include" -I"C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/Battery_BMS_XMC4800-F144x2048_1/Libraries/CMSIS/Infineon/XMC4800_series/Include" -I"C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/Battery_BMS_XMC4800-F144x2048_1" -I"C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/Battery_BMS_XMC4800-F144x2048_1/Dave/Generated" -I"C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/Battery_BMS_XMC4800-F144x2048_1/Libraries" -O0 -ffunction-sections -fdata-sections -Wall -std=gnu99 -mfloat-abi=softfp -Wa,-adhlns="scud_bms.o.lst" -pipe -c -fmessage-length=0 -MMD -MP -MF"scud_bms.d" -MT"scud_bms.d scud_bms.o" -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mthumb -g -gdwarf-2 -o "scud_bms.o" "../scud_bms.c" 
+'Finished building: ../scud_bms.c'
+
+'Building target: Battery_BMS_XMC4800-F144x2048_1.elf'
+'Invoking: ARM-GCC C Linker'
+"C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/ARM-GCC-49/bin/arm-none-eabi-gcc" -T"../linker_script.ld" -nostartfiles -Xlinker --gc-sections -specs=nano.specs -specs=nosys.specs -Wl,-Map,"Battery_BMS_XMC4800-F144x2048_1.map" --specs=rdimon.specs -mfloat-abi=softfp -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mthumb -g -gdwarf-2 -o "Battery_BMS_XMC4800-F144x2048_1.elf" "@objects.rsp"  -lm
+'Finished building target: Battery_BMS_XMC4800-F144x2048_1.elf'
+
+'Invoking: ARM-GCC Create Flash Image'
+"C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/ARM-GCC-49/bin/arm-none-eabi-objcopy" -O ihex "Battery_BMS_XMC4800-F144x2048_1.elf" "Battery_BMS_XMC4800-F144x2048_1.hex"
+'Finished building: Battery_BMS_XMC4800-F144x2048_1.hex'
+
+'Invoking: ARM-GCC Print Size'
+"C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/ARM-GCC-49/bin/arm-none-eabi-size" --format=berkeley "Battery_BMS_XMC4800-F144x2048_1.elf"
+   text	   data	    bss	    dec	    hex	filename
+  13984	    112	   2592	  16688	   4130	Battery_BMS_XMC4800-F144x2048_1.elf
+'Finished building: Battery_BMS_XMC4800-F144x2048_1.siz'
+
+'Invoking: ARM-GCC Create Listing'
+"C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/ARM-GCC-49/bin/arm-none-eabi-objdump" -h -S "Battery_BMS_XMC4800-F144x2048_1.elf" > "Battery_BMS_XMC4800-F144x2048_1.lst"
+'Finished building: Battery_BMS_XMC4800-F144x2048_1.lst'
+
+11:12:08 **** Incremental Build of configuration Debug for project Battery_BMS_XMC4800-F144x2048_1 ****
+"\"C:\\Infineon\\Tools\\DAVE IDE\\4.5.0.202105191637\\eclipse\\ARM-GCC-49\\bin\\make\"" --output-sync -j16 all 
+'Building file: ../main.c'
+'Invoking: ARM-GCC C Compiler'
+"C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/ARM-GCC-49/bin/arm-none-eabi-gcc" -MMD -MT "main.o" -DXMC4800_F144x2048 -DXMC_DEBUG_ENABLE -I"C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/Battery_BMS_XMC4800-F144x2048_1/Libraries/XMCLib/inc" -I"C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/Battery_BMS_XMC4800-F144x2048_1/Libraries/CMSIS/Include" -I"C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/Battery_BMS_XMC4800-F144x2048_1/Libraries/CMSIS/Infineon/XMC4800_series/Include" -I"C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/Battery_BMS_XMC4800-F144x2048_1" -I"C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/Battery_BMS_XMC4800-F144x2048_1/Dave/Generated" -I"C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/Battery_BMS_XMC4800-F144x2048_1/Libraries" -O0 -ffunction-sections -fdata-sections -Wall -std=gnu99 -mfloat-abi=softfp -Wa,-adhlns="main.o.lst" -pipe -c -fmessage-length=0 -MMD -MP -MF"main.d" -MT"main.d main.o" -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mthumb -g -gdwarf-2 -o "main.o" "../main.c" 
+'Finished building: ../main.c'
+
+'Building target: Battery_BMS_XMC4800-F144x2048_1.elf'
+'Invoking: ARM-GCC C Linker'
+"C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/ARM-GCC-49/bin/arm-none-eabi-gcc" -T"../linker_script.ld" -nostartfiles -Xlinker --gc-sections -specs=nano.specs -specs=nosys.specs -Wl,-Map,"Battery_BMS_XMC4800-F144x2048_1.map" --specs=rdimon.specs -mfloat-abi=softfp -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mthumb -g -gdwarf-2 -o "Battery_BMS_XMC4800-F144x2048_1.elf" "@objects.rsp"  -lm
+'Finished building target: Battery_BMS_XMC4800-F144x2048_1.elf'
+
+'Invoking: ARM-GCC Create Flash Image'
+"C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/ARM-GCC-49/bin/arm-none-eabi-objcopy" -O ihex "Battery_BMS_XMC4800-F144x2048_1.elf" "Battery_BMS_XMC4800-F144x2048_1.hex"
+'Finished building: Battery_BMS_XMC4800-F144x2048_1.hex'
+
+'Invoking: ARM-GCC Create Listing'
+"C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/ARM-GCC-49/bin/arm-none-eabi-objdump" -h -S "Battery_BMS_XMC4800-F144x2048_1.elf" > "Battery_BMS_XMC4800-F144x2048_1.lst"
+'Finished building: Battery_BMS_XMC4800-F144x2048_1.lst'
+
+'Invoking: ARM-GCC Print Size'
+"C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/ARM-GCC-49/bin/arm-none-eabi-size" --format=berkeley "Battery_BMS_XMC4800-F144x2048_1.elf"
+   text	   data	    bss	    dec	    hex	filename
+  14164	    112	   2592	  16868	   41e4	Battery_BMS_XMC4800-F144x2048_1.elf
+'Finished building: Battery_BMS_XMC4800-F144x2048_1.siz'
+

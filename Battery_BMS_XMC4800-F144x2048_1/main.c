@@ -1,81 +1,115 @@
 /*
- * main.c — SCUD BMS RS485 reader on XMC4800
+ * main.c — BMS RS485 diagnostic
  *
- * Polls analog telemetry and alarms once per second and prints via ITM/SWO.
- * ScudAnalog_t is kept as a module-level variable so future CAN logic can
- * read it without having to re-poll the BMS.
+ * Sends one analog-read request, prints the TX echo to confirm the
+ * send path works, then prints whatever the BMS sends back.
+ *
+ * Expected ECHO output: first 16 of the 20 TX bytes (RXFIFO capacity).
+ * If ECHO is empty  → TX path broken (check P2.14 wiring / USIC config).
+ * If ECHO ok, BMS none → BMS not responding (check A/B polarity, query format).
+ * If both present  → proceed to frame parsing.
  */
 
 #include "DAVE.h"
-#include "scud_bms.h"
+#include "xmc_uart.h"
 
 extern void initialise_monitor_handles(void);
 
-/* ~1 second busy-wait at 144 MHz (volatile prevents optimisation out). */
-static void delay_1s(void)
+#define BMS_CH (UART_0.channel)
+
+/*
+ * Busy-wait. At 144 MHz the inner loop body is ~5 cycles,
+ * so 28800 iterations ≈ 1 ms.
+ */
+static void delay_ms(uint32_t ms)
 {
-    for (volatile uint32_t i = 0U; i < 36000000U; i++) {}
+    for (volatile uint32_t i = 0; i < ms * 28800U; i++) {}
 }
 
-/* Most-recent BMS data — accessible to future CAN / application code. */
-static ScudAnalog_t g_bms_analog;
-static ScudAlarms_t g_bms_alarms;
+/*
+ * Transmit buf[0..len-1] over RS485.
+ * Blocks until the USIC shift register has finished the last byte so that
+ * all echo bytes have arrived in RXFIFO before the caller reads them.
+ */
+static void rs485_send(const uint8_t *buf, uint32_t len)
+{
+    XMC_USIC_CH_RXFIFO_Flush(BMS_CH);
+
+    for (uint32_t i = 0; i < len; i++) {
+        while (XMC_USIC_CH_TXFIFO_IsFull(BMS_CH)) {}
+        XMC_USIC_CH_TXFIFO_PutData(BMS_CH, (uint16_t)buf[i]);
+    }
+    while (!XMC_USIC_CH_TXFIFO_IsEmpty(BMS_CH)) {}
+    while (!(XMC_UART_CH_GetStatusFlag(BMS_CH) & XMC_UART_CH_STATUS_FLAG_TRANSMISSION_IDLE)) {}
+}
 
 int main(void)
 {
-    DAVE_STATUS_t status = DAVE_Init();
+    DAVE_Init();
     initialise_monitor_handles();
 
-    if (status != DAVE_STATUS_SUCCESS)
-    {
-        XMC_DEBUG("DAVE init failed\n");
-        while (1U) {}
-    }
-
-    /* We use polling, not interrupt-driven TX/RX. Disable the UART FIFO
-     * interrupts that DAVE enabled — without handlers they hit Default_Handler. */
+    /* Polling mode — disable the DAVE-enabled FIFO interrupts. */
     NVIC_DisableIRQ((IRQn_Type)91); /* USIC1 SR1 — TX FIFO */
     NVIC_DisableIRQ((IRQn_Type)90); /* USIC1 SR0 — RX FIFO */
 
-    XMC_DEBUG("SCUD BMS RS485 reader starting  (115200 8N1, addr=0x00)\n");
+    XMC_DEBUG("BMS RS485 diagnostic (115200 8N1, USIC1_CH0 P2.14/P2.15)\r\n");
 
+    /*
+     * Analog read request frame (hand-verified against scud_bms.c build_frame):
+     *   ~ VER  ADR  CID1 CID2 LENGTH INFO CHKSUM \r
+     *   ~ 22   00   4A   42   E002   01   FD29   \r
+     *
+     * CHKSUM = two's-complement of ASCII body bytes = 0xFD29.
+     */
+    static const uint8_t req[] = {
+        '~','2','2','0','0','4','A','4','2',
+        'E','0','0','2','0','1','F','D','2','9','\r'
+    };
 
-    while (1U)
+    while (1)
     {
-        ScudStatus_t st = SCUD_ReadAnalog(&g_bms_analog);
-        if (st == SCUD_OK)
-        {
-            SCUD_PrintAnalog(&g_bms_analog);
-        }
-        else
-        {
-            XMC_DEBUG("analog read: %s\n", SCUD_StatusStr(st));
-        }
+        /* --- 1. Print the frame we are about to send --- */
+        XMC_DEBUG("TX  (%u bytes):", (unsigned)sizeof(req));
+        for (uint32_t i = 0; i < sizeof(req); i++)
+            XMC_DEBUG(" %02X", (unsigned)req[i]);
+        XMC_DEBUG("\r\n");
 
-        st = SCUD_ReadAlarms(&g_bms_alarms);
-        if (st == SCUD_OK)
-        {
-            uint8_t any = g_bms_alarms.voltage  | g_bms_alarms.current  |
-                          g_bms_alarms.cell_temp | g_bms_alarms.other_temp |
-                          g_bms_alarms.capacity  | g_bms_alarms.other1   |
-                          g_bms_alarms.other2;
-            if (any)
-            {
-                XMC_DEBUG("ALARM: V=%02X I=%02X CT=%02X OT=%02X CAP=%02X O1=%02X O2=%02X\n",
-                          (unsigned int)g_bms_alarms.voltage,
-                          (unsigned int)g_bms_alarms.current,
-                          (unsigned int)g_bms_alarms.cell_temp,
-                          (unsigned int)g_bms_alarms.other_temp,
-                          (unsigned int)g_bms_alarms.capacity,
-                          (unsigned int)g_bms_alarms.other1,
-                          (unsigned int)g_bms_alarms.other2);
+        rs485_send(req, sizeof(req));
+
+        /* --- 2. Read TX echo from RXFIFO --- */
+        XMC_DEBUG("ECHO:");
+        uint32_t echo_n = 0;
+        while (!XMC_USIC_CH_RXFIFO_IsEmpty(BMS_CH)) {
+            XMC_DEBUG(" %02X", (unsigned)XMC_USIC_CH_RXFIFO_GetData(BMS_CH));
+            echo_n++;
+        }
+        if (echo_n == 0)
+            XMC_DEBUG(" (none — TX path problem?)");
+        XMC_DEBUG("\r\n");
+
+        /*
+         * --- 3. Wait for BMS response and print every byte ---
+         *
+         * ticks counts down at ~5 cycles/iteration (144 MHz → ~28800/ms).
+         * Starts at ~500 ms; resets to ~50 ms on each received byte so
+         * we stop ~50 ms after the last byte without cutting a response short.
+         */
+        XMC_DEBUG("BMS :");
+        uint32_t rx_n  = 0;
+        uint32_t ticks = 500U * 28800U;
+        while (ticks > 0) {
+            if (!XMC_USIC_CH_RXFIFO_IsEmpty(BMS_CH)) {
+                XMC_DEBUG(" %02X", (unsigned)XMC_USIC_CH_RXFIFO_GetData(BMS_CH));
+                rx_n++;
+                ticks = 50U * 28800U;
+            } else {
+                ticks--;
             }
         }
-        else
-        {
-            XMC_DEBUG("alarm read: %s\n", SCUD_StatusStr(st));
-        }
+        if (rx_n == 0)
+            XMC_DEBUG(" (none — BMS not responding)");
+        XMC_DEBUG("\r\n\r\n");
 
-        delay_1s();
+        delay_ms(2000);
     }
 }

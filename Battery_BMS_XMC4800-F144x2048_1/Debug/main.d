@@ -37,8 +37,7 @@ main.o main.d main.o: ../main.c \
  C:/Infineon/Tools/DAVE\ IDE/4.5.0.202105191637/eclipse/workspace/Battery_BMS_XMC4800-F144x2048_1/Dave/Generated/INTERRUPT/interrupt_extern.h \
  C:/Infineon/Tools/DAVE\ IDE/4.5.0.202105191637/eclipse/workspace/Battery_BMS_XMC4800-F144x2048_1/Dave/Generated/DIGITAL_IO/digital_io.h \
  C:/Infineon/Tools/DAVE\ IDE/4.5.0.202105191637/eclipse/workspace/Battery_BMS_XMC4800-F144x2048_1/Dave/Generated/DIGITAL_IO/digital_io_conf.h \
- C:/Infineon/Tools/DAVE\ IDE/4.5.0.202105191637/eclipse/workspace/Battery_BMS_XMC4800-F144x2048_1/Dave/Generated/DIGITAL_IO/digital_io_extern.h \
- ../scud_bms.h
+ C:/Infineon/Tools/DAVE\ IDE/4.5.0.202105191637/eclipse/workspace/Battery_BMS_XMC4800-F144x2048_1/Dave/Generated/DIGITAL_IO/digital_io_extern.h
 
 C:/Infineon/Tools/DAVE\ IDE/4.5.0.202105191637/eclipse/workspace/Battery_BMS_XMC4800-F144x2048_1/Dave/Generated/DAVE.h:
 
@@ -117,5 +116,3 @@ C:/Infineon/Tools/DAVE\ IDE/4.5.0.202105191637/eclipse/workspace/Battery_BMS_XMC
 C:/Infineon/Tools/DAVE\ IDE/4.5.0.202105191637/eclipse/workspace/Battery_BMS_XMC4800-F144x2048_1/Dave/Generated/DIGITAL_IO/digital_io_conf.h:
 
 C:/Infineon/Tools/DAVE\ IDE/4.5.0.202105191637/eclipse/workspace/Battery_BMS_XMC4800-F144x2048_1/Dave/Generated/DIGITAL_IO/digital_io_extern.h:
-
-../scud_bms.h:
