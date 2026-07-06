@@ -270,13 +270,9 @@ static ScudStatus_t do_txn(uint8_t cid2, uint8_t *info_out, uint32_t *info_len_o
  * Public API
  * ---------------------------------------------------------------------- */
 
-ScudStatus_t SCUD_ReadAnalog(ScudAnalog_t *out)
+static ScudStatus_t decode_analog_info(const uint8_t *info, uint32_t info_len,
+                                       ScudAnalog_t *out)
 {
-    uint8_t  info[128];
-    uint32_t info_len;
-
-    ScudStatus_t st = do_txn(SCUD_CID2_ANALOG, info, &info_len);
-    if (st != SCUD_OK) return st;
     if (info_len < 27U) return SCUD_ERR_TOO_SHORT;
 
     out->data_flag   = info[0];
@@ -338,6 +334,29 @@ ScudStatus_t SCUD_ReadAnalog(ScudAnalog_t *out)
         }
     }
     return SCUD_OK;
+}
+
+ScudStatus_t SCUD_ReadAnalog(ScudAnalog_t *out)
+{
+    uint8_t  info[128];
+    uint32_t info_len;
+
+    ScudStatus_t st = do_txn(SCUD_CID2_ANALOG, info, &info_len);
+    if (st != SCUD_OK) return st;
+    return decode_analog_info(info, info_len, out);
+}
+
+ScudStatus_t SCUD_DecodeAnalog(const uint8_t *raw_frame, uint32_t raw_len,
+                                ScudAnalog_t *out)
+{
+    uint8_t  info[128];
+    uint32_t info_len;
+    uint8_t  rtn;
+
+    ScudStatus_t st = parse_frame(raw_frame, raw_len, &rtn, info, &info_len);
+    if (st != SCUD_OK) return st;
+    if (rtn != 0x00U) return SCUD_ERR_RTN;
+    return decode_analog_info(info, info_len, out);
 }
 
 ScudStatus_t SCUD_ReadAlarms(ScudAlarms_t *out)

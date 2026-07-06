@@ -14,6 +14,7 @@
 
 #include "DAVE.h"
 #include "xmc_uart.h"
+#include "scud_bms.h"
 
 extern void initialise_monitor_handles(void);
 
@@ -95,7 +96,20 @@ int main(void)
             XMC_DEBUG(" %02X", (unsigned)raw[i]);
         if (raw_n == 0)
             XMC_DEBUG(" (none)");
-        XMC_DEBUG("\r\n\r\n");
+        XMC_DEBUG("\r\n");
+
+        /* --- 4. Decode BMS response (raw[] = echo[0..19] + frame[20..]) --- */
+        const uint32_t echo_len = sizeof(req);
+        if (raw_n > echo_len)
+        {
+            ScudAnalog_t  analog;
+            ScudStatus_t  st = SCUD_DecodeAnalog(&raw[echo_len], raw_n - echo_len, &analog);
+            if (st == SCUD_OK)
+                SCUD_PrintAnalog(&analog);
+            else
+                XMC_DEBUG("Decode: %s\r\n", SCUD_StatusStr(st));
+        }
+        XMC_DEBUG("\r\n");
 
         delay_ms(2000);
     }

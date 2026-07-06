@@ -51,6 +51,7 @@ typedef enum {
 } ScudStatus_t;
 
 ScudStatus_t SCUD_ReadAnalog(ScudAnalog_t *out);
+ScudStatus_t SCUD_DecodeAnalog(const uint8_t *raw_frame, uint32_t raw_len, ScudAnalog_t *out);
 ScudStatus_t SCUD_ReadAlarms(ScudAlarms_t *out);
 void         SCUD_PrintAnalog(const ScudAnalog_t *t);
 const char  *SCUD_StatusStr(ScudStatus_t st);
