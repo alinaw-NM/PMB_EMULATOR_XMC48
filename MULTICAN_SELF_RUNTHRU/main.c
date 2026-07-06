@@ -50,6 +50,8 @@ static          uint8_t  s_fixture_rx_data[8];
 static          uint8_t  s_fixture_rx_dlc;
 static          uint32_t s_fixture_rx_id;
 
+extern void initialise_monitor_handles(void);
+
 void CAN_IRQHandler(void);
 
 /* Configure MO3/MO4 so they can act as a PMB fixture for loopback testing.
@@ -437,11 +439,14 @@ int main(void)
     DAVE_STATUS_t app_status;
 
     app_status = DAVE_Init();
+    initialise_monitor_handles();
+
     if (app_status == DAVE_STATUS_FAILURE)
     {
         XMC_DEBUG("DAVE APPs initialization failed\n");
         while (1U) {}
     }
+    XMC_DEBUG("hello world\n");
 
     PMB_Emulator_Init();
     fixture_init();
