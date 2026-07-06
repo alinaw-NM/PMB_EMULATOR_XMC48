@@ -3535,3 +3535,27 @@ For more details, see the JLinkGDBServerCL.exe console.
 
 !ENTRY ilg.gnuarmeclipse.debug.gdbjtag.jlink 4 1 2026-07-06 11:12:09.751
 !MESSAGE C:\Infineon\Tools\DAVE IDE\4.5.0.202105191637\eclipse\ARM-GCC-49/bin/arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.jlink 4 1 2026-07-06 11:20:23.904
+!MESSAGE C:\Program Files\SEGGER\JLink_V942\JLinkGDBServerCL.exe -if swd -device XMC4800-F144x2048 -endian little -speed 1000 -port 2331 -swoport 2332 -telnetport 2333 -vd -ir -localhostonly 1 -singlerun -strict -timeout 0
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.jlink 4 1 2026-07-06 11:20:24.076
+!MESSAGE C:\Infineon\Tools\DAVE IDE\4.5.0.202105191637\eclipse\ARM-GCC-49/bin/arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.jlink 4 1 2026-07-06 11:26:16.682
+!MESSAGE C:\Program Files\SEGGER\JLink_V942\JLinkGDBServerCL.exe -if swd -device XMC4800-F144x2048 -endian little -speed 1000 -port 2331 -swoport 2332 -telnetport 2333 -vd -ir -localhostonly 1 -singlerun -strict -timeout 0
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.jlink 4 1 2026-07-06 11:26:16.851
+!MESSAGE C:\Infineon\Tools\DAVE IDE\4.5.0.202105191637\eclipse\ARM-GCC-49/bin/arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.jlink 4 1 2026-07-06 11:27:13.296
+!MESSAGE C:\Program Files\SEGGER\JLink_V942\JLinkGDBServerCL.exe -if swd -device XMC4800-F144x2048 -endian little -speed 1000 -port 2331 -swoport 2332 -telnetport 2333 -vd -ir -localhostonly 1 -singlerun -strict -timeout 0
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.jlink 4 1 2026-07-06 11:27:13.468
+!MESSAGE C:\Infineon\Tools\DAVE IDE\4.5.0.202105191637\eclipse\ARM-GCC-49/bin/arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.jlink 4 1 2026-07-06 11:28:09.437
+!MESSAGE C:\Program Files\SEGGER\JLink_V942\JLinkGDBServerCL.exe -if swd -device XMC4800-F144x2048 -endian little -speed 1000 -port 2331 -swoport 2332 -telnetport 2333 -vd -ir -localhostonly 1 -singlerun -strict -timeout 0
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.jlink 4 1 2026-07-06 11:28:09.603
+!MESSAGE C:\Infineon\Tools\DAVE IDE\4.5.0.202105191637\eclipse\ARM-GCC-49/bin/arm-none-eabi-gdb --interpreter=mi2 --nx

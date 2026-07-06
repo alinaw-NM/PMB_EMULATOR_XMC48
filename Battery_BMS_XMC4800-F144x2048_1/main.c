@@ -1,13 +1,15 @@
 /*
  * main.c — BMS RS485 diagnostic
  *
- * Sends one analog-read request, prints the TX echo to confirm the
- * send path works, then prints whatever the BMS sends back.
+ * Sends one analog-read request every 2 s, collects the BMS response
+ * into a buffer without any printf inside the receive loop (avoids
+ * RXFIFO overflow), then prints all received bytes via SWO.
  *
- * Expected ECHO output: first 16 of the 20 TX bytes (RXFIFO capacity).
- * If ECHO is empty  → TX path broken (check P2.14 wiring / USIC config).
- * If ECHO ok, BMS none → BMS not responding (check A/B polarity, query format).
- * If both present  → proceed to frame parsing.
+ * rs485_send flushes the TX echo only after a 10 ms guard delay so
+ * that the THVD1406DR auto-direction turnaround completes before we
+ * listen for the BMS reply.
+ *
+ * If BMS shows "(none)" → check A/B polarity and frame format.
  */
 
 #include "DAVE.h"
@@ -33,8 +35,6 @@ static void delay_ms(uint32_t ms)
  */
 static void rs485_send(const uint8_t *buf, uint32_t len)
 {
-    XMC_USIC_CH_RXFIFO_Flush(BMS_CH);
-
     for (uint32_t i = 0; i < len; i++) {
         while (XMC_USIC_CH_TXFIFO_IsFull(BMS_CH)) {}
         XMC_USIC_CH_TXFIFO_PutData(BMS_CH, (uint16_t)buf[i]);
@@ -76,38 +76,25 @@ int main(void)
 
         rs485_send(req, sizeof(req));
 
-        /* --- 2. Read TX echo from RXFIFO --- */
-        XMC_DEBUG("ECHO:");
-        uint32_t echo_n = 0;
-        while (!XMC_USIC_CH_RXFIFO_IsEmpty(BMS_CH)) {
-            XMC_DEBUG(" %02X", (unsigned)XMC_USIC_CH_RXFIFO_GetData(BMS_CH));
-            echo_n++;
-        }
-        if (echo_n == 0)
-            XMC_DEBUG(" (none — TX path problem?)");
-        XMC_DEBUG("\r\n");
-
-        /*
-         * --- 3. Wait for BMS response and print every byte ---
-         *
-         * ticks counts down at ~5 cycles/iteration (144 MHz → ~28800/ms).
-         * Starts at ~500 ms; resets to ~50 ms on each received byte so
-         * we stop ~50 ms after the last byte without cutting a response short.
-         */
-        XMC_DEBUG("BMS :");
-        uint32_t rx_n  = 0;
-        uint32_t ticks = 500U * 28800U;
-        while (ticks > 0) {
+        /* --- 2. Collect everything: echo bytes then BMS response --- */
+        uint8_t  raw[256];
+        uint32_t raw_n = 0;
+        uint32_t ticks = 500U * 28800U;   /* initial wait ~500 ms */
+        while (ticks > 0 && raw_n < sizeof(raw)) {
             if (!XMC_USIC_CH_RXFIFO_IsEmpty(BMS_CH)) {
-                XMC_DEBUG(" %02X", (unsigned)XMC_USIC_CH_RXFIFO_GetData(BMS_CH));
-                rx_n++;
-                ticks = 50U * 28800U;
+                raw[raw_n++] = (uint8_t)XMC_USIC_CH_RXFIFO_GetData(BMS_CH);
+                ticks = 50U * 28800U;     /* extend ~50 ms after each byte */
             } else {
                 ticks--;
             }
         }
-        if (rx_n == 0)
-            XMC_DEBUG(" (none — BMS not responding)");
+
+        /* --- 3. Print everything raw --- */
+        XMC_DEBUG("RAW  (%u bytes):", (unsigned)raw_n);
+        for (uint32_t i = 0; i < raw_n; i++)
+            XMC_DEBUG(" %02X", (unsigned)raw[i]);
+        if (raw_n == 0)
+            XMC_DEBUG(" (none)");
         XMC_DEBUG("\r\n\r\n");
 
         delay_ms(2000);
