@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workingSetManager>
 <workingSet editPageId="org.eclipse.ui.resourceWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1778800256824_1" label="ActiveProject" name="ActiveProject">
-<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/Battery_BMS_XMC4800-F144x2048_1" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/Morelle_BMS" type="4"/>
 </workingSet>
 <workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1778800120329_0" label="Window Working Set" name="Aggregate for window 1778800120329">
 <workingSet IMemento.internal.id="ActiveProject"/>
