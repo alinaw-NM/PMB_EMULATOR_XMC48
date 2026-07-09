@@ -141,64 +141,64 @@
   95      506F6C6C 
   96              	 .align 2
   97              	.LC7:
-  98 00fc 5B307839 	 .ascii "[0x94] Status Info: Cells=%u  Temp sensors=%u\012\000"
-  98      345D2053 
-  98      74617475 
-  98      7320496E 
-  98      666F3A20 
-  99 012b 00       	 .align 2
+  98 00fc 2D00     	 .ascii "-\000"
+  99 00fe 0000     	 .align 2
  100              	.LC8:
- 101 012c 2D00     	 .ascii "-\000"
- 102 012e 0000     	 .align 2
+ 101 0100 00       	 .ascii "\000"
+ 102 0101 000000   	 .align 2
  103              	.LC9:
- 104 0130 00       	 .ascii "\000"
- 105 0131 000000   	 .align 2
- 106              	.LC10:
- 107 0134 5B307839 	 .ascii "[0x90] Pack Totals: Pack=%lu.%luV  I=%s%lu.%luA  So"
- 107      305D2050 
- 107      61636B20 
- 107      546F7461 
- 107      6C733A20 
- 108 0167 433D256C 	 .ascii "C=%lu.%lu%%\012\000"
- 108      752E256C 
- 108      7525250A 
- 108      00
- 109              	 .align 2
- 110              	.LC11:
- 111 0174 44534700 	 .ascii "DSG\000"
- 112              	 .align 2
- 113              	.LC12:
- 114 0178 49444C45 	 .ascii "IDLE\000"
- 114      00
- 115 017d 000000   	 .align 2
- 116              	.LC13:
- 117 0180 43484700 	 .ascii "CHG\000"
- 118              	 .align 2
- 119              	.LC14:
- 120 0184 5B307839 	 .ascii "[0x93] State: %s  ChgMOS: %u  DsgMOS: %u  Rem: %lu "
- 120      335D2053 
- 120      74617465 
- 120      3A202573 
- 120      20204368 
- 121 01b7 6D41680A 	 .ascii "mAh\012\000"
- 121      00
- 122              	 .align 2
- 123              	.LC15:
- 124 01bc 5B307839 	 .ascii "[0x91] Max: %u mV (cell %u)  Min: %u mV (cell %u)\012"
- 124      315D204D 
- 124      61783A20 
- 124      2575206D 
- 124      56202863 
- 125 01ee 00       	 .ascii "\000"
- 126 01ef 00       	 .align 2
- 127              	.LC16:
- 128 01f0 5B307839 	 .ascii "[0x92] Max: %d C (sensor %u)  Min: %d C (sensor %u)"
- 128      325D204D 
- 128      61783A20 
- 128      25642043 
- 128      20287365 
- 129 0223 0A00     	 .ascii "\012\000"
- 130 0225 000000   	 .align 2
+ 104 0104 5B307839 	 .ascii "[0x90] Pack Totals: Pack=%lu.%luV  I=%s%lu.%luA  So"
+ 104      305D2050 
+ 104      61636B20 
+ 104      546F7461 
+ 104      6C733A20 
+ 105 0137 433D256C 	 .ascii "C=%lu.%lu%%\012\000"
+ 105      752E256C 
+ 105      7525250A 
+ 105      00
+ 106              	 .align 2
+ 107              	.LC10:
+ 108 0144 5B307839 	 .ascii "[0x91] Max: %u mV (cell %u)  Min: %u mV (cell %u)\012"
+ 108      315D204D 
+ 108      61783A20 
+ 108      2575206D 
+ 108      56202863 
+ 109 0176 00       	 .ascii "\000"
+ 110 0177 00       	 .align 2
+ 111              	.LC11:
+ 112 0178 5B307839 	 .ascii "[0x92] Max: %d C (sensor %u)  Min: %d C (sensor %u)"
+ 112      325D204D 
+ 112      61783A20 
+ 112      25642043 
+ 112      20287365 
+ 113 01ab 0A00     	 .ascii "\012\000"
+ 114 01ad 000000   	 .align 2
+ 115              	.LC12:
+ 116 01b0 44534700 	 .ascii "DSG\000"
+ 117              	 .align 2
+ 118              	.LC13:
+ 119 01b4 49444C45 	 .ascii "IDLE\000"
+ 119      00
+ 120 01b9 000000   	 .align 2
+ 121              	.LC14:
+ 122 01bc 43484700 	 .ascii "CHG\000"
+ 123              	 .align 2
+ 124              	.LC15:
+ 125 01c0 5B307839 	 .ascii "[0x93] State: %s  ChgMOS: %u  DsgMOS: %u  Rem: %lu "
+ 125      335D2053 
+ 125      74617465 
+ 125      3A202573 
+ 125      20204368 
+ 126 01f3 6D41680A 	 .ascii "mAh\012\000"
+ 126      00
+ 127              	 .align 2
+ 128              	.LC16:
+ 129 01f8 5B307839 	 .ascii "[0x94] Status Info: Cells=%u  Temp sensors=%u\012\000"
+ 129      345D2053 
+ 129      74617475 
+ 129      7320496E 
+ 129      666F3A20 
+ 130 0227 00       	 .align 2
  131              	.LC17:
  132 0228 5B307839 	 .ascii "[0x95] Cell mV:\000"
  132      355D2043 
@@ -384,278 +384,275 @@
  247 007c A448     	 ldr r0,.L31+36
  248 007e FFF7FEFF 	 bl puts
   74:../main.c     **** 
-  75:../main.c     ****         /* 0x94 - Status Info: read first to get actual cell/sensor counts.
-  76:../main.c     ****          * TX/RX raw frames + ACK status are printed by the driver itself. */
-  77:../main.c     ****         st = Morelle_GetStatusInfo(&info);
- 249              	 .loc 1 77 0
- 250 0082 07F15C03 	 add r3,r7,#92
+  75:../main.c     ****         /* 0x90 Pack Totals — scale floats to tenths; -specs=nano.specs strips %f. */
+  76:../main.c     ****         st = Morelle_GetPackTotals(&pack);
+ 249              	 .loc 1 76 0
+ 250 0082 07F15003 	 add r3,r7,#80
  251 0086 1846     	 mov r0,r3
- 252 0088 FFF7FEFF 	 bl Morelle_GetStatusInfo
+ 252 0088 FFF7FEFF 	 bl Morelle_GetPackTotals
  253 008c 0346     	 mov r3,r0
  254 008e 87F87430 	 strb r3,[r7,#116]
-  78:../main.c     ****         if (st == MORELLE_OK) {
- 255              	 .loc 1 78 0
+  77:../main.c     ****         if (st == MORELLE_OK) {
+ 255              	 .loc 1 77 0
  256 0092 97F87430 	 ldrb r3,[r7,#116]
  257 0096 002B     	 cmp r3,#0
- 258 0098 09D1     	 bne .L7
-  79:../main.c     ****             XMC_DEBUG("[0x94] Status Info: Cells=%u  Temp sensors=%u\n",
- 259              	 .loc 1 79 0
- 260 009a 97F85C30 	 ldrb r3,[r7,#92]
- 261 009e 1A46     	 mov r2,r3
- 262 00a0 97F85D30 	 ldrb r3,[r7,#93]
- 263 00a4 9B48     	 ldr r0,.L31+40
- 264 00a6 1146     	 mov r1,r2
- 265 00a8 1A46     	 mov r2,r3
- 266 00aa FFF7FEFF 	 bl printf
- 267              	.L7:
-  80:../main.c     ****                       (unsigned)info.num_cells, (unsigned)info.num_temps);
-  81:../main.c     ****         }
-  82:../main.c     **** 
-  83:../main.c     ****         /* 0x90 - Pack Totals (driver prints TX/RX raw + ACK status).
-  84:../main.c     ****          * Scale floats to tenths so we can print with integer %u/%d — the
-  85:../main.c     ****          * project links -specs=nano.specs, which strips float printf. */
-  86:../main.c     ****         st = Morelle_GetPackTotals(&pack);
- 268              	 .loc 1 86 0
- 269 00ae 07F15003 	 add r3,r7,#80
- 270 00b2 1846     	 mov r0,r3
- 271 00b4 FFF7FEFF 	 bl Morelle_GetPackTotals
- 272 00b8 0346     	 mov r3,r0
- 273 00ba 87F87430 	 strb r3,[r7,#116]
-  87:../main.c     ****         if (st == MORELLE_OK) {
- 274              	 .loc 1 87 0
- 275 00be 97F87430 	 ldrb r3,[r7,#116]
- 276 00c2 002B     	 cmp r3,#0
- 277 00c4 6DD1     	 bne .L8
- 278              	.LBB3:
-  88:../main.c     ****             uint32_t pv_dv = (uint32_t)(pack.pack_v * 10.0f + 0.5f);
- 279              	 .loc 1 88 0
- 280 00c6 D7ED147A 	 flds s15,[r7,#80]
- 281 00ca B2EE047A 	 fconsts s14,#36
- 282 00ce 67EE877A 	 fmuls s15,s15,s14
- 283 00d2 B6EE007A 	 fconsts s14,#96
- 284 00d6 77EE877A 	 fadds s15,s15,s14
- 285 00da FCEEE77A 	 ftouizs s15,s15
- 286 00de 17EE903A 	 fmrs r3,s15
- 287 00e2 3B67     	 str r3,[r7,#112]
-  89:../main.c     ****             int32_t  cu_da = (int32_t)(pack.current_a * 10.0f);
- 288              	 .loc 1 89 0
- 289 00e4 D7ED157A 	 flds s15,[r7,#84]
- 290 00e8 B2EE047A 	 fconsts s14,#36
- 291 00ec 67EE877A 	 fmuls s15,s15,s14
- 292 00f0 FDEEE77A 	 ftosizs s15,s15
- 293 00f4 17EE903A 	 fmrs r3,s15
- 294 00f8 FB66     	 str r3,[r7,#108]
-  90:../main.c     ****             uint32_t so_dp = (uint32_t)(pack.soc_pct * 10.0f + 0.5f);
- 295              	 .loc 1 90 0
- 296 00fa D7ED167A 	 flds s15,[r7,#88]
- 297 00fe B2EE047A 	 fconsts s14,#36
- 298 0102 67EE877A 	 fmuls s15,s15,s14
- 299 0106 B6EE007A 	 fconsts s14,#96
- 300 010a 77EE877A 	 fadds s15,s15,s14
- 301 010e FCEEE77A 	 ftouizs s15,s15
- 302 0112 17EE903A 	 fmrs r3,s15
- 303 0116 BB66     	 str r3,[r7,#104]
-  91:../main.c     ****             uint32_t cu_abs = (uint32_t)((cu_da < 0) ? -cu_da : cu_da);
- 304              	 .loc 1 91 0
- 305 0118 FB6E     	 ldr r3,[r7,#108]
- 306 011a 002B     	 cmp r3,#0
- 307 011c B8BF     	 it lt
- 308 011e 5B42     	 rsblt r3,r3,#0
- 309 0120 7B66     	 str r3,[r7,#100]
-  92:../main.c     ****             XMC_DEBUG("[0x90] Pack Totals: Pack=%lu.%luV  I=%s%lu.%luA  SoC=%lu.%lu%%\n",
- 310              	 .loc 1 92 0
- 311 0122 3B6F     	 ldr r3,[r7,#112]
- 312 0124 7C4A     	 ldr r2,.L31+44
- 313 0126 A2FB0323 	 umull r2,r3,r2,r3
- 314 012a 4FEAD30C 	 lsr ip,r3,#3
- 315 012e 3A6F     	 ldr r2,[r7,#112]
- 316 0130 794B     	 ldr r3,.L31+44
- 317 0132 A3FB0213 	 umull r1,r3,r3,r2
- 318 0136 DC08     	 lsrs r4,r3,#3
- 319 0138 2346     	 mov r3,r4
- 320 013a 9B00     	 lsls r3,r3,#2
- 321 013c 2344     	 add r3,r3,r4
- 322 013e 5B00     	 lsls r3,r3,#1
- 323 0140 D41A     	 subs r4,r2,r3
- 324 0142 FB6E     	 ldr r3,[r7,#108]
- 325 0144 002B     	 cmp r3,#0
- 326 0146 02DA     	 bge .L9
- 327              	 .loc 1 92 0 is_stmt 0 discriminator 1
- 328 0148 DFF8F8E1 	 ldr lr,.L31+88
- 329 014c 01E0     	 b .L10
- 330              	.L9:
- 331              	 .loc 1 92 0 discriminator 2
- 332 014e DFF8F8E1 	 ldr lr,.L31+92
- 333              	.L10:
- 334              	 .loc 1 92 0 discriminator 4
- 335 0152 7B6E     	 ldr r3,[r7,#100]
- 336 0154 704A     	 ldr r2,.L31+44
- 337 0156 A2FB0323 	 umull r2,r3,r2,r3
- 338 015a DE08     	 lsrs r6,r3,#3
- 339 015c 7A6E     	 ldr r2,[r7,#100]
- 340 015e 6E4B     	 ldr r3,.L31+44
- 341 0160 A3FB0213 	 umull r1,r3,r3,r2
- 342 0164 D908     	 lsrs r1,r3,#3
- 343 0166 0B46     	 mov r3,r1
- 344 0168 9B00     	 lsls r3,r3,#2
- 345 016a 0B44     	 add r3,r3,r1
- 346 016c 5B00     	 lsls r3,r3,#1
- 347 016e D11A     	 subs r1,r2,r3
- 348 0170 BB6E     	 ldr r3,[r7,#104]
- 349 0172 694A     	 ldr r2,.L31+44
- 350 0174 A2FB0323 	 umull r2,r3,r2,r3
- 351 0178 DD08     	 lsrs r5,r3,#3
- 352 017a B86E     	 ldr r0,[r7,#104]
- 353 017c 664B     	 ldr r3,.L31+44
- 354 017e A3FB0023 	 umull r2,r3,r3,r0
- 355 0182 DA08     	 lsrs r2,r3,#3
- 356 0184 1346     	 mov r3,r2
- 357 0186 9B00     	 lsls r3,r3,#2
- 358 0188 1344     	 add r3,r3,r2
- 359 018a 5B00     	 lsls r3,r3,#1
- 360 018c C21A     	 subs r2,r0,r3
- 361 018e 0096     	 str r6,[sp]
- 362 0190 0191     	 str r1,[sp,#4]
- 363 0192 0295     	 str r5,[sp,#8]
- 364 0194 0392     	 str r2,[sp,#12]
- 365 0196 6148     	 ldr r0,.L31+48
- 366 0198 6146     	 mov r1,ip
- 367 019a 2246     	 mov r2,r4
- 368 019c 7346     	 mov r3,lr
- 369 019e FFF7FEFF 	 bl printf
- 370              	.L8:
- 371              	.LBE3:
-  93:../main.c     ****                       (unsigned long)(pv_dv / 10U), (unsigned long)(pv_dv % 10U),
-  94:../main.c     ****                       (cu_da < 0) ? "-" : "",
-  95:../main.c     ****                       (unsigned long)(cu_abs / 10U), (unsigned long)(cu_abs % 10U),
-  96:../main.c     ****                       (unsigned long)(so_dp / 10U), (unsigned long)(so_dp % 10U));
-  97:../main.c     ****         }
-  98:../main.c     **** 
-  99:../main.c     ****         /* 0x93 - MOS State */
- 100:../main.c     ****         st = Morelle_GetMosState(&mos);
- 372              	 .loc 1 100 0 is_stmt 1
- 373 01a2 07F13C03 	 add r3,r7,#60
- 374 01a6 1846     	 mov r0,r3
- 375 01a8 FFF7FEFF 	 bl Morelle_GetMosState
- 376 01ac 0346     	 mov r3,r0
- 377 01ae 87F87430 	 strb r3,[r7,#116]
- 101:../main.c     ****         if (st == MORELLE_OK) {
- 378              	 .loc 1 101 0
- 379 01b2 97F87430 	 ldrb r3,[r7,#116]
- 380 01b6 002B     	 cmp r3,#0
- 381 01b8 1AD1     	 bne .L11
- 102:../main.c     ****             mos_str = (mos.state == 1U) ? "CHG" :
- 382              	 .loc 1 102 0
- 383 01ba 97F83C30 	 ldrb r3,[r7,#60]
- 384 01be 012B     	 cmp r3,#1
- 385 01c0 07D0     	 beq .L12
- 103:../main.c     ****                       (mos.state == 2U) ? "DSG" : "IDLE";
- 386              	 .loc 1 103 0 discriminator 1
- 387 01c2 97F83C30 	 ldrb r3,[r7,#60]
- 102:../main.c     ****             mos_str = (mos.state == 1U) ? "CHG" :
- 388              	 .loc 1 102 0 discriminator 1
- 389 01c6 022B     	 cmp r3,#2
- 390 01c8 01D1     	 bne .L13
- 102:../main.c     ****             mos_str = (mos.state == 1U) ? "CHG" :
- 391              	 .loc 1 102 0 is_stmt 0 discriminator 3
- 392 01ca 554B     	 ldr r3,.L31+52
- 393 01cc 02E0     	 b .L15
- 394              	.L13:
- 102:../main.c     ****             mos_str = (mos.state == 1U) ? "CHG" :
- 395              	 .loc 1 102 0 discriminator 4
- 396 01ce 554B     	 ldr r3,.L31+56
- 397 01d0 00E0     	 b .L15
- 398              	.L12:
- 102:../main.c     ****             mos_str = (mos.state == 1U) ? "CHG" :
- 399              	 .loc 1 102 0 discriminator 2
- 400 01d2 554B     	 ldr r3,.L31+60
- 401              	.L15:
- 102:../main.c     ****             mos_str = (mos.state == 1U) ? "CHG" :
- 402              	 .loc 1 102 0 discriminator 8
- 403 01d4 3B66     	 str r3,[r7,#96]
- 104:../main.c     ****             XMC_DEBUG("[0x93] State: %s  ChgMOS: %u  DsgMOS: %u  Rem: %lu mAh\n",
- 404              	 .loc 1 104 0 is_stmt 1 discriminator 8
- 405 01d6 97F83D30 	 ldrb r3,[r7,#61]
- 406 01da 1A46     	 mov r2,r3
- 407 01dc 97F83E30 	 ldrb r3,[r7,#62]
- 408 01e0 1C46     	 mov r4,r3
- 409 01e2 3B6C     	 ldr r3,[r7,#64]
- 410 01e4 0093     	 str r3,[sp]
- 411 01e6 5148     	 ldr r0,.L31+64
- 412 01e8 396E     	 ldr r1,[r7,#96]
- 413 01ea 2346     	 mov r3,r4
- 414 01ec FFF7FEFF 	 bl printf
- 415              	.L11:
- 105:../main.c     ****                       mos_str, (unsigned)mos.chg_mos, (unsigned)mos.dsg_mos,
- 106:../main.c     ****                       (unsigned long)mos.remaining_mah);
- 107:../main.c     ****         }
- 108:../main.c     **** 
- 109:../main.c     ****         /* 0x91 - Cell Voltage Extremes */
- 110:../main.c     ****         st = Morelle_GetCellExtremes(&cext);
- 416              	 .loc 1 110 0
- 417 01f0 07F14803 	 add r3,r7,#72
- 418 01f4 1846     	 mov r0,r3
- 419 01f6 FFF7FEFF 	 bl Morelle_GetCellExtremes
- 420 01fa 0346     	 mov r3,r0
- 421 01fc 87F87430 	 strb r3,[r7,#116]
- 111:../main.c     ****         if (st == MORELLE_OK) {
- 422              	 .loc 1 111 0
- 423 0200 97F87430 	 ldrb r3,[r7,#116]
- 424 0204 002B     	 cmp r3,#0
- 425 0206 0FD1     	 bne .L16
- 112:../main.c     ****             XMC_DEBUG("[0x91] Max: %u mV (cell %u)  Min: %u mV (cell %u)\n",
- 426              	 .loc 1 112 0
- 427 0208 B7F84830 	 ldrh r3,[r7,#72]
- 428 020c 1946     	 mov r1,r3
- 429 020e 97F84A30 	 ldrb r3,[r7,#74]
- 430 0212 1A46     	 mov r2,r3
- 431 0214 B7F84C30 	 ldrh r3,[r7,#76]
- 432 0218 1C46     	 mov r4,r3
- 433 021a 97F84E30 	 ldrb r3,[r7,#78]
- 434 021e 0093     	 str r3,[sp]
- 435 0220 4348     	 ldr r0,.L31+68
- 436 0222 2346     	 mov r3,r4
- 437 0224 FFF7FEFF 	 bl printf
- 438              	.L16:
- 113:../main.c     ****                       (unsigned)cext.max_mv, (unsigned)cext.max_cell,
- 114:../main.c     ****                       (unsigned)cext.min_mv, (unsigned)cext.min_cell);
- 115:../main.c     ****         }
- 116:../main.c     **** 
- 117:../main.c     ****         /* 0x92 - Temperature Extremes */
- 118:../main.c     ****         st = Morelle_GetTempExtremes(&text);
- 439              	 .loc 1 118 0
- 440 0228 07F14403 	 add r3,r7,#68
- 441 022c 1846     	 mov r0,r3
- 442 022e FFF7FEFF 	 bl Morelle_GetTempExtremes
- 443 0232 0346     	 mov r3,r0
- 444 0234 87F87430 	 strb r3,[r7,#116]
- 119:../main.c     ****         if (st == MORELLE_OK) {
- 445              	 .loc 1 119 0
- 446 0238 97F87430 	 ldrb r3,[r7,#116]
- 447 023c 002B     	 cmp r3,#0
- 448 023e 10D1     	 bne .L17
- 120:../main.c     ****             XMC_DEBUG("[0x92] Max: %d C (sensor %u)  Min: %d C (sensor %u)\n",
- 449              	 .loc 1 120 0
- 450 0240 97F84430 	 ldrb r3,[r7,#68]
- 451 0244 5AB2     	 sxtb r2,r3
- 452 0246 97F84530 	 ldrb r3,[r7,#69]
- 453 024a 1C46     	 mov r4,r3
- 454 024c 97F84630 	 ldrb r3,[r7,#70]
- 455 0250 5BB2     	 sxtb r3,r3
- 456 0252 97F84710 	 ldrb r1,[r7,#71]
- 457 0256 0091     	 str r1,[sp]
+ 258 0098 6DD1     	 bne .L7
+ 259              	.LBB3:
+  78:../main.c     ****             uint32_t pv_dv = (uint32_t)(pack.pack_v * 10.0f + 0.5f);
+ 260              	 .loc 1 78 0
+ 261 009a D7ED147A 	 flds s15,[r7,#80]
+ 262 009e B2EE047A 	 fconsts s14,#36
+ 263 00a2 67EE877A 	 fmuls s15,s15,s14
+ 264 00a6 B6EE007A 	 fconsts s14,#96
+ 265 00aa 77EE877A 	 fadds s15,s15,s14
+ 266 00ae FCEEE77A 	 ftouizs s15,s15
+ 267 00b2 17EE903A 	 fmrs r3,s15
+ 268 00b6 3B67     	 str r3,[r7,#112]
+  79:../main.c     ****             int32_t  cu_da = (int32_t)(pack.current_a * 10.0f);
+ 269              	 .loc 1 79 0
+ 270 00b8 D7ED157A 	 flds s15,[r7,#84]
+ 271 00bc B2EE047A 	 fconsts s14,#36
+ 272 00c0 67EE877A 	 fmuls s15,s15,s14
+ 273 00c4 FDEEE77A 	 ftosizs s15,s15
+ 274 00c8 17EE903A 	 fmrs r3,s15
+ 275 00cc FB66     	 str r3,[r7,#108]
+  80:../main.c     ****             uint32_t so_dp = (uint32_t)(pack.soc_pct * 10.0f + 0.5f);
+ 276              	 .loc 1 80 0
+ 277 00ce D7ED167A 	 flds s15,[r7,#88]
+ 278 00d2 B2EE047A 	 fconsts s14,#36
+ 279 00d6 67EE877A 	 fmuls s15,s15,s14
+ 280 00da B6EE007A 	 fconsts s14,#96
+ 281 00de 77EE877A 	 fadds s15,s15,s14
+ 282 00e2 FCEEE77A 	 ftouizs s15,s15
+ 283 00e6 17EE903A 	 fmrs r3,s15
+ 284 00ea BB66     	 str r3,[r7,#104]
+  81:../main.c     ****             uint32_t cu_abs = (uint32_t)((cu_da < 0) ? -cu_da : cu_da);
+ 285              	 .loc 1 81 0
+ 286 00ec FB6E     	 ldr r3,[r7,#108]
+ 287 00ee 002B     	 cmp r3,#0
+ 288 00f0 B8BF     	 it lt
+ 289 00f2 5B42     	 rsblt r3,r3,#0
+ 290 00f4 7B66     	 str r3,[r7,#100]
+  82:../main.c     ****             XMC_DEBUG("[0x90] Pack Totals: Pack=%lu.%luV  I=%s%lu.%luA  SoC=%lu.%lu%%\n",
+ 291              	 .loc 1 82 0
+ 292 00f6 3B6F     	 ldr r3,[r7,#112]
+ 293 00f8 864A     	 ldr r2,.L31+40
+ 294 00fa A2FB0323 	 umull r2,r3,r2,r3
+ 295 00fe 4FEAD30C 	 lsr ip,r3,#3
+ 296 0102 3A6F     	 ldr r2,[r7,#112]
+ 297 0104 834B     	 ldr r3,.L31+40
+ 298 0106 A3FB0213 	 umull r1,r3,r3,r2
+ 299 010a DC08     	 lsrs r4,r3,#3
+ 300 010c 2346     	 mov r3,r4
+ 301 010e 9B00     	 lsls r3,r3,#2
+ 302 0110 2344     	 add r3,r3,r4
+ 303 0112 5B00     	 lsls r3,r3,#1
+ 304 0114 D41A     	 subs r4,r2,r3
+ 305 0116 FB6E     	 ldr r3,[r7,#108]
+ 306 0118 002B     	 cmp r3,#0
+ 307 011a 02DA     	 bge .L8
+ 308              	 .loc 1 82 0 is_stmt 0 discriminator 1
+ 309 011c DFF824E2 	 ldr lr,.L31+88
+ 310 0120 01E0     	 b .L9
+ 311              	.L8:
+ 312              	 .loc 1 82 0 discriminator 2
+ 313 0122 DFF824E2 	 ldr lr,.L31+92
+ 314              	.L9:
+ 315              	 .loc 1 82 0 discriminator 4
+ 316 0126 7B6E     	 ldr r3,[r7,#100]
+ 317 0128 7A4A     	 ldr r2,.L31+40
+ 318 012a A2FB0323 	 umull r2,r3,r2,r3
+ 319 012e DE08     	 lsrs r6,r3,#3
+ 320 0130 7A6E     	 ldr r2,[r7,#100]
+ 321 0132 784B     	 ldr r3,.L31+40
+ 322 0134 A3FB0213 	 umull r1,r3,r3,r2
+ 323 0138 D908     	 lsrs r1,r3,#3
+ 324 013a 0B46     	 mov r3,r1
+ 325 013c 9B00     	 lsls r3,r3,#2
+ 326 013e 0B44     	 add r3,r3,r1
+ 327 0140 5B00     	 lsls r3,r3,#1
+ 328 0142 D11A     	 subs r1,r2,r3
+ 329 0144 BB6E     	 ldr r3,[r7,#104]
+ 330 0146 734A     	 ldr r2,.L31+40
+ 331 0148 A2FB0323 	 umull r2,r3,r2,r3
+ 332 014c DD08     	 lsrs r5,r3,#3
+ 333 014e B86E     	 ldr r0,[r7,#104]
+ 334 0150 704B     	 ldr r3,.L31+40
+ 335 0152 A3FB0023 	 umull r2,r3,r3,r0
+ 336 0156 DA08     	 lsrs r2,r3,#3
+ 337 0158 1346     	 mov r3,r2
+ 338 015a 9B00     	 lsls r3,r3,#2
+ 339 015c 1344     	 add r3,r3,r2
+ 340 015e 5B00     	 lsls r3,r3,#1
+ 341 0160 C21A     	 subs r2,r0,r3
+ 342 0162 0096     	 str r6,[sp]
+ 343 0164 0191     	 str r1,[sp,#4]
+ 344 0166 0295     	 str r5,[sp,#8]
+ 345 0168 0392     	 str r2,[sp,#12]
+ 346 016a 6B48     	 ldr r0,.L31+44
+ 347 016c 6146     	 mov r1,ip
+ 348 016e 2246     	 mov r2,r4
+ 349 0170 7346     	 mov r3,lr
+ 350 0172 FFF7FEFF 	 bl printf
+ 351              	.L7:
+ 352              	.LBE3:
+  83:../main.c     ****                       (unsigned long)(pv_dv / 10U), (unsigned long)(pv_dv % 10U),
+  84:../main.c     ****                       (cu_da < 0) ? "-" : "",
+  85:../main.c     ****                       (unsigned long)(cu_abs / 10U), (unsigned long)(cu_abs % 10U),
+  86:../main.c     ****                       (unsigned long)(so_dp / 10U), (unsigned long)(so_dp % 10U));
+  87:../main.c     ****         }
+  88:../main.c     **** 
+  89:../main.c     ****         /* 0x91 Cell Voltage Extremes */
+  90:../main.c     ****         st = Morelle_GetCellExtremes(&cext);
+ 353              	 .loc 1 90 0 is_stmt 1
+ 354 0176 07F14803 	 add r3,r7,#72
+ 355 017a 1846     	 mov r0,r3
+ 356 017c FFF7FEFF 	 bl Morelle_GetCellExtremes
+ 357 0180 0346     	 mov r3,r0
+ 358 0182 87F87430 	 strb r3,[r7,#116]
+  91:../main.c     ****         if (st == MORELLE_OK) {
+ 359              	 .loc 1 91 0
+ 360 0186 97F87430 	 ldrb r3,[r7,#116]
+ 361 018a 002B     	 cmp r3,#0
+ 362 018c 0FD1     	 bne .L10
+  92:../main.c     ****             XMC_DEBUG("[0x91] Max: %u mV (cell %u)  Min: %u mV (cell %u)\n",
+ 363              	 .loc 1 92 0
+ 364 018e B7F84830 	 ldrh r3,[r7,#72]
+ 365 0192 1946     	 mov r1,r3
+ 366 0194 97F84A30 	 ldrb r3,[r7,#74]
+ 367 0198 1A46     	 mov r2,r3
+ 368 019a B7F84C30 	 ldrh r3,[r7,#76]
+ 369 019e 1C46     	 mov r4,r3
+ 370 01a0 97F84E30 	 ldrb r3,[r7,#78]
+ 371 01a4 0093     	 str r3,[sp]
+ 372 01a6 5D48     	 ldr r0,.L31+48
+ 373 01a8 2346     	 mov r3,r4
+ 374 01aa FFF7FEFF 	 bl printf
+ 375              	.L10:
+  93:../main.c     ****                       (unsigned)cext.max_mv, (unsigned)cext.max_cell,
+  94:../main.c     ****                       (unsigned)cext.min_mv, (unsigned)cext.min_cell);
+  95:../main.c     ****         }
+  96:../main.c     **** 
+  97:../main.c     ****         /* 0x92 Temperature Extremes */
+  98:../main.c     ****         st = Morelle_GetTempExtremes(&text);
+ 376              	 .loc 1 98 0
+ 377 01ae 07F14403 	 add r3,r7,#68
+ 378 01b2 1846     	 mov r0,r3
+ 379 01b4 FFF7FEFF 	 bl Morelle_GetTempExtremes
+ 380 01b8 0346     	 mov r3,r0
+ 381 01ba 87F87430 	 strb r3,[r7,#116]
+  99:../main.c     ****         if (st == MORELLE_OK) {
+ 382              	 .loc 1 99 0
+ 383 01be 97F87430 	 ldrb r3,[r7,#116]
+ 384 01c2 002B     	 cmp r3,#0
+ 385 01c4 10D1     	 bne .L11
+ 100:../main.c     ****             XMC_DEBUG("[0x92] Max: %d C (sensor %u)  Min: %d C (sensor %u)\n",
+ 386              	 .loc 1 100 0
+ 387 01c6 97F84430 	 ldrb r3,[r7,#68]
+ 388 01ca 5AB2     	 sxtb r2,r3
+ 389 01cc 97F84530 	 ldrb r3,[r7,#69]
+ 390 01d0 1C46     	 mov r4,r3
+ 391 01d2 97F84630 	 ldrb r3,[r7,#70]
+ 392 01d6 5BB2     	 sxtb r3,r3
+ 393 01d8 97F84710 	 ldrb r1,[r7,#71]
+ 394 01dc 0091     	 str r1,[sp]
+ 395 01de 5048     	 ldr r0,.L31+52
+ 396 01e0 1146     	 mov r1,r2
+ 397 01e2 2246     	 mov r2,r4
+ 398 01e4 FFF7FEFF 	 bl printf
+ 399              	.L11:
+ 101:../main.c     ****                       (int)text.max_c, (unsigned)text.max_sensor,
+ 102:../main.c     ****                       (int)text.min_c, (unsigned)text.min_sensor);
+ 103:../main.c     ****         }
+ 104:../main.c     **** 
+ 105:../main.c     ****         /* 0x93 MOS State */
+ 106:../main.c     ****         st = Morelle_GetMosState(&mos);
+ 400              	 .loc 1 106 0
+ 401 01e8 07F13C03 	 add r3,r7,#60
+ 402 01ec 1846     	 mov r0,r3
+ 403 01ee FFF7FEFF 	 bl Morelle_GetMosState
+ 404 01f2 0346     	 mov r3,r0
+ 405 01f4 87F87430 	 strb r3,[r7,#116]
+ 107:../main.c     ****         if (st == MORELLE_OK) {
+ 406              	 .loc 1 107 0
+ 407 01f8 97F87430 	 ldrb r3,[r7,#116]
+ 408 01fc 002B     	 cmp r3,#0
+ 409 01fe 1AD1     	 bne .L12
+ 108:../main.c     ****             mos_str = (mos.state == 1U) ? "CHG" :
+ 410              	 .loc 1 108 0
+ 411 0200 97F83C30 	 ldrb r3,[r7,#60]
+ 412 0204 012B     	 cmp r3,#1
+ 413 0206 07D0     	 beq .L13
+ 109:../main.c     ****                       (mos.state == 2U) ? "DSG" : "IDLE";
+ 414              	 .loc 1 109 0 discriminator 1
+ 415 0208 97F83C30 	 ldrb r3,[r7,#60]
+ 108:../main.c     ****             mos_str = (mos.state == 1U) ? "CHG" :
+ 416              	 .loc 1 108 0 discriminator 1
+ 417 020c 022B     	 cmp r3,#2
+ 418 020e 01D1     	 bne .L14
+ 108:../main.c     ****             mos_str = (mos.state == 1U) ? "CHG" :
+ 419              	 .loc 1 108 0 is_stmt 0 discriminator 3
+ 420 0210 444B     	 ldr r3,.L31+56
+ 421 0212 02E0     	 b .L16
+ 422              	.L14:
+ 108:../main.c     ****             mos_str = (mos.state == 1U) ? "CHG" :
+ 423              	 .loc 1 108 0 discriminator 4
+ 424 0214 444B     	 ldr r3,.L31+60
+ 425 0216 00E0     	 b .L16
+ 426              	.L13:
+ 108:../main.c     ****             mos_str = (mos.state == 1U) ? "CHG" :
+ 427              	 .loc 1 108 0 discriminator 2
+ 428 0218 444B     	 ldr r3,.L31+64
+ 429              	.L16:
+ 108:../main.c     ****             mos_str = (mos.state == 1U) ? "CHG" :
+ 430              	 .loc 1 108 0 discriminator 8
+ 431 021a 3B66     	 str r3,[r7,#96]
+ 110:../main.c     ****             XMC_DEBUG("[0x93] State: %s  ChgMOS: %u  DsgMOS: %u  Rem: %lu mAh\n",
+ 432              	 .loc 1 110 0 is_stmt 1 discriminator 8
+ 433 021c 97F83D30 	 ldrb r3,[r7,#61]
+ 434 0220 1A46     	 mov r2,r3
+ 435 0222 97F83E30 	 ldrb r3,[r7,#62]
+ 436 0226 1C46     	 mov r4,r3
+ 437 0228 3B6C     	 ldr r3,[r7,#64]
+ 438 022a 0093     	 str r3,[sp]
+ 439 022c 4048     	 ldr r0,.L31+68
+ 440 022e 396E     	 ldr r1,[r7,#96]
+ 441 0230 2346     	 mov r3,r4
+ 442 0232 FFF7FEFF 	 bl printf
+ 443              	.L12:
+ 111:../main.c     ****                       mos_str, (unsigned)mos.chg_mos, (unsigned)mos.dsg_mos,
+ 112:../main.c     ****                       (unsigned long)mos.remaining_mah);
+ 113:../main.c     ****         }
+ 114:../main.c     **** 
+ 115:../main.c     ****         /* 0x94 Status Info — must precede 0x95/0x96 (feeds their count). */
+ 116:../main.c     ****         st = Morelle_GetStatusInfo(&info);
+ 444              	 .loc 1 116 0
+ 445 0236 07F15C03 	 add r3,r7,#92
+ 446 023a 1846     	 mov r0,r3
+ 447 023c FFF7FEFF 	 bl Morelle_GetStatusInfo
+ 448 0240 0346     	 mov r3,r0
+ 449 0242 87F87430 	 strb r3,[r7,#116]
+ 117:../main.c     ****         if (st == MORELLE_OK) {
+ 450              	 .loc 1 117 0
+ 451 0246 97F87430 	 ldrb r3,[r7,#116]
+ 452 024a 002B     	 cmp r3,#0
+ 453 024c 09D1     	 bne .L17
+ 118:../main.c     ****             XMC_DEBUG("[0x94] Status Info: Cells=%u  Temp sensors=%u\n",
+ 454              	 .loc 1 118 0
+ 455 024e 97F85C30 	 ldrb r3,[r7,#92]
+ 456 0252 1A46     	 mov r2,r3
+ 457 0254 97F85D30 	 ldrb r3,[r7,#93]
  458 0258 3648     	 ldr r0,.L31+72
  459 025a 1146     	 mov r1,r2
- 460 025c 2246     	 mov r2,r4
+ 460 025c 1A46     	 mov r2,r3
  461 025e FFF7FEFF 	 bl printf
  462              	.L17:
- 121:../main.c     ****                       (int)text.max_c, (unsigned)text.max_sensor,
- 122:../main.c     ****                       (int)text.min_c, (unsigned)text.min_sensor);
- 123:../main.c     ****         }
- 124:../main.c     **** 
- 125:../main.c     ****         /* 0x95 - Individual Cell Voltages (multi-frame: last frame shown in RAW) */
- 126:../main.c     ****         st = Morelle_GetCellVoltages(&vcells, info.num_cells);
- 463              	 .loc 1 126 0
+ 119:../main.c     ****                       (unsigned)info.num_cells, (unsigned)info.num_temps);
+ 120:../main.c     ****         }
+ 121:../main.c     **** 
+ 122:../main.c     ****         /* 0x95 Cell Voltages (multi-frame) */
+ 123:../main.c     ****         st = Morelle_GetCellVoltages(&vcells, info.num_cells);
+ 463              	 .loc 1 123 0
  464 0262 97F85C30 	 ldrb r3,[r7,#92]
  465 0266 3A46     	 mov r2,r7
  466 0268 1046     	 mov r0,r2
@@ -663,23 +660,23 @@
  468 026c FFF7FEFF 	 bl Morelle_GetCellVoltages
  469 0270 0346     	 mov r3,r0
  470 0272 87F87430 	 strb r3,[r7,#116]
- 127:../main.c     ****         if (st == MORELLE_OK) {
- 471              	 .loc 1 127 0
+ 124:../main.c     ****         if (st == MORELLE_OK) {
+ 471              	 .loc 1 124 0
  472 0276 97F87430 	 ldrb r3,[r7,#116]
  473 027a 002B     	 cmp r3,#0
  474 027c 20D1     	 bne .L18
- 128:../main.c     ****             XMC_DEBUG("[0x95] Cell mV:");
- 475              	 .loc 1 128 0
+ 125:../main.c     ****             XMC_DEBUG("[0x95] Cell mV:");
+ 475              	 .loc 1 125 0
  476 027e 2E48     	 ldr r0,.L31+76
  477 0280 FFF7FEFF 	 bl printf
- 129:../main.c     ****             for (i = 0U; i < vcells.count; i++) {
- 478              	 .loc 1 129 0
+ 126:../main.c     ****             for (i = 0U; i < vcells.count; i++) {
+ 478              	 .loc 1 126 0
  479 0284 0023     	 movs r3,#0
  480 0286 87F87630 	 strb r3,[r7,#118]
  481 028a 10E0     	 b .L19
  482              	.L20:
- 130:../main.c     ****                 XMC_DEBUG(" %u", (unsigned)vcells.mv[i]);
- 483              	 .loc 1 130 0 discriminator 3
+ 127:../main.c     ****                 XMC_DEBUG(" %u", (unsigned)vcells.mv[i]);
+ 483              	 .loc 1 127 0 discriminator 3
  484 028c 97F87630 	 ldrb r3,[r7,#118]
  485 0290 5B00     	 lsls r3,r3,#1
  486 0292 07F17802 	 add r2,r7,#120
@@ -688,29 +685,29 @@
  489 029c 2748     	 ldr r0,.L31+80
  490 029e 1946     	 mov r1,r3
  491 02a0 FFF7FEFF 	 bl printf
- 129:../main.c     ****             for (i = 0U; i < vcells.count; i++) {
- 492              	 .loc 1 129 0 discriminator 3
+ 126:../main.c     ****             for (i = 0U; i < vcells.count; i++) {
+ 492              	 .loc 1 126 0 discriminator 3
  493 02a4 97F87630 	 ldrb r3,[r7,#118]
  494 02a8 0133     	 adds r3,r3,#1
  495 02aa 87F87630 	 strb r3,[r7,#118]
  496              	.L19:
- 129:../main.c     ****             for (i = 0U; i < vcells.count; i++) {
- 497              	 .loc 1 129 0 is_stmt 0 discriminator 1
+ 126:../main.c     ****             for (i = 0U; i < vcells.count; i++) {
+ 497              	 .loc 1 126 0 is_stmt 0 discriminator 1
  498 02ae 97F82030 	 ldrb r3,[r7,#32]
  499 02b2 97F87620 	 ldrb r2,[r7,#118]
  500 02b6 9A42     	 cmp r2,r3
  501 02b8 E8D3     	 bcc .L20
- 131:../main.c     ****             }
- 132:../main.c     ****             XMC_DEBUG("\n");
- 502              	 .loc 1 132 0 is_stmt 1
+ 128:../main.c     ****             }
+ 129:../main.c     ****             XMC_DEBUG("\n");
+ 502              	 .loc 1 129 0 is_stmt 1
  503 02ba 0A20     	 movs r0,#10
  504 02bc FFF7FEFF 	 bl putchar
  505              	.L18:
- 133:../main.c     ****         }
- 134:../main.c     **** 
- 135:../main.c     ****         /* 0x96 - Individual Temperatures */
- 136:../main.c     ****         st = Morelle_GetTemperatures(&vtemps, info.num_temps);
- 506              	 .loc 1 136 0
+ 130:../main.c     ****         }
+ 131:../main.c     **** 
+ 132:../main.c     ****         /* 0x96 Temperatures */
+ 133:../main.c     ****         st = Morelle_GetTemperatures(&vtemps, info.num_temps);
+ 506              	 .loc 1 133 0
  507 02c0 97F85D30 	 ldrb r3,[r7,#93]
  508 02c4 07F13002 	 add r2,r7,#48
  509 02c8 1046     	 mov r0,r2
@@ -718,17 +715,17 @@
  511 02cc FFF7FEFF 	 bl Morelle_GetTemperatures
  512 02d0 0346     	 mov r3,r0
  513 02d2 87F87430 	 strb r3,[r7,#116]
- 137:../main.c     ****         if (st == MORELLE_OK) {
- 514              	 .loc 1 137 0
+ 134:../main.c     ****         if (st == MORELLE_OK) {
+ 514              	 .loc 1 134 0
  515 02d6 97F87430 	 ldrb r3,[r7,#116]
  516 02da 002B     	 cmp r3,#0
  517 02dc 50D1     	 bne .L21
- 138:../main.c     ****             XMC_DEBUG("[0x96] Temps C:");
- 518              	 .loc 1 138 0
+ 135:../main.c     ****             XMC_DEBUG("[0x96] Temps C:");
+ 518              	 .loc 1 135 0
  519 02de 1848     	 ldr r0,.L31+84
  520 02e0 FFF7FEFF 	 bl printf
- 139:../main.c     ****             for (i = 0U; i < vtemps.count; i++) {
- 521              	 .loc 1 139 0
+ 136:../main.c     ****             for (i = 0U; i < vtemps.count; i++) {
+ 521              	 .loc 1 136 0
  522 02e4 0023     	 movs r3,#0
  523 02e6 87F87630 	 strb r3,[r7,#118]
  524 02ea 40E0     	 b .L22
@@ -745,23 +742,23 @@
  535 0308 98000000 	 .word .LC5
  536 030c B8020000 	 .word .LC0
  537 0310 DC000000 	 .word .LC6
- 538 0314 FC000000 	 .word .LC7
- 539 0318 CDCCCCCC 	 .word -858993459
- 540 031c 34010000 	 .word .LC10
- 541 0320 74010000 	 .word .LC11
- 542 0324 78010000 	 .word .LC12
- 543 0328 80010000 	 .word .LC13
- 544 032c 84010000 	 .word .LC14
- 545 0330 BC010000 	 .word .LC15
- 546 0334 F0010000 	 .word .LC16
+ 538 0314 CDCCCCCC 	 .word -858993459
+ 539 0318 04010000 	 .word .LC9
+ 540 031c 44010000 	 .word .LC10
+ 541 0320 78010000 	 .word .LC11
+ 542 0324 B0010000 	 .word .LC12
+ 543 0328 B4010000 	 .word .LC13
+ 544 032c BC010000 	 .word .LC14
+ 545 0330 C0010000 	 .word .LC15
+ 546 0334 F8010000 	 .word .LC16
  547 0338 28020000 	 .word .LC17
  548 033c 38020000 	 .word .LC18
  549 0340 3C020000 	 .word .LC19
- 550 0344 2C010000 	 .word .LC8
- 551 0348 30010000 	 .word .LC9
+ 550 0344 FC000000 	 .word .LC7
+ 551 0348 00010000 	 .word .LC8
  552              	.L23:
- 140:../main.c     ****                 XMC_DEBUG(" %d", (int)vtemps.c[i]);
- 553              	 .loc 1 140 0 discriminator 3
+ 137:../main.c     ****                 XMC_DEBUG(" %d", (int)vtemps.c[i]);
+ 553              	 .loc 1 137 0 discriminator 3
  554 034c 97F87630 	 ldrb r3,[r7,#118]
  555 0350 07F17802 	 add r2,r7,#120
  556 0354 1344     	 add r3,r3,r2
@@ -770,41 +767,41 @@
  559 035c 4048     	 ldr r0,.L33
  560 035e 1946     	 mov r1,r3
  561 0360 FFF7FEFF 	 bl printf
- 139:../main.c     ****             for (i = 0U; i < vtemps.count; i++) {
- 562              	 .loc 1 139 0 discriminator 3
+ 136:../main.c     ****             for (i = 0U; i < vtemps.count; i++) {
+ 562              	 .loc 1 136 0 discriminator 3
  563 0364 97F87630 	 ldrb r3,[r7,#118]
  564 0368 0133     	 adds r3,r3,#1
  565 036a 87F87630 	 strb r3,[r7,#118]
  566              	.L22:
- 139:../main.c     ****             for (i = 0U; i < vtemps.count; i++) {
- 567              	 .loc 1 139 0 is_stmt 0 discriminator 1
+ 136:../main.c     ****             for (i = 0U; i < vtemps.count; i++) {
+ 567              	 .loc 1 136 0 is_stmt 0 discriminator 1
  568 036e 97F83830 	 ldrb r3,[r7,#56]
  569 0372 97F87620 	 ldrb r2,[r7,#118]
  570 0376 9A42     	 cmp r2,r3
  571 0378 E8D3     	 bcc .L23
- 141:../main.c     ****             }
- 142:../main.c     ****             XMC_DEBUG("\n");
- 572              	 .loc 1 142 0 is_stmt 1
+ 138:../main.c     ****             }
+ 139:../main.c     ****             XMC_DEBUG("\n");
+ 572              	 .loc 1 139 0 is_stmt 1
  573 037a 0A20     	 movs r0,#10
  574 037c FFF7FEFF 	 bl putchar
  575              	.L21:
- 143:../main.c     ****         }
- 144:../main.c     **** 
- 145:../main.c     ****         /* 0x97 - Cell Balance */
- 146:../main.c     ****         st = Morelle_GetCellBalance(&bal);
- 576              	 .loc 1 146 0
+ 140:../main.c     ****         }
+ 141:../main.c     **** 
+ 142:../main.c     ****         /* 0x97 Cell Balance */
+ 143:../main.c     ****         st = Morelle_GetCellBalance(&bal);
+ 576              	 .loc 1 143 0
  577 0380 07F12C03 	 add r3,r7,#44
  578 0384 1846     	 mov r0,r3
  579 0386 FFF7FEFF 	 bl Morelle_GetCellBalance
  580 038a 0346     	 mov r3,r0
  581 038c 87F87430 	 strb r3,[r7,#116]
- 147:../main.c     ****         if (st == MORELLE_OK) {
- 582              	 .loc 1 147 0
+ 144:../main.c     ****         if (st == MORELLE_OK) {
+ 582              	 .loc 1 144 0
  583 0390 97F87430 	 ldrb r3,[r7,#116]
  584 0394 002B     	 cmp r3,#0
  585 0396 0AD1     	 bne .L24
- 148:../main.c     ****             XMC_DEBUG("[0x97] Balance mask: %02X %02X %02X\n",
- 586              	 .loc 1 148 0
+ 145:../main.c     ****             XMC_DEBUG("[0x97] Balance mask: %02X %02X %02X\n",
+ 586              	 .loc 1 145 0
  587 0398 97F82C30 	 ldrb r3,[r7,#44]
  588 039c 1946     	 mov r1,r3
  589 039e 97F82D30 	 ldrb r3,[r7,#45]
@@ -813,33 +810,33 @@
  592 03a8 2E48     	 ldr r0,.L33+4
  593 03aa FFF7FEFF 	 bl printf
  594              	.L24:
- 149:../main.c     ****                       (unsigned)bal.mask[0], (unsigned)bal.mask[1], (unsigned)bal.mask[2]);
- 150:../main.c     ****         }
- 151:../main.c     **** 
- 152:../main.c     ****         /* 0x98 - Fault Status */
- 153:../main.c     ****         st = Morelle_GetFaultStatus(&fault);
- 595              	 .loc 1 153 0
+ 146:../main.c     ****                       (unsigned)bal.mask[0], (unsigned)bal.mask[1], (unsigned)bal.mask[2]);
+ 147:../main.c     ****         }
+ 148:../main.c     **** 
+ 149:../main.c     ****         /* 0x98 Fault Status */
+ 150:../main.c     ****         st = Morelle_GetFaultStatus(&fault);
+ 595              	 .loc 1 150 0
  596 03ae 07F12403 	 add r3,r7,#36
  597 03b2 1846     	 mov r0,r3
  598 03b4 FFF7FEFF 	 bl Morelle_GetFaultStatus
  599 03b8 0346     	 mov r3,r0
  600 03ba 87F87430 	 strb r3,[r7,#116]
- 154:../main.c     ****         if (st == MORELLE_OK) {
- 601              	 .loc 1 154 0
+ 151:../main.c     ****         if (st == MORELLE_OK) {
+ 601              	 .loc 1 151 0
  602 03be 97F87430 	 ldrb r3,[r7,#116]
  603 03c2 002B     	 cmp r3,#0
  604 03c4 46D1     	 bne .L25
- 155:../main.c     ****             any = 0U;
- 605              	 .loc 1 155 0
+ 152:../main.c     ****             any = 0U;
+ 605              	 .loc 1 152 0
  606 03c6 0023     	 movs r3,#0
  607 03c8 87F87730 	 strb r3,[r7,#119]
- 156:../main.c     ****             for (i = 0U; i < 8U; i++) { any |= fault.b[i]; }
- 608              	 .loc 1 156 0
+ 153:../main.c     ****             for (i = 0U; i < 8U; i++) { any |= fault.b[i]; }
+ 608              	 .loc 1 153 0
  609 03cc 0023     	 movs r3,#0
  610 03ce 87F87630 	 strb r3,[r7,#118]
  611 03d2 10E0     	 b .L26
  612              	.L27:
- 613              	 .loc 1 156 0 is_stmt 0 discriminator 3
+ 613              	 .loc 1 153 0 is_stmt 0 discriminator 3
  614 03d4 97F87630 	 ldrb r3,[r7,#118]
  615 03d8 07F17802 	 add r2,r7,#120
  616 03dc 1344     	 add r3,r3,r2
@@ -851,12 +848,12 @@
  622 03f0 0133     	 adds r3,r3,#1
  623 03f2 87F87630 	 strb r3,[r7,#118]
  624              	.L26:
- 625              	 .loc 1 156 0 discriminator 1
+ 625              	 .loc 1 153 0 discriminator 1
  626 03f6 97F87630 	 ldrb r3,[r7,#118]
  627 03fa 072B     	 cmp r3,#7
  628 03fc EAD9     	 bls .L27
- 157:../main.c     ****             XMC_DEBUG("[0x98] %02X %02X %02X %02X %02X %02X %02X %02X  %s\n",
- 629              	 .loc 1 157 0 is_stmt 1
+ 154:../main.c     ****             XMC_DEBUG("[0x98] %02X %02X %02X %02X %02X %02X %02X %02X  %s\n",
+ 629              	 .loc 1 154 0 is_stmt 1
  630 03fe 97F82430 	 ldrb r3,[r7,#36]
  631 0402 9C46     	 mov ip,r3
  632 0404 97F82530 	 ldrb r3,[r7,#37]
@@ -876,14 +873,14 @@
  646 042e 97F87730 	 ldrb r3,[r7,#119]
  647 0432 002B     	 cmp r3,#0
  648 0434 01D0     	 beq .L28
- 649              	 .loc 1 157 0 is_stmt 0 discriminator 1
+ 649              	 .loc 1 154 0 is_stmt 0 discriminator 1
  650 0436 0C4B     	 ldr r3,.L33+8
  651 0438 00E0     	 b .L29
  652              	.L28:
- 653              	 .loc 1 157 0 discriminator 2
+ 653              	 .loc 1 154 0 discriminator 2
  654 043a 0C4B     	 ldr r3,.L33+12
  655              	.L29:
- 656              	 .loc 1 157 0 discriminator 4
+ 656              	 .loc 1 154 0 discriminator 4
  657 043c 0095     	 str r5,[sp]
  658 043e 0194     	 str r4,[sp,#4]
  659 0440 0290     	 str r0,[sp,#8]
@@ -896,20 +893,20 @@
  666 044e 3346     	 mov r3,r6
  667 0450 FFF7FEFF 	 bl printf
  668              	.L25:
- 158:../main.c     ****                       (unsigned)fault.b[0], (unsigned)fault.b[1],
- 159:../main.c     ****                       (unsigned)fault.b[2], (unsigned)fault.b[3],
- 160:../main.c     ****                       (unsigned)fault.b[4], (unsigned)fault.b[5],
- 161:../main.c     ****                       (unsigned)fault.b[6], (unsigned)fault.b[7],
- 162:../main.c     ****                       any ? "<FAULT>" : "OK");
- 163:../main.c     ****         }
- 164:../main.c     **** 
- 165:../main.c     ****         delay_ms(2000U);
- 669              	 .loc 1 165 0 is_stmt 1
+ 155:../main.c     ****                       (unsigned)fault.b[0], (unsigned)fault.b[1],
+ 156:../main.c     ****                       (unsigned)fault.b[2], (unsigned)fault.b[3],
+ 157:../main.c     ****                       (unsigned)fault.b[4], (unsigned)fault.b[5],
+ 158:../main.c     ****                       (unsigned)fault.b[6], (unsigned)fault.b[7],
+ 159:../main.c     ****                       any ? "<FAULT>" : "OK");
+ 160:../main.c     ****         }
+ 161:../main.c     **** 
+ 162:../main.c     ****         delay_ms(2000U);
+ 669              	 .loc 1 162 0 is_stmt 1
  670 0454 4FF4FA60 	 mov r0,#2000
  671 0458 FFF7FEFF 	 bl delay_ms
  672              	.LBE2:
- 166:../main.c     ****     }
- 673              	 .loc 1 166 0
+ 163:../main.c     ****     }
+ 673              	 .loc 1 163 0
  674 045c 09E6     	 b .L30
  675              	.L34:
  676 045e 00BF     	 .align 2
@@ -949,11 +946,11 @@ initialise_monitor_handles
 puts
 Morelle_NodeInit
 printf
-Morelle_GetStatusInfo
 Morelle_GetPackTotals
-Morelle_GetMosState
 Morelle_GetCellExtremes
 Morelle_GetTempExtremes
+Morelle_GetMosState
+Morelle_GetStatusInfo
 Morelle_GetCellVoltages
 putchar
 Morelle_GetTemperatures

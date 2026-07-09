@@ -14627,3 +14627,37 @@ rm -rf  ./Startup/startup_XMC4800.o ./Startup/system_XMC4800.o  ./Libraries/XMCL
   16448	    244	   2268	  18960	   4a10	Morelle_BMS.elf
 'Finished building: Morelle_BMS.siz'
 
+13:22:18 **** Build of configuration Debug for project Morelle_BMS ****
+"\"C:\\Infineon\\Tools\\DAVE IDE\\4.5.0.202105191637\\eclipse\\ARM-GCC-49\\bin\\make\"" --output-sync -j16 all 
+'Building file: ../main.c'
+'Invoking: ARM-GCC C Compiler'
+"C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/ARM-GCC-49/bin/arm-none-eabi-gcc" -MMD -MT "main.o" -DXMC4800_F144x2048 -DXMC_DEBUG_ENABLE -I"C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/Morelle_BMS/Libraries/XMCLib/inc" -I"C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/Morelle_BMS/Libraries/CMSIS/Include" -I"C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/Morelle_BMS/Libraries/CMSIS/Infineon/XMC4800_series/Include" -I"C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/Morelle_BMS" -I"C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/Morelle_BMS/Dave/Generated" -I"C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/workspace/Morelle_BMS/Libraries" -O0 -ffunction-sections -fdata-sections -Wall -std=gnu99 -mfloat-abi=softfp -Wa,-adhlns="main.o.lst" -pipe -c -fmessage-length=0 -MMD -MP -MF"main.d" -MT"main.d main.o" -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mthumb -g -gdwarf-2 -o "main.o" "../main.c" 
+'Finished building: ../main.c'
+
+'Building target: Morelle_BMS.elf'
+'Invoking: ARM-GCC C Linker'
+"C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/ARM-GCC-49/bin/arm-none-eabi-gcc" -T"../linker_script.ld" -nostartfiles -Xlinker --gc-sections -specs=nano.specs -specs=nosys.specs -Wl,-Map,"Morelle_BMS.map" --specs=rdimon.specs -mfloat-abi=softfp -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mthumb -g -gdwarf-2 -o "Morelle_BMS.elf" "@objects.rsp"  -lm
+'Finished building target: Morelle_BMS.elf'
+
+'Invoking: ARM-GCC Create Flash Image'
+"C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/ARM-GCC-49/bin/arm-none-eabi-objcopy" -O ihex "Morelle_BMS.elf" "Morelle_BMS.hex"
+'Finished building: Morelle_BMS.hex'
+
+'Invoking: ARM-GCC Create Listing'
+"C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/ARM-GCC-49/bin/arm-none-eabi-objdump" -h -S "Morelle_BMS.elf" > "Morelle_BMS.lst"
+'Finished building: Morelle_BMS.lst'
+
+'Invoking: ARM-GCC Print Size'
+"C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/ARM-GCC-49/bin/arm-none-eabi-size" --format=berkeley "Morelle_BMS.elf"
+   text	   data	    bss	    dec	    hex	filename
+  16448	    244	   2268	  18960	   4a10	Morelle_BMS.elf
+'Finished building: Morelle_BMS.siz'
+
+13:22:21 **** Incremental Build of configuration Debug for project Morelle_BMS ****
+"\"C:\\Infineon\\Tools\\DAVE IDE\\4.5.0.202105191637\\eclipse\\ARM-GCC-49\\bin\\make\"" --output-sync -j16 all 
+'Invoking: ARM-GCC Print Size'
+"C:/Infineon/Tools/DAVE IDE/4.5.0.202105191637/eclipse/ARM-GCC-49/bin/arm-none-eabi-size" --format=berkeley "Morelle_BMS.elf"
+   text	   data	    bss	    dec	    hex	filename
+  16448	    244	   2268	  18960	   4a10	Morelle_BMS.elf
+'Finished building: Morelle_BMS.siz'
+

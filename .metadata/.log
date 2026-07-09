@@ -9536,3 +9536,33 @@ For more details, see the JLinkGDBServerCL.exe console.
 
 !ENTRY ilg.gnuarmeclipse.debug.gdbjtag.jlink 4 1 2026-07-09 13:14:43.074
 !MESSAGE C:\Infineon\Tools\DAVE IDE\4.5.0.202105191637\eclipse\ARM-GCC-49/bin/arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.jlink 4 1 2026-07-09 13:22:21.754
+!MESSAGE C:\Program Files\SEGGER\JLink_V942\JLinkGDBServerCL.exe -if swd -device XMC4800-F144x2048 -endian little -speed 1000 -port 2331 -swoport 2332 -telnetport 2333 -vd -ir -localhostonly 1 -singlerun -strict -timeout 0
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.jlink 4 1 2026-07-09 13:22:21.920
+!MESSAGE C:\Infineon\Tools\DAVE IDE\4.5.0.202105191637\eclipse\ARM-GCC-49/bin/arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY com.dave.mbs.common 1 0 2026-07-09 13:23:01.910
+!MESSAGE *************Saving EMF data into file system*******************
+
+!ENTRY com.dave.mbs.common 1 0 2026-07-09 13:23:01.917
+!MESSAGE *************Saving Groovy data into file system*******************
+
+!ENTRY COMMON 1 0 2026-07-09 13:23:02.165
+!MESSAGE Time Taken By Serialization  : 248 ms :: C:\Infineon\Tools\DAVE IDE\4.5.0.202105191637\eclipse\workspace\Morelle_BMS\Dave\Model\projectData.bin
+
+!ENTRY com.dave.mbs.common 1 0 2026-07-09 13:23:02.228
+!MESSAGE ****************Cleaning project data:Morelle_BMS*******************
+
+!ENTRY APPLICATION_MODEL 1 0 2026-07-09 13:23:02.231
+!MESSAGE USER_ACTION : Time taken for disposing objects for memory cleanup: 18 msec 
+
+!ENTRY SOLVER 1 0 2026-07-09 13:23:02.232
+!MESSAGE Solver exited (0)
+
+!ENTRY SOLVER 1 0 2026-07-09 13:23:02.491
+!MESSAGE USER_ACTION : Solver Status: DISCONNECTED
+
+!ENTRY org.eclipse.core.jobs 2 2 2026-07-09 13:23:05.090
+!MESSAGE Job found still running after platform shutdown.  Jobs should be canceled by the plugin that scheduled them during shutdown: org.eclipse.cdt.dsf.gdb.internal.ui.console.GdbBasicCliConsole$InputReadJob
