@@ -11881,3 +11881,3161 @@ org.eclipse.equinox.launcher.Main.run(Main.java:1519)
 
 !ENTRY org.eclipse.core.jobs 2 2 2026-07-09 14:18:33.423
 !MESSAGE Job found still running after platform shutdown.  Jobs should be canceled by the plugin that scheduled them during shutdown: org.eclipse.cdt.dsf.gdb.internal.ui.console.GdbBasicCliConsole$InputReadJob
+!SESSION 2026-07-09 14:39:07.315 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_222
+java.vendor=Amazon.com Inc.
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -application com.ifx.davex.product.daveApplication -showlocation
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -application com.ifx.davex.product.daveApplication -showlocation
+
+!ENTRY org.eclipse.equinox.ds 1 0 2026-07-09 14:40:57.302
+!MESSAGE Could not bind a reference of component org.eclipse.fx.core.internal.JUtilLoggerFactory. The reference is: Reference[name = registerHandler, interface = java.util.logging.Handler, policy = dynamic, policy-option = greedy, cardinality = 0..n, target = null, bind = registerHandler, unbind = unregisterHandler, updated = null]
+
+!ENTRY SOLVER 1 0 2026-07-09 14:41:00.563
+!MESSAGE USER_ACTION : Default solver exe path is: C:\Infineon\Tools\DAVE IDE\4.5.0.202105191637\eclipse\Solver\lib\i386_nt\eclipse.exe
+
+!ENTRY SOLVER 1 0 2026-07-09 14:41:00.617
+!MESSAGE USER_ACTION : GlobalSize= 750MB; LocalSize: 128MB
+
+!ENTRY SOLVER 1 0 2026-07-09 14:41:00.617
+!MESSAGE USER_ACTION : Creating OutOfProcessEclipse instance...
+
+!ENTRY SOLVER 1 0 2026-07-09 14:41:00.708
+!MESSAGE USER_ACTION : Solver Status: CONNECTED
+
+!ENTRY APPSTORE 1 0 2026-07-09 14:41:01.026
+!MESSAGE USER_ACTION : Time taken for loading LibraryStore data for SoftwareId [XMC4.8.00.F144.ALL] is: 95 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2026-07-09 14:41:01.077
+!MESSAGE USER_ACTION : Time taken for disposing objects for memory cleanup: 3 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2026-07-09 14:41:01.332
+!MESSAGE USER_ACTION : Active project:Battery_BMS[ Software ID:XMC4.8.00.F144.ALL]
+
+!ENTRY org.eclipse.wst.common.project.facet.core 4 0 2026-07-09 14:41:01.429
+!MESSAGE Project facet jst.ejb has not been defined. It is used in plugin org.eclipse.jst.j2ee.
+
+!ENTRY COMMON 1 0 2026-07-09 14:41:02.753
+!MESSAGE Time Taken By De-Serialization  : 951 ms :: C:\Infineon\Tools\DAVE IDE\4.5.0.202105191637\eclipse\workspace\Battery_BMS\Dave\Model\projectData.bin
+
+!ENTRY com.dave.mbs.common 1 0 2026-07-09 14:41:02.759
+!MESSAGE *************Serializing EMF and Groovy data to RAM*******************
+
+!ENTRY APPLICATION_MODEL 1 0 2026-07-09 14:41:03.212
+!MESSAGE USER_ACTION : Time taken for initializing Application Model is: 1880 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2026-07-09 14:41:03.223
+!MESSAGE USER_ACTION : Time taken for reloadLastSolverResult(updateQuery): 7 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2026-07-09 14:41:03.233
+!MESSAGE USER_ACTION : Time taken for reloadLastSolverResult(getSolutionQuery): 10 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2026-07-09 14:41:03.234
+!MESSAGE USER_ACTION : Time taken for updating views is: 0 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2026-07-09 14:41:04.784
+!MESSAGE USER_ACTION : Time taken for rendering views is: 1550 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2026-07-09 14:41:05.247
+!MESSAGE USER_ACTION : Total time taken for setting project as active is: 4174 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2026-07-09 14:41:05.680
+!MESSAGE Only One DAVE Application is running 
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2026-07-09 14:41:05.715
+!MESSAGE Reading file: https://www.infineon.com/dave/Libraries/Examples/XMC_IFX/latest//daveSite.xml
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2026-07-09 14:41:05.916
+!MESSAGE ConnectionException:
+:https://www.infineon.com/dave/Libraries/Examples/XMC_IFX/latest//daveSite.xml
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2026-07-09 14:41:05.919
+!MESSAGE Reading file: https://www.infineon.com/dave/Libraries/DAVE_Libs/XMC_IFX/latest//daveSite.xml
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2026-07-09 14:41:05.942
+!MESSAGE ConnectionException:
+:https://www.infineon.com/dave/Libraries/DAVE_Libs/XMC_IFX/latest//daveSite.xml
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2026-07-09 14:41:05.943
+!MESSAGE Reading file: https://www.infineon.com/dave/Libraries/DAVE_Libs/Contributed/latest//daveSite.xml
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2026-07-09 14:41:05.963
+!MESSAGE ConnectionException:
+:https://www.infineon.com/dave/Libraries/DAVE_Libs/Contributed/latest//daveSite.xml
+
+!ENTRY org.eclipse.equinox.p2.transport.ecf 4 1002 2026-07-09 14:41:06.045
+!MESSAGE Unable to read repository at https://www.infineon.com/dave/Neon/4.5/CE/content.xml.
+!STACK 0
+javax.net.ssl.SSLHandshakeException: sun.security.validator.ValidatorException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
+	at sun.security.ssl.Alerts.getSSLException(Alerts.java:192)
+	at sun.security.ssl.SSLSocketImpl.fatal(SSLSocketImpl.java:1946)
+	at sun.security.ssl.Handshaker.fatalSE(Handshaker.java:316)
+	at sun.security.ssl.Handshaker.fatalSE(Handshaker.java:310)
+	at sun.security.ssl.ClientHandshaker.serverCertificate(ClientHandshaker.java:1639)
+	at sun.security.ssl.ClientHandshaker.processMessage(ClientHandshaker.java:223)
+	at sun.security.ssl.Handshaker.processLoop(Handshaker.java:1037)
+	at sun.security.ssl.Handshaker.process_record(Handshaker.java:965)
+	at sun.security.ssl.SSLSocketImpl.readRecord(SSLSocketImpl.java:1064)
+	at sun.security.ssl.SSLSocketImpl.performInitialHandshake(SSLSocketImpl.java:1367)
+	at sun.security.ssl.SSLSocketImpl.startHandshake(SSLSocketImpl.java:1395)
+	at sun.security.ssl.SSLSocketImpl.startHandshake(SSLSocketImpl.java:1379)
+	at sun.net.www.protocol.https.HttpsClient.afterConnect(HttpsClient.java:559)
+	at sun.net.www.protocol.https.AbstractDelegateHttpsURLConnection.connect(AbstractDelegateHttpsURLConnection.java:185)
+	at sun.net.www.protocol.https.HttpsURLConnectionImpl.connect(HttpsURLConnectionImpl.java:167)
+	at org.eclipse.ecf.provider.filetransfer.browse.URLFileSystemBrowser.runRequest(URLFileSystemBrowser.java:116)
+	at org.eclipse.ecf.provider.filetransfer.browse.AbstractFileSystemBrowser$DirectoryJob.run(AbstractFileSystemBrowser.java:69)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: sun.security.validator.ValidatorException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
+	at sun.security.validator.PKIXValidator.doBuild(PKIXValidator.java:397)
+	at sun.security.validator.PKIXValidator.engineValidate(PKIXValidator.java:240)
+	at sun.security.validator.Validator.validate(Validator.java:262)
+	at sun.security.ssl.X509TrustManagerImpl.validate(X509TrustManagerImpl.java:330)
+	at sun.security.ssl.X509TrustManagerImpl.checkTrusted(X509TrustManagerImpl.java:237)
+	at sun.security.ssl.X509TrustManagerImpl.checkServerTrusted(X509TrustManagerImpl.java:132)
+	at sun.security.ssl.ClientHandshaker.serverCertificate(ClientHandshaker.java:1621)
+	... 13 more
+Caused by: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
+	at sun.security.provider.certpath.SunCertPathBuilder.build(SunCertPathBuilder.java:141)
+	at sun.security.provider.certpath.SunCertPathBuilder.engineBuild(SunCertPathBuilder.java:126)
+	at java.security.cert.CertPathBuilder.build(CertPathBuilder.java:280)
+	at sun.security.validator.PKIXValidator.doBuild(PKIXValidator.java:392)
+	... 19 more
+
+!ENTRY org.eclipse.equinox.p2.transport.ecf 4 1002 2026-07-09 14:41:06.129
+!MESSAGE Unable to read repository at https://www.infineon.com/dave/Neon/4.5/ARM-GCC-Update/content.xml.
+!STACK 0
+javax.net.ssl.SSLHandshakeException: sun.security.validator.ValidatorException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
+	at sun.security.ssl.Alerts.getSSLException(Alerts.java:192)
+	at sun.security.ssl.SSLSocketImpl.fatal(SSLSocketImpl.java:1946)
+	at sun.security.ssl.Handshaker.fatalSE(Handshaker.java:316)
+	at sun.security.ssl.Handshaker.fatalSE(Handshaker.java:310)
+	at sun.security.ssl.ClientHandshaker.serverCertificate(ClientHandshaker.java:1639)
+	at sun.security.ssl.ClientHandshaker.processMessage(ClientHandshaker.java:223)
+	at sun.security.ssl.Handshaker.processLoop(Handshaker.java:1037)
+	at sun.security.ssl.Handshaker.process_record(Handshaker.java:965)
+	at sun.security.ssl.SSLSocketImpl.readRecord(SSLSocketImpl.java:1064)
+	at sun.security.ssl.SSLSocketImpl.performInitialHandshake(SSLSocketImpl.java:1367)
+	at sun.security.ssl.SSLSocketImpl.startHandshake(SSLSocketImpl.java:1395)
+	at sun.security.ssl.SSLSocketImpl.startHandshake(SSLSocketImpl.java:1379)
+	at sun.net.www.protocol.https.HttpsClient.afterConnect(HttpsClient.java:559)
+	at sun.net.www.protocol.https.AbstractDelegateHttpsURLConnection.connect(AbstractDelegateHttpsURLConnection.java:185)
+	at sun.net.www.protocol.https.HttpsURLConnectionImpl.connect(HttpsURLConnectionImpl.java:167)
+	at org.eclipse.ecf.provider.filetransfer.browse.URLFileSystemBrowser.runRequest(URLFileSystemBrowser.java:116)
+	at org.eclipse.ecf.provider.filetransfer.browse.AbstractFileSystemBrowser$DirectoryJob.run(AbstractFileSystemBrowser.java:69)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: sun.security.validator.ValidatorException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
+	at sun.security.validator.PKIXValidator.doBuild(PKIXValidator.java:397)
+	at sun.security.validator.PKIXValidator.engineValidate(PKIXValidator.java:240)
+	at sun.security.validator.Validator.validate(Validator.java:262)
+	at sun.security.ssl.X509TrustManagerImpl.validate(X509TrustManagerImpl.java:330)
+	at sun.security.ssl.X509TrustManagerImpl.checkTrusted(X509TrustManagerImpl.java:237)
+	at sun.security.ssl.X509TrustManagerImpl.checkServerTrusted(X509TrustManagerImpl.java:132)
+	at sun.security.ssl.ClientHandshaker.serverCertificate(ClientHandshaker.java:1621)
+	... 13 more
+Caused by: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
+	at sun.security.provider.certpath.SunCertPathBuilder.build(SunCertPathBuilder.java:141)
+	at sun.security.provider.certpath.SunCertPathBuilder.engineBuild(SunCertPathBuilder.java:126)
+	at java.security.cert.CertPathBuilder.build(CertPathBuilder.java:280)
+	at sun.security.validator.PKIXValidator.doBuild(PKIXValidator.java:392)
+	... 19 more
+
+!ENTRY org.eclipse.equinox.p2.transport.ecf 4 1002 2026-07-09 14:41:06.207
+!MESSAGE Unable to read repository at https://www.infineon.com/dave/Neon/4.5/Solver_emWin_update/content.xml.
+!STACK 0
+javax.net.ssl.SSLHandshakeException: sun.security.validator.ValidatorException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
+	at sun.security.ssl.Alerts.getSSLException(Alerts.java:192)
+	at sun.security.ssl.SSLSocketImpl.fatal(SSLSocketImpl.java:1946)
+	at sun.security.ssl.Handshaker.fatalSE(Handshaker.java:316)
+	at sun.security.ssl.Handshaker.fatalSE(Handshaker.java:310)
+	at sun.security.ssl.ClientHandshaker.serverCertificate(ClientHandshaker.java:1639)
+	at sun.security.ssl.ClientHandshaker.processMessage(ClientHandshaker.java:223)
+	at sun.security.ssl.Handshaker.processLoop(Handshaker.java:1037)
+	at sun.security.ssl.Handshaker.process_record(Handshaker.java:965)
+	at sun.security.ssl.SSLSocketImpl.readRecord(SSLSocketImpl.java:1064)
+	at sun.security.ssl.SSLSocketImpl.performInitialHandshake(SSLSocketImpl.java:1367)
+	at sun.security.ssl.SSLSocketImpl.startHandshake(SSLSocketImpl.java:1395)
+	at sun.security.ssl.SSLSocketImpl.startHandshake(SSLSocketImpl.java:1379)
+	at sun.net.www.protocol.https.HttpsClient.afterConnect(HttpsClient.java:559)
+	at sun.net.www.protocol.https.AbstractDelegateHttpsURLConnection.connect(AbstractDelegateHttpsURLConnection.java:185)
+	at sun.net.www.protocol.https.HttpsURLConnectionImpl.connect(HttpsURLConnectionImpl.java:167)
+	at org.eclipse.ecf.provider.filetransfer.browse.URLFileSystemBrowser.runRequest(URLFileSystemBrowser.java:116)
+	at org.eclipse.ecf.provider.filetransfer.browse.AbstractFileSystemBrowser$DirectoryJob.run(AbstractFileSystemBrowser.java:69)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: sun.security.validator.ValidatorException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
+	at sun.security.validator.PKIXValidator.doBuild(PKIXValidator.java:397)
+	at sun.security.validator.PKIXValidator.engineValidate(PKIXValidator.java:240)
+	at sun.security.validator.Validator.validate(Validator.java:262)
+	at sun.security.ssl.X509TrustManagerImpl.validate(X509TrustManagerImpl.java:330)
+	at sun.security.ssl.X509TrustManagerImpl.checkTrusted(X509TrustManagerImpl.java:237)
+	at sun.security.ssl.X509TrustManagerImpl.checkServerTrusted(X509TrustManagerImpl.java:132)
+	at sun.security.ssl.ClientHandshaker.serverCertificate(ClientHandshaker.java:1621)
+	... 13 more
+Caused by: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
+	at sun.security.provider.certpath.SunCertPathBuilder.build(SunCertPathBuilder.java:141)
+	at sun.security.provider.certpath.SunCertPathBuilder.engineBuild(SunCertPathBuilder.java:126)
+	at java.security.cert.CertPathBuilder.build(CertPathBuilder.java:280)
+	at sun.security.validator.PKIXValidator.doBuild(PKIXValidator.java:392)
+	... 19 more
+
+!ENTRY org.eclipse.equinox.p2.transport.ecf 4 1002 2026-07-09 14:41:06.281
+!MESSAGE Unable to read repository at https://www.infineon.com/dave/Neon/4.5/Debugger/content.xml.
+!STACK 0
+javax.net.ssl.SSLHandshakeException: sun.security.validator.ValidatorException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
+	at sun.security.ssl.Alerts.getSSLException(Alerts.java:192)
+	at sun.security.ssl.SSLSocketImpl.fatal(SSLSocketImpl.java:1946)
+	at sun.security.ssl.Handshaker.fatalSE(Handshaker.java:316)
+	at sun.security.ssl.Handshaker.fatalSE(Handshaker.java:310)
+	at sun.security.ssl.ClientHandshaker.serverCertificate(ClientHandshaker.java:1639)
+	at sun.security.ssl.ClientHandshaker.processMessage(ClientHandshaker.java:223)
+	at sun.security.ssl.Handshaker.processLoop(Handshaker.java:1037)
+	at sun.security.ssl.Handshaker.process_record(Handshaker.java:965)
+	at sun.security.ssl.SSLSocketImpl.readRecord(SSLSocketImpl.java:1064)
+	at sun.security.ssl.SSLSocketImpl.performInitialHandshake(SSLSocketImpl.java:1367)
+	at sun.security.ssl.SSLSocketImpl.startHandshake(SSLSocketImpl.java:1395)
+	at sun.security.ssl.SSLSocketImpl.startHandshake(SSLSocketImpl.java:1379)
+	at sun.net.www.protocol.https.HttpsClient.afterConnect(HttpsClient.java:559)
+	at sun.net.www.protocol.https.AbstractDelegateHttpsURLConnection.connect(AbstractDelegateHttpsURLConnection.java:185)
+	at sun.net.www.protocol.https.HttpsURLConnectionImpl.connect(HttpsURLConnectionImpl.java:167)
+	at org.eclipse.ecf.provider.filetransfer.browse.URLFileSystemBrowser.runRequest(URLFileSystemBrowser.java:116)
+	at org.eclipse.ecf.provider.filetransfer.browse.AbstractFileSystemBrowser$DirectoryJob.run(AbstractFileSystemBrowser.java:69)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: sun.security.validator.ValidatorException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
+	at sun.security.validator.PKIXValidator.doBuild(PKIXValidator.java:397)
+	at sun.security.validator.PKIXValidator.engineValidate(PKIXValidator.java:240)
+	at sun.security.validator.Validator.validate(Validator.java:262)
+	at sun.security.ssl.X509TrustManagerImpl.validate(X509TrustManagerImpl.java:330)
+	at sun.security.ssl.X509TrustManagerImpl.checkTrusted(X509TrustManagerImpl.java:237)
+	at sun.security.ssl.X509TrustManagerImpl.checkServerTrusted(X509TrustManagerImpl.java:132)
+	at sun.security.ssl.ClientHandshaker.serverCertificate(ClientHandshaker.java:1621)
+	... 13 more
+Caused by: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
+	at sun.security.provider.certpath.SunCertPathBuilder.build(SunCertPathBuilder.java:141)
+	at sun.security.provider.certpath.SunCertPathBuilder.engineBuild(SunCertPathBuilder.java:126)
+	at java.security.cert.CertPathBuilder.build(CertPathBuilder.java:280)
+	at sun.security.validator.PKIXValidator.doBuild(PKIXValidator.java:392)
+	... 19 more
+
+!ENTRY APP_CONFIGURATOR 1 0 2026-07-09 14:52:34.924
+!MESSAGE USER_ACTION : Time taken for opening editor is: 298 msec 
+
+!ENTRY RESOURCE_CONSTRAINER 1 0 2026-07-09 14:52:36.870
+!MESSAGE USER_ACTION : Opening Manual Resource Assignment Dialog..!
+
+!ENTRY RESOURCE_CONSTRAINER 1 0 2026-07-09 14:55:27.950
+!MESSAGE USER_ACTION : Manual Resource Assignment Dialog is closed..!
+
+!ENTRY APP_CONFIGURATOR 1 0 2026-07-09 14:55:30.367
+!MESSAGE USER_ACTION : Time taken for opening editor is: 289 msec 
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 14:57:39.300
+!MESSAGE USER_ACTION : Opening Manual Pin Allocator Dialog.!
+
+!ENTRY APPSTORE 1 0 2026-07-09 14:57:39.325
+!MESSAGE USER_ACTION : Loaded DD: C:\Infineon\Tools\DAVE IDE\4.5.0.202105191637\D_LibraryStore_4.4\resources\XMC4.8.00.F144.ALL\device\xmc4800\0\MANIFEST\xmc4800.dd
+
+!ENTRY APPSTORE 1 0 2026-07-09 14:57:39.332
+!MESSAGE USER_ACTION : Loaded DD: C:\Infineon\Tools\DAVE IDE\4.5.0.202105191637\D_LibraryStore_4.4\resources\LQFP144.0.0\devicepackage\0\MANIFEST\devicepackage.dd
+
+!ENTRY APPSTORE 1 0 2026-07-09 14:57:39.336
+!MESSAGE USER_ACTION : Loaded DD: C:\Infineon\Tools\DAVE IDE\4.5.0.202105191637\D_LibraryStore_4.4\resources\48.0.0\port\p\0\MANIFEST\p.dd
+
+!ENTRY APPSTORE 1 0 2026-07-09 14:57:39.340
+!MESSAGE USER_ACTION : Loaded DD: C:\Infineon\Tools\DAVE IDE\4.5.0.202105191637\D_LibraryStore_4.4\resources\48.0.0\port\p\1\MANIFEST\p.dd
+
+!ENTRY APPSTORE 1 0 2026-07-09 14:57:39.343
+!MESSAGE USER_ACTION : Loaded DD: C:\Infineon\Tools\DAVE IDE\4.5.0.202105191637\D_LibraryStore_4.4\resources\48.0.0\port\p\2\MANIFEST\p.dd
+
+!ENTRY APPSTORE 1 0 2026-07-09 14:57:39.345
+!MESSAGE USER_ACTION : Loaded DD: C:\Infineon\Tools\DAVE IDE\4.5.0.202105191637\D_LibraryStore_4.4\resources\48.0.0\port\p\3\MANIFEST\p.dd
+
+!ENTRY APPSTORE 1 0 2026-07-09 14:57:39.347
+!MESSAGE USER_ACTION : Loaded DD: C:\Infineon\Tools\DAVE IDE\4.5.0.202105191637\D_LibraryStore_4.4\resources\48.0.0\port\p\4\MANIFEST\p.dd
+
+!ENTRY APPSTORE 1 0 2026-07-09 14:57:39.349
+!MESSAGE USER_ACTION : Loaded DD: C:\Infineon\Tools\DAVE IDE\4.5.0.202105191637\D_LibraryStore_4.4\resources\48.0.0\port\p\5\MANIFEST\p.dd
+
+!ENTRY APPSTORE 1 0 2026-07-09 14:57:39.351
+!MESSAGE USER_ACTION : Loaded DD: C:\Infineon\Tools\DAVE IDE\4.5.0.202105191637\D_LibraryStore_4.4\resources\48.0.0\port\p\6\MANIFEST\p.dd
+
+!ENTRY APPSTORE 1 0 2026-07-09 14:57:39.353
+!MESSAGE USER_ACTION : Loaded DD: C:\Infineon\Tools\DAVE IDE\4.5.0.202105191637\D_LibraryStore_4.4\resources\48.0.0\port\p\14\MANIFEST\p.dd
+
+!ENTRY APPSTORE 1 0 2026-07-09 14:57:39.356
+!MESSAGE USER_ACTION : Loaded DD: C:\Infineon\Tools\DAVE IDE\4.5.0.202105191637\D_LibraryStore_4.4\resources\48.0.0\port\p\15\MANIFEST\p.dd
+
+!ENTRY APPSTORE 1 0 2026-07-09 14:57:39.357
+!MESSAGE USER_ACTION : Loaded DD: C:\Infineon\Tools\DAVE IDE\4.5.0.202105191637\D_LibraryStore_4.4\resources\48.0.0\port\usb_port\0\MANIFEST\usb_port.dd
+
+!ENTRY APPSTORE 1 0 2026-07-09 14:57:39.357
+!MESSAGE USER_ACTION : Loaded DD: C:\Infineon\Tools\DAVE IDE\4.5.0.202105191637\D_LibraryStore_4.4\resources\48.0.0\port\hcu_port\0\MANIFEST\hcu_port.dd
+
+!ENTRY APPSTORE 1 0 2026-07-09 14:57:39.358
+!MESSAGE USER_ACTION : Loaded DD: C:\Infineon\Tools\DAVE IDE\4.5.0.202105191637\D_LibraryStore_4.4\resources\48.0.0\port\debug_port\0\MANIFEST\debug_port.dd
+
+!ENTRY APPSTORE 1 0 2026-07-09 14:57:39.359
+!MESSAGE USER_ACTION : Loaded DD: C:\Infineon\Tools\DAVE IDE\4.5.0.202105191637\D_LibraryStore_4.4\resources\48.0.0\port\reset_port\0\MANIFEST\reset_port.dd
+
+!ENTRY APPSTORE 1 0 2026-07-09 14:57:39.360
+!MESSAGE USER_ACTION : Loaded DD: C:\Infineon\Tools\DAVE IDE\4.5.0.202105191637\D_LibraryStore_4.4\resources\48.0.0\port\crystal_port\0\MANIFEST\crystal_port.dd
+
+!ENTRY APPSTORE 1 0 2026-07-09 14:57:39.361
+!MESSAGE USER_ACTION : Loaded DD: C:\Infineon\Tools\DAVE IDE\4.5.0.202105191637\D_LibraryStore_4.4\resources\48.0.0\port\rtc_port\0\MANIFEST\rtc_port.dd
+
+!ENTRY APPSTORE 1 0 2026-07-09 14:57:39.362
+!MESSAGE USER_ACTION : Loaded DD: C:\Infineon\Tools\DAVE IDE\4.5.0.202105191637\D_LibraryStore_4.4\resources\48.0.0\port\power_port\0\MANIFEST\power_port.dd
+
+!ENTRY APPSTORE 1 0 2026-07-09 14:57:39.363
+!MESSAGE USER_ACTION : Loaded DD: C:\Infineon\Tools\DAVE IDE\4.5.0.202105191637\D_LibraryStore_4.4\resources\48.0.0\port\analogpower_port\0\MANIFEST\analogpower_port.dd
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 14:57:39.364
+!MESSAGE Board Pin Name: Invalid data : (// Board pin label) in line number 1
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 14:57:39.365
+!MESSAGE Board Pin Name: Invalid data : (// XMC4800 IoT Connectivity Kit (XMC4800_F100x2048)) in line number 2
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 14:57:39.365
+!MESSAGE Board Pin Name: Invalid data : (// v1.1 2020-08-17) in line number 3
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 14:57:39.365
+!MESSAGE Board Pin Name: Empty line found in line number 4
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 14:57:39.365
+!MESSAGE Board Pin Name: Invalid data : (// P0_12) in line number 5
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 14:57:39.366
+!MESSAGE Board Pin Name: Invalid data : (// P0_11) in line number 7
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 14:57:39.366
+!MESSAGE Board Pin Name: Invalid data : (// P0_10 ) in line number 9
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 14:57:39.366
+!MESSAGE Board Pin Name: Invalid data : (// P0_9 ) in line number 11
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 14:57:39.366
+!MESSAGE Board Pin Name: Invalid data : (// P0_8 ) in line number 13
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 14:57:39.366
+!MESSAGE Board Pin Name: Invalid data : (// P0_7 ) in line number 15
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 14:57:39.367
+!MESSAGE Board Pin Name: Invalid data : (// P0_6 ) in line number 17
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 14:57:39.367
+!MESSAGE Board Pin Name: Invalid data : (// P0_5 ) in line number 19
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 14:57:39.367
+!MESSAGE Board Pin Name: Invalid data : (// P0_4 ) in line number 21
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 14:57:39.367
+!MESSAGE Board Pin Name: Invalid data : (// P0_3 ) in line number 23
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 14:57:39.367
+!MESSAGE Board Pin Name: Invalid data : (// P0_2 ) in line number 25
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 14:57:39.368
+!MESSAGE Board Pin Name: Invalid data : (// P0_1 ) in line number 27
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 14:57:39.368
+!MESSAGE Board Pin Name: Invalid data : (// P0_0 ) in line number 29
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 14:57:39.368
+!MESSAGE Board Pin Name: Empty line found in line number 31
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 14:57:39.368
+!MESSAGE Board Pin Name: Invalid data : (// P1_15 ) in line number 32
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 14:57:39.368
+!MESSAGE Board Pin Name: Invalid data : (// P1_14 ) in line number 34
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 14:57:39.368
+!MESSAGE Board Pin Name: Invalid data : (// P1_13 ) in line number 36
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 14:57:39.370
+!MESSAGE Board Pin Name: Invalid data : (// P1_12 ) in line number 38
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 14:57:39.370
+!MESSAGE Board Pin Name: Invalid data : (// P1_11 ) in line number 40
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 14:57:39.370
+!MESSAGE Board Pin Name: Invalid data : (// P1_10 ) in line number 42
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 14:57:39.370
+!MESSAGE Board Pin Name: Invalid data : (// P1_9 ) in line number 44
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 14:57:39.370
+!MESSAGE Board Pin Name: Invalid data : (// P1_8 ) in line number 46
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 14:57:39.370
+!MESSAGE Board Pin Name: Invalid data : (// P1_7 ) in line number 48
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 14:57:39.370
+!MESSAGE Board Pin Name: Invalid data : (// P1_6 ) in line number 50
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 14:57:39.370
+!MESSAGE Board Pin Name: Invalid data : (// P1_5 ) in line number 52
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 14:57:39.370
+!MESSAGE Board Pin Name: Invalid data : (// P1_4 ) in line number 54
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 14:57:39.371
+!MESSAGE Board Pin Name: Invalid data : (// P1_3 ) in line number 56
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 14:57:39.371
+!MESSAGE Board Pin Name: Invalid data : (// P1_2 ) in line number 58
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 14:57:39.371
+!MESSAGE Board Pin Name: Invalid data : (// P1_1 ) in line number 60
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 14:57:39.371
+!MESSAGE Board Pin Name: Invalid data : (// P1_0 ) in line number 62
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 14:57:39.371
+!MESSAGE Board Pin Name: Empty line found in line number 64
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 14:57:39.371
+!MESSAGE Board Pin Name: Invalid data : (// P4_1 ) in line number 65
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 14:57:39.371
+!MESSAGE Board Pin Name: Invalid data : (// P4_0 ) in line number 67
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 14:57:39.373
+!MESSAGE Board Pin Name: Empty line found in line number 69
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 14:57:39.373
+!MESSAGE Board Pin Name: Invalid data : (// P15_9 ) in line number 70
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 14:57:39.373
+!MESSAGE Board Pin Name: Invalid data : (// P15_3 ) in line number 72
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 14:57:39.373
+!MESSAGE Board Pin Name: Invalid data : (// P15_2 ) in line number 74
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 14:57:39.373
+!MESSAGE Board Pin Name: Empty line found in line number 76
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 14:57:39.373
+!MESSAGE Board Pin Name: Invalid data : (// P3_6 ) in line number 77
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 14:57:39.373
+!MESSAGE Board Pin Name: Invalid data : (// P3_5 ) in line number 79
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 14:57:39.374
+!MESSAGE Board Pin Name: Invalid data : (// P3_4 ) in line number 81
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 14:57:39.374
+!MESSAGE Board Pin Name: Invalid data : (// P3_3 ) in line number 83
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 14:57:39.375
+!MESSAGE Board Pin Name: Invalid data : (// P3_2 ) in line number 85
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 14:57:39.375
+!MESSAGE Board Pin Name: Invalid data : (// P3_1 ) in line number 87
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 14:57:39.375
+!MESSAGE Board Pin Name: Invalid data : (// P3_0 ) in line number 89
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 14:57:39.375
+!MESSAGE Board Pin Name: Empty line found in line number 91
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 14:57:39.375
+!MESSAGE Board Pin Name: Invalid data : (// P2_15 ) in line number 92
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 14:57:39.375
+!MESSAGE Board Pin Name: Invalid data : (// P2_14 ) in line number 94
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 14:57:39.376
+!MESSAGE Board Pin Name: Invalid data : (// P2_10 ) in line number 96
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 14:57:39.376
+!MESSAGE Board Pin Name: Invalid data : (// P2_9 ) in line number 98
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 14:57:39.376
+!MESSAGE Board Pin Name: Invalid data : (// P2_8 ) in line number 100
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 14:57:39.376
+!MESSAGE Board Pin Name: Invalid data : (// P2_7 ) in line number 102
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 14:57:39.376
+!MESSAGE Board Pin Name: Invalid data : (// P2_6 ) in line number 104
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 14:57:39.377
+!MESSAGE Board Pin Name: Invalid data : (// P2_5 ) in line number 106
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 14:57:39.377
+!MESSAGE Board Pin Name: Invalid data : (// P2_4 ) in line number 108
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 14:57:39.377
+!MESSAGE Board Pin Name: Invalid data : (// P2_3 ) in line number 110
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 14:57:39.377
+!MESSAGE Board Pin Name: Invalid data : (// P2_2 ) in line number 112
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 14:57:39.377
+!MESSAGE Board Pin Name: Invalid data : (// P2_1 ) in line number 114
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 14:57:39.378
+!MESSAGE Board Pin Name: Invalid data : (// P2_0 ) in line number 116
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 14:57:39.378
+!MESSAGE Board Pin Name: Empty line found in line number 118
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 14:57:39.378
+!MESSAGE Board Pin Name: Invalid data : (// P5_7 ) in line number 119
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 14:57:39.378
+!MESSAGE Board Pin Name: Invalid data : (// P5_2 ) in line number 121
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 14:57:39.378
+!MESSAGE Board Pin Name: Invalid data : (// P5_1 ) in line number 123
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 14:57:39.378
+!MESSAGE Board Pin Name: Invalid data : (// P5_0 ) in line number 125
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 14:57:39.379
+!MESSAGE Board Pin Name: Empty line found in line number 127
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 14:57:39.379
+!MESSAGE Board Pin Name: Invalid data : (// P14_15 ) in line number 128
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 14:57:39.379
+!MESSAGE Board Pin Name: Invalid data : (// P14_14 ) in line number 130
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 14:57:39.380
+!MESSAGE Board Pin Name: Invalid data : (// P14_13 ) in line number 132
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 14:57:39.380
+!MESSAGE Board Pin Name: Invalid data : (// P14_12 ) in line number 134
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 14:57:39.380
+!MESSAGE Board Pin Name: Invalid data : (// P14_9 ) in line number 136
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 14:57:39.380
+!MESSAGE Board Pin Name: Invalid data : (// P14_8 ) in line number 138
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 14:57:39.381
+!MESSAGE Board Pin Name: Invalid data : (// P14_7 ) in line number 140
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 14:57:39.381
+!MESSAGE Board Pin Name: Invalid data : (// P14_6 ) in line number 142
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 14:57:39.381
+!MESSAGE Board Pin Name: Invalid data : (// P14_5 ) in line number 144
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 14:57:39.381
+!MESSAGE Board Pin Name: Invalid data : (// P14_4 ) in line number 146
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 14:57:39.382
+!MESSAGE Board Pin Name: Invalid data : (// P14_3 ) in line number 148
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 14:57:39.382
+!MESSAGE Board Pin Name: Invalid data : (// P14_2 ) in line number 150
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 14:57:39.382
+!MESSAGE Board Pin Name: Invalid data : (// P14_1 ) in line number 152
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 14:57:39.382
+!MESSAGE Board Pin Name: Invalid data : (// P14_0 ) in line number 154
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 14:57:39.382
+!MESSAGE Board Pin Name: Empty line found in line number 156
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:02:01.908
+!MESSAGE USER_ACTION : Manual Pin Allocator Dialog is closed..!
+
+!ENTRY APP_MIGRATION 1 0 2026-07-09 15:07:48.620
+!MESSAGE USER_ACTION : DEVICE MIGRATION Started
+
+!ENTRY com.dave.mbs.common 1 0 2026-07-09 15:07:48.627
+!MESSAGE *************Saving EMF data into file system*******************
+
+!ENTRY com.dave.mbs.common 1 0 2026-07-09 15:07:48.654
+!MESSAGE *************Saving Groovy data into file system*******************
+
+!ENTRY COMMON 1 0 2026-07-09 15:07:48.850
+!MESSAGE Time Taken By Serialization  : 195 ms :: C:\Infineon\Tools\DAVE IDE\4.5.0.202105191637\eclipse\workspace\Battery_BMS\Dave\Model\projectData.bin
+
+!ENTRY com.dave.mbs.common 1 0 2026-07-09 15:07:48.902
+!MESSAGE -1
+
+!ENTRY com.dave.mbs.common 1 0 2026-07-09 15:07:48.903
+!MESSAGE -1
+
+!ENTRY com.dave.mbs.common 1 0 2026-07-09 15:07:48.903
+!MESSAGE -1
+
+!ENTRY com.dave.mbs.common 1 0 2026-07-09 15:07:48.903
+!MESSAGE -1
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:07:57.754
+!MESSAGE Board Pin Name: Invalid data : (// Board pin label) in line number 1
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:07:57.754
+!MESSAGE Board Pin Name: Invalid data : (// XMC4800 IoT Connectivity Kit (XMC4800_F100x2048)) in line number 2
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:07:57.755
+!MESSAGE Board Pin Name: Invalid data : (// v1.1 2020-08-17) in line number 3
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:07:57.755
+!MESSAGE Board Pin Name: Empty line found in line number 4
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:07:57.756
+!MESSAGE Board Pin Name: Invalid data : (// P0_12) in line number 5
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:07:57.757
+!MESSAGE Board Pin Name: Invalid data : (// P0_11) in line number 7
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:07:57.757
+!MESSAGE Board Pin Name: Invalid data : (// P0_10 ) in line number 9
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:07:57.757
+!MESSAGE Board Pin Name: Invalid data : (// P0_9 ) in line number 11
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:07:57.758
+!MESSAGE Board Pin Name: Invalid data : (// P0_8 ) in line number 13
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:07:57.758
+!MESSAGE Board Pin Name: Invalid data : (// P0_7 ) in line number 15
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:07:57.759
+!MESSAGE Board Pin Name: Invalid data : (// P0_6 ) in line number 17
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:07:57.759
+!MESSAGE Board Pin Name: Invalid data : (// P0_5 ) in line number 19
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:07:57.760
+!MESSAGE Board Pin Name: Invalid data : (// P0_4 ) in line number 21
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:07:57.760
+!MESSAGE Board Pin Name: Invalid data : (// P0_3 ) in line number 23
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:07:57.761
+!MESSAGE Board Pin Name: Invalid data : (// P0_2 ) in line number 25
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:07:57.761
+!MESSAGE Board Pin Name: Invalid data : (// P0_1 ) in line number 27
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:07:57.762
+!MESSAGE Board Pin Name: Invalid data : (// P0_0 ) in line number 29
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:07:57.762
+!MESSAGE Board Pin Name: Empty line found in line number 31
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:07:57.762
+!MESSAGE Board Pin Name: Invalid data : (// P1_15 ) in line number 32
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:07:57.763
+!MESSAGE Board Pin Name: Invalid data : (// P1_14 ) in line number 34
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:07:57.763
+!MESSAGE Board Pin Name: Invalid data : (// P1_13 ) in line number 36
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:07:57.763
+!MESSAGE Board Pin Name: Invalid data : (// P1_12 ) in line number 38
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:07:57.763
+!MESSAGE Board Pin Name: Invalid data : (// P1_11 ) in line number 40
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:07:57.763
+!MESSAGE Board Pin Name: Invalid data : (// P1_10 ) in line number 42
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:07:57.764
+!MESSAGE Board Pin Name: Invalid data : (// P1_9 ) in line number 44
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:07:57.764
+!MESSAGE Board Pin Name: Invalid data : (// P1_8 ) in line number 46
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:07:57.765
+!MESSAGE Board Pin Name: Invalid data : (// P1_7 ) in line number 48
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:07:57.765
+!MESSAGE Board Pin Name: Invalid data : (// P1_6 ) in line number 50
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:07:57.766
+!MESSAGE Board Pin Name: Invalid data : (// P1_5 ) in line number 52
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:07:57.766
+!MESSAGE Board Pin Name: Invalid data : (// P1_4 ) in line number 54
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:07:57.766
+!MESSAGE Board Pin Name: Invalid data : (// P1_3 ) in line number 56
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:07:57.766
+!MESSAGE Board Pin Name: Invalid data : (// P1_2 ) in line number 58
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:07:57.767
+!MESSAGE Board Pin Name: Invalid data : (// P1_1 ) in line number 60
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:07:57.767
+!MESSAGE Board Pin Name: Invalid data : (// P1_0 ) in line number 62
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:07:57.768
+!MESSAGE Board Pin Name: Empty line found in line number 64
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:07:57.768
+!MESSAGE Board Pin Name: Invalid data : (// P4_1 ) in line number 65
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:07:57.768
+!MESSAGE Board Pin Name: Invalid data : (// P4_0 ) in line number 67
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:07:57.768
+!MESSAGE Board Pin Name: Empty line found in line number 69
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:07:57.769
+!MESSAGE Board Pin Name: Invalid data : (// P15_9 ) in line number 70
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:07:57.769
+!MESSAGE Board Pin Name: Invalid data : (// P15_3 ) in line number 72
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:07:57.769
+!MESSAGE Board Pin Name: Invalid data : (// P15_2 ) in line number 74
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:07:57.769
+!MESSAGE Board Pin Name: Empty line found in line number 76
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:07:57.770
+!MESSAGE Board Pin Name: Invalid data : (// P3_6 ) in line number 77
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:07:57.770
+!MESSAGE Board Pin Name: Invalid data : (// P3_5 ) in line number 79
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:07:57.770
+!MESSAGE Board Pin Name: Invalid data : (// P3_4 ) in line number 81
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:07:57.770
+!MESSAGE Board Pin Name: Invalid data : (// P3_3 ) in line number 83
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:07:57.770
+!MESSAGE Board Pin Name: Invalid data : (// P3_2 ) in line number 85
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:07:57.770
+!MESSAGE Board Pin Name: Invalid data : (// P3_1 ) in line number 87
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:07:57.771
+!MESSAGE Board Pin Name: Invalid data : (// P3_0 ) in line number 89
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:07:57.771
+!MESSAGE Board Pin Name: Empty line found in line number 91
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:07:57.771
+!MESSAGE Board Pin Name: Invalid data : (// P2_15 ) in line number 92
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:07:57.771
+!MESSAGE Board Pin Name: Invalid data : (// P2_14 ) in line number 94
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:07:57.771
+!MESSAGE Board Pin Name: Invalid data : (// P2_10 ) in line number 96
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:07:57.772
+!MESSAGE Board Pin Name: Invalid data : (// P2_9 ) in line number 98
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:07:57.772
+!MESSAGE Board Pin Name: Invalid data : (// P2_8 ) in line number 100
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:07:57.772
+!MESSAGE Board Pin Name: Invalid data : (// P2_7 ) in line number 102
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:07:57.772
+!MESSAGE Board Pin Name: Invalid data : (// P2_6 ) in line number 104
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:07:57.772
+!MESSAGE Board Pin Name: Invalid data : (// P2_5 ) in line number 106
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:07:57.772
+!MESSAGE Board Pin Name: Invalid data : (// P2_4 ) in line number 108
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:07:57.773
+!MESSAGE Board Pin Name: Invalid data : (// P2_3 ) in line number 110
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:07:57.773
+!MESSAGE Board Pin Name: Invalid data : (// P2_2 ) in line number 112
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:07:57.773
+!MESSAGE Board Pin Name: Invalid data : (// P2_1 ) in line number 114
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:07:57.773
+!MESSAGE Board Pin Name: Invalid data : (// P2_0 ) in line number 116
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:07:57.773
+!MESSAGE Board Pin Name: Empty line found in line number 118
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:07:57.774
+!MESSAGE Board Pin Name: Invalid data : (// P5_7 ) in line number 119
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:07:57.774
+!MESSAGE Board Pin Name: Invalid data : (// P5_2 ) in line number 121
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:07:57.774
+!MESSAGE Board Pin Name: Invalid data : (// P5_1 ) in line number 123
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:07:57.774
+!MESSAGE Board Pin Name: Invalid data : (// P5_0 ) in line number 125
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:07:57.775
+!MESSAGE Board Pin Name: Empty line found in line number 127
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:07:57.775
+!MESSAGE Board Pin Name: Invalid data : (// P14_15 ) in line number 128
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:07:57.775
+!MESSAGE Board Pin Name: Invalid data : (// P14_14 ) in line number 130
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:07:57.775
+!MESSAGE Board Pin Name: Invalid data : (// P14_13 ) in line number 132
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:07:57.775
+!MESSAGE Board Pin Name: Invalid data : (// P14_12 ) in line number 134
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:07:57.775
+!MESSAGE Board Pin Name: Invalid data : (// P14_9 ) in line number 136
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:07:57.775
+!MESSAGE Board Pin Name: Invalid data : (// P14_8 ) in line number 138
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:07:57.776
+!MESSAGE Board Pin Name: Invalid data : (// P14_7 ) in line number 140
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:07:57.776
+!MESSAGE Board Pin Name: Invalid data : (// P14_6 ) in line number 142
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:07:57.776
+!MESSAGE Board Pin Name: Invalid data : (// P14_5 ) in line number 144
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:07:57.776
+!MESSAGE Board Pin Name: Invalid data : (// P14_4 ) in line number 146
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:07:57.776
+!MESSAGE Board Pin Name: Invalid data : (// P14_3 ) in line number 148
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:07:57.776
+!MESSAGE Board Pin Name: Invalid data : (// P14_2 ) in line number 150
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:07:57.776
+!MESSAGE Board Pin Name: Invalid data : (// P14_1 ) in line number 152
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:07:57.777
+!MESSAGE Board Pin Name: Invalid data : (// P14_0 ) in line number 154
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:07:57.777
+!MESSAGE Board Pin Name: Empty line found in line number 156
+
+!ENTRY com.dave.mbs.common 1 0 2026-07-09 15:07:58.343
+!MESSAGE assertion failed: 
+
+!ENTRY com.dave.mbs.common 1 0 2026-07-09 15:07:58.344
+!MESSAGE File 'C:\Infineon\Tools\DAVE IDE\4.5.0.202105191637\eclipse\workspace\Battery_BMS_XMC4800-F100x2048_0\linker_script.ld' does not exist
+
+!ENTRY com.dave.mbs.common 1 0 2026-07-09 15:08:00.209
+!MESSAGE *************Saving EMF data into file system*******************
+
+!ENTRY com.dave.mbs.common 1 0 2026-07-09 15:08:00.228
+!MESSAGE *************Saving Groovy data into file system*******************
+
+!ENTRY COMMON 1 0 2026-07-09 15:08:00.430
+!MESSAGE Time Taken By Serialization  : 202 ms :: C:\Infineon\Tools\DAVE IDE\4.5.0.202105191637\eclipse\workspace\Battery_BMS\Dave\Model\projectData.bin
+
+!ENTRY SOLVER 1 0 2026-07-09 15:08:00.510
+!MESSAGE 
+
+!ENTRY APPSTORE 1 0 2026-07-09 15:08:00.597
+!MESSAGE USER_ACTION : Time taken for loading LibraryStore data for SoftwareId [XMC4.8.00.F100.ALL] is: 86 msec 
+
+!ENTRY com.dave.mbs.common 1 0 2026-07-09 15:08:00.680
+!MESSAGE ****************Cleaning project data:Battery_BMS*******************
+
+!ENTRY APPLICATION_MODEL 1 0 2026-07-09 15:08:00.683
+!MESSAGE USER_ACTION : Time taken for disposing objects for memory cleanup: 85 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2026-07-09 15:08:00.761
+!MESSAGE USER_ACTION : Active project:Battery_BMS_XMC4800-F100x2048_0[ Software ID:XMC4.8.00.F100.ALL]
+
+!ENTRY COMMON 1 0 2026-07-09 15:08:01.225
+!MESSAGE Time Taken By De-Serialization  : 438 ms :: C:\Infineon\Tools\DAVE IDE\4.5.0.202105191637\eclipse\workspace\Battery_BMS_XMC4800-F100x2048_0\Dave\Model\projectData.bin
+
+!ENTRY com.dave.mbs.common 1 0 2026-07-09 15:08:01.226
+!MESSAGE *************Serializing EMF and Groovy data to RAM*******************
+
+!ENTRY APPLICATION_MODEL 1 0 2026-07-09 15:08:01.398
+!MESSAGE USER_ACTION : Time taken for initializing Application Model is: 636 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2026-07-09 15:08:01.399
+!MESSAGE USER_ACTION : Time taken for reloadLastSolverResult(updateQuery): 1 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2026-07-09 15:08:01.403
+!MESSAGE USER_ACTION : Time taken for reloadLastSolverResult(getSolutionQuery): 3 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2026-07-09 15:08:01.403
+!MESSAGE USER_ACTION : Time taken for updating views is: 0 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2026-07-09 15:08:01.739
+!MESSAGE USER_ACTION : Time taken for rendering views is: 336 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2026-07-09 15:08:01.818
+!MESSAGE USER_ACTION : Total time taken for setting project as active is: 1220 msec 
+
+!ENTRY com.dave.mbs.common 1 0 2026-07-09 15:08:01.859
+!MESSAGE Resource '/Battery_BMS_XMC4800-F100x2048_0' is not open.
+
+!ENTRY APPLICATION_MODEL 1 0 2026-07-09 15:08:02.345
+!MESSAGE USER_ACTION : Deleting resource : http://resources/4.1.14/app/UART/0
+
+!ENTRY APPLICATION_MODEL 1 0 2026-07-09 15:08:02.358
+!MESSAGE USER_ACTION : Deleting resource : http://resources/4.1.18/app/SYSTIMER/0
+
+!ENTRY APPLICATION_MODEL 1 0 2026-07-09 15:08:02.365
+!MESSAGE USER_ACTION : Deleting resource : http://resources/4.0.10/app/INTERRUPT/0
+
+!ENTRY APPLICATION_MODEL 1 0 2026-07-09 15:08:02.368
+!MESSAGE USER_ACTION : Deleting resource : http://resources/4.0.10/app/INTERRUPT/1
+
+!ENTRY APPLICATION_MODEL 1 0 2026-07-09 15:08:02.378
+!MESSAGE USER_ACTION : Deleting resource : http://resources/4.0.18/app/CPU_CTRL_XMC4/0
+
+!ENTRY APPLICATION_MODEL 1 0 2026-07-09 15:08:02.388
+!MESSAGE USER_ACTION : Deleting resource : http://resources/4.0.14/app/MULTICAN_CONFIG/0
+
+!ENTRY APPLICATION_MODEL 1 0 2026-07-09 15:08:02.400
+!MESSAGE USER_ACTION : Deleting resource : http://resources/4.0.20/app/GLOBAL_CAN/0
+
+!ENTRY APPLICATION_MODEL 1 0 2026-07-09 15:08:02.409
+!MESSAGE USER_ACTION : Deleting resource : http://resources/4.0.24/app/CLOCK_XMC4/0
+
+!ENTRY org.eclipse.cdt.core 1 0 2026-07-09 15:08:03.012
+!MESSAGE Indexed 'Battery_BMS_XMC4800-F100x2048_0' (40 sources, 95 headers) in 1.07 sec: 15,991 declarations; 39,112 references; 3 unresolved inclusions; 0 syntax errors; 100 unresolved names (0.18%)
+
+!ENTRY APPLICATION_MODEL 1 0 2026-07-09 15:08:03.389
+!MESSAGE USER_ACTION : App Getting Added: UART [4.1.14]
+
+!ENTRY APPSTORE 1 0 2026-07-09 15:08:03.452
+!MESSAGE USER_ACTION : Loaded DD: C:\Infineon\Tools\DAVE IDE\4.5.0.202105191637\D_LibraryStore_4.4\resources\XMC4.8.00.F100.ALL\device\xmc4800\0\MANIFEST\xmc4800.dd
+
+!ENTRY SOLVER 1 0 2026-07-09 15:08:03.455
+!MESSAGE USER_ACTION : Creating an APP: UART [4.1.14]
+
+!ENTRY SOLVER 1 0 2026-07-09 15:08:03.527
+!MESSAGE USER_ACTION : Creating an APP: CLOCK_XMC4 [4.0.24]
+
+!ENTRY SOLVER 1 0 2026-07-09 15:08:03.600
+!MESSAGE USER_ACTION : Creating an APP: CPU_CTRL_XMC4 [4.0.18]
+
+!ENTRY APPLICATION_MODEL 1 0 2026-07-09 15:08:03.646
+!MESSAGE USER_ACTION : Created APP: CLOCK_XMC4 [4.0.24]-->http://resources/4.0.24/app/CLOCK_XMC4/0
+
+!ENTRY APPLICATION_MODEL 1 0 2026-07-09 15:08:03.651
+!MESSAGE USER_ACTION : Created APP: CPU_CTRL_XMC4 [4.0.18]-->http://resources/4.0.18/app/CPU_CTRL_XMC4/0
+
+!ENTRY APPLICATION_MODEL 1 0 2026-07-09 15:08:03.655
+!MESSAGE USER_ACTION : Created APP: UART [4.1.14]-->http://resources/4.1.14/app/UART/0
+
+!ENTRY APPLICATION_MODEL 1 0 2026-07-09 15:08:03.754
+!MESSAGE USER_ACTION : App Getting Added: SYSTIMER [4.1.18]
+
+!ENTRY SOLVER 1 0 2026-07-09 15:08:03.755
+!MESSAGE USER_ACTION : Creating an APP: SYSTIMER [4.1.18]
+
+!ENTRY APPLICATION_MODEL 1 0 2026-07-09 15:08:03.788
+!MESSAGE USER_ACTION : Created APP: SYSTIMER [4.1.18]-->http://resources/4.1.18/app/SYSTIMER/0
+
+!ENTRY APPLICATION_MODEL 1 0 2026-07-09 15:08:03.823
+!MESSAGE USER_ACTION : App Getting Added: INTERRUPT [4.0.10]
+
+!ENTRY SOLVER 1 0 2026-07-09 15:08:03.824
+!MESSAGE USER_ACTION : Creating an APP: INTERRUPT [4.0.10]
+
+!ENTRY APPLICATION_MODEL 1 0 2026-07-09 15:08:03.841
+!MESSAGE USER_ACTION : Created APP: INTERRUPT [4.0.10]-->http://resources/4.0.10/app/INTERRUPT/0
+
+!ENTRY APPLICATION_MODEL 1 0 2026-07-09 15:08:03.878
+!MESSAGE USER_ACTION : App Getting Added: INTERRUPT [4.0.10]
+
+!ENTRY SOLVER 1 0 2026-07-09 15:08:03.880
+!MESSAGE USER_ACTION : Creating an APP: INTERRUPT [4.0.10]
+
+!ENTRY APPLICATION_MODEL 1 0 2026-07-09 15:08:03.892
+!MESSAGE USER_ACTION : Created APP: INTERRUPT [4.0.10]-->http://resources/4.0.10/app/INTERRUPT/1
+
+!ENTRY APPLICATION_MODEL 1 0 2026-07-09 15:08:03.945
+!MESSAGE USER_ACTION : App Getting Added: MULTICAN_CONFIG [4.0.14]
+
+!ENTRY SOLVER 1 0 2026-07-09 15:08:03.946
+!MESSAGE USER_ACTION : Creating an APP: MULTICAN_CONFIG [4.0.14]
+
+!ENTRY SOLVER 1 0 2026-07-09 15:08:04.264
+!MESSAGE USER_ACTION : Creating an APP: GLOBAL_CAN [4.0.20]
+
+!ENTRY APPLICATION_MODEL 1 0 2026-07-09 15:08:04.410
+!MESSAGE USER_ACTION : Created APP: GLOBAL_CAN [4.0.20]-->http://resources/4.0.20/app/GLOBAL_CAN/0
+
+!ENTRY APPLICATION_MODEL 1 0 2026-07-09 15:08:04.438
+!MESSAGE USER_ACTION : Created APP: MULTICAN_CONFIG [4.0.14]-->http://resources/4.0.14/app/MULTICAN_CONFIG/0
+
+!ENTRY com.dave.mbs.common 1 0 2026-07-09 15:08:04.683
+!MESSAGE paste() : object not found CPU_CTRL_XMC4/CPU_CTRL_XMC4_0
+
+!ENTRY com.dave.mbs.common 1 0 2026-07-09 15:08:05.345
+!MESSAGE **************Serialization is called for successful UI action without Solver*********
+
+!ENTRY com.dave.mbs.common 1 0 2026-07-09 15:08:05.346
+!MESSAGE *************Serializing EMF and Groovy data to RAM*******************
+
+!ENTRY com.dave.mbs.common 1 0 2026-07-09 15:08:05.506
+!MESSAGE Time taken for serialization in msec: 161
+
+!ENTRY com.dave.mbs.common 1 0 2026-07-09 15:08:05.506
+!MESSAGE *****************************
+
+!ENTRY com.dave.mbs.common 1 0 2026-07-09 15:08:05.719
+!MESSAGE **************Serialization is called for successful UI action without Solver*********
+
+!ENTRY com.dave.mbs.common 1 0 2026-07-09 15:08:05.720
+!MESSAGE *************Serializing EMF and Groovy data to RAM*******************
+
+!ENTRY com.dave.mbs.common 1 0 2026-07-09 15:08:05.860
+!MESSAGE Time taken for serialization in msec: 140
+
+!ENTRY com.dave.mbs.common 1 0 2026-07-09 15:08:05.860
+!MESSAGE *****************************
+
+!ENTRY com.dave.mbs.common 1 0 2026-07-09 15:08:05.968
+!MESSAGE **************Serialization is called for successful UI action without Solver*********
+
+!ENTRY com.dave.mbs.common 1 0 2026-07-09 15:08:05.968
+!MESSAGE *************Serializing EMF and Groovy data to RAM*******************
+
+!ENTRY com.dave.mbs.common 1 0 2026-07-09 15:08:06.108
+!MESSAGE Time taken for serialization in msec: 139
+
+!ENTRY com.dave.mbs.common 1 0 2026-07-09 15:08:06.108
+!MESSAGE *****************************
+
+!ENTRY com.dave.mbs.common 1 0 2026-07-09 15:08:06.125
+!MESSAGE **************Serialization is called for successful UI action without Solver*********
+
+!ENTRY com.dave.mbs.common 1 0 2026-07-09 15:08:06.126
+!MESSAGE *************Serializing EMF and Groovy data to RAM*******************
+
+!ENTRY com.dave.mbs.common 1 0 2026-07-09 15:08:06.274
+!MESSAGE Time taken for serialization in msec: 148
+
+!ENTRY com.dave.mbs.common 1 0 2026-07-09 15:08:06.274
+!MESSAGE *****************************
+
+!ENTRY com.dave.mbs.common 1 0 2026-07-09 15:08:06.356
+!MESSAGE **************Serialization is called for successful UI action without Solver*********
+
+!ENTRY com.dave.mbs.common 1 0 2026-07-09 15:08:06.356
+!MESSAGE *************Serializing EMF and Groovy data to RAM*******************
+
+!ENTRY com.dave.mbs.common 1 0 2026-07-09 15:08:06.512
+!MESSAGE Time taken for serialization in msec: 156
+
+!ENTRY com.dave.mbs.common 1 0 2026-07-09 15:08:06.512
+!MESSAGE *****************************
+
+!ENTRY com.dave.mbs.common 1 0 2026-07-09 15:08:06.533
+!MESSAGE **************Serialization is called for successful UI action without Solver*********
+
+!ENTRY com.dave.mbs.common 1 0 2026-07-09 15:08:06.534
+!MESSAGE *************Serializing EMF and Groovy data to RAM*******************
+
+!ENTRY com.dave.mbs.common 1 0 2026-07-09 15:08:06.638
+!MESSAGE Time taken for serialization in msec: 104
+
+!ENTRY com.dave.mbs.common 1 0 2026-07-09 15:08:06.638
+!MESSAGE *****************************
+
+!ENTRY com.dave.mbs.common 1 0 2026-07-09 15:08:06.723
+!MESSAGE **************Serialization is called for successful UI action without Solver*********
+
+!ENTRY com.dave.mbs.common 1 0 2026-07-09 15:08:06.723
+!MESSAGE *************Serializing EMF and Groovy data to RAM*******************
+
+!ENTRY com.dave.mbs.common 1 0 2026-07-09 15:08:06.864
+!MESSAGE Time taken for serialization in msec: 141
+
+!ENTRY com.dave.mbs.common 1 0 2026-07-09 15:08:06.864
+!MESSAGE *****************************
+
+!ENTRY com.dave.mbs.common 1 0 2026-07-09 15:08:06.996
+!MESSAGE **************Serialization is called for successful UI action without Solver*********
+
+!ENTRY com.dave.mbs.common 1 0 2026-07-09 15:08:06.996
+!MESSAGE *************Serializing EMF and Groovy data to RAM*******************
+
+!ENTRY com.dave.mbs.common 1 0 2026-07-09 15:08:07.142
+!MESSAGE Time taken for serialization in msec: 146
+
+!ENTRY com.dave.mbs.common 1 0 2026-07-09 15:08:07.142
+!MESSAGE *****************************
+
+!ENTRY com.dave.mbs.common 1 0 2026-07-09 15:08:07.333
+!MESSAGE **************Serialization is called for successful UI action without Solver*********
+
+!ENTRY com.dave.mbs.common 1 0 2026-07-09 15:08:07.333
+!MESSAGE *************Serializing EMF and Groovy data to RAM*******************
+
+!ENTRY com.dave.mbs.common 1 0 2026-07-09 15:08:07.488
+!MESSAGE Time taken for serialization in msec: 155
+
+!ENTRY com.dave.mbs.common 1 0 2026-07-09 15:08:07.488
+!MESSAGE *****************************
+
+!ENTRY SOLVER 1 0 2026-07-09 15:08:07.529
+!MESSAGE USER_ACTION : Library store ECO file :C:\Infineon\Tools\DAVE IDE\4.5.0.202105191637\D_LibraryStore_4.4\resources\XMC4.8.00.F100.ALL\device\xmc4800\0\MANIFEST\solver_data\xmc4500_solver.eco
+
+!ENTRY SOLVER 1 0 2026-07-09 15:08:07.658
+!MESSAGE USER_ACTION : Copied ECO file to temp location :C:\Infineon\Tools\DAVE IDE\4.5.0.202105191637\eclipse\workspace\.metadata\.plugins\solver_data\XMC4.8.00.F100.ALL\xmc4500_solver.eco
+
+!ENTRY SOLVER 1 0 2026-07-09 15:08:09.240
+!MESSAGE USER_ACTION : Loaded ECO file :C:\Infineon\Tools\DAVE IDE\4.5.0.202105191637\eclipse\workspace\.metadata\.plugins\solver_data\XMC4.8.00.F100.ALL\xmc4500_solver.eco
+
+!ENTRY APPSTORE 1 0 2026-07-09 15:08:09.785
+!MESSAGE USER_ACTION : Loaded DD: C:\Infineon\Tools\DAVE IDE\4.5.0.202105191637\D_LibraryStore_4.4\resources\48.0.0\peripheral\scu\0\MANIFEST\scu.dd
+
+!ENTRY APPSTORE 1 0 2026-07-09 15:08:09.790
+!MESSAGE USER_ACTION : Loaded DD: C:\Infineon\Tools\DAVE IDE\4.5.0.202105191637\D_LibraryStore_4.4\resources\48.0.0\port\debug_port\0\MANIFEST\debug_port.dd
+
+!ENTRY APPSTORE 1 0 2026-07-09 15:08:09.802
+!MESSAGE USER_ACTION : Loaded DD: C:\Infineon\Tools\DAVE IDE\4.5.0.202105191637\D_LibraryStore_4.4\resources\48.0.0\peripheral\cpu\0\MANIFEST\cpu.dd
+
+!ENTRY APPSTORE 1 0 2026-07-09 15:08:09.820
+!MESSAGE USER_ACTION : Loaded DD: C:\Infineon\Tools\DAVE IDE\4.5.0.202105191637\D_LibraryStore_4.4\resources\48.0.0\peripheral\usic\1\MANIFEST\usic.dd
+
+!ENTRY APPSTORE 1 0 2026-07-09 15:08:09.903
+!MESSAGE USER_ACTION : Loaded DD: C:\Infineon\Tools\DAVE IDE\4.5.0.202105191637\D_LibraryStore_4.4\resources\48.0.0\peripheral\can\0\MANIFEST\can.dd
+
+!ENTRY APPSTORE 1 0 2026-07-09 15:08:09.935
+!MESSAGE USER_ACTION : Loaded DD: C:\Infineon\Tools\DAVE IDE\4.5.0.202105191637\D_LibraryStore_4.4\resources\48.1.0\port\p\1\MANIFEST\p.dd
+
+!ENTRY APPSTORE 1 0 2026-07-09 15:08:09.955
+!MESSAGE USER_ACTION : Loaded DD: C:\Infineon\Tools\DAVE IDE\4.5.0.202105191637\D_LibraryStore_4.4\resources\LQFP100.0.0\devicepackage\0\MANIFEST\devicepackage.dd
+
+!ENTRY com.dave.mbs.common 1 0 2026-07-09 15:08:09.970
+!MESSAGE Time taken for processing complete solver result is: 192 msec 
+
+!ENTRY com.dave.mbs.common 1 0 2026-07-09 15:08:09.970
+!MESSAGE *****Serialization is called after successful solver action*****
+
+!ENTRY com.dave.mbs.common 1 0 2026-07-09 15:08:09.970
+!MESSAGE *************Saving EMF data into file system*******************
+
+!ENTRY com.dave.mbs.common 1 0 2026-07-09 15:08:09.982
+!MESSAGE *************Saving Groovy data into file system*******************
+
+!ENTRY COMMON 1 0 2026-07-09 15:08:10.108
+!MESSAGE Time Taken By Serialization  : 125 ms :: C:\Infineon\Tools\DAVE IDE\4.5.0.202105191637\eclipse\workspace\Battery_BMS_XMC4800-F100x2048_0\Dave\Model\projectData.bin
+
+!ENTRY com.dave.mbs.common 1 0 2026-07-09 15:08:10.121
+!MESSAGE *************Serializing EMF and Groovy data to RAM*******************
+
+!ENTRY com.dave.mbs.common 1 0 2026-07-09 15:08:10.280
+!MESSAGE Time taken for serialization in msec: 310
+
+!ENTRY com.dave.mbs.common 1 0 2026-07-09 15:08:10.281
+!MESSAGE 
+
+!ENTRY MIGRATION 1 0 2026-07-09 15:08:10.291
+!MESSAGE Pasting Pin data to new APP :- UART_0 : Receive Pin : #59( P2.15 )
+
+!ENTRY DAVE CE 4 0 2026-07-09 15:08:10.484
+!MESSAGE 
+
+***START of Exception Info***
+Execution of solver query timed out
+com.ifx.davex.ce.core.solver.ProxySolver.handleTimeout(ProxySolver.java:486)
+com.ifx.davex.ce.core.solver.ProxySolver.processCmpdTermResult(ProxySolver.java:460)
+com.ifx.davex.ce.core.solver.ProxySolver.executeQuery(ProxySolver.java:425)
+com.ifx.davex.ce.core.solver.ProxySolver.sendQuery(ProxySolver.java:260)
+com.ifx.davex.ce.core.solver.SolverManager.getSolution(SolverManager.java:155)
+com.ifx.davex.ce.core.resource.mngts.ResourceManager.getSolution(ResourceManager.java:923)
+com.ifx.davex.ce.core.resource.mngts.ResourceManager.getSolverInfoAndProcess(ResourceManager.java:996)
+com.ifx.davex.ce.core.resource.mngts.ResourceManager.getSolutionFromSolver(ResourceManager.java:1175)
+com.ifx.davex.ce.core.appmigration.AppMigrationManager.pasteUserConfigHWResourcesForPinData(AppMigrationManager.java:2052)
+com.ifx.davex.ce.core.appmigration.AppMigrationManager.pasteUserDataToNewTopLevelApps(AppMigrationManager.java:1487)
+com.ifx.davex.ce.core.appmigration.AppMigrationManager.access$14(AppMigrationManager.java:1464)
+com.ifx.davex.ce.core.appmigration.AppMigrationManager$3.run(AppMigrationManager.java:1307)
+org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:119)
+***END of Exception Info***
+
+
+
+!ENTRY SOLVER 1 0 2026-07-09 15:08:10.485
+!MESSAGE 
+====================================== SOLVER ENVIRONMENT ========================================
+Solver Exe Path: null
+Solver Status: CONNECTED
+Solver Eclipse Instance: com.parctechnologies.eclipse.OutOfProcessEclipse@27a82abc
+DD Temp Dir: C:\Infineon\Tools\DAVE IDE\4.5.0.202105191637\eclipse\workspace\.metadata\.plugins\solver_data\XMC4.8.00.F100.ALL
+ECO file location: C:\Infineon\Tools\DAVE IDE\4.5.0.202105191637\eclipse\workspace\.metadata\.plugins\solver_data\XMC4.8.00.F100.ALL\xmc4500_solver.eco
+Temp DD File Exists: true
+Query Sent to Solver: true
+Query: timeout(solve_mapping_problem([ 
+reserved([scu,0,clkctrl,0,pll],'clock_xmc4$01551378862$0'),
+reserved([scu,0,clkctrl,0,sys],'clock_xmc4$01551375569$0'),
+reserved([scu,0,clkctrl,0,cpu],'clock_xmc4$01551391222$0'),
+reserved([scu,0,clkctrl,0,perbridge],'clock_xmc4$494804424$0'),
+reserved([scu,0,clkctrl,0,ebu],'clock_xmc4$01551389734$0'),
+reserved([scu,0,clkctrl,0,ccu],'clock_xmc4$01551391625$0'),
+reserved([scu,0,clkctrl,0,wdt],'clock_xmc4$01551372375$0'),
+reserved([scu,0,clkctrl,0,usb],'clock_xmc4$01551373850$0'),
+reserved([scu,0,clkctrl,0,sdmmc],'clock_xmc4$01551381723$0'),
+reserved([scu,0,pwrctrl,0,hibernate],'clock_xmc4$0778278092$0'),
+reserved([scu,0,rtcclksel],'clock_xmc4$1142722683$0'),
+reserved([scu,0,trap,0,sysoscwd],'clock_xmc4$1091210735$0'),
+reserved([scu,0,trap,0,sysvcolock],'clock_xmc4$1586947406$0'),
+reserved([scu,0,trap,0,usbvcolock],'clock_xmc4$0261647995$0'),
+reserved([scu,0,trap,0,ulpwdg],'clock_xmc4$01047137491$0'),
+reserved([cpu,0,exception,nmi],'cpu_ctrl_xmc4$01637679009$0'),
+reserved([cpu,0,exception,hardfault],'cpu_ctrl_xmc4$0571328980$0'),
+reserved([cpu,0,exception,memmanage],'cpu_ctrl_xmc4$1768468879$0'),
+reserved([cpu,0,exception,busfault],'cpu_ctrl_xmc4$1763234541$0'),
+reserved([cpu,0,exception,usagefault],'cpu_ctrl_xmc4$1814460844$0'),
+reserved([cpu,0,debug],'cpu_ctrl_xmc4$1964564605$0'),
+reserved([debug_port,_,pad,_],'cpu_ctrl_xmc4$01540614004$0'),
+reserved([debug_port,_,pad,_],'cpu_ctrl_xmc4$01540614322$0'),
+reserved([usic,_,channel,_],'uart$02118624699$0'),
+reserved([p,_,pad,_],'uart$01053640812$0'),
+reserved([p,_,pad,_],'uart$01053640750$0'),
+reserved([devicepackage,0,_],'uart$0164365666$0'),
+uri([devicepackage,0,59],'uart$0164365666$0'),
+reserved([devicepackage,0,_],'uart$0164365604$0'),
+reserved([cpu,0,systick],'systimer$0137142936$0'),
+reserved([cpu,0,nvic,interrupt,_],'interrupt$01436523993$0'),
+reserved([cpu,0,nvic,interrupt,_],'interrupt$01947058170$1'),
+reserved([can,_,global],'global_can$0435288881$0'),
+reserved([can,0,node,0],'multican_config$343528551$0'),
+reserved([can,_,mo,0],'multican_config$342603263$0'),
+reserved([can,_,mo,1],'multican_config$342603264$0'),
+signal('clock_xmc4$494804424$0',fpb,'clock_xmc4$494804424$0$fpb'),
+signal('clock_xmc4$01551391625$0',fccu,'clock_xmc4$01551391625$0$fccu'),
+signal('cpu_ctrl_xmc4$01637679009$0',nmi_in,'cpu_ctrl_xmc4$01637679009$0$nmi_in'),
+signal('cpu_ctrl_xmc4$1964564605$0',db_tck,'cpu_ctrl_xmc4$1964564605$0$db_tck'),
+signal('cpu_ctrl_xmc4$1964564605$0',db_tms,'cpu_ctrl_xmc4$1964564605$0$db_tms'),
+signal('uart$02118624699$0',dx0ins,'uart$02118624699$0$dx0ins'),
+signal('uart$02118624699$0',dx3ins,'uart$02118624699$0$dx3ins'),
+signal('uart$02118624699$0',dout0,'uart$02118624699$0$dout0'),
+signal('uart$01053640812$0',pad,'uart$01053640812$0$pad'),
+signal('uart$01053640750$0',pad,'uart$01053640750$0$pad'),
+signal('uart$02118624699$0',protocol_specific_int,'uart$02118624699$0$protocol_specific_int'),
+signal('uart$02118624699$0',standard_transmit_buffer_int,'uart$02118624699$0$standard_transmit_buffer_int'),
+signal('uart$02118624699$0',standard_receive_buffer_int,'uart$02118624699$0$standard_receive_buffer_int'),
+signal('uart$02118624699$0',alternate_receive_buffer_int,'uart$02118624699$0$alternate_receive_buffer_int'),
+signal('uart$0164365666$0',pin,'uart$0164365666$0$pin'),
+signal('uart$0164365604$0',pin,'uart$0164365604$0$pin'),
+signal('interrupt$01436523993$0',signal_in,'interrupt$01436523993$0$signal_in'),
+signal('interrupt$01947058170$1',signal_in,'interrupt$01947058170$1$signal_in'),
+signal('multican_config$343528551$0',rxd,'multican_config$343528551$0$rxd'),
+signal('multican_config$343528551$0',txd,'multican_config$343528551$0$txd'),
+signal('multican_config$343528551$0',alinp,'multican_config$343528551$0$alinp'),
+signal('multican_config$343528551$0',lecinp,'multican_config$343528551$0$lecinp'),
+signal('multican_config$343528551$0',trinp,'multican_config$343528551$0$trinp'),
+signal('multican_config$343528551$0',cfcinp,'multican_config$343528551$0$cfcinp'),
+signal('multican_config$342603263$0',txinp,'multican_config$342603263$0$txinp'),
+signal('multican_config$342603263$0',rxinp,'multican_config$342603263$0$rxinp'),
+signal('multican_config$342603264$0',txinp,'multican_config$342603264$0$txinp'),
+signal('multican_config$342603264$0',rxinp,'multican_config$342603264$0$rxinp'),
+connected('uart$0164365666$0$pin','uart$01053640812$0$pad',1),
+connected('uart$0164365604$0$pin','uart$01053640750$0$pad',1),
+connected('uart$02118624699$0$dout0','uart$01053640750$0$pad',1),
+connected('uart$01053640812$0$pad','uart$0164365666$0$pin',1),
+connected('uart$01053640812$0$pad','uart$02118624699$0$dx0ins',1),
+connected('uart$01053640750$0$pad','uart$0164365604$0$pin',1),
+register_value('uart$02118624699$0',ccr_hpcen,0),
+register_value('uart$02118624699$0',tbctr_size,4),
+register_value('uart$02118624699$0',rbctr_size,4)
+ ],Vars,Regs,Appslocalvars),15,writeln(timeout),all_solution, Timer, Due, Remainder).
+
+====================================== SOLVER ENVIRONMENT ========================================
+
+
+
+!ENTRY MIGRATION 1 0 2026-07-09 15:08:10.497
+!MESSAGE Due to solver failure Pin data has been removed from new APP :- UART_0 : Receive Pin : #59( P2.15 )
+
+!ENTRY MIGRATION 1 0 2026-07-09 15:08:11.036
+!MESSAGE Pasting Pin data to new APP :- UART_0 : Transmit Pin : #60( P2.14 )
+
+!ENTRY DAVE CE 4 0 2026-07-09 15:08:11.234
+!MESSAGE 
+
+***START of Exception Info***
+Execution of solver query timed out
+com.ifx.davex.ce.core.solver.ProxySolver.handleTimeout(ProxySolver.java:486)
+com.ifx.davex.ce.core.solver.ProxySolver.processCmpdTermResult(ProxySolver.java:460)
+com.ifx.davex.ce.core.solver.ProxySolver.executeQuery(ProxySolver.java:425)
+com.ifx.davex.ce.core.solver.ProxySolver.sendQuery(ProxySolver.java:260)
+com.ifx.davex.ce.core.solver.SolverManager.getSolution(SolverManager.java:155)
+com.ifx.davex.ce.core.resource.mngts.ResourceManager.getSolution(ResourceManager.java:923)
+com.ifx.davex.ce.core.resource.mngts.ResourceManager.getSolverInfoAndProcess(ResourceManager.java:996)
+com.ifx.davex.ce.core.resource.mngts.ResourceManager.getSolutionFromSolver(ResourceManager.java:1175)
+com.ifx.davex.ce.core.appmigration.AppMigrationManager.pasteUserConfigHWResourcesForPinData(AppMigrationManager.java:2052)
+com.ifx.davex.ce.core.appmigration.AppMigrationManager.pasteUserDataToNewTopLevelApps(AppMigrationManager.java:1487)
+com.ifx.davex.ce.core.appmigration.AppMigrationManager.access$14(AppMigrationManager.java:1464)
+com.ifx.davex.ce.core.appmigration.AppMigrationManager$3.run(AppMigrationManager.java:1307)
+org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:119)
+***END of Exception Info***
+
+
+
+!ENTRY SOLVER 1 0 2026-07-09 15:08:11.234
+!MESSAGE 
+====================================== SOLVER ENVIRONMENT ========================================
+Solver Exe Path: null
+Solver Status: CONNECTED
+Solver Eclipse Instance: com.parctechnologies.eclipse.OutOfProcessEclipse@27a82abc
+DD Temp Dir: C:\Infineon\Tools\DAVE IDE\4.5.0.202105191637\eclipse\workspace\.metadata\.plugins\solver_data\XMC4.8.00.F100.ALL
+ECO file location: C:\Infineon\Tools\DAVE IDE\4.5.0.202105191637\eclipse\workspace\.metadata\.plugins\solver_data\XMC4.8.00.F100.ALL\xmc4500_solver.eco
+Temp DD File Exists: true
+Query Sent to Solver: true
+Query: timeout(solve_mapping_problem([ 
+reserved([scu,0,clkctrl,0,pll],'clock_xmc4$01551378862$0'),
+reserved([scu,0,clkctrl,0,sys],'clock_xmc4$01551375569$0'),
+reserved([scu,0,clkctrl,0,cpu],'clock_xmc4$01551391222$0'),
+reserved([scu,0,clkctrl,0,perbridge],'clock_xmc4$494804424$0'),
+reserved([scu,0,clkctrl,0,ebu],'clock_xmc4$01551389734$0'),
+reserved([scu,0,clkctrl,0,ccu],'clock_xmc4$01551391625$0'),
+reserved([scu,0,clkctrl,0,wdt],'clock_xmc4$01551372375$0'),
+reserved([scu,0,clkctrl,0,usb],'clock_xmc4$01551373850$0'),
+reserved([scu,0,clkctrl,0,sdmmc],'clock_xmc4$01551381723$0'),
+reserved([scu,0,pwrctrl,0,hibernate],'clock_xmc4$0778278092$0'),
+reserved([scu,0,rtcclksel],'clock_xmc4$1142722683$0'),
+reserved([scu,0,trap,0,sysoscwd],'clock_xmc4$1091210735$0'),
+reserved([scu,0,trap,0,sysvcolock],'clock_xmc4$1586947406$0'),
+reserved([scu,0,trap,0,usbvcolock],'clock_xmc4$0261647995$0'),
+reserved([scu,0,trap,0,ulpwdg],'clock_xmc4$01047137491$0'),
+reserved([cpu,0,exception,nmi],'cpu_ctrl_xmc4$01637679009$0'),
+reserved([cpu,0,exception,hardfault],'cpu_ctrl_xmc4$0571328980$0'),
+reserved([cpu,0,exception,memmanage],'cpu_ctrl_xmc4$1768468879$0'),
+reserved([cpu,0,exception,busfault],'cpu_ctrl_xmc4$1763234541$0'),
+reserved([cpu,0,exception,usagefault],'cpu_ctrl_xmc4$1814460844$0'),
+reserved([cpu,0,debug],'cpu_ctrl_xmc4$1964564605$0'),
+reserved([debug_port,_,pad,_],'cpu_ctrl_xmc4$01540614004$0'),
+reserved([debug_port,_,pad,_],'cpu_ctrl_xmc4$01540614322$0'),
+reserved([usic,_,channel,_],'uart$02118624699$0'),
+reserved([p,_,pad,_],'uart$01053640812$0'),
+reserved([p,_,pad,_],'uart$01053640750$0'),
+reserved([devicepackage,0,_],'uart$0164365666$0'),
+reserved([devicepackage,0,_],'uart$0164365604$0'),
+uri([devicepackage,0,60],'uart$0164365604$0'),
+reserved([cpu,0,systick],'systimer$0137142936$0'),
+reserved([cpu,0,nvic,interrupt,_],'interrupt$01436523993$0'),
+reserved([cpu,0,nvic,interrupt,_],'interrupt$01947058170$1'),
+reserved([can,_,global],'global_can$0435288881$0'),
+reserved([can,0,node,0],'multican_config$343528551$0'),
+reserved([can,_,mo,0],'multican_config$342603263$0'),
+reserved([can,_,mo,1],'multican_config$342603264$0'),
+signal('clock_xmc4$494804424$0',fpb,'clock_xmc4$494804424$0$fpb'),
+signal('clock_xmc4$01551391625$0',fccu,'clock_xmc4$01551391625$0$fccu'),
+signal('cpu_ctrl_xmc4$01637679009$0',nmi_in,'cpu_ctrl_xmc4$01637679009$0$nmi_in'),
+signal('cpu_ctrl_xmc4$1964564605$0',db_tck,'cpu_ctrl_xmc4$1964564605$0$db_tck'),
+signal('cpu_ctrl_xmc4$1964564605$0',db_tms,'cpu_ctrl_xmc4$1964564605$0$db_tms'),
+signal('uart$02118624699$0',dx0ins,'uart$02118624699$0$dx0ins'),
+signal('uart$02118624699$0',dx3ins,'uart$02118624699$0$dx3ins'),
+signal('uart$02118624699$0',dout0,'uart$02118624699$0$dout0'),
+signal('uart$01053640812$0',pad,'uart$01053640812$0$pad'),
+signal('uart$01053640750$0',pad,'uart$01053640750$0$pad'),
+signal('uart$02118624699$0',protocol_specific_int,'uart$02118624699$0$protocol_specific_int'),
+signal('uart$02118624699$0',standard_transmit_buffer_int,'uart$02118624699$0$standard_transmit_buffer_int'),
+signal('uart$02118624699$0',standard_receive_buffer_int,'uart$02118624699$0$standard_receive_buffer_int'),
+signal('uart$02118624699$0',alternate_receive_buffer_int,'uart$02118624699$0$alternate_receive_buffer_int'),
+signal('uart$0164365666$0',pin,'uart$0164365666$0$pin'),
+signal('uart$0164365604$0',pin,'uart$0164365604$0$pin'),
+signal('interrupt$01436523993$0',signal_in,'interrupt$01436523993$0$signal_in'),
+signal('interrupt$01947058170$1',signal_in,'interrupt$01947058170$1$signal_in'),
+signal('multican_config$343528551$0',rxd,'multican_config$343528551$0$rxd'),
+signal('multican_config$343528551$0',txd,'multican_config$343528551$0$txd'),
+signal('multican_config$343528551$0',alinp,'multican_config$343528551$0$alinp'),
+signal('multican_config$343528551$0',lecinp,'multican_config$343528551$0$lecinp'),
+signal('multican_config$343528551$0',trinp,'multican_config$343528551$0$trinp'),
+signal('multican_config$343528551$0',cfcinp,'multican_config$343528551$0$cfcinp'),
+signal('multican_config$342603263$0',txinp,'multican_config$342603263$0$txinp'),
+signal('multican_config$342603263$0',rxinp,'multican_config$342603263$0$rxinp'),
+signal('multican_config$342603264$0',txinp,'multican_config$342603264$0$txinp'),
+signal('multican_config$342603264$0',rxinp,'multican_config$342603264$0$rxinp'),
+connected('uart$0164365666$0$pin','uart$01053640812$0$pad',1),
+connected('uart$0164365604$0$pin','uart$01053640750$0$pad',1),
+connected('uart$02118624699$0$dout0','uart$01053640750$0$pad',1),
+connected('uart$01053640812$0$pad','uart$0164365666$0$pin',1),
+connected('uart$01053640812$0$pad','uart$02118624699$0$dx0ins',1),
+connected('uart$01053640750$0$pad','uart$0164365604$0$pin',1),
+register_value('uart$02118624699$0',ccr_hpcen,0),
+register_value('uart$02118624699$0',tbctr_size,4),
+register_value('uart$02118624699$0',rbctr_size,4)
+ ],Vars,Regs,Appslocalvars),15,writeln(timeout),all_solution, Timer, Due, Remainder).
+
+====================================== SOLVER ENVIRONMENT ========================================
+
+
+
+!ENTRY MIGRATION 1 0 2026-07-09 15:08:11.242
+!MESSAGE Due to solver failure Pin data has been removed from new APP :- UART_0 : Transmit Pin : #60( P2.14 )
+
+!ENTRY MIGRATION 1 0 2026-07-09 15:08:11.763
+!MESSAGE Pasting hardware connection to new APP :- UART_0 : event_fifo_alt_receive -> INTERRUPT : sr_irq
+
+!ENTRY MIGRATION 1 0 2026-07-09 15:08:12.320
+!MESSAGE Pasting hardware connection to new APP :- UART_0 : event_fifo_std_receive -> INTERRUPT : sr_irq
+
+!ENTRY MIGRATION 1 0 2026-07-09 15:08:12.886
+!MESSAGE Pasting hardware connection to new APP :- UART_0 : event_fifo_transmit -> INTERRUPT : sr_irq
+
+!ENTRY com.dave.mbs.common 1 0 2026-07-09 15:08:13.440
+!MESSAGE pasteUserDataToNewAppsReqApp : object not found CLOCK_XMC4/CLOCK_XMC4_0
+
+!ENTRY com.dave.mbs.common 1 0 2026-07-09 15:08:13.440
+!MESSAGE pasteUserDataToNewAppsReqApp : object not found CPU_CTRL_XMC4/CPU_CTRL_XMC4_0
+
+!ENTRY com.dave.mbs.common 1 0 2026-07-09 15:08:13.442
+!MESSAGE pasteUserDataToNewAppsReqApp : object not found CPU_CTRL_XMC4/CPU_CTRL_XMC4_0
+
+!ENTRY MIGRATION 1 0 2026-07-09 15:08:13.455
+!MESSAGE Pasting Resource mapping data to new APP :- MULTICAN_CONFIG_0 : NODE0 : peripheral/can/0/node/0
+
+!ENTRY MIGRATION 1 0 2026-07-09 15:08:13.996
+!MESSAGE Pasting Resource mapping data to new APP :- MULTICAN_CONFIG_0 : MO_0 : peripheral/can/0/mo/0
+
+!ENTRY MIGRATION 1 0 2026-07-09 15:08:14.546
+!MESSAGE Pasting Resource mapping data to new APP :- MULTICAN_CONFIG_0 : MO_1 : peripheral/can/0/mo/1
+
+!ENTRY com.dave.mbs.common 1 0 2026-07-09 15:08:15.113
+!MESSAGE pasteUserDataToNewAppsReqApp : object not found CLOCK_XMC4/CLOCK_XMC4_0
+
+!ENTRY com.dave.mbs.common 1 0 2026-07-09 15:08:15.716
+!MESSAGE Time taken for processing complete solver result is: 61 msec 
+
+!ENTRY com.dave.mbs.common 1 0 2026-07-09 15:08:15.716
+!MESSAGE *****Serialization is called after successful solver action*****
+
+!ENTRY com.dave.mbs.common 1 0 2026-07-09 15:08:15.716
+!MESSAGE *************Saving EMF data into file system*******************
+
+!ENTRY com.dave.mbs.common 1 0 2026-07-09 15:08:15.729
+!MESSAGE *************Saving Groovy data into file system*******************
+
+!ENTRY COMMON 1 0 2026-07-09 15:08:15.859
+!MESSAGE Time Taken By Serialization  : 130 ms :: C:\Infineon\Tools\DAVE IDE\4.5.0.202105191637\eclipse\workspace\Battery_BMS_XMC4800-F100x2048_0\Dave\Model\projectData.bin
+
+!ENTRY com.dave.mbs.common 1 0 2026-07-09 15:08:15.869
+!MESSAGE *************Serializing EMF and Groovy data to RAM*******************
+
+!ENTRY com.dave.mbs.common 1 0 2026-07-09 15:08:16.002
+!MESSAGE Time taken for serialization in msec: 286
+
+!ENTRY com.dave.mbs.common 1 0 2026-07-09 15:08:16.697
+!MESSAGE Time taken for processing complete solver result is: 19 msec 
+
+!ENTRY com.dave.mbs.common 1 0 2026-07-09 15:08:16.697
+!MESSAGE *****Serialization is called after successful solver action*****
+
+!ENTRY com.dave.mbs.common 1 0 2026-07-09 15:08:16.698
+!MESSAGE *************Saving EMF data into file system*******************
+
+!ENTRY com.dave.mbs.common 1 0 2026-07-09 15:08:16.712
+!MESSAGE *************Saving Groovy data into file system*******************
+
+!ENTRY COMMON 1 0 2026-07-09 15:08:16.839
+!MESSAGE Time Taken By Serialization  : 127 ms :: C:\Infineon\Tools\DAVE IDE\4.5.0.202105191637\eclipse\workspace\Battery_BMS_XMC4800-F100x2048_0\Dave\Model\projectData.bin
+
+!ENTRY com.dave.mbs.common 1 0 2026-07-09 15:08:16.850
+!MESSAGE *************Serializing EMF and Groovy data to RAM*******************
+
+!ENTRY com.dave.mbs.common 1 0 2026-07-09 15:08:16.983
+!MESSAGE Time taken for serialization in msec: 286
+
+!ENTRY CODEGEN 1 0 2026-07-09 15:08:17.287
+!MESSAGE Code generation started...
+
+!ENTRY CODEGEN 1 0 2026-07-09 15:08:17.727
+!MESSAGE Code generation completed...
+
+!ENTRY APP_MIGRATION 1 0 2026-07-09 15:08:25.396
+!MESSAGE USER_ACTION : DEVICE MIGRATION Finished
+
+!ENTRY org.eclipse.launchbar.core 2 0 2026-07-09 15:08:56.105
+!MESSAGE Enablement expression is missing for descriptor type org.eclipse.cdt.debug.core.coreBuildDescriptorType
+
+!ENTRY org.eclipse.launchbar.core 2 0 2026-07-09 15:08:56.105
+!MESSAGE Enablement expression is missing for config provider for org.eclipse.cdt.debug.core.coreBuildDescriptorType
+
+!ENTRY org.eclipse.core.resources 4 372 2026-07-09 15:08:56.108
+!MESSAGE Resource '/ETHCAT_SSC_XMC48' is not open.
+
+!ENTRY org.eclipse.core.resources 4 372 2026-07-09 15:08:56.108
+!MESSAGE Resource '/Emulator_CAN' is not open.
+
+!ENTRY org.eclipse.core.resources 4 372 2026-07-09 15:08:56.108
+!MESSAGE Resource '/MODBUS_RTU_MODE_XMC47' is not open.
+
+!ENTRY org.eclipse.core.resources 4 372 2026-07-09 15:08:56.108
+!MESSAGE Resource '/MULTICAN_CONFIG_EXAMPLE_XMC47' is not open.
+
+!ENTRY org.eclipse.core.resources 4 372 2026-07-09 15:08:56.109
+!MESSAGE Resource '/MULTICAN_SELF_RUNTHRU' is not open.
+
+!ENTRY org.eclipse.core.resources 4 372 2026-07-09 15:08:56.109
+!MESSAGE Resource '/UART_EXAMPLE_XMC45' is not open.
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.jlink 4 1 2026-07-09 15:08:56.831
+!MESSAGE C:\Program Files\SEGGER\JLink_V942\JLinkGDBServerCL.exe -if swd -device XMC4800-F100x2048 -endian little -speed 1000 -port 2331 -swoport 2332 -telnetport 2333 -vd -ir -localhostonly 1 -singlerun -strict -timeout 0
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.jlink 4 1 2026-07-09 15:08:57.011
+!MESSAGE C:\Infineon\Tools\DAVE IDE\4.5.0.202105191637\eclipse\ARM-GCC-49/bin/arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY APP_CONFIGURATOR 1 0 2026-07-09 15:10:00.770
+!MESSAGE USER_ACTION : Time taken for opening editor is: 212 msec 
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:06.550
+!MESSAGE USER_ACTION : Opening Manual Pin Allocator Dialog.!
+
+!ENTRY APPSTORE 1 0 2026-07-09 15:10:06.571
+!MESSAGE USER_ACTION : Loaded DD: C:\Infineon\Tools\DAVE IDE\4.5.0.202105191637\D_LibraryStore_4.4\resources\48.1.0\port\p\0\MANIFEST\p.dd
+
+!ENTRY APPSTORE 1 0 2026-07-09 15:10:06.584
+!MESSAGE USER_ACTION : Loaded DD: C:\Infineon\Tools\DAVE IDE\4.5.0.202105191637\D_LibraryStore_4.4\resources\48.1.0\port\p\2\MANIFEST\p.dd
+
+!ENTRY APPSTORE 1 0 2026-07-09 15:10:06.598
+!MESSAGE USER_ACTION : Loaded DD: C:\Infineon\Tools\DAVE IDE\4.5.0.202105191637\D_LibraryStore_4.4\resources\48.1.0\port\p\3\MANIFEST\p.dd
+
+!ENTRY APPSTORE 1 0 2026-07-09 15:10:06.612
+!MESSAGE USER_ACTION : Loaded DD: C:\Infineon\Tools\DAVE IDE\4.5.0.202105191637\D_LibraryStore_4.4\resources\48.1.0\port\p\4\MANIFEST\p.dd
+
+!ENTRY APPSTORE 1 0 2026-07-09 15:10:06.624
+!MESSAGE USER_ACTION : Loaded DD: C:\Infineon\Tools\DAVE IDE\4.5.0.202105191637\D_LibraryStore_4.4\resources\48.1.0\port\p\5\MANIFEST\p.dd
+
+!ENTRY APPSTORE 1 0 2026-07-09 15:10:06.638
+!MESSAGE USER_ACTION : Loaded DD: C:\Infineon\Tools\DAVE IDE\4.5.0.202105191637\D_LibraryStore_4.4\resources\48.1.0\port\p\14\MANIFEST\p.dd
+
+!ENTRY APPSTORE 1 0 2026-07-09 15:10:06.650
+!MESSAGE USER_ACTION : Loaded DD: C:\Infineon\Tools\DAVE IDE\4.5.0.202105191637\D_LibraryStore_4.4\resources\48.1.0\port\p\15\MANIFEST\p.dd
+
+!ENTRY APPSTORE 1 0 2026-07-09 15:10:06.651
+!MESSAGE USER_ACTION : Loaded DD: C:\Infineon\Tools\DAVE IDE\4.5.0.202105191637\D_LibraryStore_4.4\resources\48.0.0\port\usb_port\0\MANIFEST\usb_port.dd
+
+!ENTRY APPSTORE 1 0 2026-07-09 15:10:06.651
+!MESSAGE USER_ACTION : Loaded DD: C:\Infineon\Tools\DAVE IDE\4.5.0.202105191637\D_LibraryStore_4.4\resources\48.0.0\port\hcu_port\0\MANIFEST\hcu_port.dd
+
+!ENTRY APPSTORE 1 0 2026-07-09 15:10:06.652
+!MESSAGE USER_ACTION : Loaded DD: C:\Infineon\Tools\DAVE IDE\4.5.0.202105191637\D_LibraryStore_4.4\resources\48.0.0\port\reset_port\0\MANIFEST\reset_port.dd
+
+!ENTRY APPSTORE 1 0 2026-07-09 15:10:06.653
+!MESSAGE USER_ACTION : Loaded DD: C:\Infineon\Tools\DAVE IDE\4.5.0.202105191637\D_LibraryStore_4.4\resources\48.0.0\port\crystal_port\0\MANIFEST\crystal_port.dd
+
+!ENTRY APPSTORE 1 0 2026-07-09 15:10:06.663
+!MESSAGE USER_ACTION : Loaded DD: C:\Infineon\Tools\DAVE IDE\4.5.0.202105191637\D_LibraryStore_4.4\resources\48.1.0\port\rtc_port\0\MANIFEST\rtc_port.dd
+
+!ENTRY APPSTORE 1 0 2026-07-09 15:10:06.663
+!MESSAGE USER_ACTION : Loaded DD: C:\Infineon\Tools\DAVE IDE\4.5.0.202105191637\D_LibraryStore_4.4\resources\48.0.0\port\power_port\0\MANIFEST\power_port.dd
+
+!ENTRY APPSTORE 1 0 2026-07-09 15:10:06.663
+!MESSAGE USER_ACTION : Loaded DD: C:\Infineon\Tools\DAVE IDE\4.5.0.202105191637\D_LibraryStore_4.4\resources\48.0.0\port\analogpower_port\0\MANIFEST\analogpower_port.dd
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:06.664
+!MESSAGE Board Pin Name: Invalid data : (// Board pin label) in line number 1
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:06.664
+!MESSAGE Board Pin Name: Invalid data : (// XMC4800 IoT Connectivity Kit (XMC4800_F100x2048)) in line number 2
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:06.664
+!MESSAGE Board Pin Name: Invalid data : (// v1.1 2020-08-17) in line number 3
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:06.664
+!MESSAGE Board Pin Name: Empty line found in line number 4
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:06.664
+!MESSAGE Board Pin Name: Invalid data : (// P0_12) in line number 5
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:06.665
+!MESSAGE Board Pin Name: Invalid data : (// P0_11) in line number 7
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:06.665
+!MESSAGE Board Pin Name: Invalid data : (// P0_10 ) in line number 9
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:06.665
+!MESSAGE Board Pin Name: Invalid data : (// P0_9 ) in line number 11
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:06.665
+!MESSAGE Board Pin Name: Invalid data : (// P0_8 ) in line number 13
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:06.665
+!MESSAGE Board Pin Name: Invalid data : (// P0_7 ) in line number 15
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:06.665
+!MESSAGE Board Pin Name: Invalid data : (// P0_6 ) in line number 17
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:06.665
+!MESSAGE Board Pin Name: Invalid data : (// P0_5 ) in line number 19
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:06.665
+!MESSAGE Board Pin Name: Invalid data : (// P0_4 ) in line number 21
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:06.665
+!MESSAGE Board Pin Name: Invalid data : (// P0_3 ) in line number 23
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:06.665
+!MESSAGE Board Pin Name: Invalid data : (// P0_2 ) in line number 25
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:06.665
+!MESSAGE Board Pin Name: Invalid data : (// P0_1 ) in line number 27
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:06.666
+!MESSAGE Board Pin Name: Invalid data : (// P0_0 ) in line number 29
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:06.666
+!MESSAGE Board Pin Name: Empty line found in line number 31
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:06.666
+!MESSAGE Board Pin Name: Invalid data : (// P1_15 ) in line number 32
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:06.666
+!MESSAGE Board Pin Name: Invalid data : (// P1_14 ) in line number 34
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:06.666
+!MESSAGE Board Pin Name: Invalid data : (// P1_13 ) in line number 36
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:06.666
+!MESSAGE Board Pin Name: Invalid data : (// P1_12 ) in line number 38
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:06.666
+!MESSAGE Board Pin Name: Invalid data : (// P1_11 ) in line number 40
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:06.667
+!MESSAGE Board Pin Name: Invalid data : (// P1_10 ) in line number 42
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:06.667
+!MESSAGE Board Pin Name: Invalid data : (// P1_9 ) in line number 44
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:06.667
+!MESSAGE Board Pin Name: Invalid data : (// P1_8 ) in line number 46
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:06.667
+!MESSAGE Board Pin Name: Invalid data : (// P1_7 ) in line number 48
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:06.667
+!MESSAGE Board Pin Name: Invalid data : (// P1_6 ) in line number 50
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:06.667
+!MESSAGE Board Pin Name: Invalid data : (// P1_5 ) in line number 52
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:06.668
+!MESSAGE Board Pin Name: Invalid data : (// P1_4 ) in line number 54
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:06.668
+!MESSAGE Board Pin Name: Invalid data : (// P1_3 ) in line number 56
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:06.668
+!MESSAGE Board Pin Name: Invalid data : (// P1_2 ) in line number 58
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:06.668
+!MESSAGE Board Pin Name: Invalid data : (// P1_1 ) in line number 60
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:06.669
+!MESSAGE Board Pin Name: Invalid data : (// P1_0 ) in line number 62
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:06.669
+!MESSAGE Board Pin Name: Empty line found in line number 64
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:06.669
+!MESSAGE Board Pin Name: Invalid data : (// P4_1 ) in line number 65
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:06.669
+!MESSAGE Board Pin Name: Invalid data : (// P4_0 ) in line number 67
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:06.669
+!MESSAGE Board Pin Name: Empty line found in line number 69
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:06.669
+!MESSAGE Board Pin Name: Invalid data : (// P15_9 ) in line number 70
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:06.670
+!MESSAGE Board Pin Name: Invalid data : (// P15_3 ) in line number 72
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:06.670
+!MESSAGE Board Pin Name: Invalid data : (// P15_2 ) in line number 74
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:06.670
+!MESSAGE Board Pin Name: Empty line found in line number 76
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:06.670
+!MESSAGE Board Pin Name: Invalid data : (// P3_6 ) in line number 77
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:06.670
+!MESSAGE Board Pin Name: Invalid data : (// P3_5 ) in line number 79
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:06.670
+!MESSAGE Board Pin Name: Invalid data : (// P3_4 ) in line number 81
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:06.670
+!MESSAGE Board Pin Name: Invalid data : (// P3_3 ) in line number 83
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:06.671
+!MESSAGE Board Pin Name: Invalid data : (// P3_2 ) in line number 85
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:06.671
+!MESSAGE Board Pin Name: Invalid data : (// P3_1 ) in line number 87
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:06.671
+!MESSAGE Board Pin Name: Invalid data : (// P3_0 ) in line number 89
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:06.671
+!MESSAGE Board Pin Name: Empty line found in line number 91
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:06.671
+!MESSAGE Board Pin Name: Invalid data : (// P2_15 ) in line number 92
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:06.671
+!MESSAGE Board Pin Name: Invalid data : (// P2_14 ) in line number 94
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:06.672
+!MESSAGE Board Pin Name: Invalid data : (// P2_10 ) in line number 96
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:06.672
+!MESSAGE Board Pin Name: Invalid data : (// P2_9 ) in line number 98
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:06.672
+!MESSAGE Board Pin Name: Invalid data : (// P2_8 ) in line number 100
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:06.672
+!MESSAGE Board Pin Name: Invalid data : (// P2_7 ) in line number 102
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:06.672
+!MESSAGE Board Pin Name: Invalid data : (// P2_6 ) in line number 104
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:06.672
+!MESSAGE Board Pin Name: Invalid data : (// P2_5 ) in line number 106
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:06.672
+!MESSAGE Board Pin Name: Invalid data : (// P2_4 ) in line number 108
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:06.672
+!MESSAGE Board Pin Name: Invalid data : (// P2_3 ) in line number 110
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:06.673
+!MESSAGE Board Pin Name: Invalid data : (// P2_2 ) in line number 112
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:06.673
+!MESSAGE Board Pin Name: Invalid data : (// P2_1 ) in line number 114
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:06.673
+!MESSAGE Board Pin Name: Invalid data : (// P2_0 ) in line number 116
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:06.673
+!MESSAGE Board Pin Name: Empty line found in line number 118
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:06.674
+!MESSAGE Board Pin Name: Invalid data : (// P5_7 ) in line number 119
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:06.674
+!MESSAGE Board Pin Name: Invalid data : (// P5_2 ) in line number 121
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:06.674
+!MESSAGE Board Pin Name: Invalid data : (// P5_1 ) in line number 123
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:06.674
+!MESSAGE Board Pin Name: Invalid data : (// P5_0 ) in line number 125
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:06.674
+!MESSAGE Board Pin Name: Empty line found in line number 127
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:06.674
+!MESSAGE Board Pin Name: Invalid data : (// P14_15 ) in line number 128
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:06.674
+!MESSAGE Board Pin Name: Invalid data : (// P14_14 ) in line number 130
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:06.675
+!MESSAGE Board Pin Name: Invalid data : (// P14_13 ) in line number 132
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:06.675
+!MESSAGE Board Pin Name: Invalid data : (// P14_12 ) in line number 134
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:06.675
+!MESSAGE Board Pin Name: Invalid data : (// P14_9 ) in line number 136
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:06.675
+!MESSAGE Board Pin Name: Invalid data : (// P14_8 ) in line number 138
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:06.675
+!MESSAGE Board Pin Name: Invalid data : (// P14_7 ) in line number 140
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:06.675
+!MESSAGE Board Pin Name: Invalid data : (// P14_6 ) in line number 142
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:06.676
+!MESSAGE Board Pin Name: Invalid data : (// P14_5 ) in line number 144
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:06.676
+!MESSAGE Board Pin Name: Invalid data : (// P14_4 ) in line number 146
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:06.676
+!MESSAGE Board Pin Name: Invalid data : (// P14_3 ) in line number 148
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:06.676
+!MESSAGE Board Pin Name: Invalid data : (// P14_2 ) in line number 150
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:06.676
+!MESSAGE Board Pin Name: Invalid data : (// P14_1 ) in line number 152
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:06.676
+!MESSAGE Board Pin Name: Invalid data : (// P14_0 ) in line number 154
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:06.676
+!MESSAGE Board Pin Name: Empty line found in line number 156
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:08.659
+!MESSAGE Board Pin Name: Invalid data : (// Board pin label) in line number 1
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:08.659
+!MESSAGE Board Pin Name: Invalid data : (// XMC4800 IoT Connectivity Kit (XMC4800_F100x2048)) in line number 2
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:08.659
+!MESSAGE Board Pin Name: Invalid data : (// v1.1 2020-08-17) in line number 3
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:08.659
+!MESSAGE Board Pin Name: Empty line found in line number 4
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:08.659
+!MESSAGE Board Pin Name: Invalid data : (// P0_12) in line number 5
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:08.659
+!MESSAGE Board Pin Name: Invalid data : (// P0_11) in line number 7
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:08.659
+!MESSAGE Board Pin Name: Invalid data : (// P0_10 ) in line number 9
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:08.659
+!MESSAGE Board Pin Name: Invalid data : (// P0_9 ) in line number 11
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:08.660
+!MESSAGE Board Pin Name: Invalid data : (// P0_8 ) in line number 13
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:08.660
+!MESSAGE Board Pin Name: Invalid data : (// P0_7 ) in line number 15
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:08.660
+!MESSAGE Board Pin Name: Invalid data : (// P0_6 ) in line number 17
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:08.660
+!MESSAGE Board Pin Name: Invalid data : (// P0_5 ) in line number 19
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:08.660
+!MESSAGE Board Pin Name: Invalid data : (// P0_4 ) in line number 21
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:08.660
+!MESSAGE Board Pin Name: Invalid data : (// P0_3 ) in line number 23
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:08.660
+!MESSAGE Board Pin Name: Invalid data : (// P0_2 ) in line number 25
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:08.661
+!MESSAGE Board Pin Name: Invalid data : (// P0_1 ) in line number 27
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:08.661
+!MESSAGE Board Pin Name: Invalid data : (// P0_0 ) in line number 29
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:08.661
+!MESSAGE Board Pin Name: Empty line found in line number 31
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:08.663
+!MESSAGE Board Pin Name: Invalid data : (// P1_15 ) in line number 32
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:08.663
+!MESSAGE Board Pin Name: Invalid data : (// P1_14 ) in line number 34
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:08.663
+!MESSAGE Board Pin Name: Invalid data : (// P1_13 ) in line number 36
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:08.663
+!MESSAGE Board Pin Name: Invalid data : (// P1_12 ) in line number 38
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:08.664
+!MESSAGE Board Pin Name: Invalid data : (// P1_11 ) in line number 40
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:08.664
+!MESSAGE Board Pin Name: Invalid data : (// P1_10 ) in line number 42
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:08.664
+!MESSAGE Board Pin Name: Invalid data : (// P1_9 ) in line number 44
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:08.664
+!MESSAGE Board Pin Name: Invalid data : (// P1_8 ) in line number 46
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:08.665
+!MESSAGE Board Pin Name: Invalid data : (// P1_7 ) in line number 48
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:08.665
+!MESSAGE Board Pin Name: Invalid data : (// P1_6 ) in line number 50
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:08.665
+!MESSAGE Board Pin Name: Invalid data : (// P1_5 ) in line number 52
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:08.665
+!MESSAGE Board Pin Name: Invalid data : (// P1_4 ) in line number 54
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:08.666
+!MESSAGE Board Pin Name: Invalid data : (// P1_3 ) in line number 56
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:08.666
+!MESSAGE Board Pin Name: Invalid data : (// P1_2 ) in line number 58
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:08.666
+!MESSAGE Board Pin Name: Invalid data : (// P1_1 ) in line number 60
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:08.666
+!MESSAGE Board Pin Name: Invalid data : (// P1_0 ) in line number 62
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:08.666
+!MESSAGE Board Pin Name: Empty line found in line number 64
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:08.666
+!MESSAGE Board Pin Name: Invalid data : (// P4_1 ) in line number 65
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:08.667
+!MESSAGE Board Pin Name: Invalid data : (// P4_0 ) in line number 67
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:08.667
+!MESSAGE Board Pin Name: Empty line found in line number 69
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:08.667
+!MESSAGE Board Pin Name: Invalid data : (// P15_9 ) in line number 70
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:08.667
+!MESSAGE Board Pin Name: Invalid data : (// P15_3 ) in line number 72
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:08.667
+!MESSAGE Board Pin Name: Invalid data : (// P15_2 ) in line number 74
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:08.667
+!MESSAGE Board Pin Name: Empty line found in line number 76
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:08.667
+!MESSAGE Board Pin Name: Invalid data : (// P3_6 ) in line number 77
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:08.667
+!MESSAGE Board Pin Name: Invalid data : (// P3_5 ) in line number 79
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:08.667
+!MESSAGE Board Pin Name: Invalid data : (// P3_4 ) in line number 81
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:08.668
+!MESSAGE Board Pin Name: Invalid data : (// P3_3 ) in line number 83
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:08.668
+!MESSAGE Board Pin Name: Invalid data : (// P3_2 ) in line number 85
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:08.668
+!MESSAGE Board Pin Name: Invalid data : (// P3_1 ) in line number 87
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:08.668
+!MESSAGE Board Pin Name: Invalid data : (// P3_0 ) in line number 89
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:08.668
+!MESSAGE Board Pin Name: Empty line found in line number 91
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:08.669
+!MESSAGE Board Pin Name: Invalid data : (// P2_15 ) in line number 92
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:08.670
+!MESSAGE Board Pin Name: Invalid data : (// P2_14 ) in line number 94
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:08.671
+!MESSAGE Board Pin Name: Invalid data : (// P2_10 ) in line number 96
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:08.671
+!MESSAGE Board Pin Name: Invalid data : (// P2_9 ) in line number 98
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:08.672
+!MESSAGE Board Pin Name: Invalid data : (// P2_8 ) in line number 100
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:08.672
+!MESSAGE Board Pin Name: Invalid data : (// P2_7 ) in line number 102
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:08.672
+!MESSAGE Board Pin Name: Invalid data : (// P2_6 ) in line number 104
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:08.672
+!MESSAGE Board Pin Name: Invalid data : (// P2_5 ) in line number 106
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:08.672
+!MESSAGE Board Pin Name: Invalid data : (// P2_4 ) in line number 108
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:08.672
+!MESSAGE Board Pin Name: Invalid data : (// P2_3 ) in line number 110
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:08.672
+!MESSAGE Board Pin Name: Invalid data : (// P2_2 ) in line number 112
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:08.673
+!MESSAGE Board Pin Name: Invalid data : (// P2_1 ) in line number 114
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:08.673
+!MESSAGE Board Pin Name: Invalid data : (// P2_0 ) in line number 116
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:08.673
+!MESSAGE Board Pin Name: Empty line found in line number 118
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:08.673
+!MESSAGE Board Pin Name: Invalid data : (// P5_7 ) in line number 119
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:08.673
+!MESSAGE Board Pin Name: Invalid data : (// P5_2 ) in line number 121
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:08.673
+!MESSAGE Board Pin Name: Invalid data : (// P5_1 ) in line number 123
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:08.674
+!MESSAGE Board Pin Name: Invalid data : (// P5_0 ) in line number 125
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:08.674
+!MESSAGE Board Pin Name: Empty line found in line number 127
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:08.674
+!MESSAGE Board Pin Name: Invalid data : (// P14_15 ) in line number 128
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:08.674
+!MESSAGE Board Pin Name: Invalid data : (// P14_14 ) in line number 130
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:08.674
+!MESSAGE Board Pin Name: Invalid data : (// P14_13 ) in line number 132
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:08.674
+!MESSAGE Board Pin Name: Invalid data : (// P14_12 ) in line number 134
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:08.674
+!MESSAGE Board Pin Name: Invalid data : (// P14_9 ) in line number 136
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:08.674
+!MESSAGE Board Pin Name: Invalid data : (// P14_8 ) in line number 138
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:08.674
+!MESSAGE Board Pin Name: Invalid data : (// P14_7 ) in line number 140
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:08.674
+!MESSAGE Board Pin Name: Invalid data : (// P14_6 ) in line number 142
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:08.675
+!MESSAGE Board Pin Name: Invalid data : (// P14_5 ) in line number 144
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:08.675
+!MESSAGE Board Pin Name: Invalid data : (// P14_4 ) in line number 146
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:08.675
+!MESSAGE Board Pin Name: Invalid data : (// P14_3 ) in line number 148
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:08.675
+!MESSAGE Board Pin Name: Invalid data : (// P14_2 ) in line number 150
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:08.675
+!MESSAGE Board Pin Name: Invalid data : (// P14_1 ) in line number 152
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:08.675
+!MESSAGE Board Pin Name: Invalid data : (// P14_0 ) in line number 154
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:08.675
+!MESSAGE Board Pin Name: Empty line found in line number 156
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:08.681
+!MESSAGE USER_ACTION : Pins Load : 228
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:11.712
+!MESSAGE USER_ACTION : User selection (Pin Allocator) : UART_0 --> Receive Pin --> #41 ( P2.14 ) /  MIKROBUS_TX
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:12.275
+!MESSAGE USER_ACTION : Pin Selection : 586
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:12.750
+!MESSAGE Board Pin Name: Invalid data : (// Board pin label) in line number 1
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:12.750
+!MESSAGE Board Pin Name: Invalid data : (// XMC4800 IoT Connectivity Kit (XMC4800_F100x2048)) in line number 2
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:12.751
+!MESSAGE Board Pin Name: Invalid data : (// v1.1 2020-08-17) in line number 3
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:12.751
+!MESSAGE Board Pin Name: Empty line found in line number 4
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:12.751
+!MESSAGE Board Pin Name: Invalid data : (// P0_12) in line number 5
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:12.751
+!MESSAGE Board Pin Name: Invalid data : (// P0_11) in line number 7
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:12.752
+!MESSAGE Board Pin Name: Invalid data : (// P0_10 ) in line number 9
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:12.752
+!MESSAGE Board Pin Name: Invalid data : (// P0_9 ) in line number 11
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:12.752
+!MESSAGE Board Pin Name: Invalid data : (// P0_8 ) in line number 13
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:12.752
+!MESSAGE Board Pin Name: Invalid data : (// P0_7 ) in line number 15
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:12.752
+!MESSAGE Board Pin Name: Invalid data : (// P0_6 ) in line number 17
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:12.753
+!MESSAGE Board Pin Name: Invalid data : (// P0_5 ) in line number 19
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:12.753
+!MESSAGE Board Pin Name: Invalid data : (// P0_4 ) in line number 21
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:12.753
+!MESSAGE Board Pin Name: Invalid data : (// P0_3 ) in line number 23
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:12.753
+!MESSAGE Board Pin Name: Invalid data : (// P0_2 ) in line number 25
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:12.753
+!MESSAGE Board Pin Name: Invalid data : (// P0_1 ) in line number 27
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:12.753
+!MESSAGE Board Pin Name: Invalid data : (// P0_0 ) in line number 29
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:12.753
+!MESSAGE Board Pin Name: Empty line found in line number 31
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:12.754
+!MESSAGE Board Pin Name: Invalid data : (// P1_15 ) in line number 32
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:12.754
+!MESSAGE Board Pin Name: Invalid data : (// P1_14 ) in line number 34
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:12.754
+!MESSAGE Board Pin Name: Invalid data : (// P1_13 ) in line number 36
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:12.754
+!MESSAGE Board Pin Name: Invalid data : (// P1_12 ) in line number 38
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:12.754
+!MESSAGE Board Pin Name: Invalid data : (// P1_11 ) in line number 40
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:12.755
+!MESSAGE Board Pin Name: Invalid data : (// P1_10 ) in line number 42
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:12.755
+!MESSAGE Board Pin Name: Invalid data : (// P1_9 ) in line number 44
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:12.755
+!MESSAGE Board Pin Name: Invalid data : (// P1_8 ) in line number 46
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:12.755
+!MESSAGE Board Pin Name: Invalid data : (// P1_7 ) in line number 48
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:12.755
+!MESSAGE Board Pin Name: Invalid data : (// P1_6 ) in line number 50
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:12.755
+!MESSAGE Board Pin Name: Invalid data : (// P1_5 ) in line number 52
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:12.756
+!MESSAGE Board Pin Name: Invalid data : (// P1_4 ) in line number 54
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:12.756
+!MESSAGE Board Pin Name: Invalid data : (// P1_3 ) in line number 56
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:12.756
+!MESSAGE Board Pin Name: Invalid data : (// P1_2 ) in line number 58
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:12.756
+!MESSAGE Board Pin Name: Invalid data : (// P1_1 ) in line number 60
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:12.756
+!MESSAGE Board Pin Name: Invalid data : (// P1_0 ) in line number 62
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:12.756
+!MESSAGE Board Pin Name: Empty line found in line number 64
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:12.756
+!MESSAGE Board Pin Name: Invalid data : (// P4_1 ) in line number 65
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:12.756
+!MESSAGE Board Pin Name: Invalid data : (// P4_0 ) in line number 67
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:12.758
+!MESSAGE Board Pin Name: Empty line found in line number 69
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:12.758
+!MESSAGE Board Pin Name: Invalid data : (// P15_9 ) in line number 70
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:12.758
+!MESSAGE Board Pin Name: Invalid data : (// P15_3 ) in line number 72
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:12.758
+!MESSAGE Board Pin Name: Invalid data : (// P15_2 ) in line number 74
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:12.758
+!MESSAGE Board Pin Name: Empty line found in line number 76
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:12.758
+!MESSAGE Board Pin Name: Invalid data : (// P3_6 ) in line number 77
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:12.758
+!MESSAGE Board Pin Name: Invalid data : (// P3_5 ) in line number 79
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:12.758
+!MESSAGE Board Pin Name: Invalid data : (// P3_4 ) in line number 81
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:12.758
+!MESSAGE Board Pin Name: Invalid data : (// P3_3 ) in line number 83
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:12.759
+!MESSAGE Board Pin Name: Invalid data : (// P3_2 ) in line number 85
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:12.759
+!MESSAGE Board Pin Name: Invalid data : (// P3_1 ) in line number 87
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:12.759
+!MESSAGE Board Pin Name: Invalid data : (// P3_0 ) in line number 89
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:12.759
+!MESSAGE Board Pin Name: Empty line found in line number 91
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:12.759
+!MESSAGE Board Pin Name: Invalid data : (// P2_15 ) in line number 92
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:12.759
+!MESSAGE Board Pin Name: Invalid data : (// P2_14 ) in line number 94
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:12.760
+!MESSAGE Board Pin Name: Invalid data : (// P2_10 ) in line number 96
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:12.760
+!MESSAGE Board Pin Name: Invalid data : (// P2_9 ) in line number 98
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:12.761
+!MESSAGE Board Pin Name: Invalid data : (// P2_8 ) in line number 100
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:12.761
+!MESSAGE Board Pin Name: Invalid data : (// P2_7 ) in line number 102
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:12.761
+!MESSAGE Board Pin Name: Invalid data : (// P2_6 ) in line number 104
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:12.761
+!MESSAGE Board Pin Name: Invalid data : (// P2_5 ) in line number 106
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:12.761
+!MESSAGE Board Pin Name: Invalid data : (// P2_4 ) in line number 108
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:12.761
+!MESSAGE Board Pin Name: Invalid data : (// P2_3 ) in line number 110
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:12.761
+!MESSAGE Board Pin Name: Invalid data : (// P2_2 ) in line number 112
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:12.761
+!MESSAGE Board Pin Name: Invalid data : (// P2_1 ) in line number 114
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:12.761
+!MESSAGE Board Pin Name: Invalid data : (// P2_0 ) in line number 116
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:12.762
+!MESSAGE Board Pin Name: Empty line found in line number 118
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:12.762
+!MESSAGE Board Pin Name: Invalid data : (// P5_7 ) in line number 119
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:12.762
+!MESSAGE Board Pin Name: Invalid data : (// P5_2 ) in line number 121
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:12.762
+!MESSAGE Board Pin Name: Invalid data : (// P5_1 ) in line number 123
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:12.762
+!MESSAGE Board Pin Name: Invalid data : (// P5_0 ) in line number 125
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:12.762
+!MESSAGE Board Pin Name: Empty line found in line number 127
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:12.762
+!MESSAGE Board Pin Name: Invalid data : (// P14_15 ) in line number 128
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:12.762
+!MESSAGE Board Pin Name: Invalid data : (// P14_14 ) in line number 130
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:12.762
+!MESSAGE Board Pin Name: Invalid data : (// P14_13 ) in line number 132
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:12.762
+!MESSAGE Board Pin Name: Invalid data : (// P14_12 ) in line number 134
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:12.764
+!MESSAGE Board Pin Name: Invalid data : (// P14_9 ) in line number 136
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:12.764
+!MESSAGE Board Pin Name: Invalid data : (// P14_8 ) in line number 138
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:12.764
+!MESSAGE Board Pin Name: Invalid data : (// P14_7 ) in line number 140
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:12.764
+!MESSAGE Board Pin Name: Invalid data : (// P14_6 ) in line number 142
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:12.764
+!MESSAGE Board Pin Name: Invalid data : (// P14_5 ) in line number 144
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:12.764
+!MESSAGE Board Pin Name: Invalid data : (// P14_4 ) in line number 146
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:12.764
+!MESSAGE Board Pin Name: Invalid data : (// P14_3 ) in line number 148
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:12.764
+!MESSAGE Board Pin Name: Invalid data : (// P14_2 ) in line number 150
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:12.764
+!MESSAGE Board Pin Name: Invalid data : (// P14_1 ) in line number 152
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:12.765
+!MESSAGE Board Pin Name: Invalid data : (// P14_0 ) in line number 154
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:12.765
+!MESSAGE Board Pin Name: Empty line found in line number 156
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:12.768
+!MESSAGE USER_ACTION : Pins Load : 210
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:17.953
+!MESSAGE USER_ACTION : User selection (Pin Allocator) : UART_0 --> Transmit Pin --> Not Selected
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:18.497
+!MESSAGE USER_ACTION : Pin Selection : 574
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:20.468
+!MESSAGE Board Pin Name: Invalid data : (// Board pin label) in line number 1
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:20.468
+!MESSAGE Board Pin Name: Invalid data : (// XMC4800 IoT Connectivity Kit (XMC4800_F100x2048)) in line number 2
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:20.470
+!MESSAGE Board Pin Name: Invalid data : (// v1.1 2020-08-17) in line number 3
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:20.470
+!MESSAGE Board Pin Name: Empty line found in line number 4
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:20.470
+!MESSAGE Board Pin Name: Invalid data : (// P0_12) in line number 5
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:20.470
+!MESSAGE Board Pin Name: Invalid data : (// P0_11) in line number 7
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:20.470
+!MESSAGE Board Pin Name: Invalid data : (// P0_10 ) in line number 9
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:20.470
+!MESSAGE Board Pin Name: Invalid data : (// P0_9 ) in line number 11
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:20.470
+!MESSAGE Board Pin Name: Invalid data : (// P0_8 ) in line number 13
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:20.470
+!MESSAGE Board Pin Name: Invalid data : (// P0_7 ) in line number 15
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:20.470
+!MESSAGE Board Pin Name: Invalid data : (// P0_6 ) in line number 17
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:20.471
+!MESSAGE Board Pin Name: Invalid data : (// P0_5 ) in line number 19
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:20.471
+!MESSAGE Board Pin Name: Invalid data : (// P0_4 ) in line number 21
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:20.471
+!MESSAGE Board Pin Name: Invalid data : (// P0_3 ) in line number 23
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:20.471
+!MESSAGE Board Pin Name: Invalid data : (// P0_2 ) in line number 25
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:20.471
+!MESSAGE Board Pin Name: Invalid data : (// P0_1 ) in line number 27
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:20.471
+!MESSAGE Board Pin Name: Invalid data : (// P0_0 ) in line number 29
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:20.472
+!MESSAGE Board Pin Name: Empty line found in line number 31
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:20.472
+!MESSAGE Board Pin Name: Invalid data : (// P1_15 ) in line number 32
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:20.472
+!MESSAGE Board Pin Name: Invalid data : (// P1_14 ) in line number 34
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:20.472
+!MESSAGE Board Pin Name: Invalid data : (// P1_13 ) in line number 36
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:20.472
+!MESSAGE Board Pin Name: Invalid data : (// P1_12 ) in line number 38
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:20.472
+!MESSAGE Board Pin Name: Invalid data : (// P1_11 ) in line number 40
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:20.472
+!MESSAGE Board Pin Name: Invalid data : (// P1_10 ) in line number 42
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:20.472
+!MESSAGE Board Pin Name: Invalid data : (// P1_9 ) in line number 44
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:20.472
+!MESSAGE Board Pin Name: Invalid data : (// P1_8 ) in line number 46
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:20.472
+!MESSAGE Board Pin Name: Invalid data : (// P1_7 ) in line number 48
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:20.474
+!MESSAGE Board Pin Name: Invalid data : (// P1_6 ) in line number 50
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:20.474
+!MESSAGE Board Pin Name: Invalid data : (// P1_5 ) in line number 52
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:20.474
+!MESSAGE Board Pin Name: Invalid data : (// P1_4 ) in line number 54
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:20.474
+!MESSAGE Board Pin Name: Invalid data : (// P1_3 ) in line number 56
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:20.474
+!MESSAGE Board Pin Name: Invalid data : (// P1_2 ) in line number 58
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:20.474
+!MESSAGE Board Pin Name: Invalid data : (// P1_1 ) in line number 60
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:20.474
+!MESSAGE Board Pin Name: Invalid data : (// P1_0 ) in line number 62
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:20.475
+!MESSAGE Board Pin Name: Empty line found in line number 64
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:20.475
+!MESSAGE Board Pin Name: Invalid data : (// P4_1 ) in line number 65
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:20.475
+!MESSAGE Board Pin Name: Invalid data : (// P4_0 ) in line number 67
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:20.475
+!MESSAGE Board Pin Name: Empty line found in line number 69
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:20.475
+!MESSAGE Board Pin Name: Invalid data : (// P15_9 ) in line number 70
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:20.475
+!MESSAGE Board Pin Name: Invalid data : (// P15_3 ) in line number 72
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:20.475
+!MESSAGE Board Pin Name: Invalid data : (// P15_2 ) in line number 74
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:20.475
+!MESSAGE Board Pin Name: Empty line found in line number 76
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:20.475
+!MESSAGE Board Pin Name: Invalid data : (// P3_6 ) in line number 77
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:20.475
+!MESSAGE Board Pin Name: Invalid data : (// P3_5 ) in line number 79
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:20.476
+!MESSAGE Board Pin Name: Invalid data : (// P3_4 ) in line number 81
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:20.476
+!MESSAGE Board Pin Name: Invalid data : (// P3_3 ) in line number 83
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:20.476
+!MESSAGE Board Pin Name: Invalid data : (// P3_2 ) in line number 85
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:20.476
+!MESSAGE Board Pin Name: Invalid data : (// P3_1 ) in line number 87
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:20.476
+!MESSAGE Board Pin Name: Invalid data : (// P3_0 ) in line number 89
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:20.476
+!MESSAGE Board Pin Name: Empty line found in line number 91
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:20.477
+!MESSAGE Board Pin Name: Invalid data : (// P2_15 ) in line number 92
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:20.477
+!MESSAGE Board Pin Name: Invalid data : (// P2_14 ) in line number 94
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:20.477
+!MESSAGE Board Pin Name: Invalid data : (// P2_10 ) in line number 96
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:20.477
+!MESSAGE Board Pin Name: Invalid data : (// P2_9 ) in line number 98
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:20.477
+!MESSAGE Board Pin Name: Invalid data : (// P2_8 ) in line number 100
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:20.477
+!MESSAGE Board Pin Name: Invalid data : (// P2_7 ) in line number 102
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:20.477
+!MESSAGE Board Pin Name: Invalid data : (// P2_6 ) in line number 104
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:20.477
+!MESSAGE Board Pin Name: Invalid data : (// P2_5 ) in line number 106
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:20.478
+!MESSAGE Board Pin Name: Invalid data : (// P2_4 ) in line number 108
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:20.478
+!MESSAGE Board Pin Name: Invalid data : (// P2_3 ) in line number 110
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:20.478
+!MESSAGE Board Pin Name: Invalid data : (// P2_2 ) in line number 112
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:20.478
+!MESSAGE Board Pin Name: Invalid data : (// P2_1 ) in line number 114
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:20.478
+!MESSAGE Board Pin Name: Invalid data : (// P2_0 ) in line number 116
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:20.478
+!MESSAGE Board Pin Name: Empty line found in line number 118
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:20.478
+!MESSAGE Board Pin Name: Invalid data : (// P5_7 ) in line number 119
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:20.479
+!MESSAGE Board Pin Name: Invalid data : (// P5_2 ) in line number 121
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:20.479
+!MESSAGE Board Pin Name: Invalid data : (// P5_1 ) in line number 123
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:20.479
+!MESSAGE Board Pin Name: Invalid data : (// P5_0 ) in line number 125
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:20.479
+!MESSAGE Board Pin Name: Empty line found in line number 127
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:20.479
+!MESSAGE Board Pin Name: Invalid data : (// P14_15 ) in line number 128
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:20.479
+!MESSAGE Board Pin Name: Invalid data : (// P14_14 ) in line number 130
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:20.480
+!MESSAGE Board Pin Name: Invalid data : (// P14_13 ) in line number 132
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:20.480
+!MESSAGE Board Pin Name: Invalid data : (// P14_12 ) in line number 134
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:20.480
+!MESSAGE Board Pin Name: Invalid data : (// P14_9 ) in line number 136
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:20.480
+!MESSAGE Board Pin Name: Invalid data : (// P14_8 ) in line number 138
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:20.481
+!MESSAGE Board Pin Name: Invalid data : (// P14_7 ) in line number 140
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:20.481
+!MESSAGE Board Pin Name: Invalid data : (// P14_6 ) in line number 142
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:20.481
+!MESSAGE Board Pin Name: Invalid data : (// P14_5 ) in line number 144
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:20.481
+!MESSAGE Board Pin Name: Invalid data : (// P14_4 ) in line number 146
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:20.481
+!MESSAGE Board Pin Name: Invalid data : (// P14_3 ) in line number 148
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:20.481
+!MESSAGE Board Pin Name: Invalid data : (// P14_2 ) in line number 150
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:20.481
+!MESSAGE Board Pin Name: Invalid data : (// P14_1 ) in line number 152
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:20.482
+!MESSAGE Board Pin Name: Invalid data : (// P14_0 ) in line number 154
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:20.482
+!MESSAGE Board Pin Name: Empty line found in line number 156
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:20.485
+!MESSAGE USER_ACTION : Pins Load : 222
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:44.998
+!MESSAGE USER_ACTION : User selection (Pin Allocator) : UART_0 --> Receive Pin --> #40 ( P2.15 ) /  MIKROBUS_RX
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:45.550
+!MESSAGE USER_ACTION : Pin Selection : 580
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:46.049
+!MESSAGE Board Pin Name: Invalid data : (// Board pin label) in line number 1
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:46.049
+!MESSAGE Board Pin Name: Invalid data : (// XMC4800 IoT Connectivity Kit (XMC4800_F100x2048)) in line number 2
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:46.049
+!MESSAGE Board Pin Name: Invalid data : (// v1.1 2020-08-17) in line number 3
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:46.049
+!MESSAGE Board Pin Name: Empty line found in line number 4
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:46.050
+!MESSAGE Board Pin Name: Invalid data : (// P0_12) in line number 5
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:46.050
+!MESSAGE Board Pin Name: Invalid data : (// P0_11) in line number 7
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:46.052
+!MESSAGE Board Pin Name: Invalid data : (// P0_10 ) in line number 9
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:46.052
+!MESSAGE Board Pin Name: Invalid data : (// P0_9 ) in line number 11
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:46.053
+!MESSAGE Board Pin Name: Invalid data : (// P0_8 ) in line number 13
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:46.053
+!MESSAGE Board Pin Name: Invalid data : (// P0_7 ) in line number 15
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:46.053
+!MESSAGE Board Pin Name: Invalid data : (// P0_6 ) in line number 17
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:46.053
+!MESSAGE Board Pin Name: Invalid data : (// P0_5 ) in line number 19
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:46.054
+!MESSAGE Board Pin Name: Invalid data : (// P0_4 ) in line number 21
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:46.054
+!MESSAGE Board Pin Name: Invalid data : (// P0_3 ) in line number 23
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:46.054
+!MESSAGE Board Pin Name: Invalid data : (// P0_2 ) in line number 25
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:46.054
+!MESSAGE Board Pin Name: Invalid data : (// P0_1 ) in line number 27
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:46.054
+!MESSAGE Board Pin Name: Invalid data : (// P0_0 ) in line number 29
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:46.055
+!MESSAGE Board Pin Name: Empty line found in line number 31
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:46.055
+!MESSAGE Board Pin Name: Invalid data : (// P1_15 ) in line number 32
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:46.055
+!MESSAGE Board Pin Name: Invalid data : (// P1_14 ) in line number 34
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:46.055
+!MESSAGE Board Pin Name: Invalid data : (// P1_13 ) in line number 36
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:46.056
+!MESSAGE Board Pin Name: Invalid data : (// P1_12 ) in line number 38
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:46.056
+!MESSAGE Board Pin Name: Invalid data : (// P1_11 ) in line number 40
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:46.056
+!MESSAGE Board Pin Name: Invalid data : (// P1_10 ) in line number 42
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:46.056
+!MESSAGE Board Pin Name: Invalid data : (// P1_9 ) in line number 44
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:46.057
+!MESSAGE Board Pin Name: Invalid data : (// P1_8 ) in line number 46
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:46.057
+!MESSAGE Board Pin Name: Invalid data : (// P1_7 ) in line number 48
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:46.057
+!MESSAGE Board Pin Name: Invalid data : (// P1_6 ) in line number 50
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:46.057
+!MESSAGE Board Pin Name: Invalid data : (// P1_5 ) in line number 52
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:46.058
+!MESSAGE Board Pin Name: Invalid data : (// P1_4 ) in line number 54
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:46.058
+!MESSAGE Board Pin Name: Invalid data : (// P1_3 ) in line number 56
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:46.058
+!MESSAGE Board Pin Name: Invalid data : (// P1_2 ) in line number 58
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:46.058
+!MESSAGE Board Pin Name: Invalid data : (// P1_1 ) in line number 60
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:46.059
+!MESSAGE Board Pin Name: Invalid data : (// P1_0 ) in line number 62
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:46.059
+!MESSAGE Board Pin Name: Empty line found in line number 64
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:46.059
+!MESSAGE Board Pin Name: Invalid data : (// P4_1 ) in line number 65
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:46.059
+!MESSAGE Board Pin Name: Invalid data : (// P4_0 ) in line number 67
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:46.059
+!MESSAGE Board Pin Name: Empty line found in line number 69
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:46.059
+!MESSAGE Board Pin Name: Invalid data : (// P15_9 ) in line number 70
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:46.059
+!MESSAGE Board Pin Name: Invalid data : (// P15_3 ) in line number 72
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:46.059
+!MESSAGE Board Pin Name: Invalid data : (// P15_2 ) in line number 74
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:46.059
+!MESSAGE Board Pin Name: Empty line found in line number 76
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:46.059
+!MESSAGE Board Pin Name: Invalid data : (// P3_6 ) in line number 77
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:46.060
+!MESSAGE Board Pin Name: Invalid data : (// P3_5 ) in line number 79
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:46.060
+!MESSAGE Board Pin Name: Invalid data : (// P3_4 ) in line number 81
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:46.060
+!MESSAGE Board Pin Name: Invalid data : (// P3_3 ) in line number 83
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:46.060
+!MESSAGE Board Pin Name: Invalid data : (// P3_2 ) in line number 85
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:46.060
+!MESSAGE Board Pin Name: Invalid data : (// P3_1 ) in line number 87
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:46.061
+!MESSAGE Board Pin Name: Invalid data : (// P3_0 ) in line number 89
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:46.061
+!MESSAGE Board Pin Name: Empty line found in line number 91
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:46.061
+!MESSAGE Board Pin Name: Invalid data : (// P2_15 ) in line number 92
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:46.061
+!MESSAGE Board Pin Name: Invalid data : (// P2_14 ) in line number 94
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:46.061
+!MESSAGE Board Pin Name: Invalid data : (// P2_10 ) in line number 96
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:46.062
+!MESSAGE Board Pin Name: Invalid data : (// P2_9 ) in line number 98
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:46.062
+!MESSAGE Board Pin Name: Invalid data : (// P2_8 ) in line number 100
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:46.062
+!MESSAGE Board Pin Name: Invalid data : (// P2_7 ) in line number 102
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:46.062
+!MESSAGE Board Pin Name: Invalid data : (// P2_6 ) in line number 104
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:46.062
+!MESSAGE Board Pin Name: Invalid data : (// P2_5 ) in line number 106
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:46.062
+!MESSAGE Board Pin Name: Invalid data : (// P2_4 ) in line number 108
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:46.062
+!MESSAGE Board Pin Name: Invalid data : (// P2_3 ) in line number 110
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:46.063
+!MESSAGE Board Pin Name: Invalid data : (// P2_2 ) in line number 112
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:46.063
+!MESSAGE Board Pin Name: Invalid data : (// P2_1 ) in line number 114
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:46.063
+!MESSAGE Board Pin Name: Invalid data : (// P2_0 ) in line number 116
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:46.063
+!MESSAGE Board Pin Name: Empty line found in line number 118
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:46.063
+!MESSAGE Board Pin Name: Invalid data : (// P5_7 ) in line number 119
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:46.064
+!MESSAGE Board Pin Name: Invalid data : (// P5_2 ) in line number 121
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:46.064
+!MESSAGE Board Pin Name: Invalid data : (// P5_1 ) in line number 123
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:46.064
+!MESSAGE Board Pin Name: Invalid data : (// P5_0 ) in line number 125
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:46.064
+!MESSAGE Board Pin Name: Empty line found in line number 127
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:46.064
+!MESSAGE Board Pin Name: Invalid data : (// P14_15 ) in line number 128
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:46.065
+!MESSAGE Board Pin Name: Invalid data : (// P14_14 ) in line number 130
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:46.065
+!MESSAGE Board Pin Name: Invalid data : (// P14_13 ) in line number 132
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:46.065
+!MESSAGE Board Pin Name: Invalid data : (// P14_12 ) in line number 134
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:46.065
+!MESSAGE Board Pin Name: Invalid data : (// P14_9 ) in line number 136
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:46.065
+!MESSAGE Board Pin Name: Invalid data : (// P14_8 ) in line number 138
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:46.065
+!MESSAGE Board Pin Name: Invalid data : (// P14_7 ) in line number 140
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:46.065
+!MESSAGE Board Pin Name: Invalid data : (// P14_6 ) in line number 142
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:46.065
+!MESSAGE Board Pin Name: Invalid data : (// P14_5 ) in line number 144
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:46.067
+!MESSAGE Board Pin Name: Invalid data : (// P14_4 ) in line number 146
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:46.067
+!MESSAGE Board Pin Name: Invalid data : (// P14_3 ) in line number 148
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:46.067
+!MESSAGE Board Pin Name: Invalid data : (// P14_2 ) in line number 150
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:46.067
+!MESSAGE Board Pin Name: Invalid data : (// P14_1 ) in line number 152
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:46.067
+!MESSAGE Board Pin Name: Invalid data : (// P14_0 ) in line number 154
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:46.067
+!MESSAGE Board Pin Name: Empty line found in line number 156
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:46.070
+!MESSAGE USER_ACTION : Pins Load : 209
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:47.174
+!MESSAGE USER_ACTION : User selection (Pin Allocator) : UART_0 --> Transmit Pin --> #41 ( P2.14 ) /  MIKROBUS_TX
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:47.743
+!MESSAGE USER_ACTION : Pin Selection : 590
+
+!ENTRY com.dave.mbs.common 1 0 2026-07-09 15:10:48.653
+!MESSAGE Time taken for processing complete solver result is: 21 msec 
+
+!ENTRY com.dave.mbs.common 1 0 2026-07-09 15:10:48.653
+!MESSAGE *****Serialization is called after successful solver action*****
+
+!ENTRY com.dave.mbs.common 1 0 2026-07-09 15:10:48.653
+!MESSAGE *************Saving EMF data into file system*******************
+
+!ENTRY com.dave.mbs.common 1 0 2026-07-09 15:10:48.666
+!MESSAGE *************Saving Groovy data into file system*******************
+
+!ENTRY COMMON 1 0 2026-07-09 15:10:48.828
+!MESSAGE Time Taken By Serialization  : 162 ms :: C:\Infineon\Tools\DAVE IDE\4.5.0.202105191637\eclipse\workspace\Battery_BMS_XMC4800-F100x2048_0\Dave\Model\projectData.bin
+
+!ENTRY com.dave.mbs.common 1 0 2026-07-09 15:10:48.846
+!MESSAGE *************Serializing EMF and Groovy data to RAM*******************
+
+!ENTRY com.dave.mbs.common 1 0 2026-07-09 15:10:49.026
+!MESSAGE Time taken for serialization in msec: 373
+
+!ENTRY UI_EDITOR 1 0 2026-07-09 15:10:49.037
+!MESSAGE USER_ACTION : Time taken for refreshing UART/4.1.14/0 editor is : 2
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:49.037
+!MESSAGE USER_ACTION : Saved User configured Pin Data.!
+
+!ENTRY SOLVER 1 0 2026-07-09 15:10:49.037
+!MESSAGE Time Taken By Solve and Save Manual PIN Configuration  : 414 ms
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:49.041
+!MESSAGE Board Pin Name: Invalid data : (// Board pin label) in line number 1
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:49.041
+!MESSAGE Board Pin Name: Invalid data : (// XMC4800 IoT Connectivity Kit (XMC4800_F100x2048)) in line number 2
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:49.041
+!MESSAGE Board Pin Name: Invalid data : (// v1.1 2020-08-17) in line number 3
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:49.042
+!MESSAGE Board Pin Name: Empty line found in line number 4
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:49.042
+!MESSAGE Board Pin Name: Invalid data : (// P0_12) in line number 5
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:49.042
+!MESSAGE Board Pin Name: Invalid data : (// P0_11) in line number 7
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:49.042
+!MESSAGE Board Pin Name: Invalid data : (// P0_10 ) in line number 9
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:49.043
+!MESSAGE Board Pin Name: Invalid data : (// P0_9 ) in line number 11
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:49.043
+!MESSAGE Board Pin Name: Invalid data : (// P0_8 ) in line number 13
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:49.043
+!MESSAGE Board Pin Name: Invalid data : (// P0_7 ) in line number 15
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:49.044
+!MESSAGE Board Pin Name: Invalid data : (// P0_6 ) in line number 17
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:49.044
+!MESSAGE Board Pin Name: Invalid data : (// P0_5 ) in line number 19
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:49.045
+!MESSAGE Board Pin Name: Invalid data : (// P0_4 ) in line number 21
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:49.045
+!MESSAGE Board Pin Name: Invalid data : (// P0_3 ) in line number 23
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:49.046
+!MESSAGE Board Pin Name: Invalid data : (// P0_2 ) in line number 25
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:49.046
+!MESSAGE Board Pin Name: Invalid data : (// P0_1 ) in line number 27
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:49.046
+!MESSAGE Board Pin Name: Invalid data : (// P0_0 ) in line number 29
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:49.046
+!MESSAGE Board Pin Name: Empty line found in line number 31
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:49.047
+!MESSAGE Board Pin Name: Invalid data : (// P1_15 ) in line number 32
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:49.047
+!MESSAGE Board Pin Name: Invalid data : (// P1_14 ) in line number 34
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:49.047
+!MESSAGE Board Pin Name: Invalid data : (// P1_13 ) in line number 36
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:49.047
+!MESSAGE Board Pin Name: Invalid data : (// P1_12 ) in line number 38
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:49.047
+!MESSAGE Board Pin Name: Invalid data : (// P1_11 ) in line number 40
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:49.047
+!MESSAGE Board Pin Name: Invalid data : (// P1_10 ) in line number 42
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:49.048
+!MESSAGE Board Pin Name: Invalid data : (// P1_9 ) in line number 44
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:49.048
+!MESSAGE Board Pin Name: Invalid data : (// P1_8 ) in line number 46
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:49.048
+!MESSAGE Board Pin Name: Invalid data : (// P1_7 ) in line number 48
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:49.048
+!MESSAGE Board Pin Name: Invalid data : (// P1_6 ) in line number 50
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:49.048
+!MESSAGE Board Pin Name: Invalid data : (// P1_5 ) in line number 52
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:49.048
+!MESSAGE Board Pin Name: Invalid data : (// P1_4 ) in line number 54
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:49.049
+!MESSAGE Board Pin Name: Invalid data : (// P1_3 ) in line number 56
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:49.049
+!MESSAGE Board Pin Name: Invalid data : (// P1_2 ) in line number 58
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:49.049
+!MESSAGE Board Pin Name: Invalid data : (// P1_1 ) in line number 60
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:49.049
+!MESSAGE Board Pin Name: Invalid data : (// P1_0 ) in line number 62
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:49.049
+!MESSAGE Board Pin Name: Empty line found in line number 64
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:49.049
+!MESSAGE Board Pin Name: Invalid data : (// P4_1 ) in line number 65
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:49.049
+!MESSAGE Board Pin Name: Invalid data : (// P4_0 ) in line number 67
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:49.050
+!MESSAGE Board Pin Name: Empty line found in line number 69
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:49.050
+!MESSAGE Board Pin Name: Invalid data : (// P15_9 ) in line number 70
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:49.050
+!MESSAGE Board Pin Name: Invalid data : (// P15_3 ) in line number 72
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:49.050
+!MESSAGE Board Pin Name: Invalid data : (// P15_2 ) in line number 74
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:49.050
+!MESSAGE Board Pin Name: Empty line found in line number 76
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:49.050
+!MESSAGE Board Pin Name: Invalid data : (// P3_6 ) in line number 77
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:49.050
+!MESSAGE Board Pin Name: Invalid data : (// P3_5 ) in line number 79
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:49.050
+!MESSAGE Board Pin Name: Invalid data : (// P3_4 ) in line number 81
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:49.050
+!MESSAGE Board Pin Name: Invalid data : (// P3_3 ) in line number 83
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:49.050
+!MESSAGE Board Pin Name: Invalid data : (// P3_2 ) in line number 85
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:49.052
+!MESSAGE Board Pin Name: Invalid data : (// P3_1 ) in line number 87
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:49.052
+!MESSAGE Board Pin Name: Invalid data : (// P3_0 ) in line number 89
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:49.052
+!MESSAGE Board Pin Name: Empty line found in line number 91
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:49.052
+!MESSAGE Board Pin Name: Invalid data : (// P2_15 ) in line number 92
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:49.052
+!MESSAGE Board Pin Name: Invalid data : (// P2_14 ) in line number 94
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:49.052
+!MESSAGE Board Pin Name: Invalid data : (// P2_10 ) in line number 96
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:49.052
+!MESSAGE Board Pin Name: Invalid data : (// P2_9 ) in line number 98
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:49.053
+!MESSAGE Board Pin Name: Invalid data : (// P2_8 ) in line number 100
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:49.053
+!MESSAGE Board Pin Name: Invalid data : (// P2_7 ) in line number 102
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:49.053
+!MESSAGE Board Pin Name: Invalid data : (// P2_6 ) in line number 104
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:49.053
+!MESSAGE Board Pin Name: Invalid data : (// P2_5 ) in line number 106
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:49.053
+!MESSAGE Board Pin Name: Invalid data : (// P2_4 ) in line number 108
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:49.053
+!MESSAGE Board Pin Name: Invalid data : (// P2_3 ) in line number 110
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:49.054
+!MESSAGE Board Pin Name: Invalid data : (// P2_2 ) in line number 112
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:49.054
+!MESSAGE Board Pin Name: Invalid data : (// P2_1 ) in line number 114
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:49.054
+!MESSAGE Board Pin Name: Invalid data : (// P2_0 ) in line number 116
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:49.054
+!MESSAGE Board Pin Name: Empty line found in line number 118
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:49.055
+!MESSAGE Board Pin Name: Invalid data : (// P5_7 ) in line number 119
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:49.055
+!MESSAGE Board Pin Name: Invalid data : (// P5_2 ) in line number 121
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:49.055
+!MESSAGE Board Pin Name: Invalid data : (// P5_1 ) in line number 123
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:49.056
+!MESSAGE Board Pin Name: Invalid data : (// P5_0 ) in line number 125
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:49.056
+!MESSAGE Board Pin Name: Empty line found in line number 127
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:49.056
+!MESSAGE Board Pin Name: Invalid data : (// P14_15 ) in line number 128
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:49.056
+!MESSAGE Board Pin Name: Invalid data : (// P14_14 ) in line number 130
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:49.056
+!MESSAGE Board Pin Name: Invalid data : (// P14_13 ) in line number 132
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:49.057
+!MESSAGE Board Pin Name: Invalid data : (// P14_12 ) in line number 134
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:49.057
+!MESSAGE Board Pin Name: Invalid data : (// P14_9 ) in line number 136
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:49.057
+!MESSAGE Board Pin Name: Invalid data : (// P14_8 ) in line number 138
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:49.057
+!MESSAGE Board Pin Name: Invalid data : (// P14_7 ) in line number 140
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:49.057
+!MESSAGE Board Pin Name: Invalid data : (// P14_6 ) in line number 142
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:49.057
+!MESSAGE Board Pin Name: Invalid data : (// P14_5 ) in line number 144
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:49.058
+!MESSAGE Board Pin Name: Invalid data : (// P14_4 ) in line number 146
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:49.058
+!MESSAGE Board Pin Name: Invalid data : (// P14_3 ) in line number 148
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:49.058
+!MESSAGE Board Pin Name: Invalid data : (// P14_2 ) in line number 150
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:49.059
+!MESSAGE Board Pin Name: Invalid data : (// P14_1 ) in line number 152
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:49.059
+!MESSAGE Board Pin Name: Invalid data : (// P14_0 ) in line number 154
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:49.059
+!MESSAGE Board Pin Name: Empty line found in line number 156
+
+!ENTRY PIN_CONFIG 1 0 2026-07-09 15:10:49.704
+!MESSAGE USER_ACTION : Manual Pin Allocator Dialog is closed..!
+
+!ENTRY CODEGEN 1 0 2026-07-09 15:10:54.163
+!MESSAGE Code generation started...
+
+!ENTRY CODEGEN 1 0 2026-07-09 15:10:54.493
+!MESSAGE Code generation completed...
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.jlink 4 1 2026-07-09 15:10:58.225
+!MESSAGE C:\Program Files\SEGGER\JLink_V942\JLinkGDBServerCL.exe -if swd -device XMC4800-F100x2048 -endian little -speed 1000 -port 2331 -swoport 2332 -telnetport 2333 -vd -ir -localhostonly 1 -singlerun -strict -timeout 0
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.jlink 4 1 2026-07-09 15:10:58.399
+!MESSAGE C:\Infineon\Tools\DAVE IDE\4.5.0.202105191637\eclipse\ARM-GCC-49/bin/arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY org.eclipse.core.resources 4 1 2026-07-09 15:11:37.337
+!MESSAGE Problems occurred while refreshing local changes
+!SUBENTRY 1 org.eclipse.core.resources 4 1 2026-07-09 15:11:37.337
+!MESSAGE Problems occurred while refreshing local changes
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Errors occurred while refreshing resources with the local file system.
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.refreshResource(FileSystemResourceManager.java:977)
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.refresh(FileSystemResourceManager.java:960)
+	at org.eclipse.core.internal.resources.Resource.refreshLocal(Resource.java:1594)
+	at org.eclipse.core.internal.refresh.RefreshJob.runInWorkspace(RefreshJob.java:163)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:39)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Contains: The project description file (.project) for 'Battery_BMS' is missing.  This file contains important information about the project.  The project will not function properly until this file is restored.
+!SUBENTRY 2 org.eclipse.core.resources 4 271 2026-07-09 15:11:37.341
+!MESSAGE Errors occurred while refreshing resources with the local file system.
+!SUBENTRY 3 org.eclipse.core.resources 4 567 2026-07-09 15:11:37.341
+!MESSAGE The project description file (.project) for 'Battery_BMS' is missing.  This file contains important information about the project.  The project will not function properly until this file is restored.
