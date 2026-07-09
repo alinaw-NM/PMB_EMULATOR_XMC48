@@ -63,4 +63,6 @@
 		<item value="-3141" key="DIALOG_X_ORIGIN"/>
 		<item value="1864" key="DIALOG_Y_ORIGIN"/>
 	</section>
+	<section name="NewWizardAction">
+	</section>
 </section>

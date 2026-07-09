@@ -1,0 +1,161 @@
+/*
+ * main.c - Morelle Falcon 15 EB BMS diagnostic over CAN
+ *
+ * Polls all BMS data IDs every 2 seconds and prints raw CAN bytes plus
+ * decoded values via XMC_DEBUG (SWO / J-Link trace, view in DAVE Debug console).
+ *
+ * CAN: 250 kbps, extended 29-bit IDs, Node 0, P1.12 TX / P1.13 RX
+ */
+
+#include "DAVE.h"
+#include "morelle_bms.h"
+#include <stdint.h>
+
+/* ~1 ms delay at 144 MHz: 28800 iterations ≈ 1 ms (calibrated same as RS485 project) */
+static void delay_ms(uint32_t ms)
+{
+    volatile uint32_t i;
+    for (i = 0U; i < ms * 28800U; i++) {}
+}
+
+/* Print last 8 received raw bytes (set by morelle_bms.c on every recv_frame()) */
+static void print_raw(uint8_t did)
+{
+    const uint8_t *p = morelle_last_rx_raw;
+    XMC_DEBUG("[0x%02X] RAW: %02X %02X %02X %02X %02X %02X %02X %02X\n",
+              (unsigned)did,
+              (unsigned)p[0], (unsigned)p[1], (unsigned)p[2], (unsigned)p[3],
+              (unsigned)p[4], (unsigned)p[5], (unsigned)p[6], (unsigned)p[7]);
+}
+
+int main(void)
+{
+    DAVE_STATUS_t status;
+
+    status = DAVE_Init();
+    if (status != DAVE_STATUS_SUCCESS)
+    {
+        XMC_DEBUG("DAVE APPs initialization failed\n");
+        while (1U) {}
+    }
+
+    /* Configure CAN Node 0 for 250 kbps external bus (DAVE config omits node setup) */
+    Morelle_NodeInit();
+
+    XMC_DEBUG("Morelle BMS monitor started (250 kbps CAN, battery addr 0x%02X)\n",
+              (unsigned)MORELLE_BATT_ADDR);
+
+    for (;;)
+    {
+        Morelle_StatusInfo_t   info   = {13U, 4U};  /* 13-cell default; overridden by 0x94 */
+        Morelle_PackTotals_t   pack;
+        Morelle_CellExtremes_t cext;
+        Morelle_TempExtremes_t text;
+        Morelle_MosState_t     mos;
+        Morelle_CellVoltages_t vcells;
+        Morelle_Temperatures_t vtemps;
+        Morelle_CellBalance_t  bal;
+        Morelle_FaultStatus_t  fault;
+        Morelle_Status_t       st;
+        uint8_t i;
+
+        XMC_DEBUG("\n========== BMS Poll ==========\n");
+
+        /* 0x94 - Status Info: read first to get actual cell/sensor counts */
+        st = Morelle_GetStatusInfo(&info);
+        print_raw(MORELLE_DID_STATUS_INFO);
+        if (st == MORELLE_OK){
+        	XMC_DEBUG("[0x94] Cells: %u  Temp sensors: %u\n", (unsigned)info.num_cells, (unsigned)info.num_temps);
+        } else
+            XMC_DEBUG("[0x94] TIMEOUT\n");
+
+        /* 0x90 - Pack Totals */
+        st = Morelle_GetPackTotals(&pack);
+        print_raw(MORELLE_DID_PACK_TOTALS);
+        if (st == MORELLE_OK){
+        	XMC_DEBUG("[0x90] Pack: %.1f V  %.1f A  SoC: %.1f%%\n",
+                      (double)pack.pack_v, (double)pack.current_a, (double)pack.soc_pct);
+		}else
+            XMC_DEBUG("[0x90] TIMEOUT\n");
+
+        /* 0x93 - MOS State */
+        st = Morelle_GetMosState(&mos);
+        print_raw(MORELLE_DID_MOS_STATE);
+        if (st == MORELLE_OK) {
+            const char *s = (mos.state == 1U) ? "CHG" :
+                            (mos.state == 2U) ? "DSG" : "IDLE";
+            XMC_DEBUG("[0x93] State: %s  ChgMOS: %u  DsgMOS: %u  Rem: %lu mAh\n",
+                      s, (unsigned)mos.chg_mos, (unsigned)mos.dsg_mos,
+                      (unsigned long)mos.remaining_mah);
+        } else
+            XMC_DEBUG("[0x93] TIMEOUT\n");
+
+        /* 0x91 - Cell Voltage Extremes */
+        st = Morelle_GetCellExtremes(&cext);
+        print_raw(MORELLE_DID_CELL_EXTREMES);
+        if (st == MORELLE_OK)
+            XMC_DEBUG("[0x91] Max: %u mV (cell %u)  Min: %u mV (cell %u)\n",
+                      (unsigned)cext.max_mv, (unsigned)cext.max_cell,
+                      (unsigned)cext.min_mv, (unsigned)cext.min_cell);
+        else
+            XMC_DEBUG("[0x91] TIMEOUT\n");
+
+        /* 0x92 - Temperature Extremes */
+        st = Morelle_GetTempExtremes(&text);
+        print_raw(MORELLE_DID_TEMP_EXTREMES);
+        if (st == MORELLE_OK)
+            XMC_DEBUG("[0x92] Max: %d C (sensor %u)  Min: %d C (sensor %u)\n",
+                      (int)text.max_c, (unsigned)text.max_sensor,
+                      (int)text.min_c, (unsigned)text.min_sensor);
+        else
+            XMC_DEBUG("[0x92] TIMEOUT\n");
+
+        /* 0x95 - Individual Cell Voltages (multi-frame: last frame shown in RAW) */
+        st = Morelle_GetCellVoltages(&vcells, info.num_cells);
+        print_raw(MORELLE_DID_CELL_VOLTAGES);
+        if (st == MORELLE_OK) {
+            XMC_DEBUG("[0x95] Cell mV:");
+            for (i = 0U; i < vcells.count; i++)
+                XMC_DEBUG(" %u", (unsigned)vcells.mv[i]);
+            XMC_DEBUG("\n");
+        } else
+            XMC_DEBUG("[0x95] TIMEOUT\n");
+
+        /* 0x96 - Individual Temperatures */
+        st = Morelle_GetTemperatures(&vtemps, info.num_temps);
+        print_raw(MORELLE_DID_TEMPERATURES);
+        if (st == MORELLE_OK) {
+            XMC_DEBUG("[0x96] Temps C:");
+            for (i = 0U; i < vtemps.count; i++)
+                XMC_DEBUG(" %d", (int)vtemps.c[i]);
+            XMC_DEBUG("\n");
+        } else
+            XMC_DEBUG("[0x96] TIMEOUT\n");
+
+        /* 0x97 - Cell Balance */
+        st = Morelle_GetCellBalance(&bal);
+        print_raw(MORELLE_DID_CELL_BALANCE);
+        if (st == MORELLE_OK)
+            XMC_DEBUG("[0x97] Balance mask: %02X %02X %02X\n",
+                      (unsigned)bal.mask[0], (unsigned)bal.mask[1], (unsigned)bal.mask[2]);
+        else
+            XMC_DEBUG("[0x97] TIMEOUT\n");
+
+        /* 0x98 - Fault Status */
+        st = Morelle_GetFaultStatus(&fault);
+        print_raw(MORELLE_DID_FAULT_STATUS);
+        if (st == MORELLE_OK) {
+            uint8_t any = 0U;
+            for (i = 0U; i < 8U; i++) any |= fault.b[i];
+            XMC_DEBUG("[0x98] %02X %02X %02X %02X %02X %02X %02X %02X  %s\n",
+                      (unsigned)fault.b[0], (unsigned)fault.b[1],
+                      (unsigned)fault.b[2], (unsigned)fault.b[3],
+                      (unsigned)fault.b[4], (unsigned)fault.b[5],
+                      (unsigned)fault.b[6], (unsigned)fault.b[7],
+                      any ? "<FAULT>" : "OK");
+        } else
+            XMC_DEBUG("[0x98] TIMEOUT\n");
+
+        delay_ms(2000U);
+    }
+}
